@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "skills": {
+    "givemotion": {
+      "source": "givemotion/givemotion",
+      "sourceType": "github",
+      "skillPath": "skills/givemotion/SKILL.md",
+      "computedHash": "2831e5a611c2bb3c43baedf553dd1a8d5ac06008299820d257b7c8b3cfbe8fd1"
+    }
+  }
+}

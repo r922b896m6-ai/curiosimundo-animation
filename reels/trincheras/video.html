@@ -63,6 +63,7 @@
   .tag { font: 800 27px/1 var(--font); letter-spacing:.06em; fill: #f6f1e6; }
   .tagbg { fill: rgb(16 13 10 / .88); stroke: #ffd23f; stroke-width: 3; }
   #s1 .hl { font-size: 176px; }
+  .utag { position:absolute; z-index:3; top: 740px; font: 800 30px/1 var(--font); letter-spacing:.05em; padding: 12px 18px; border-radius: 14px; border: 3px solid rgb(255 255 255 / .5); color:#f6f1e6; }
   #todo { top: 640px; }
   #todo .row { display:flex; align-items:center; gap: 26px; font: 400 76px/1.25 var(--head); letter-spacing:.03em; }
   #todo .box { width: 54px; height: 54px; border-radius: 12px; border: 5px solid #d9cdb4; position:relative; flex:none; }
@@ -96,25 +97,58 @@
 
 <svg width="0" height="0" style="position:absolute">
   <defs>
+    <!-- BRITISH uniform: khaki tunic, Brodie helmet, 1908 webbing, puttees, hobnail boots, SMLE rifle -->
+    <g id="legsUK">
+      <path d="M-20 -84 L-16 -6 L-4 -6 L-1 -66 Z" fill="#7a6c44"/><path d="M1 -66 L4 -6 L16 -6 L20 -84 Z" fill="#7a6c44"/>
+      <rect x="-17" y="-42" width="13" height="36" fill="#62573a"/><rect x="4" y="-42" width="13" height="36" fill="#62573a"/>
+      <g stroke="#4b4229" stroke-width="2"><path d="M-17 -36 l13 -5 M-17 -26 l13 -5 M-17 -16 l13 -5 M4 -36 l13 -5 M4 -26 l13 -5 M4 -16 l13 -5"/></g>
+      <path d="M-19 -6 h16 l2 6 h-20z" fill="#2a1f14"/><path d="M3 -6 h16 l6 6 h-22z" fill="#2a1f14"/>
+    </g>
+    <g id="torsoUK">
+      <rect x="-37" y="-146" width="18" height="54" rx="6" fill="#6f6343" stroke="#4d4430" stroke-width="2"/>
+      <path d="M-21 -148 Q0 -154 21 -148 L24 -82 L-24 -82 Z" fill="#8a7a4e"/>
+      <g fill="#7a6b42"><rect x="-17" y="-140" width="12" height="11" rx="2"/><rect x="5" y="-140" width="12" height="11" rx="2"/><rect x="-18" y="-96" width="13" height="11" rx="2"/><rect x="5" y="-96" width="13" height="11" rx="2"/></g>
+      <path d="M-18 -147 L19 -104" stroke="#b9ac7a" stroke-width="5"/><rect x="-24" y="-104" width="48" height="8" fill="#b9ac7a"/>
+      <g fill="#a69968"><rect x="-22" y="-112" width="10" height="9" rx="2"/><rect x="12" y="-112" width="10" height="9" rx="2"/></g>
+      <g fill="#c9a640"><circle cx="0" cy="-138" r="1.8"/><circle cx="0" cy="-126" r="1.8"/><circle cx="0" cy="-114" r="1.8"/></g>
+      <path d="M-6 -150 Q0 -146 8 -150 L6 -144 L-4 -144 Z" fill="#7a6b42"/>
+    </g>
+    <g id="headUK">
+      <circle cx="3" cy="-162" r="13" fill="#d9a77c"/><circle cx="10" cy="-164" r="1.8" fill="#2a1f14"/>
+      <path d="M-8 -170 Q-6 -156 4 -150" stroke="#3b3424" stroke-width="2" fill="none"/>
+      <path d="M-17 -179 Q0 -204 17 -179Z" fill="#5d5a3a"/><path d="M-30 -178 Q0 -186 30 -178 Q0 -170 -30 -178Z" fill="#4b4830"/>
+    </g>
     <g id="soldier">
-      <path d="M-30 -178 Q0 -186 30 -178 Q0 -170 -30 -178Z"/><path d="M-17 -179 Q0 -204 17 -179Z"/>
-      <circle cx="3" cy="-162" r="13"/><path d="M-21 -148 Q0 -154 21 -148 L25 -82 L-25 -82 Z"/>
-      <rect x="-36" y="-146" width="16" height="52" rx="6"/><path d="M-20 -84 L-15 0 L-3 0 L0 -66 L3 0 L15 0 L20 -84Z"/>
-      <path d="M14 -140 L44 -238" stroke="#17130e" stroke-width="7" stroke-linecap="round"/>
+      <use href="#legsUK"/><use href="#torsoUK"/>
+      <path d="M14 -140 L44 -238" stroke="#6b4a2a" stroke-width="7" stroke-linecap="round"/><path d="M37 -214 L47 -246" stroke="#3a3a3a" stroke-width="4" stroke-linecap="round"/>
+      <path d="M8 -144 L28 -118 L22 -112 L2 -132 Z" fill="#8a7a4e"/><circle cx="26" cy="-114" r="6" fill="#d9a77c"/>
+      <use href="#headUK"/>
     </g>
     <g id="sitter">
-      <path d="M-30 -128 Q0 -136 30 -128 Q0 -120 -30 -128Z"/><path d="M-17 -129 Q0 -154 17 -129Z"/>
-      <circle cx="3" cy="-112" r="13"/><path d="M-22 -98 Q0 -104 22 -98 L24 -40 L-24 -40 Z"/>
-      <path d="M-24 -44 L40 -44 L44 -4 L56 0 L30 0 L28 -24 L-24 -24 Z"/>
+      <path d="M-24 -44 L40 -44 L44 -8 L28 -8 L28 -24 L-24 -24 Z" fill="#7a6c44"/>
+      <rect x="28" y="-30" width="13" height="24" fill="#62573a"/><path d="M27 -8 h18 l12 8 h-30z" fill="#2a1f14"/>
+      <rect x="-37" y="-96" width="18" height="50" rx="6" fill="#6f6343" stroke="#4d4430" stroke-width="2"/>
+      <path d="M-22 -98 Q0 -104 22 -98 L24 -40 L-24 -40 Z" fill="#8a7a4e"/>
+      <path d="M-18 -97 L19 -56" stroke="#b9ac7a" stroke-width="5"/><rect x="-24" y="-58" width="48" height="8" fill="#b9ac7a"/>
+      <g fill="#7a6b42"><rect x="-17" y="-90" width="12" height="11" rx="2"/><rect x="5" y="-90" width="12" height="11" rx="2"/></g>
+      <path d="M10 -90 L36 -66 L30 -60 L4 -80 Z" fill="#8a7a4e"/><circle cx="34" cy="-62" r="6" fill="#d9a77c"/>
+      <circle cx="3" cy="-112" r="13" fill="#d9a77c"/><circle cx="10" cy="-114" r="1.8" fill="#2a1f14"/>
+      <path d="M-17 -129 Q0 -154 17 -129Z" fill="#5d5a3a"/><path d="M-30 -128 Q0 -136 30 -128 Q0 -120 -30 -128Z" fill="#4b4830"/>
     </g>
     <g id="masked">
-      <path d="M-30 -178 Q0 -186 30 -178 Q0 -170 -30 -178Z"/><path d="M-17 -179 Q0 -204 17 -179Z"/>
-      <path d="M-12 -176 Q20 -178 20 -150 Q18 -138 0 -140 Q-14 -150 -12 -176Z"/>
-      <circle cx="12" cy="-164" r="6" fill="#9fb3a8"/><path d="M14 -150 l14 12 l-6 8 l-14 -10z"/>
-      <path d="M-21 -140 Q0 -146 21 -140 L25 -82 L-25 -82 Z"/><rect x="-36" y="-138" width="16" height="44" rx="6"/>
-      <path d="M-20 -84 L-15 0 L-3 0 L0 -66 L3 0 L15 0 L20 -84Z"/>
+      <use href="#legsUK"/><use href="#torsoUK"/>
+      <rect x="-10" y="-112" width="22" height="20" rx="4" fill="#5b6248" stroke="#3a4030" stroke-width="2"/>
+      <path d="M-12 -176 Q20 -178 20 -150 Q18 -138 0 -140 Q-14 -150 -12 -176Z" fill="#59604a"/>
+      <circle cx="12" cy="-164" r="6" fill="#bcd0c6" stroke="#2f3426" stroke-width="2"/><path d="M14 -150 l14 12 l-6 8 l-14 -10z" fill="#3d4234"/>
+      <path d="M18 -140 Q30 -126 10 -110" stroke="#3d4234" stroke-width="4" fill="none"/>
+      <path d="M-17 -179 Q0 -204 17 -179Z" fill="#5d5a3a"/><path d="M-30 -178 Q0 -186 30 -178 Q0 -170 -30 -178Z" fill="#4b4830"/>
     </g>
-    <g id="crawler"><path d="M-70 -10 Q-60 -26 -20 -24 L40 -22 Q62 -24 66 -12 L60 0 L-70 0Z"/><circle cx="72" cy="-20" r="13"/><path d="M60 -30 Q74 -46 88 -30Z"/><path d="M50 -12 L100 -4" stroke="#0b0907" stroke-width="7" stroke-linecap="round"/></g>
+    <!-- prone raider (blackened face, khaki) and a German prisoner (field grey, Stahlhelm) -->
+    <g id="crawler"><path d="M-70 -10 Q-60 -26 -20 -24 L40 -22 Q62 -24 66 -12 L60 0 L-70 0Z" fill="#6e6240"/><path d="M-70 -6 L-20 -6" stroke="#5a4f33" stroke-width="6"/>
+      <path d="M-10 -22 L30 -4" stroke="#a69968" stroke-width="4"/><circle cx="72" cy="-20" r="13" fill="#3a2a20"/><path d="M60 -30 Q74 -46 88 -30Z" fill="#4b4830"/><path d="M54 -29 Q74 -34 94 -29" stroke="#4b4830" stroke-width="4"/>
+      <path d="M50 -12 L100 -4" stroke="#6b4a2a" stroke-width="7" stroke-linecap="round"/></g>
+    <g id="crawlerDE"><path d="M-70 -10 Q-60 -26 -20 -24 L40 -22 Q62 -24 66 -12 L60 0 L-70 0Z" fill="#6e7462"/><path d="M-70 -4 L-30 -4" stroke="#1d1d1d" stroke-width="8"/>
+      <circle cx="72" cy="-20" r="13" fill="#d9a77c"/><path d="M58 -24 Q72 -44 88 -26 L92 -18 L58 -20 Z" fill="#555c4c"/></g>
     <g id="helmet"><path d="M-28 4 Q0 -4 28 4 Q0 12 -28 4Z"/><path d="M-16 3 Q0 -22 16 3Z"/></g>
     <radialGradient id="flashG"><stop offset="0" stop-color="#fff6d0"/><stop offset=".35" stop-color="#ffb347" stop-opacity=".9"/><stop offset="1" stop-color="#ff6a00" stop-opacity="0"/></radialGradient>
     <radialGradient id="smokeG"><stop offset="0" stop-color="#5b5550" stop-opacity=".85"/><stop offset="1" stop-color="#5b5550" stop-opacity="0"/></radialGradient>
@@ -164,6 +198,7 @@
   <g id="lice" fill="#f2e6c8"></g>
   <g id="rats" fill="#120e0a"></g>
   <g id="labels"></g>
+  <g id="ulabels"></g>
   <g id="gas"></g>
 </svg>
 <div id="shade" data-start="0" data-duration="66.1"></div>
@@ -347,7 +382,7 @@
       <g><path d="M690 120 L670 700 M760 120 L740 700"/><path d="M680 220 h70 M678 320 h70 M675 420 h70 M672 520 h70 M670 620 h70"/></g>
     </g>
     <g id="troops" fill="#17130e"></g>
-    <g fill="#17130e" transform="translate(470 760)"><g id="officer"><use href="#soldier" transform="scale(2.4)"/>
+    <g fill="#17130e" transform="translate(470 760)"><g id="officer"><use href="#soldier" transform="scale(2.4)"/><g transform="scale(2.4)"><path d="M18 -147 L-19 -104" stroke="#6b4423" stroke-width="4"/><rect x="-24" y="-104" width="48" height="8" fill="#6b4423"/><rect x="-3" y="-104" width="6" height="8" fill="#c9a640"/></g>
       <rect x="36" y="-400" width="40" height="16" rx="6" fill="#c9c2b0"/>
       <g id="toot" stroke="#ffd23f" stroke-width="8" stroke-linecap="round"><path d="M95 -410 l50 -30"/><path d="M100 -392 l62 0"/><path d="M95 -374 l50 30"/></g></g></g>
   </svg>
@@ -375,6 +410,8 @@
   <h2 class="hl" id="t15a"><span class="w">¡DENTRO!</span></h2>
   <h2 class="hl" id="t15b" style="font-size:130px"><span class="w">CUERPO A</span> <span class="w"><em>CUERPO</em></span></h2>
   <div class="sub" id="wlab" style="top:450px; font-size:58px"><b id="wname">BAYONETAS</b></div>
+  <div class="utag" id="tagUK" style="left:150px; background:#8a7a4e">CAQUI · BRITÁNICOS</div>
+  <div class="utag" id="tagDE" style="right:60px; background:#5e6455">GRIS · ALEMANES</div>
   <svg class="art" id="melee" viewBox="0 0 1080 900" style="top:560px;height:900px">
     <path d="M0 120 L1080 120 L1080 1400 L0 1400 Z" fill="#2a2017"/>
     <path d="M0 140 L1080 140 L1080 640 L0 640 Z" fill="#33271b"/>
@@ -514,6 +551,13 @@ gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
     .to('#sitG', { opacity: 0, duration: .3 }, W('todos') - .4).to('#dawnSoldiers', { opacity: 1, duration: .01 }, W('todos') - .3)
     .from('#dawnSoldiers .ds', { y: 160, duration: .5, ease: 'back.out(1.6)' }, W('todos') - .3);
   t3.to('#s3 .hl em', { scale: 1.12, duration: .2, ease: 'back.out(3)', yoyo: true, repeat: 1, transformOrigin: '50% 60%' }, W('atacar') - .1);
+  const ul = document.getElementById('ulabels');
+  [['CASCO BRODIE', 338, 214, 610, 160], ['UNIFORME CAQUI', 330, 292, 640, 245], ['POLAINAS', 322, 366, 590, 330]].forEach(([txt, px, py, lx, ly], i) => {
+    const g = mk('g', {}, ul), ln = mk('path', { d: `M${px} ${py} L${lx - 60} ${ly}`, stroke: '#ffd23f', 'stroke-width': 4 }, g), dot = mk('circle', { cx: px, cy: py, r: 7, fill: '#ffd23f' }, g);
+    const w = txt.length * 17 + 36, bg = mk('rect', { x: lx - w / 2, y: ly - 28, width: w, height: 56, rx: 14, class: 'tagbg' }, g), tx = mk('text', { x: lx, y: ly + 10, 'text-anchor': 'middle', class: 'tag' }, g); tx.textContent = txt;
+    const at = W('todos') + .5 + i * .35;
+    t3.from(ln, { draw: 0, duration: .25 }, at).from([bg, tx, dot], { opacity: 0, scale: .6, duration: .3, ease: 'back.out(2)', transformOrigin: `${lx}px ${ly}px` }, at + .1); });
+  t3.to('#ulabels', { opacity: 0, duration: .3 }, W('ron') - .8);
   pop(t3, '#rum', W('ron') - .6);
   t3.to('#rum', { rotate: -18, duration: .25, ease: 'back.out(2)', yoyo: true, repeat: 1 }, W('ron') + .05);
   leave(t3, ['#s3 .hl', '#s3 .sub', '#rum'], 24.4);
@@ -616,7 +660,7 @@ gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
   const crawlers = document.getElementById('crawlers'), CR = [0, 1, 2].map(i => ({ g: mk('g', {}, crawlers), off: i * 70 }));
   CR.forEach(c => mk('use', { href: '#crawler' }, c.g));
   const rp = document.getElementById('raidPath'), RL = rp.getTotalLength(), c0 = W('grupos') - .2, c1 = W('prisioneros') - .3;
-  const pris = document.getElementById('prisoner'); mk('use', { href: '#crawler' }, pris);
+  const pris = document.getElementById('prisoner'); mk('use', { href: '#crawlerDE' }, pris);
   gm.onFrame('#s11', (l, info) => { const t = info.time;
     CR.forEach((c, i) => { const p = gm.clamp((t - c0) / (c1 - c0)), pt = rp.getPointAtLength(Math.max(0, p * RL - c.off));
       c.g.setAttribute('transform', `translate(${pt.x} ${pt.y + Math.sin(t * 6 + i) * 3}) scale(.8)`); c.g.setAttribute('opacity', t < c0 ? 0 : 1); });
@@ -678,16 +722,29 @@ gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
   const s15 = 92.95, t15 = gm.timeline('#s15', G);
   const F = document.getElementById('fighters');
   function fighter(x, side, enemy, weapon) {
-    const o = mk('g', { transform: `translate(${x} 640) scale(${side * 2.1} 2.1)` }, F), b = mk('g', {}, o), col = enemy ? '#2c3229' : '#17130e'; b.setAttribute('fill', col);
-    mk('path', { d: 'M-16 -118 L16 -118 L22 -50 L-22 -50 Z' }, b); mk('path', { d: 'M-20 -52 L-26 0 L-12 0 L0 -36 L10 0 L26 0 L20 -52 Z' }, b); mk('circle', { cx: 4, cy: -134, r: 13 }, b);
-    if (enemy) mk('path', { d: 'M-16 -136 Q4 -160 22 -136 L26 -126 L-14 -128 Z' }, b);
-    else { mk('path', { d: 'M-24 -144 Q4 -152 32 -144 Q4 -136 -24 -144Z' }, b); mk('path', { d: 'M-10 -145 Q4 -164 18 -145Z' }, b); }
+    // British: khaki, Brodie helmet, webbing, puttees. German: field grey (feldgrau), Stahlhelm, black belt, jackboots.
+    const o = mk('g', { transform: `translate(${x} 640) scale(${side * 2.1} 2.1)` }, F), b = mk('g', {}, o);
+    const tun = enemy ? '#6e7462' : '#8a7a4e', trs = enemy ? '#5e6455' : '#7a6c44', skin = '#d9a77c';
+    mk('path', { d: 'M-20 -52 L-24 -4 L-12 -4 L0 -36 L10 -4 L24 -4 L20 -52 Z', fill: trs }, b);
+    if (enemy) { mk('path', { d: 'M-24 -26 L-12 -26 L-12 -4 L-24 -4 Z M10 -26 L22 -26 L24 -4 L10 -4 Z', fill: '#1a1a1a' }, b); }
+    else { mk('path', { d: 'M-23 -26 L-13 -26 L-12 -4 L-24 -4 Z M10 -26 L21 -26 L23 -4 L10 -4 Z', fill: '#62573a' }, b); }
+    mk('path', { d: 'M-26 -4 h16 l2 4 h-18z M8 -4 h18 l6 4 h-24z', fill: enemy ? '#111' : '#2a1f14' }, b);
+    if (!enemy) mk('rect', { x: -32, y: -116, width: 14, height: 44, rx: 5, fill: '#6f6343' }, b);
+    mk('path', { d: 'M-16 -118 L16 -118 L22 -50 L-22 -50 Z', fill: tun }, b);
+    if (enemy) { mk('rect', { x: -22, y: -72, width: 44, height: 7, fill: '#222' }, b); mk('rect', { x: -4, y: -72, width: 8, height: 7, fill: '#9a9a90' }, b);
+      [-108, -96, -84].forEach(y => mk('circle', { cx: 0, cy: y, r: 1.8, fill: '#c0c0b4' }, b));
+      mk('path', { d: 'M-8 -120 h16 v6 h-16z', fill: '#c0392b' }, b); }
+    else { mk('path', { d: 'M-14 -117 L18 -76', stroke: '#b9ac7a', 'stroke-width': 5 }, b); mk('rect', { x: -22, y: -74, width: 44, height: 7, fill: '#b9ac7a' }, b);
+      [-108, -96, -84].forEach(y => mk('circle', { cx: 0, cy: y, r: 1.8, fill: '#c9a640' }, b)); }
+    mk('circle', { cx: 4, cy: -134, r: 13, fill: skin }, b); mk('circle', { cx: 11, cy: -136, r: 1.8, fill: '#2a1f14' }, b);
+    if (enemy) mk('path', { d: 'M-16 -136 Q4 -162 22 -138 L26 -128 L22 -130 L-12 -130 L-16 -126 Z', fill: '#555c4c' }, b);
+    else { mk('path', { d: 'M-10 -145 Q4 -166 18 -145Z', fill: '#5d5a3a' }, b); mk('path', { d: 'M-24 -144 Q4 -152 32 -144 Q4 -136 -24 -144Z', fill: '#4b4830' }, b); }
     const arm = mk('g', { transform: 'translate(8 -104)' }, b), a = mk('g', {}, arm);
-    mk('path', { d: 'M0 -7 L52 -4 L52 6 L0 8 Z', fill: col }, a);
-    if (weapon === 'bayonet') { mk('path', { d: 'M-30 2 L110 2', stroke: col, 'stroke-width': 9, 'stroke-linecap': 'round' }, a); mk('path', { d: 'M110 0 L150 2 L110 6 Z', fill: '#c9c2b0' }, a); }
+    mk('path', { d: 'M0 -7 L50 -4 L50 6 L0 8 Z', fill: tun }, a); mk('circle', { cx: 54, cy: 1, r: 7, fill: skin }, a);
+    if (weapon === 'bayonet') { mk('path', { d: 'M-30 2 L40 2', stroke: '#6b4a2a', 'stroke-width': 9, 'stroke-linecap': 'round' }, a); mk('path', { d: 'M40 2 L110 2', stroke: '#3a3a3a', 'stroke-width': 6 }, a); mk('path', { d: 'M110 0 L150 2 L110 6 Z', fill: '#c9c2b0' }, a); }
     if (weapon === 'shovel') { mk('path', { d: 'M20 2 L96 2', stroke: '#6b5236', 'stroke-width': 9, 'stroke-linecap': 'round' }, a); mk('path', { d: 'M92 -16 L130 -12 L132 16 L92 20 Z', fill: '#8e8f86' }, a); }
     if (weapon === 'club') { mk('path', { d: 'M30 2 L92 2', stroke: '#6b5236', 'stroke-width': 10, 'stroke-linecap': 'round' }, a); mk('rect', { x: 86, y: -14, width: 40, height: 32, rx: 10, fill: '#4a3826' }, a); }
-    if (weapon === 'fist') mk('circle', { cx: 58, cy: 1, r: 12, fill: col }, a);
+    if (weapon === 'fist') mk('circle', { cx: 58, cy: 1, r: 12, fill: skin }, a);
     return { o, b, a };
   }
   t15.from('#melee', { y: 300, opacity: 0, duration: .45, ease: 'expo.out' }, s15);
@@ -696,6 +753,7 @@ gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
   jumpers.forEach((j, i) => t15.fromTo(j.b, { y: -260 }, { y: 0, duration: .4, ease: 'power2.in' }, W('saltaban') - .1 + i * .15).to(j.b, { scaleY: .9, duration: .08, yoyo: true, repeat: 1, transformOrigin: '50% 100%' }, W('saltaban') + .3 + i * .15));
   gm.burst('#s15', { at: W('saltaban') + .3, kind: 'dust', x: '30%', y: '64%', count: 30, colors: ['#4a3826', '#2a2017'], global: true });
   t15.fromTo(def0.b, { x: 0 }, { x: -40, duration: .4, ease: 'power2.out' }, W('dentro'));
+  t15.from('#tagUK, #tagDE', { y: 30, opacity: 0, duration: .3, ease: 'back.out(2)', stagger: .15 }, W('saltaban') + .45).to('#tagUK, #tagDE', { opacity: 0, duration: .2 }, W('pelea') - .35);
   swapOut(t15, '#t15a', W('pelea') - .4); swapIn(t15, '#t15b .w', W('pelea') - .2);
   // first clash right as "pelea" is said, with the two that jumped in
   t15.fromTo(jumpers[1].b, { x: 0 }, { x: 160, duration: .2, ease: 'expo.out' }, W('cuerpo') - .1).to(def0.b, { x: 40, rotate: 14, duration: .25, ease: 'power3.out', transformOrigin: '50% 100%' }, W('cuerpo') + .05);

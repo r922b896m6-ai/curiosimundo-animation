@@ -1,9 +1,17 @@
-¿Qué pasaría si la Luna desapareciera esta noche?
-Lo primero: el cielo nocturno se volvería mucho más oscuro.
-Después, las mareas. La Luna es la que más tira de los océanos. Sin ella, solo quedaría el Sol, y las mareas serían casi tres veces más pequeñas.
-Muchos animales lo notarían: los corales, por ejemplo, se reproducen guiados por la luz de la luna llena.
-Pero lo más grave llegaría con el tiempo: la Luna estabiliza la inclinación de la Tierra.
-Sin ella, nuestro planeta podría tambalearse como un trompo, y las estaciones se volverían extremas durante millones de años.
-Y adiós a los eclipses de Sol, para siempre.
-Así que esa roca que vemos cada noche… es mucho más importante de lo que parece.
-¿Sabías que la Luna hacía todo esto? Cuéntamelo en los comentarios.
+# rate|pitch|pausa|texto  (cada línea se locuta por separado para variar ritmo y tono)
+-4%|-2Hz|0.3|Imagina esto: miras al cielo esta noche… y la Luna ya no está.
++0%|+5Hz|0.45|¿Qué pasaría?
++6%|+0Hz|0.2|Lo primero que notarías: el cielo nocturno se vuelve oscurísimo.
+-6%|-3Hz|0.4|Pero oscuro de verdad.
++8%|+4Hz|0.25|Y luego viene lo bueno: las mareas.
++5%|+0Hz|0.3|La Luna es la que más jala los océanos. Sin ella, solo nos quedaría el Sol… y las mareas serían casi tres veces más pequeñas.
++10%|+8Hz|0.35|Los surfistas, llorando.
++4%|+0Hz|0.3|Y no solo ellos: los corales se reproducen guiados por la luz de la luna llena.
++0%|+3Hz|0.45|Sin Luna… ¿cómo saben cuándo?
+-6%|-4Hz|0.35|Pero ojo, que lo más grave llega con el tiempo.
++4%|+0Hz|0.3|La Luna mantiene estable la inclinación de la Tierra. Sin ella, nuestro planeta podría tambalearse como un trompo…
++3%|-1Hz|0.45|y las estaciones se volverían extremas durante millones de años.
++5%|+3Hz|0.15|Ah, y olvídate de los eclipses de Sol.
+-8%|-3Hz|0.5|Para siempre.
+-5%|-2Hz|0.4|Así que esa roca que ves cada noche… es mucho más importante de lo que parece.
++7%|+6Hz|0|¿Tú lo sabías? Cuéntamelo en los comentarios.

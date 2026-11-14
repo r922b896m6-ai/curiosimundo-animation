@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  REEL: ¿Qué pasaría si la Luna desapareciera?  (Curiosimundo, 9:16, ~53.5 s)
+  REEL: ¿Qué pasaría si la Luna desapareciera?  (Curiosimundo, 9:16, ~62.6 s)
 
   LOOK: cielo nocturno. Al principio, azul de luna llena; cuando la Luna desaparece el cielo se oscurece y salen
   muchas más estrellas (la historia se ve en el fondo). Al final la Luna vuelve y el cielo se ilumina otra vez.
@@ -12,20 +12,20 @@
   MOVIMIENTO: entradas rápidas expo/back.out, salidas cortas hacia arriba; el titular cambia en el mismo hueco
   cuando cambia la idea; estrellas que titilan siempre.
 
-  SHOT LIST (tiempo de vídeo):
-  0.0  s1  Gancho "¿Y SI DESAPARECIERA LA LUNA?" + Luna enorme; en "noche" la Luna se deshace en polvo.
-  3.3  s2  Paisaje iluminado por la luna → se apaga en "oscuro"; salen estrellas. "CIELO MÁS OSCURO".
-  7.6  s3  Tierra con el océano estirado hacia una Luna fantasma; en "Sin ella" el bulto se encoge; aparece el Sol;
-           en "tres" el titular cambia a "3× MÁS PEQUEÑAS".
-  19.1 s4  Corales bajo una luna llena fantasma; en "llena" sueltan sus huevos hacia arriba.
-  26.1 s5  Tierra con su eje a 23,4° y la Luna en órbita ("INCLINACIÓN"); en "Sin ella" la órbita se va,
-           en "tambalearse" el eje se tambalea como un trompo, en "estaciones" medio planeta arde y medio se congela.
-  39.4 s6  Sol; la silueta de la Luna llega a taparlo y en "siempre" se tacha: "ADIÓS ECLIPSES".
-  42.8 s7  La Luna vuelve, enorme: "MÁS IMPORTANTE DE LO QUE PARECE".
-  48.1 s8  Cierre: "¿SABÍAS ESTO?" + "Cuéntamelo en los comentarios" + CURIOSIMUNDO.
+  SHOT LIST (tiempo de vídeo; narración por frases con ritmo y tono variados, música original por secciones):
+  0.0  s1  Gancho "¿Y SI DESAPARECIERA LA LUNA?" + Luna enorme; en "está" la Luna se deshace en polvo (golpe grave).
+  6.5  s2  Paisaje iluminado → se apaga en "oscurísimo"; en "de verdad" se apaga aún más y OSCURO brilla.
+  12.4 s3  Tierra con el océano estirado hacia la Luna; en "Sin ella" el bulto se encoge; aparece el Sol;
+           en "tres": "3× MÁS PEQUEÑAS"; chiste: tabla de surf que se cae y una lágrima en "llorando".
+  25.7 s4  Corales; luna llena fantasma; en "llena" sueltan huevos; en "Sin Luna" se apaga y sale un "?".
+  33.3 s5  "LO MÁS GRAVE" → Tierra con eje a 23,4° y Luna en órbita ("LA LUNA NOS EQUILIBRA"); en "Sin ella" se va
+           la órbita, en "tambalearse" el eje se tambalea ("COMO UN TROMPO"), en "estaciones" medio planeta arde.
+  48.4 s6  Sol; la silueta de la Luna lo tapa y en "siempre" se tacha: "ADIÓS ECLIPSES".
+  52.6 s7  La Luna vuelve, enorme: "MUCHO MÁS IMPORTANTE".
+  58.1 s8  Cierre: "¿TÚ LO SABÍAS?" + "Cuéntamelo en los comentarios" + CURIOSIMUNDO.
   Subtítulos palabra a palabra en la franja y≈1250 durante todo el vídeo.
 -->
-<html data-width="1080" data-height="1920" data-fps="30" data-duration="53.5" data-safe-zone="reels">
+<html data-width="1080" data-height="1920" data-fps="30" data-duration="62.6" data-safe-zone="reels">
 <head>
 <style>
   :root { --ink:#f4f2ff; --accent:#ffd23f; --coral:#ff6b5b; --ocean:#3d8ee8; --moon:#f3efe2; --muted:#b7c3e8;
@@ -83,7 +83,7 @@
 </head>
 <body>
 <audio src="voz.mp3"></audio>
-<audio src="ambiente.mp3" data-volume="0.6" data-duck="0.35" data-fade-out="2"></audio>
+<audio src="musica.mp3" data-volume="0.55" data-duck="0.4" data-fade-out="1.5"></audio>
 
 <div id="sky"></div>
 <div id="status"><i></i><span id="stxt">LUNA</span></div>
@@ -110,13 +110,13 @@
 </svg>
 
 <!-- S1 HOOK -->
-<section class="scene" id="s1" data-start="0" data-duration="3.45">
+<section class="scene" id="s1" data-start="0" data-duration="6.65">
   <h1 class="hl" data-check="carry-ok"><span class="w">¿Y SI</span><br><span class="w">DESAPARECIERA</span><br><span class="w">LA <em>LUNA</em>?</span></h1>
   <svg id="moon1" viewBox="-250 -250 500 500"><g id="m1"><use href="#moonArt"/></g></svg>
 </section>
 
 <!-- S2 DARK SKY -->
-<section class="scene" id="s2" data-start="3.3" data-duration="4.45">
+<section class="scene" id="s2" data-start="6.5" data-duration="6.05">
   <h2 class="hl"><span class="w">CIELO MÁS</span><br><span class="w"><em>OSCURO</em></span></h2>
   <svg class="art" id="land" viewBox="0 0 1080 640">
     <g id="lit">
@@ -133,7 +133,7 @@
 </section>
 
 <!-- S3 TIDES -->
-<section class="scene" id="s3" data-start="7.6" data-duration="11.5">
+<section class="scene" id="s3" data-start="12.4" data-duration="13.45">
   <h2 class="hl" id="t3a"><span class="w"><em>MAREAS</em></span></h2>
   <h2 class="hl" id="t3b"><span class="w">3× MÁS</span><br><span class="w"><em>PEQUEÑAS</em></span></h2>
   <svg class="art" id="tides" viewBox="0 0 1080 640">
@@ -143,23 +143,27 @@
       <ellipse id="bulge" rx="260" ry="190" fill="#3d8ee8" opacity=".55"/>
       <g transform="scale(.95)"><use href="#earthArt"/></g>
     </g>
+    <g transform="translate(540 128)"><g id="surf"><g transform="rotate(-12)"><ellipse rx="95" ry="20" fill="#ffd23f"/><path d="M-80 0 L80 0" stroke="#ff6b5b" stroke-width="6"/></g></g></g>
+    <g transform="translate(620 60)"><path id="tear" d="M0 0 q-14 22 0 34 q14 -12 0 -34z" fill="#7fd8ff"/></g>
     <g id="pull" stroke="#ffd23f" stroke-width="10" stroke-linecap="round" fill="none"><path d="M820 320 L880 320"/><path d="M820 320 l20 -16 M820 320 l20 16"/></g>
   </svg>
 </section>
 
 <!-- S4 CORALS -->
-<section class="scene" id="s4" data-start="19.1" data-duration="7.05">
+<section class="scene" id="s4" data-start="25.7" data-duration="7.75">
   <h2 class="hl"><span class="w">LOS <em>CORALES</em></span><br><span class="w">LO NOTARÍAN</span></h2>
   <svg class="art" id="reef" viewBox="0 0 1080 680">
     <g id="ghost4" transform="translate(860 200)"><g class="in"><circle r="80" fill="none" stroke="#f3efe2" stroke-width="5" stroke-dasharray="10 12"/><circle class="body" r="80" fill="#f3efe2"/><circle class="halo" r="125" fill="url(#moonGlow)"/></g></g>
     <path d="M0 600 Q270 560 540 590 T1080 580 L1080 680 L0 680 Z" fill="#14254a"/>
     <g id="corals" fill="none" stroke-linecap="round"></g>
     <g id="eggs"></g>
+    <text id="qmark" x="860" y="250" text-anchor="middle" font-family="Bebas Neue" font-size="220" fill="#ffd23f">?</text>
   </svg>
 </section>
 
 <!-- S5 TILT -->
-<section class="scene" id="s5" data-start="26.1" data-duration="13.3">
+<section class="scene" id="s5" data-start="33.3" data-duration="15.25">
+  <h2 class="hl" id="t5z"><span class="w">LO MÁS</span><br><span class="w"><em>GRAVE</em></span></h2>
   <h2 class="hl" id="t5a"><span class="w">LA LUNA NOS</span><br><span class="w"><em>EQUILIBRA</em></span></h2>
   <h2 class="hl" id="t5b"><span class="w">COMO UN</span><br><span class="w"><em>TROMPO</em></span></h2>
   <h2 class="hl" id="t5c"><span class="w">ESTACIONES</span><br><span class="w"><em>EXTREMAS</em></span></h2>
@@ -179,7 +183,7 @@
 </section>
 
 <!-- S6 ECLIPSE -->
-<section class="scene" id="s6" data-start="39.4" data-duration="3.55">
+<section class="scene" id="s6" data-start="48.4" data-duration="4.35">
   <h2 class="hl"><span class="w">ADIÓS</span><br><span class="w"><em>ECLIPSES</em></span></h2>
   <svg class="art" id="eclipse" viewBox="0 0 1080 640">
     <g transform="translate(540 330)">
@@ -191,14 +195,14 @@
 </section>
 
 <!-- S7 MOON RETURNS -->
-<section class="scene" id="s7" data-start="42.8" data-duration="5.45">
+<section class="scene" id="s7" data-start="52.6" data-duration="5.65">
   <h2 class="hl"><span class="w">MUCHO MÁS</span><br><span class="w"><em>IMPORTANTE</em></span></h2>
   <svg data-check="carry-ok" id="moon7" viewBox="-250 -250 500 500"><g id="m7"><use href="#moonArt"/></g></svg>
 </section>
 
 <!-- S8 END -->
-<section class="scene" id="s8" data-start="48.1" data-duration="5.4">
-  <h2 class="hl"><span class="w">¿SABÍAS</span><br><span class="w"><em>ESTO</em>?</span></h2>
+<section class="scene" id="s8" data-start="58.1" data-duration="4.5">
+  <h2 class="hl"><span class="w">¿TÚ LO</span><br><span class="w"><em>SABÍAS</em>?</span></h2>
   <div class="sub">cuéntamelo en los <b>comentarios</b></div>
   <div id="brand">CURIOSI<span>MUNDO</span></div>
   <svg id="moon8" viewBox="-250 -250 500 500"><g><use href="#moonArt"/></g></svg>
@@ -208,7 +212,7 @@
 
 <script>
 /* ---------------- sky: the story shows in the stars ---------------- */
-const VANISH = 2.3, BACK = 42.9;
+const VANISH = 4.3, BACK = 52.8;
 const sky = document.getElementById('sky'), ST = [];
 for (let i = 0; i < 140; i++) { const d = document.createElement('div'); d.className = 'star';
   const s = 2 + gm.random('ss' + i) ** 3 * 6; d.style.width = d.style.height = s + 'px';
@@ -218,7 +222,7 @@ for (let i = 0; i < 140; i++) { const d = document.createElement('div'); d.class
   ST.push({ el: d, bright: gm.random('sb' + i), ph: gm.random('sp' + i) * 6.28, sp: 1 + gm.random('sv' + i) * 3 }); }
 gm.onFrame(t => {
   // 0 = moonlit, 1 = moonless; back to moonlit at the end
-  const dark = gm.interpolate(t, [VANISH, VANISH + 1.2, 6.2, 7, BACK, BACK + 1.5], [0, .55, .55, 1, 1, 0], { easing: 'in-out-cubic' });
+  const dark = gm.interpolate(t, [VANISH, VANISH + 1.2, 9.3, 10.2, 10.7, 11.6, BACK, BACK + 1.5], [0, .45, .45, .75, .75, 1, 1, 0], { easing: 'in-out-cubic' });
   const top = gm.color.mix('#173a7a', '#03040c', dark), bot = gm.color.mix('#0a1838', '#010207', dark);
   sky.style.background = `radial-gradient(1300px 900px at 70% 35%, ${gm.color.mix('#2a4f96', '#0a0d22', dark)}, transparent 70%), linear-gradient(${top}, ${bot})`;
   ST.forEach((s, i) => { const visible = s.bright > .62 - dark * .62; const tw = .55 + .45 * Math.sin(t * s.sp + s.ph);
@@ -249,28 +253,31 @@ gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
   const t1 = gm.timeline('#s1', G);
   t1.fromTo('#s1 .hl .w', { y: 40, scale: 1.12 }, { y: 0, scale: 1, duration: .7, ease: 'expo.out', stagger: .08 }, 0)
     .fromTo('#moon1', { y: 80, scale: .9 }, { y: 0, scale: 1, duration: 1.6, ease: 'power3.out' }, 0)
-    .to('#s1 .hl em', { color: '#ff6b5b', duration: .2 }, W('desapareciera'))
+    .to('#s1 .hl em', { color: '#ff6b5b', duration: .2 }, W('ya') - .1)
     .to('#m1', { scale: 1.06, duration: .25, ease: 'power2.out', transformOrigin: '0 0' }, VANISH - .3)
     .to('#m1', { scale: 0, opacity: 0, filter: 'blur(20px)', duration: .45, ease: 'power3.in', transformOrigin: '0 0' }, VANISH - .05);
   gm.burst('#s1', { at: VANISH + .3, kind: 'dust', x: '50%', y: '52.5%', count: 120, speed: 700, size: 9, colors: ['#f3efe2', '#e6e0cd', '#ffffff'], duration: 2.2, global: true });
-  leave(t1, '#s1 .hl', 3.13);
+  t1.to('#s1 .hl', { scale: 1.06, duration: .3, ease: 'back.out(3)' }, W('pasaría') - .1).to('#s1 .hl', { scale: 1, duration: .35 }, W('pasaría') + .3);
+  leave(t1, '#s1 .hl', 6.33);
 
   /* S2 dark sky */
-  const s2 = 3.3, t2 = gm.timeline('#s2', G);
+  const s2 = 6.5, t2 = gm.timeline('#s2', G);
   enter(t2, '#s2 .hl .w', s2 + .05);
   t2.from('#land', { y: 300, opacity: 0, duration: .7, ease: 'expo.out' }, s2)
-    .to('#unlit', { opacity: 1, duration: .9, ease: 'sine.inOut' }, W('oscuro') - .5)
-    .to('#s2 .hl em', { scale: 1.12, duration: .25, ease: 'back.out(3)', transformOrigin: '50% 60%' }, W('oscuro') - .05);
-  leave(t2, ['#s2 .hl', '#land'], 7.43);
+    .to('#unlit', { opacity: 1, duration: .9, ease: 'sine.inOut' }, W('oscurísimo') - .5)
+    .to('#s2 .hl em', { scale: 1.12, duration: .25, ease: 'back.out(3)', transformOrigin: '50% 60%' }, W('oscurísimo') - .05)
+    .to('#s2 .hl em', { scale: 1.3, color: '#ffffff', textShadow: '0 0 40px #ffffff', duration: .5, ease: 'back.out(2)', transformOrigin: '50% 60%' }, W('verdad') - .2)
+    .to('#land', { opacity: .35, duration: .6 }, W('oscuro') - .2);
+  leave(t2, ['#s2 .hl', '#land'], 12.23);
 
   /* S3 tides */
-  const s3 = 7.6, t3 = gm.timeline('#s3', G);
+  const s3 = 12.4, t3 = gm.timeline('#s3', G);
   enter(t3, '#t3a .w', s3 + .1);
   t3.from('#tides', { y: 300, opacity: 0, duration: .7, ease: 'expo.out' }, s3)
     .fromTo('#bulge', { scaleX: .85, scaleY: 1 }, { scaleX: 1, scaleY: .92, duration: .9, ease: 'sine.inOut', transformOrigin: '50% 50%' }, W('mareas') - .2)
     .from('#ghost3 .in', { scale: 0, opacity: 0, duration: .5, ease: 'back.out(2)' }, W('luna', 2) - .2)
-    .from('#pull path', { draw: 0, duration: .35, ease: 'power3.out', stagger: .1 }, W('tira') - .1)
-    .to('#pull', { x: 22, duration: .35, ease: 'sine.inOut', yoyo: true, repeat: 3 }, W('tira') + .3)
+    .from('#pull path', { draw: 0, duration: .35, ease: 'power3.out', stagger: .1 }, W('jala') - .1)
+    .to('#pull', { x: 22, duration: .35, ease: 'sine.inOut', yoyo: true, repeat: 3 }, W('jala') + .3)
     .to('#ghost3 .body', { opacity: 0, duration: .4 }, W('sin') - .1)
     .to('#ghost3 .in, #pull', { opacity: 0, scale: .6, duration: .5, ease: 'power2.in', transformOrigin: '50% 50%' }, W('ella') + .2)
     .to('#bulge', { scaleX: .74, scaleY: .9, duration: 1.2, ease: 'power3.inOut', transformOrigin: '50% 50%' }, W('ella'))
@@ -278,10 +285,14 @@ gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
     .to('#bulge', { scaleX: .82, duration: .6, ease: 'sine.inOut', transformOrigin: '50% 50%' }, W('sol') + .2);
   swapOut(t3, '#t3a', W('casi') - .2);
   t3.from('#t3b .w', { y: 120, scale: 1.4, opacity: 0, filter: 'blur(14px)', duration: .45, ease: 'expo.out', stagger: .12 }, W('tres') - .2);
-  leave(t3, ['#t3b', '#tides'], 18.85);
+  t3.from('#surf', { y: 140, opacity: 0, rotate: -20, duration: .45, ease: 'back.out(2)' }, W('surfistas') - .25)
+    .to('#surf', { rotate: 70, y: 120, opacity: .0, duration: .9, ease: 'power2.in' }, W('llorando') + .1)
+    .from('#tear', { opacity: 0, y: -20, duration: .3 }, W('llorando'))
+    .to('#tear', { y: 60, opacity: 0, duration: .8, ease: 'power2.in' }, W('llorando') + .3);
+  leave(t3, ['#t3b', '#tides'], 25.45);
 
   /* S4 corals */
-  const s4 = 19.1, t4 = gm.timeline('#s4', G);
+  const s4 = 25.7, t4 = gm.timeline('#s4', G);
   const corals = document.getElementById('corals'), eggs = document.getElementById('eggs');
   const CO = [[140, '#ff7ab6'], [300, '#ff9a5c'], [470, '#ff6b5b'], [640, '#ff7ab6'], [800, '#ffb35c'], [960, '#ff9a5c']];
   CO.forEach(([x, c], i) => { const h = 150 + gm.random('ch' + i) * 120;
@@ -300,57 +311,61 @@ gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
     .from('#ghost4 .halo', { opacity: 0, scale: .5, duration: .6, ease: 'expo.out' }, W('llena') - .2)
     .from('#eggs .egg', { opacity: 0, scale: 0, duration: .3, ease: 'back.out(2)', stagger: { each: .02, from: 'random' }, transformOrigin: '50% 50%' }, W('llena'))
     .to('#eggs .egg', { y: -260, duration: 1.4, ease: 'sine.out', stagger: { each: .02, from: 'random' } }, W('llena') + .1);
-  leave(t4, ['#s4 .hl', '#reef'], 25.85);
+  t4.to('#ghost4 .in', { opacity: 0, scale: .6, duration: .5, ease: 'power2.in' }, W('sin', 2))
+    .from('#qmark', { scale: 0, opacity: 0, rotate: -20, duration: .45, ease: 'back.out(2.5)', transformOrigin: '50% 60%' }, W('cuándo') - .2);
+  leave(t4, ['#s4 .hl', '#reef'], 33.15);
 
   /* S5 tilt → wobble → seasons */
-  const s5 = 26.1, t5 = gm.timeline('#s5', G);
+  const s5 = 33.3, t5 = gm.timeline('#s5', G);
   const wobbleAt = W('tambalearse') - .2;
   t5.from('#tilt', { y: 300, opacity: 0, duration: .7, ease: 'expo.out' }, s5)
     .from('#axis', { draw: 0, duration: .6, ease: 'power3.out' }, W('inclinación') - .3)
     .from('#tiltdeg', { x: 60, opacity: 0, duration: .45, ease: 'expo.out' }, W('inclinación') - .1);
-  enter(t5, '#t5a .w', W('estabiliza') - .5);
-  swapOut(t5, '#t5a', W('sin', 2) - .2);
-  t5.to('#orbitBack, #orbitFront, #moon5', { opacity: 0, duration: .5, ease: 'power2.in' }, W('sin', 2));
+  enter(t5, '#t5z .w', s5 + .1);
+  swapOut(t5, '#t5z', W('estable') - .6);
+  enter(t5, '#t5a .w', W('estable') - .4);
+  swapOut(t5, '#t5a', W('sin', 3) - .2);
+  t5.to('#orbitBack, #orbitFront, #moon5', { opacity: 0, duration: .5, ease: 'power2.in' }, W('sin', 3));
   t5.from('#t5b .w', { y: 120, scale: 1.4, opacity: 0, filter: 'blur(14px)', duration: .45, ease: 'expo.out', stagger: .1 }, W('tambalearse') - .3);
   swapOut(t5, ['#t5b', '#tiltdeg'], W('estaciones') - .3);
   t5.to('#seasons', { opacity: .85, duration: .6, ease: 'sine.inOut' }, W('estaciones'))
     .from('#t5c .w', { y: 120, scale: 1.4, opacity: 0, filter: 'blur(14px)', duration: .45, ease: 'expo.out', stagger: .1 }, W('extremas') - .45);
   const earth5 = document.getElementById('earth5'), moon5 = document.getElementById('moon5'), deg = document.getElementById('deg');
   gm.onFrame('#s5', (l, info) => { const t = info.time;
-    const amp = gm.interpolate(t, [wobbleAt, wobbleAt + 1.2, 39.4], [0, 32, 26], { easing: 'out-cubic' });
+    const amp = gm.interpolate(t, [wobbleAt, wobbleAt + 1.2, 48.4], [0, 32, 26], { easing: 'out-cubic' });
     const ang = 23.4 + amp * Math.sin((t - wobbleAt) * 5.2) + amp * .3 * Math.sin((t - wobbleAt) * 11);
     earth5.setAttribute('transform', `rotate(${ang})`);
     deg.textContent = ang.toFixed(1).replace('.', ',');
     const a = (t - s5) * 1.4; moon5.setAttribute('transform', `translate(${Math.cos(a) * 400} ${Math.sin(a) * 90})`);
     moon5.style.visibility = Math.sin(a) < 0 && Math.abs(Math.cos(a) * 400) < 200 ? 'hidden' : 'visible'; });
-  leave(t5, ['#t5c', '#tilt'], 39.15);
+  leave(t5, ['#t5c', '#tilt'], 48.15);
 
   /* S6 eclipse */
-  const s6 = 39.4, t6 = gm.timeline('#s6', G);
+  const s6 = 48.4, t6 = gm.timeline('#s6', G);
   enter(t6, '#s6 .hl .w', s6 + .1);
   t6.from('#sun6', { scale: .4, opacity: 0, duration: .6, ease: 'expo.out' }, s6)
     .fromTo('#shadow6', { x: 520, opacity: 1 }, { x: 0, duration: 1.1, ease: 'power3.inOut' }, s6 + .3)
     .to('#shadow6', { opacity: 0, scale: 1.2, duration: .4, ease: 'power2.in', transformOrigin: '50% 50%' }, W('siempre') - .3)
     .from('#xmark path', { draw: 0, duration: .25, ease: 'power3.out', stagger: .12 }, W('siempre') - .1);
-  leave(t6, ['#s6 .hl', '#eclipse'], 42.65);
+  leave(t6, ['#s6 .hl', '#eclipse'], 52.45);
 
   /* S7 moon returns */
-  const s7 = 42.8, t7 = gm.timeline('#s7', G);
+  const s7 = 52.6, t7 = gm.timeline('#s7', G);
   t7.from('#moon7', { y: 700, scale: .6, duration: 1.1, ease: 'expo.out' }, s7)
     .to('#moon7', { y: -30, scale: 1.04, duration: 4, ease: 'sine.inOut' }, s7 + 1.1);
   enter(t7, '#s7 .hl .w', W('importante') - .6);
   t7.to('#s7 .hl em', { scale: 1.1, duration: .25, ease: 'back.out(3)', transformOrigin: '50% 60%' }, W('importante') - .05);
-  leave(t7, ['#s7 .hl'], 47.85);
-  t7.to('#moon7', { y: -380, scale: .35, opacity: .5, duration: .7, ease: 'power3.inOut' }, 47.7);
+  leave(t7, ['#s7 .hl'], 57.85);
+  t7.to('#moon7', { y: -380, scale: .35, opacity: .5, duration: .7, ease: 'power3.inOut' }, 57.7);
 
   /* S8 end */
-  const s8 = 48.1, t8 = gm.timeline('#s8', G);
+  const s8 = 58.1, t8 = gm.timeline('#s8', G);
   enter(t8, '#s8 .hl .w', s8 + .05, { stagger: .12 });
   t8.from('#s8 .sub', { y: 40, opacity: 0, duration: .45, ease: 'power3.out' }, W('cuéntamelo') - .2)
     .from('#brand', { y: 40, opacity: 0, letterSpacing: '.4em', duration: .8, ease: 'expo.out' }, W('cuéntamelo') + .3)
-    .to('#s8 .hl', { scale: 1.04, duration: 4.5, ease: 'sine.inOut' }, s8 + .6)
+    .to('#s8 .hl', { scale: 1.04, duration: 3.8, ease: 'sine.inOut' }, s8 + .6)
     .from('#moon8', { y: 500, duration: 1.2, ease: 'expo.out' }, s8)
-    .to('#moon8', { y: -40, duration: 4, ease: 'sine.inOut' }, s8 + 1.2);
+    .to('#moon8', { y: -40, duration: 3.3, ease: 'sine.inOut' }, s8 + 1.2);
 
   /* ---------------- captions (whole video) ---------------- */
   const ws = words.map(w => ({ text: w.word, start: w.start, end: w.end }));

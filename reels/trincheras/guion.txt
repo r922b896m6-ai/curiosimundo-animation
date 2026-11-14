@@ -1,0 +1,16 @@
+# rate|pitch|pausa|texto  (cada línea se locuta por separado para variar ritmo y tono)
+-5%|-3Hz|0.35|Francia, 1916. Te despiertas en un agujero de barro… y esto va a ser tu casa.
++2%|+0Hz|0.35|Así era un día normal para un soldado en las trincheras de la Primera Guerra Mundial.
++4%|+2Hz|0.3|Al amanecer, todos a sus puestos, con el fusil listo. Era la hora favorita para atacar.
++5%|+0Hz|0.3|Después… a esperar. Desayuno: carne en lata y galletas tan duras que había que remojarlas.
++7%|+3Hz|0.2|Y no estabas solo: ratas enormes, piojos por todas partes…
+-2%|-1Hz|0.4|y agua hasta los tobillos. Tanta, que muchos sufrían «pie de trinchera»: los pies se entumecían y hasta se gangrenaban.
++3%|+0Hz|0.15|La mayor parte del tiempo era aburrimiento.
+-4%|-3Hz|0.4|Pero la muerte llegaba sin avisar: la artillería causó la mayoría de las bajas.
++3%|+0Hz|0.4|De noche, a trabajar: reparar trincheras, tender alambre y patrullar la tierra de nadie.
+-8%|-5Hz|0.5|Y a veces… llegaba la orden de atacar.
++6%|+2Hz|0.15|Un silbatazo. Todos saltan el parapeto…
++10%|+0Hz|0.4|y corren hacia la trinchera enemiga, entre cráteres, alambre de púas y ametralladoras.
+-7%|-4Hz|0.5|Solo el primer día de la batalla del Somme, el ejército británico sufrió más de cincuenta y siete mil bajas.
+-3%|-2Hz|0.45|Tras unos días en primera línea, los soldados rotaban a la retaguardia… hasta que les tocaba volver.
++4%|+3Hz|0|¿Tú habrías aguantado algo así? Cuéntamelo en los comentarios.

@@ -1,16 +1,32 @@
 # rate|pitch|pausa|texto  (cada línea se locuta por separado para variar ritmo y tono)
 -5%|-3Hz|0.35|Francia, 1916. Te despiertas en un agujero de barro… y esto va a ser tu casa.
-+2%|+0Hz|0.35|Así era un día normal para un soldado en las trincheras de la Primera Guerra Mundial.
-+4%|+2Hz|0.3|Al amanecer, todos a sus puestos, con el fusil listo. Era la hora favorita para atacar.
-+5%|+0Hz|0.3|Después… a esperar. Desayuno: carne en lata y galletas tan duras que había que remojarlas.
++2%|+0Hz|0.35|Así era la vida de un soldado en las trincheras de la Primera Guerra Mundial.
++3%|+0Hz|0.3|Primero, la trinchera: no era una zanja recta, sino en zigzag, para que una explosión o un enemigo no pudieran barrerla entera.
++3%|+0Hz|0.35|Tenía sacos de arena, un escalón para disparar, tablones para no hundirse en el barro y refugios excavados para dormir.
++4%|+2Hz|0.25|Al amanecer, todos a sus puestos, con el fusil listo. Era la hora favorita para atacar.
++6%|+3Hz|0.3|Y para algunos, un trago de ron.
++5%|+0Hz|0.3|Después… a esperar. Desayuno: carne en lata y galletas tan duras que había que remojarlas en té.
++4%|+0Hz|0.35|El día se repartía en turnos: dos horas de guardia, limpiar el fusil, reforzar la trinchera… y dormir cuando se podía.
++6%|+3Hz|0.3|En los ratos libres: cartas, cartas y más cartas. Solo el ejército británico movía unos doce millones de cartas por semana.
++5%|+2Hz|0.35|También jugaban a las cartas, fumaban y tallaban recuerdos en casquillos de artillería.
 +7%|+3Hz|0.2|Y no estabas solo: ratas enormes, piojos por todas partes…
--2%|-1Hz|0.4|y agua hasta los tobillos. Tanta, que muchos sufrían «pie de trinchera»: los pies se entumecían y hasta se gangrenaban.
++3%|+1Hz|0.35|tantos, que los soldados pasaban una vela por las costuras de la ropa para quemar los huevos.
+-2%|-1Hz|0.4|Y agua hasta los tobillos. Muchos sufrían «pie de trinchera»: los pies se entumecían y hasta se gangrenaban.
 +3%|+0Hz|0.15|La mayor parte del tiempo era aburrimiento.
--4%|-3Hz|0.4|Pero la muerte llegaba sin avisar: la artillería causó la mayoría de las bajas.
+-4%|-3Hz|0.45|Pero la muerte llegaba sin avisar: la artillería causó la mayoría de las bajas.
+-6%|-4Hz|0.4|Y luego estaba el gas.
++2%|-1Hz|0.3|En 1915, en Ypres, Alemania liberó una nube de cloro que avanzó con el viento hacia las trincheras enemigas.
++7%|+2Hz|0.3|Cuando sonaba la alarma, con campanas o casquillos golpeados, tenías segundos para ponerte la máscara.
+-2%|-2Hz|0.45|Después llegaron el fosgeno y el gas mostaza, que quemaba la piel y los ojos. El gas dejó más de un millón de víctimas.
 +3%|+0Hz|0.4|De noche, a trabajar: reparar trincheras, tender alambre y patrullar la tierra de nadie.
+-4%|-3Hz|0.3|Y a veces, a infiltrarse.
++2%|-1Hz|0.3|En las incursiones, pequeños grupos con la cara tiznada cruzaban en silencio, con cuchillos, mazas y granadas, para capturar prisioneros y robar información.
++4%|+0Hz|0.45|En 1918, los alemanes perfeccionaron la idea: sus tropas de asalto se colaban por los puntos débiles y atacaban por la retaguardia.
 -8%|-5Hz|0.5|Y a veces… llegaba la orden de atacar.
 +6%|+2Hz|0.15|Un silbatazo. Todos saltan el parapeto…
-+10%|+0Hz|0.4|y corren hacia la trinchera enemiga, entre cráteres, alambre de púas y ametralladoras.
++10%|+0Hz|0.3|y corren hacia la trinchera enemiga, entre cráteres, alambre de púas y ametralladoras.
++8%|+2Hz|0.2|Los que llegaban, saltaban dentro.
++6%|+0Hz|0.45|Y ahí, en un pasillo de barro estrecho, la pelea era cuerpo a cuerpo: bayonetas, palas afiladas, mazas y puños.
 -7%|-4Hz|0.5|Solo el primer día de la batalla del Somme, el ejército británico sufrió más de cincuenta y siete mil bajas.
 -3%|-2Hz|0.45|Tras unos días en primera línea, los soldados rotaban a la retaguardia… hasta que les tocaba volver.
 +4%|+3Hz|0|¿Tú habrías aguantado algo así? Cuéntamelo en los comentarios.

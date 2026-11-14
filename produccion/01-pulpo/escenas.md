@@ -1,0 +1,14 @@
+# Escenas con tiempos y subtítulos (generado)
+
+| Escena | Tiempo | Narración | Subtítulos |
+|---|---|---|---|
+| 1 | 0.3–4.9 s | Tres corazones. Sangre azul. Y piensa con los brazos. | `0.3s` Tres corazones.<br>`2.0s` Sangre azul.<br>`3.6s` Y piensa con<br>`4.2s` los brazos. |
+| 2 | 5.4–8.0 s | Es el pulpo, y es más raro de lo que crees. | `5.4s` Es el pulpo,<br>`6.4s` y es más<br>`7.0s` raro de lo<br>`7.4s` que crees. |
+| 3 | 8.5–14.0 s | Primero, los corazones: dos bombean sangre a las branquias y el tercero, al resto del cuerpo. | `8.5s` Primero,<br>`9.3s` los corazones:<br>`10.3s` dos bombean sangre<br>`11.3s` a las branquias<br>`12.0s` y el tercero,<br>`12.9s` al resto del<br>`13.6s` cuerpo. |
+| 4 | 14.5–21.3 s | Y aquí viene lo curioso: ese tercer corazón deja de latir cuando nada. Por eso los pulpos prefieren arrastrarse. | `14.5s` Y aquí viene<br>`15.2s` lo curioso:<br>`16.0s` ese tercer corazón<br>`17.1s` deja de latir<br>`17.8s` cuando nada.<br>`19.2s` Por eso los<br>`19.8s` pulpos prefieren<br>`20.6s` arrastrarse. |
+| 5 | 21.9–28.3 s | Su sangre es azul porque transporta el oxígeno con cobre en lugar de hierro, gracias a una proteína llamada hemocianina. | `21.9s` Su sangre es<br>`22.6s` azul porque<br>`23.3s` transporta el<br>`23.9s` oxígeno con cobre<br>`24.9s` en lugar de<br>`25.4s` hierro,<br>`26.1s` gracias a una<br>`26.7s` proteína llamada<br>`27.6s` hemocianina. |
+| 6 | 28.9–32.7 s | Pero lo más alucinante es su cerebro… o mejor dicho, sus cerebros. | `28.9s` Pero lo más<br>`29.5s` alucinante es su<br>`30.3s` cerebro…<br>`31.0s` o mejor dicho,<br>`32.0s` sus cerebros. |
+| 7 | 33.3–39.6 s | Tiene unos quinientos millones de neuronas, y la mayoría no está en la cabeza, sino repartida por sus ocho brazos. | `33.3s` Tiene unos<br>`33.8s` quinientos<br>`34.3s` millones de<br>`34.8s` neuronas,<br>`35.6s` y la mayoría<br>`36.2s` no está en<br>`36.7s` la cabeza,<br>`37.6s` sino repartida por<br>`38.6s` sus ocho brazos. |
+| 8 | 40.1–44.8 s | Cada brazo puede reaccionar por su cuenta… y hasta saborear lo que toca con sus ventosas. | `40.1s` Cada brazo puede<br>`40.9s` reaccionar por su<br>`41.8s` cuenta…<br>`42.4s` y hasta saborear<br>`43.2s` lo que toca<br>`43.7s` con sus ventosas. |
+| 9 | 45.4–52.7 s | Cambia de color y de textura en un instante, y puede colarse por cualquier hueco por donde quepa su pico, la única parte dura de su cuerpo. | `45.4s` Cambia de color<br>`46.1s` y de textura<br>`46.7s` en un instante,<br>`47.7s` y puede colarse<br>`48.6s` por cualquier<br>`49.1s` hueco por donde<br>`49.9s` quepa su pico,<br>`51.0s` la única parte<br>`51.7s` dura de su<br>`52.2s` cuerpo. |
+| 10 | 53.3–58.6 s | Si pudieras tener uno de sus poderes, ¿cuál elegirías? Te leo en los comentarios. | `53.3s` Si pudieras tener<br>`54.2s` uno de sus<br>`54.8s` poderes,<br>`55.5s` ¿cuál elegirías?<br>`57.3s` Te leo en<br>`57.7s` los comentarios. |

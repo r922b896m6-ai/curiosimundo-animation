@@ -1,0 +1,6 @@
+# CURIOSIMUNDO · NN · TEMA
+# rate|pitch|pausa|texto  (una línea = una escena)
+# gancho: rápido y agudo (+10%|+3Hz); explicación: normal (+5%|+0Hz); dato serio: lento y grave (-5%|-3Hz); cierre: cercano (+4%|+3Hz)
++10%|+3Hz|0.3|Gancho de menos de tres segundos.
++5%|+0Hz|0.3|Desarrollo, una idea por línea.
++4%|+3Hz|0|Pregunta final para comentarios. Te leo en los comentarios.

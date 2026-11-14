@@ -1,7 +1,8 @@
 # Segmented TTS: each line "rate|pitch|pause|text" is voiced separately, then joined with pauses; word times offset.
 import asyncio, json, ssl, sys, subprocess, os, re
 import edge_tts, edge_tts.communicate as c
-c._SSL_CTX = ssl.create_default_context(cafile="/root/.ccr/ca-bundle.crt")
+if os.path.exists("/root/.ccr/ca-bundle.crt"):  # entorno con proxy (Claude Code en la nube)
+    c._SSL_CTX = ssl.create_default_context(cafile="/root/.ccr/ca-bundle.crt")
 segfile, voice, out = sys.argv[1], sys.argv[2], sys.argv[3]
 segs = [l.rstrip('\n').split('|', 3) for l in open(segfile) if l.strip() and not l.startswith('#')]
 tmp = out + '_parts'; os.makedirs(tmp, exist_ok=True)

@@ -1,7 +1,7 @@
 # CURIOSIMUNDO · Vídeo 01 · El pulpo
 
 **Categoría:** animales (curiosidad, no es de la serie "¿Y si…?" → hasta 1 min) · **Duración:** 58,6 s · **Formato:** 9:16 (1080×1920)
-**Publicación prevista:** día 2 del calendario · **Estado:** guion, narración y subtítulos listos; falta animar y montar.
+**Publicación prevista:** día 2 del calendario · **Estado:** ✅ **vídeo terminado**: `out/pulpo.mp4` (animación givemotion, voz, subtítulos, música y efectos de `tools/musica_pulpo.py`).
 
 Archivos de esta carpeta:
 - `guion.txt`: guion fuente. Cada línea es una escena, con su velocidad, tono y pausa para la voz IA.
@@ -10,6 +10,7 @@ Archivos de esta carpeta:
 - `subtitulos.srt`: subtítulos sincronizados, para importar en CapCut o en el editor de TikTok.
 - `escenas.md`: tiempos exactos y subtítulos de cada escena (generado).
 - `descripcion.txt`: descripción y hashtags, listos para copiar.
+- `video.html`: animación givemotion · `musica.mp3`, `sfx.mp3`: música y efectos · `out/pulpo.mp4`: vídeo final.
 
 Para regenerar la voz y los subtítulos después de editar el guion: `tools/producir.sh produccion/01-pulpo`
 

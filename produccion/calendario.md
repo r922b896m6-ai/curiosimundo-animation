@@ -17,7 +17,7 @@
 | Día | Fecha | Categoría | Título | Duración | Gancho (fotograma 0 + menos de 2 s) | Estado |
 |---|---|---|---|---|---|---|
 | 1 | lun 16 | Experimento mental | ¿Y si la Tierra dejara de girar? 🌍 | 25–35 s | **+1.600 KM/H** · "Si la Tierra dejara de girar ahora mismo…" | ✅ **Vídeo terminado** (`02-tierra-sin-girar/out/`) |
-| 2 | mar 17 | Animales | El animal que piensa con los brazos 🐙 | ≤ 1 min | **3 CORAZONES** · "Tres corazones. Sangre azul." | Guion (58,6 s), voz y subtítulos listos (`01-pulpo/`); falta animar |
+| 2 | mar 17 | Animales | El animal que piensa con los brazos 🐙 | ≤ 1 min | **3 CORAZONES** · "Tres corazones. Sangre azul." | ✅ **Vídeo terminado** (`01-pulpo/out/`) |
 | 3 | mié 18 | Universo | El planeta donde un día dura más que un año (Venus) | ≤ 1 min | **243 > 225** · "En Venus, un día dura más que un año." | Pendiente |
 | 4 | jue 19 | Historia | Cleopatra está más cerca de ti que de las pirámides | ≤ 1 min | **2.500 AÑOS** · "Cleopatra vivió más cerca de la llegada a la Luna que de las pirámides." | Pendiente |
 | 5 | vie 20 | Ciencia | ¿Y si doblaras un papel 42 veces? | 25–35 s | **42 DOBLECES = LA LUNA** · "Dobla un papel 42 veces… y llegas a la Luna." | Pendiente |

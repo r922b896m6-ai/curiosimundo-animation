@@ -47,7 +47,7 @@ gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/europa.js
   CM.head(H, tl, 'EL <em>SOMME</em>', '1 de julio – 18 de noviembre de 1916', 38.0, 43.2);
   /* Somme first day: British (Brodie) advance into German machine guns */
   CM.battle($('som'), { id: 'sm', left: 'UK', right: 'DE', terrain: 'fields', sky: ['#a9bccf', '#e3d6b4'], t0: 43.3, t1: 51.7, n: 9, falls: [0, 1, 3, 4, 6, 7], mg: true, def: 3,
-    artillery: [43.5, 45.2, 47.4, 49.6], pan: [0, -900] });
+    artillery: [43.5, 45.2, 47.4, 49.6], melee: { at: 49.0, step: .6 }, pan: [0, -900] });
   const d1 = CM.text($('som'), 'big', '<em>57.000</em>', 230, 'font-size:180px'), d1b = CM.text($('som'), 'mid', 'bajas británicas en <b>un solo día</b>', 420);
   tl.from(d1, { scale: 1.5, opacity: 0, filter: 'blur(14px)', duration: .45, ease: 'expo.out' }, W('cincuenta') - .3).from(d1b, { y: 30, opacity: 0, duration: .3 }, W('bajas', 2) - .3);
   CM.head(H, tl, '1 DE JULIO DE <em>1916</em>', 'el peor día del ejército británico', 43.6, 51.5);

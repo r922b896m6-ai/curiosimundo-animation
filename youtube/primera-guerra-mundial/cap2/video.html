@@ -65,7 +65,7 @@ gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/europa.js
   tl.from(fail, { y: 30, opacity: 0, duration: .35 }, W('fracasado') - .5);
   /* Tannenberg: Russians attack, Germans hold */
   CM.battle($('tann'), { id: 'tb', left: 'RU', right: 'DE14', terrain: 'forest', t0: 45.6, t1: 53.0, n: 8, falls: [1, 3, 4, 6], mg: true, def: 4,
-    artillery: [46.0, 47.2, 48.4, 49.7, 51.0], pan: [0, -1280] });
+    artillery: [46.0, 47.2, 48.4, 49.7, 51.0], melee: { at: 50.4, step: .6 }, pan: [0, -1280] });
   CM.head(H, tl, '<em>TANNENBERG</em>', 'agosto de 1914 · derrota rusa en el este', 45.8, 52.8);
   tl.from($('tann'), { opacity: 0, duration: .3 }, 45.6);
   /* race to the sea + trench line */

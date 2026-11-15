@@ -20,7 +20,7 @@ gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/europa.js
   const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id);
   CM.card($('cards'), tl, 3, '1915', 'ESTANCADOS', 0, 4);
   /* failed attack across no man's land */
-  CM.battle($('stal'), { id: 'st', left: 'UK14', right: 'DE14', terrain: 'mud', t0: 3.6, t1: 14.2, n: 8, falls: [0, 2, 3, 5, 6], mg: true, def: 4, artillery: [4.0, 5.6, 7.1, 8.9, 10.6, 12.2], pan: [0, -1280] });
+  CM.battle($('stal'), { id: 'st', left: 'UK14', right: 'DE14', terrain: 'mud', t0: 3.6, t1: 14.2, n: 8, falls: [0, 2, 3, 5, 6], mg: true, def: 4, artillery: [4.0, 5.6, 7.1, 8.9, 10.6, 12.2], melee: { at: 11.4, step: .6 }, pan: [0, -1280] });
   CM.head(H, tl, '1915 · <em>ESTANCADOS</em>', 'ametralladoras y alambre de púas', 4.2, 13.9);
   tl.from($('stal'), { opacity: 0, duration: .3 }, 3.6);
   /* gas at Ypres */

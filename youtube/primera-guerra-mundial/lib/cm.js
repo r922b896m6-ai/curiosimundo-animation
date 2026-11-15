@@ -149,9 +149,23 @@ CM.battle = function (section, cfg) {
   const ex = (cfg.artillery || []).map((at, i) => CM.explosion(fx, fromX + dirA * (500 + gm.random('ax' + i) * 1700), GY + 20 + gm.random('ay' + i) * 120, at, 1 + gm.random('as' + i) * .7, cfg.id + 'a' + i));
   const TR = Array.from({ length: cfg.mg ? 6 : 0 }, () => mk('line', {}, tracers));
   // melee pairs near the defenders' trench
-  const M = cfg.melee, MP = M ? (M.weapons || ['rifle', 'club', 'shovel']).map((wp, i) => ({ a: CM.figure(soldiers, A, { weapon: wp, pack: false }), d: CM.figure(soldiers, D, { weapon: i % 2 ? 'rifle' : 'fist', pack: false }),
-    x: toX - dirA * (560 - i * 260), y: GY + 30 + (i % 2) * 40, at: M.at + i * (M.step || .9) })) : [];
-  const stars = MP.map(() => mk('use', { href: '#cmStar' }, fx));
+  // hand-to-hand: the camera cuts INTO the enemy trench; attackers jump down and fight inside it
+  const M = cfg.melee, SCI = 2.0, FY = 905; let MP = [], stars = [], dust = [], inT = null, tIn = 1e9;
+  if (M) {
+    tIn = M.at - (M.lead || 1.1);
+    inT = mk('g', { style: 'display:none' }, svg);
+    mk('rect', { width: 1920, height: 1080, fill: 'url(#bsky' + cfg.id + ')' }, inT);
+    mk('rect', { y: 330, width: 1920, height: 750, fill: '#2a2017' }, inT); mk('rect', { y: 352, width: 1920, height: 560, fill: '#33271b' }, inT);
+    for (let k = 0; k < 9; k++) mk('rect', { x: 40 + k * 230, y: 352, width: 14, height: 560, fill: '#241a12', opacity: .7 }, inT);
+    mk('rect', { y: 600, width: 1920, height: 10, fill: '#241a12', opacity: .6 }, inT);
+    for (let k = 0; k < 16; k++) mk('rect', { x: -20 + k * 124, y: 300 - (k % 2) * 10, width: 130, height: 50, rx: 18, fill: '#8a7a58', stroke: '#5e5039', 'stroke-width': 4 }, inT);
+    mk('rect', { y: FY, width: 1920, height: 26, fill: '#6b5236' }, inT); for (let k = 0; k < 20; k++) mk('rect', { x: k * 100, y: FY, width: 8, height: 26, fill: '#4c3a25' }, inT);
+    mk('rect', { y: FY + 26, width: 1920, height: 200, fill: '#2a2017' }, inT);
+    const gI = mk('g', {}, inT), xs = [430, 960, 1490];
+    MP = (M.weapons || ['rifle', 'club', 'shovel']).map((wp, i) => ({ a: CM.figure(gI, A, { weapon: wp, pack: false }), d: CM.figure(gI, D, { weapon: i % 2 ? 'rifle' : 'fist', pack: false }),
+      x: dirA > 0 ? xs[i] : 1920 - xs[i], at: M.at + i * (M.step || .9), jump: tIn + .2 + i * .25 }));
+    dust = MP.map(() => mk('ellipse', { rx: 10, ry: 4, fill: '#8a7a5a' }, inT)); stars = MP.map(() => mk('use', { href: '#cmStar' }, inT));
+  }
   // labels with flags
   const tags = mk('g', {}, svg);
   if (cfg.labels !== false) [[A, att === 'left' ? 90 : 1430], [D, att === 'left' ? 1430 : 90]].forEach(([nat, x]) => { const g = mk('g', { class: 'btag' }, tags); mk('rect', { x, y: 250, width: 400, height: 76, rx: 14, fill: 'rgb(10 12 20 / .72)' }, g);
@@ -166,18 +180,25 @@ CM.battle = function (section, cfg) {
     ATT.forEach(a => { const run = Math.max(0, Math.min(t, a.fall) - a.start), x = a.x0 + dirA * Math.min(run * a.sp, Math.abs(toX - fromX) - 430);
       const fall = t > a.fall ? Math.min(1, (t - a.fall) / .45) : 0, moving = t > a.start && run * a.sp < Math.abs(toX - fromX) - 430 && !fall;
       CM.pose(a.f, { x, y: a.y, s: SC, dir: dirA, run: moving ? 1 : 0, ph: t * 11 + a.ph, lean: moving ? 10 : 0, fall: fall ** 2, armRot: 0 });
-      a.f.o.style.display = (MP.length && t > M.at - .3) ? 'none' : ''; });
+      a.f.o.style.display = (M && t > tIn) ? 'none' : ''; });
     ex.forEach(f => f(t));
     TR.forEach((ln, i) => { const k0 = Math.floor(t * 2.4 + i / 6), pp = (t * 2.4 + i / 6) % 1, sx0 = toX, sy0 = GY - 40, tx = fromX + dirA * (200 + gm.random('tx' + i + k0) * 1300), ty = GY - 120 + gm.random('ty' + i + k0) * 160;
       const x1 = sx0 + (tx - sx0) * pp, y1 = sy0 + (ty - sy0) * pp, kk = 90 / Math.hypot(tx - sx0, ty - sy0);
       ln.setAttribute('x1', x1); ln.setAttribute('y1', y1); ln.setAttribute('x2', x1 - (tx - sx0) * kk); ln.setAttribute('y2', y1 - (ty - sy0) * kk); ln.setAttribute('opacity', t > t0 + .3 && (!M || t < M.at) ? .9 : 0); });
-    MP.forEach((m, i) => { const on = t > M.at - .3; m.a.o.style.display = m.d.o.style.display = on ? '' : 'none'; if (!on) return;
-      const d = t - m.at, lunge = d > 0 && d < .25 ? d / .25 : d >= .25 && d < .6 ? 1 - (d - .25) / .35 : 0, hit = d > .2 && d < .9 ? 1 : 0, swing = (m.a.arm.dataset.w = 1);
+    if (inT) inT.style.display = t >= tIn ? '' : 'none';
+    MP.forEach((m, i) => { if (t < tIn) return;
+      const jp = gm.clamp((t - m.jump) / .38), ay = 250 + (FY - 250) * jp * jp, d = t - m.at;
+      const lunge = d > 0 && d < .25 ? d / .25 : d >= .25 && d < .6 ? 1 - (d - .25) / .35 : 0;
       const reel = gm.clamp((d - .2) / .3) * (d < 1.6 ? 1 : Math.max(0, 1 - (d - 1.6) / .4));
-      const cyc = (t - m.at) % 2.2, again = cyc > 1.2 && cyc < 1.6 ? (cyc - 1.2) / .4 : 0;
-      CM.pose(m.a, { x: m.x - dirA * 90 + dirA * 70 * (lunge + Math.sin(Math.PI * again)), y: m.y, s: SC * 1.05, dir: dirA, armRot: -40 * Math.sin(Math.PI * Math.min(1, d / .3)) * (i % 2) });
-      CM.pose(m.d, { x: m.x + dirA * 100 + dirA * 40 * reel, y: m.y, s: SC * 1.05, dir: -dirA, lean: -12 * reel });
-      const st = stars[i], sd = d - .22, on2 = sd > 0 && sd < .3; st.setAttribute('opacity', on2 ? 1 - sd / .3 : 0); st.setAttribute('transform', `translate(${m.x + dirA * 20} ${m.y - 170}) scale(${on2 ? .6 + sd * 2.4 : 0})`); });
+      const cyc = d % 2.2, again = d > 0 && cyc > 1.2 && cyc < 1.6 ? (cyc - 1.2) / .4 : 0;
+      CM.pose(m.a, { x: m.x - dirA * 150 + dirA * 110 * (lunge + Math.sin(Math.PI * again)), y: ay, s: SCI, dir: dirA, lean: jp < 1 ? 12 : 0, armRot: d > 0 ? -40 * Math.sin(Math.PI * Math.min(1, d / .3)) * (i % 2) : 0 });
+      m.a.o.style.opacity = t > m.jump - .05 ? 1 : 0;
+      CM.pose(m.d, { x: m.x + dirA * 160 + dirA * 60 * reel, y: FY, s: SCI, dir: -dirA, lean: -12 * reel, armRot: d < 0 ? -8 : 0 });
+      const dd = t - m.jump - .38, dOn = dd > 0 && dd < .7; dust[i].setAttribute('cx', m.x - dirA * 150); dust[i].setAttribute('cy', FY);
+      dust[i].setAttribute('rx', dOn ? 30 + dd * 220 : 0); dust[i].setAttribute('ry', dOn ? 8 + dd * 30 : 0); dust[i].setAttribute('opacity', dOn ? .7 * (1 - dd / .7) : 0);
+      const sd = d - .22, on2 = sd > 0 && sd < .3; stars[i].setAttribute('opacity', on2 ? 1 - sd / .3 : 0); stars[i].setAttribute('transform', `translate(${m.x + dirA * 10} ${FY - 330}) scale(${on2 ? .8 + sd * 3 : 0})`); });
+    if (inT && t >= tIn) { let sx2 = 0, sy2 = 0; MP.forEach(m => { const dd = t - m.at - .22; if (dd > 0 && dd < .3) { const k = (1 - dd / .3) * 12; sx2 += (gm.noise(t * 50) - .5) * 2 * k; sy2 += (gm.noise(t * 50 + 3) - .5) * 2 * k; } });
+      inT.setAttribute('transform', `translate(${sx2} ${sy2})`); }
   });
   return { svg, world, tags, GY };
 };

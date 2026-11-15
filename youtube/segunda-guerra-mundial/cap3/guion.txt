@@ -1,0 +1,11 @@
+# Capítulo 3 · 1941: la guerra se vuelve mundial
+-6%|-2Hz|0.35|El veintidós de junio de mil novecientos cuarenta y uno, Hitler rompió su pacto con Stalin e invadió la Unión Soviética: la Operación Barbarroja.
++0%|+0Hz|0.3|Antes, la guerra se había extendido a los Balcanes y al norte de África, donde Italia necesitó la ayuda del general alemán Erwin Rommel.
++1%|+1Hz|0.3|Más de tres millones de soldados del Eje avanzaron en tres direcciones: hacia Leningrado, hacia Moscú y hacia Ucrania.
++0%|+0Hz|0.35|Al principio fue un desastre para los soviéticos: ejércitos enteros rodeados y millones de prisioneros.
+-5%|-2Hz|0.35|Leningrado quedó sitiada durante casi novecientos días, con su población pasando un hambre terrible.
++0%|+0Hz|0.4|Pero frente a Moscú, el invierno y la resistencia soviética frenaron a los alemanes. En diciembre, el Ejército Rojo contraatacó.
++0%|+0Hz|0.35|Era la primera gran derrota alemana en tierra.
+-7%|-3Hz|0.4|Ese mismo mes, el siete de diciembre, Japón atacó por sorpresa la base estadounidense de Pearl Harbor, en Hawái. Murieron más de dos mil cuatrocientos estadounidenses.
++1%|+1Hz|0.3|En los meses siguientes, Japón conquistó Filipinas, Malasia, Singapur y gran parte del Pacífico.
++0%|+1Hz|0.4|Estados Unidos entró en la guerra. Ahora era, de verdad, una guerra mundial.

@@ -1,0 +1,9 @@
+# Capítulo 7 · El final y las consecuencias
+-7%|-2Hz|0.4|En agosto de mil novecientos cuarenta y cinco, Estados Unidos lanzó dos bombas atómicas sobre Hiroshima y Nagasaki. Fue la primera y única vez que se usaron en una guerra.
+-1%|-1Hz|0.35|La Unión Soviética declaró la guerra a Japón, y el dos de septiembre, Japón firmó su rendición. La Segunda Guerra Mundial había terminado.
+-1%|+0Hz|0.35|En Núremberg, los principales líderes nazis fueron juzgados por sus crímenes.
+-7%|-2Hz|0.4|El precio fue inimaginable: entre setenta y ochenta y cinco millones de muertos, la mayoría civiles.
++0%|+0Hz|0.35|Para evitar otra catástrofe, nació la Organización de las Naciones Unidas.
++0%|+0Hz|0.35|Pero el mundo quedó dividido entre dos superpotencias, Estados Unidos y la Unión Soviética. Empezaba la Guerra Fría.
+-1%|-1Hz|0.4|Alemania quedó dividida en dos, y Europa, separada por lo que Churchill llamó un «telón de acero».
++1%|+3Hz|0|¿Qué batalla te gustaría ver en detalle? Cuéntamelo en los comentarios, y suscríbete a Curiosimundo para más historia.

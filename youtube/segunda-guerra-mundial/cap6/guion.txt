@@ -1,0 +1,13 @@
+# Capítulo 6 · 1944-1945: la caída de Alemania
++1%|+1Hz|0.3|El seis de junio de mil novecientos cuarenta y cuatro llegó el Día D. Más de ciento cincuenta mil soldados aliados desembarcaron en las playas de Normandía.
++1%|+1Hz|0.3|Fue la mayor invasión por mar de la historia, con miles de barcos y aviones.
++1%|+0Hz|0.35|Bajo el fuego alemán, tomaron las playas y abrieron un segundo frente en Europa. En agosto, París fue liberada.
++0%|+0Hz|0.3|Al mismo tiempo, en el este, el Ejército Rojo destrozó a los alemanes con una enorme ofensiva y avanzó hacia Polonia.
++0%|+0Hz|0.3|Aquella operación, llamada Bagratión, destruyó un grupo de ejércitos alemán casi entero.
++0%|+0Hz|0.35|En diciembre, Hitler lanzó su último ataque en las Ardenas, la batalla de las Ardenas. Pero fracasó.
+-5%|-1Hz|0.3|Desde el aire, los bombardeos aliados arrasaban las ciudades y las fábricas alemanas.
++1%|+1Hz|0.35|En abril de mil novecientos cuarenta y cinco, los soviéticos llegaron a Berlín. Hitler se suicidó el treinta de abril, y la bandera roja ondeó sobre el Reichstag.
++0%|+0Hz|0.4|El ocho de mayo, Alemania se rindió sin condiciones. La guerra en Europa había terminado.
++0%|+0Hz|0.4|Pero en el Pacífico seguía. Los estadounidenses avanzaban isla por isla, en batallas durísimas como Iwo Jima y Okinawa.
++0%|+0Hz|0.35|De Iwo Jima salió una de las fotos más famosas de la guerra: seis soldados levantando la bandera estadounidense.
+-5%|-2Hz|0.4|Y Japón respondió con los kamikazes: pilotos que estrellaban sus aviones contra los barcos enemigos.

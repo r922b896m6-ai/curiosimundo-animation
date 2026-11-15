@@ -1,0 +1,95 @@
+<!doctype html>
+<!-- WW2 · Capítulo 4 · 1942–1943: el giro. Máxima extensión del Eje, Midway, Atlántico y Enigma, El Alamein (retirada), Torch, Stalingrado (ruinas, cerco, rendición), Kursk, Guadalcanal, Italia y caída de Mussolini. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="99.4">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="map" data-start="3.6" data-duration="95.8"></section>
+<section class="scene" id="mid" data-start="11.6" data-duration="10.2"></section>
+<section class="scene" id="atl" data-start="21.6" data-duration="8.8"></section>
+<section class="scene" id="eni" data-start="30.2" data-duration="4.9"></section>
+<section class="scene" id="ala" data-start="34.9" data-duration="8.4"></section>
+<section class="scene" id="stal" data-start="53.8" data-duration="10.4"></section>
+<section class="scene" id="surr" data-start="70.4" data-duration="6.8"></section>
+<section class="scene" id="kur" data-start="77.0" data-duration="9.2"></section>
+<section class="scene" id="gua" data-start="86.0" data-duration="7.2"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/europa1939.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id), cy = k => geo.cities[k];
+  CM.card($('cards'), tl, 4, '1942 – 1943', 'EL GIRO', 0, 4);
+  /* map: the Axis at its peak */
+  const m = CM.map($('map'), geo); tl.set(m.g, { x: 960 - 1000 * 1.05, y: 540 - 560 * 1.05, scale: 1.05 }, 0);
+  m.color(tl, ['ALEMANIA', 'ESLOVAQUIA', 'POLONIA', 'FRANCIA', 'PAÍSES BAJOS', 'BÉLGICA', 'DINAMARCA', 'NORUEGA', 'BÁLTICOS', 'YUGOSLAVIA', 'GRECIA'], C.central, 0, .01)
+   .color(tl, ['ITALIA', 'HUNGRÍA', 'RUMANÍA', 'BULGARIA', 'FINLANDIA'], '#8f3a3a', 0, .01).color(tl, ['REINO UNIDO', 'URSS'], C.allies, 0, .01);
+  const front = CM.mk('path', { d: `M${cy('Leningrado')[0]} ${cy('Leningrado')[1]} L${cy('Moscú')[0] - 40} ${cy('Moscú')[1] + 20} L${cy('Stalingrado')[0]} ${cy('Stalingrado')[1]}`, stroke: '#FFD23F', 'stroke-width': 8, 'stroke-dasharray': '16 10', fill: 'none' }, m.g);
+  tl.from(front, { draw: 0, duration: 1.4 }, W('máxima') - .3).to(front, { opacity: 0, duration: .3 }, 11.5);
+  CM.head(H, tl, 'EL EJE EN SU <em>MÁXIMA EXTENSIÓN</em>', '1942', 4.3, 11.5);
+  /* Midway */
+  const mz = CM.svgIn($('mid'), 'linear-gradient(#6fa2d6, #e5dcc0 52%, #2f6aa0 52%, #0f3157)');
+  const cars = [0, 1].map(i => { const g = CM.mk('g', {}, mz); CM.carrier(g, '#5d6168'); return g; });
+  const dives = [0, 1, 2].map(() => CM.fighter(mz, '#4a5f7a', 'star')), h0 = W('hundió') - .6;
+  const mex = [0, 1, 2, 3].map(i => CM.explosion(mz, 520 + (i % 2) * 820, 610, h0 + i * .8, 1.1, 'mw' + i));
+  gm.onFrame($('mid'), (l, info) => { const t = info.time;
+    cars.forEach((g, i) => { const k = gm.clamp((t - h0 - 1 - i * .8) / 6); g.setAttribute('transform', `translate(${560 + i * 820} ${600 + k * 140 + i * 30}) rotate(${k * (i ? -8 : 8)}) scale(.8)`); g.setAttribute('opacity', 1 - k * .5); });
+    dives.forEach((p, i) => { const d = t - (h0 - 1.6) - i * .7; p.setAttribute('transform', `translate(${200 + d * 300 + i * 300} ${80 + d * 260}) rotate(38) scale(.8)`); }); mex.forEach(f => f(t)); });
+  CM.head(H, tl, '<em>MIDWAY</em>', 'junio de 1942 · 4 portaaviones japoneses hundidos', 12.0, 21.6); tl.from($('mid'), { opacity: 0, duration: .3 }, 11.6);
+  /* Atlantic: convoy vs U-boat */
+  const az = CM.svgIn($('atl'), 'linear-gradient(#59687a, #a3adb5 45%, #24476a 45%, #0b2340)');
+  const conv = [0, 1, 2, 3].map(i => { const g = CM.mk('g', {}, az); CM.ship(g, i === 3 ? '#4a5560' : '#6a5a4a'); return g; }), ub = CM.uboat(az), dc = W('aliados') - .4;
+  const dex = [0, 1, 2].map(i => CM.explosion(az, 700 + i * 200, 820, dc + i * .5, .8, 'dc' + i));
+  gm.onFrame($('atl'), (l, info) => { const t = info.time, d = t - 21.6, k = gm.clamp((t - dc - 1.2) / 3);
+    conv.forEach((g, i) => g.setAttribute('transform', `translate(${200 + i * 380 + d * 40} ${490 + (i % 2) * 40}) scale(${.55 + (i % 2) * .05})`));
+    ub.setAttribute('transform', `translate(${1500 - d * 60} ${700 + k * 200}) rotate(${k * -10}) scale(.6)`); ub.setAttribute('opacity', 1 - k * .7); dex.forEach(f => f(t)); });
+  CM.head(H, tl, 'LA BATALLA DEL <em>ATLÁNTICO</em>', 'submarinos contra convoyes', 22.0, 30.2); tl.from($('atl'), { opacity: 0, duration: .3 }, 21.6);
+  /* Enigma */
+  const ez = CM.svgIn($('eni'), 'radial-gradient(circle at 50% 45%, #3a3226, #120f0b)'); const enW = CM.mk('g', {}, ez), en = CM.mk('g', { transform: 'translate(960 600)' }, enW);
+  CM.mk('rect', { x: -360, y: -220, width: 720, height: 440, rx: 24, fill: '#2a2620', stroke: '#6a5a40', 'stroke-width': 8 }, en);
+  for (let i = 0; i < 3; i++) CM.mk('rect', { x: -110 + i * 80, y: -190, width: 50, height: 90, rx: 8, fill: '#8a7a5a' }, en);
+  'QWERTZUIO ASDFGHJK PYXCVBNML'.split(' ').forEach((row, r) => row.split('').forEach((ch, c) => { const x = -300 + c * 68 + r * 22, y = -40 + r * 76;
+    CM.mk('circle', { cx: x, cy: y, r: 26, fill: '#e8e2d0', stroke: '#111', 'stroke-width': 4, class: 'key' }, en); const t = CM.mk('text', { x, y: y + 10, 'text-anchor': 'middle', 'font-size': 28, 'font-family': 'Bebas Neue', fill: '#111' }, en); t.textContent = ch; }));
+  tl.from(enW, { y: 700, duration: .6, ease: 'expo.out' }, 30.3).from($('eni'), { opacity: 0, duration: .3 }, 30.2);
+  tl.to(en.querySelectorAll('.key'), { fill: '#FFD23F', duration: .08, stagger: { each: .09, from: 'random' }, yoyo: true, repeat: 1 }, 31.0);
+  CM.head(H, tl, 'LA MÁQUINA <em>ENIGMA</em>', 'códigos alemanes descifrados', 30.4, 34.9);
+  /* El Alamein: British 8th Army vs Afrika Korps, who retreat */
+  CM.battle($('ala'), { id: 'al', left: 'UKD', right: 'DEAK', terrain: 'desert', t0: 34.9, t1: 43.3, n: 7, falls: [], mg: true, artillery: [35.2, 36.4, 37.6, 38.8], outcome: { type: 'retreat', at: W('retirarse') - .4, flag: true }, pan: [0, -1280] });
+  CM.head(H, tl, '<em>EL ALAMEIN</em>', 'octubre – noviembre de 1942 · Montgomery vence a Rommel', 35.2, 43.2); tl.from($('ala'), { opacity: 0, duration: .3 }, 34.9);
+  /* Torch */
+  m.zoom(tl, [700, 920], 1.5, 43.2, .01); m.color(tl, 'ÁFRICA', '#5a4a3a', 43.2, .01);
+  m.line(tl, 'torch', W('marruecos') - .6, { color: '#2f6fcf', width: 12, arrow: true, dur: 1 }); m.line(tl, 'torch2', W('argelia') - .6, { color: '#2f6fcf', width: 12, arrow: true, dur: 1 });
+  m.pin(tl, 'Casablanca', 'MARRUECOS', W('marruecos') - .2, 49.0, { size: 26 }); m.pin(tl, 'Argel', 'ARGELIA', W('argelia') - .2, 49.0, { size: 26 });
+  CM.head(H, tl, 'OPERACIÓN <em>TORCH</em>', 'noviembre de 1942', 43.6, 49.0);
+  /* Stalingrad */
+  m.zoom(tl, 'Stalingrado', 2.4, 48.9, .9); m.pin(tl, 'Stalingrado', 'STALINGRADO', W('stalingrado') - .3, 53.8, { size: 34, fill: '#E5484D' });
+  CM.head(H, tl, '<em>STALINGRADO</em>', 'agosto 1942 – febrero 1943', 49.4, 53.8);
+  CM.battle($('stal'), { id: 'sg', left: 'DE2', right: 'SU', terrain: 'ruins', t0: 53.8, t1: 64.2, n: 8, falls: [2, 5], mg: true, def: 4, artillery: [54.2, 55.6, 57.0, 58.6, 60.2, 61.8], pan: [0, -1280] });
+  CM.head(H, tl, 'CALLE POR CALLE, <em>CASA POR CASA</em>', '', 54.1, W('orden') - .5);
+  CM.head(H, tl, '«¡NI UN <em>PASO ATRÁS</em>!»', 'orden n.º 227', W('orden') - .4, 64.1); tl.from($('stal'), { opacity: 0, duration: .3 }, 53.8);
+  m.zoom(tl, 'Stalingrado', 3.2, 64.1, .01); m.pin(tl, 'Stalingrado', '6.º EJÉRCITO', 64.3, 70.4, { size: 20, fill: '#E5484D' }); m.line(tl, 'uranoN', W('rodearon') - .4, { color: '#FFD23F', width: 14, arrow: true, dur: 1.2 }); m.line(tl, 'uranoS', W('rodearon') - .1, { color: '#FFD23F', width: 14, arrow: true, dur: 1.2 });
+  CM.head(H, tl, 'OPERACIÓN <em>URANO</em>', 'noviembre de 1942 · el 6.º Ejército, cercado', 64.4, 70.4);
+  CM.battle($('surr'), { id: 'su', left: 'SU', right: 'DE2', terrain: 'ruins', sky: ['#7d8590', '#d6dde3'], t0: 70.4, t1: 77.2, n: 7, falls: [], mg: true, artillery: [70.6], outcome: { type: 'capture', at: 71.4 }, pan: [0, -1280] });
+  const pr = CM.text($('surr'), 'mid', '2 · 2 · 1943 · <b>unos 91.000 prisioneros</b>', 380); tl.from(pr, { y: 30, opacity: 0, duration: .35 }, W('noventa') - .4).from($('surr'), { opacity: 0, duration: .3 }, 70.4);
+  CM.head(H, tl, 'LA RENDICIÓN <em>ALEMANA</em>', 'Stalingrado', 70.7, 77.0);
+  /* Kursk */
+  const kz = CM.svgIn($('kur'), 'linear-gradient(#8a98a8, #d9cfa8)'); CM.mk('rect', { y: 780, width: 1920, height: 300, fill: '#6b7a3a' }, kz);
+  for (let i = 0; i < 9; i++) CM.mk('ellipse', { cx: 100 + i * 220, cy: 850 + (i % 3) * 60, rx: 80, ry: 16, fill: '#4a5428' }, kz);
+  const sv = [0, 1, 2].map(i => ({ g: CM.tank2(kz, '#4f5a3a', 'star', '#c0392b'), x: -260 - i * 420, y: 820 + (i % 2) * 90, dir: 1 })), de = [0, 1, 2].map(i => ({ g: CM.tank2(kz, '#6a6e70', 'cross'), x: 2180 + i * 420, y: 860 + (i % 2) * 70, dir: -1 }));
+  const kb = [79.0, 80.1, 81.3, 82.4, 83.6, 84.6].map((t, i) => CM.explosion(kz, 700 + (i % 3) * 260, 840 + (i % 2) * 40, t, .9, 'kk' + i));
+  gm.onFrame($('kur'), (l, info) => { const t = info.time, d = Math.min(t - 77.0, 4.2);
+    sv.concat(de).forEach((k, i) => { k.g.setAttribute('transform', `translate(${k.x + k.dir * d * 220} ${k.y}) scale(${k.dir * .75} .75)`); k.g.querySelector('.track').setAttribute('stroke-dashoffset', -d * 90); }); kb.forEach(f => f(t)); });
+  CM.head(H, tl, '<em>KURSK</em>', 'julio de 1943 · una de las mayores batallas de tanques', 77.3, 86.0); tl.from($('kur'), { opacity: 0, duration: .3 }, 77.0);
+  /* Guadalcanal */
+  CM.battle($('gua'), { id: 'gc', left: 'US44', right: 'JP', terrain: 'jungle', t0: 86.0, t1: 93.2, n: 7, falls: [], mg: true, artillery: [86.4, 87.6, 88.8], outcome: { type: 'retreat', at: W('ganaron', 2) - .6 }, pan: [0, -1280] });
+  CM.head(H, tl, '<em>GUADALCANAL</em>', 'agosto 1942 – febrero 1943', 86.3, 93.2); tl.from($('gua'), { opacity: 0, duration: .3 }, 86.0);
+  /* Italy */
+  m.zoom(tl, 'Roma', 1.8, 93.0, .01); m.line(tl, 'sicilia', W('italia') - .5, { color: '#2f6fcf', width: 12, arrow: true, dur: 1 }); m.pin(tl, 'Sicilia', 'SICILIA', W('italia') - .2, null, { size: 26 });
+  m.pin(tl, 'Roma', 'MUSSOLINI, DESTITUIDO', W('mussolini') - .2, null, { size: 28, fill: '#E5484D' });
+  CM.head(H, tl, 'LOS ALIADOS, <em>EN ITALIA</em>', 'julio de 1943', 93.4, 99.2);
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<!-- WW2 · Capítulo 0 · Introducción: batalla con artillería, "1939–1945", "70–85 millones de muertos", título. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="17.6">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script></head>
+<body>
+<audio src="voz.mp3"></audio>
+<audio src="musica.mp3" data-volume="0.55" data-duck="0.45" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="b" data-start="0" data-duration="10.4"></section>
+<section class="scene" id="t" data-start="10.0" data-duration="7.6"></section>
+<div class="vig"></div><div id="caps"></div>
+<script>
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words), tl = gm.timeline(null, { global: true }), $ = id => document.getElementById(id);
+  CM.battle($('b'), { id: 'b', left: 'US44', right: 'DE2', terrain: 'dusk', t0: 0, t1: 10.4, n: 8, falls: [3], mg: true, artillery: [.2, 1.5, 2.9, 4.2, 5.6, 7.0, 8.4], outcome: { type: 'capture', at: 8.2 }, labels: false, pan: [0, -1280] });
+  const y = CM.text($('b'), 'big', '1939 – <em>1945</em>', 300); tl.fromTo(y, { scale: 1.25 }, { scale: 1, duration: .8, ease: 'expo.out' }, 0).to(y, { opacity: 0, y: -60, duration: .25 }, W('setenta') - .9);
+  const n = CM.text($('b'), 'big', '<em>70 – 85 MILLONES</em>', 280, 'font-size:150px'), n2 = CM.text($('b'), 'mid', 'de muertos: la guerra <b>más mortífera</b> de la historia', 470);
+  tl.from(n, { scale: 1.4, opacity: 0, filter: 'blur(14px)', duration: .45, ease: 'expo.out' }, W('setenta') - .4).from(n2, { y: 30, opacity: 0, duration: .35 }, W('setenta'));
+  const t = $('t'); t.style.background = 'radial-gradient(1200px 800px at 50% 45%, #163a78, #071330 75%)';
+  t.innerHTML = '<div class="mid" style="top:250px;color:#FFD23F">CURIOSIMUNDO PRESENTA</div><div class="big" style="top:330px;font-size:190px">LA SEGUNDA<br><em>GUERRA MUNDIAL</em></div><div class="mid" style="top:760px">cómo empezó · sus grandes batallas · cómo terminó</div>';
+  const [p, h, s] = t.children;
+  tl.from(t, { opacity: 0, duration: .4 }, 10.0).from(p, { y: 20, opacity: 0, duration: .4 }, 10.2).from(h, { scale: 1.3, opacity: 0, filter: 'blur(16px)', duration: .8, ease: 'expo.out' }, 10.4)
+    .to(h, { scale: 1.05, duration: 6, ease: 'sine.inOut' }, 11.2).from(s, { y: 30, opacity: 0, duration: .4 }, W('cómo') - .2);
+  return CM.captions(words);
+}));
+</script>
+</body>
+</html>

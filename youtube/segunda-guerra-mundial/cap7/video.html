@@ -1,0 +1,80 @@
+<!doctype html>
+<!-- WW2 · Capítulo 7 · El final y las consecuencias: Hiroshima y Nagasaki (sobrio: mapa y reloj detenido), rendición de Japón, Núremberg, el precio, la ONU, Guerra Fría y telón de acero, cierre con pregunta. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="66.2">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="pmap" data-start="3.6" data-duration="7.6"></section>
+<section class="scene" id="clk" data-start="11.0" data-duration="5.2"></section>
+<section class="scene" id="mis" data-start="16.0" data-duration="9.6"></section>
+<section class="scene" id="nur" data-start="25.4" data-duration="5.6"></section>
+<section class="scene" id="toll" data-start="30.8" data-duration="7.2"></section>
+<section class="scene" id="onu" data-start="37.8" data-duration="5.2"></section>
+<section class="scene" id="cold" data-start="42.8" data-duration="8.2"></section>
+<section class="scene" id="map" data-start="50.8" data-duration="15.4"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/europa1939.json').then(r => r.json()), fetch('lib/pacifico.json').then(r => r.json())]).then(([words, geo, pac]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id);
+  CM.card($('cards'), tl, 7, '1945', 'EL FINAL Y LAS CONSECUENCIAS', 0, 4);
+  /* Hiroshima & Nagasaki: map only */
+  const pm = CM.map($('pmap'), pac); tl.set(pm.g, { x: 960 - 640 * 2.6, y: 540 - 300 * 2.6, scale: 2.6 }, 0); pm.color(tl, 'JAPÓN', '#8a4a4a', 0, .01).color(tl, ['CHINA', 'URSS'], '#3a4458', 0, .01);
+  pm.pin(tl, 'Hiroshima', 'HIROSHIMA · 6 AGO', W('hiroshima') - .3, null, { size: 22, fill: '#fff', dy: -30 }); pm.pin(tl, 'Nagasaki', 'NAGASAKI · 9 AGO', W('nagasaki') - .3, null, { size: 22, fill: '#fff', dy: 38 });
+  CM.head(H, tl, 'HIROSHIMA Y <em>NAGASAKI</em>', 'agosto de 1945', 4.4, 11.0); tl.from($('pmap'), { opacity: 0, duration: .3 }, 3.6);
+  /* the stopped clock */
+  const ck = CM.svgIn($('clk'), 'radial-gradient(circle at 50% 50%, #2b2a2a, #070707 70%)'), cgW = CM.mk('g', {}, ck), cg = CM.mk('g', { transform: 'translate(960 560)' }, cgW);
+  CM.mk('circle', { r: 250, fill: '#e8e0cc', stroke: '#3a3226', 'stroke-width': 18 }, cg); for (let i = 0; i < 12; i++) CM.mk('rect', { x: -5, y: -230, width: 10, height: 34, fill: '#222', transform: `rotate(${i * 30})` }, cg);
+  CM.mk('rect', { x: -7, y: -150, width: 14, height: 160, rx: 6, fill: '#222', transform: `rotate(${(8 + 15 / 60) * 30})` }, cg); CM.mk('rect', { x: -4, y: -210, width: 8, height: 220, rx: 4, fill: '#222', transform: 'rotate(90)' }, cg); CM.mk('circle', { r: 14, fill: '#222' }, cg);
+  const once = CM.text($('clk'), 'mid', 'la <b>primera y única vez</b> en una guerra', 120, 'left:auto;right:80px;width:900px;text-align:right');
+  tl.from($('clk'), { opacity: 0, duration: .6 }, 11.0).from(once, { opacity: 0, y: 20, duration: .4 }, W('primera') - .3).fromTo(cgW, { scale: 1 }, { scale: 1.06, duration: 5.2, ease: 'none', transformOrigin: '960px 560px' }, 11.0);
+  CM.head(H, tl, '8:15 <em>DE LA MAÑANA</em>', 'Hiroshima, 6 de agosto de 1945', 11.3, 16.0);
+  /* Japan surrenders aboard USS Missouri */
+  const mz = CM.svgIn($('mis'), 'linear-gradient(#7da2c4, #e0d8c0 58%, #3a6a90 58%, #183a5a)'), ms = CM.mk('g', { transform: 'translate(960 640) scale(1.6)' }, mz); CM.ship(ms, '#5a6270');
+  const su = CM.text($('mis'), 'mid', 'la URSS declara la guerra a Japón · <b>8 de agosto</b>', 250, 'left:80px;right:auto;width:1000px;text-align:left'); tl.from(su, { opacity: 0, y: 20, duration: .35 }, W('declaró') - .3);
+  const sd = CM.doc($('mis'), 'ACTA DE RENDICIÓN', 'USS Missouri · bahía de Tokio', ['Japón acepta la rendición', 'sin condiciones', '2 de septiembre de 1945'], { x: 1180, y: 300, w: 600, h: 420, rot: 3 });
+  tl.from($('mis'), { opacity: 0, duration: .3 }, 16.0).fromTo(mz, { scale: 1 }, { scale: 1.08, duration: 9.6, ease: 'none', transformOrigin: '50% 60%' }, 16.0).from(sd, { y: 160, rotate: 8, opacity: 0, duration: .6, ease: 'expo.out' }, W('septiembre') - .3);
+  CM.head(H, tl, 'JAPÓN SE <em>RINDE</em>', '2 de septiembre de 1945 · fin de la guerra', W('septiembre') - .4, 25.4);
+  /* Nuremberg */
+  const nz = CM.svgIn($('nur'), 'linear-gradient(#4a3a2a, #2a2018)'); CM.mk('rect', { y: 700, width: 1920, height: 380, fill: '#5a4430' }, nz);
+  CM.mk('rect', { x: 560, y: 420, width: 800, height: 140, fill: '#6a4e34', stroke: '#3a2a1a', 'stroke-width': 6 }, nz);
+  for (let i = 0; i < 4; i++) CM.civil(nz, 660 + i * 200, 470, 1, '#1a1a1a');
+  for (let i = 0; i < 8; i++) CM.civil(nz, 200 + i * 220, 900, 1.3, '#3a3f48');
+  CM.mk('rect', { x: 0, y: 840, width: 1920, height: 60, fill: '#4a3624' }, nz);
+  tl.from($('nur'), { opacity: 0, duration: .3 }, 25.4).fromTo(nz, { scale: 1.08 }, { scale: 1, duration: 5.6, ease: 'none', transformOrigin: '50% 40%' }, 25.4);
+  CM.head(H, tl, 'LOS JUICIOS DE <em>NÚREMBERG</em>', '1945 – 1946', 25.7, 30.8);
+  /* the toll */
+  const tz = CM.svgIn($('toll'), '#0a0d14'), dots = CM.mk('g', {}, tz);
+  for (let r = 0; r < 8; r++) for (let c = 0; c < 40; c++) CM.mk('circle', { cx: 180 + c * 40, cy: 560 + r * 40, r: 12, fill: (r * 40 + c) < 192 ? '#c9c3b5' : '#6f7684', class: 'dt' }, dots);
+  const big = CM.text($('toll'), 'big', '70 – 85 <em>MILLONES</em>', 160, 'font-size:150px'), civ = CM.text($('toll'), 'mid', 'de muertos · <b>la mayoría, civiles</b>', 360);
+  tl.from($('toll'), { opacity: 0, duration: .3 }, 30.8).from(dots.querySelectorAll('.dt'), { opacity: 0, duration: .2, stagger: .006 }, 31.1).from(big, { scale: 1.3, opacity: 0, duration: .6, ease: 'expo.out' }, W('setenta') - .2).from(civ, { opacity: 0, y: 20, duration: .4 }, W('mayoría') - .3);
+  /* United Nations */
+  const oz = CM.svgIn($('onu'), 'linear-gradient(#2a6fb8, #154a85)'), ogW = CM.mk('g', {}, oz), og = CM.mk('g', { transform: 'translate(960 580)', fill: 'none', stroke: '#fff', 'stroke-width': 8 }, ogW);
+  for (let r = 70; r <= 210; r += 70) CM.mk('circle', { r }, og); for (let a = 0; a < 4; a++) CM.mk('path', { d: 'M0 -210 L0 210', transform: `rotate(${a * 45})` }, og);
+  [-1, 1].forEach(sd => { for (let i = 0; i < 10; i++) { const an = (35 + i * 14) * Math.PI / 180, x = sd * Math.sin(an) * 270, y = -Math.cos(an) * 270; CM.mk('ellipse', { cx: x, cy: y, rx: 14, ry: 32, fill: '#fff', stroke: 'none', transform: `rotate(${sd * (35 + i * 14) + 90 * sd} ${x} ${y})` }, og); } });
+  tl.from($('onu'), { opacity: 0, duration: .3 }, 37.8).from(ogW, { scale: .6, opacity: 0, duration: .8, ease: 'expo.out', transformOrigin: '960px 580px' }, 38.1);
+  CM.head(H, tl, 'NACE LA <em>ONU</em>', '24 de octubre de 1945', 38.3, 42.8);
+  /* the Cold War */
+  const cz = CM.svgIn($('cold'), 'linear-gradient(90deg, #1f3a6a 50%, #6a1f1f 50%)'); CM.flag(cz, 'US', 240, 380, 480, 320); CM.flag(cz, 'SU', 1200, 380, 480, 320);
+  const vs = CM.text($('cold'), 'big', 'VS', 450, 'font-size:160px'); tl.from($('cold'), { opacity: 0, duration: .3 }, 42.8).from(vs, { scale: 2, opacity: 0, duration: .4, ease: 'expo.out' }, W('superpotencias') - .2);
+  CM.head(H, tl, 'LA <em>GUERRA FRÍA</em>', 'Estados Unidos contra la Unión Soviética', 43.1, 50.8);
+  /* the Iron Curtain */
+  const m = CM.map($('map'), geo); tl.set(m.g, { x: 960 - 1000 * 1.3, y: 540 - 560 * 1.3, scale: 1.3 }, 0);
+  m.color(tl, ['FRANCIA', 'REINO UNIDO', 'BÉLGICA', 'PAÍSES BAJOS', 'DINAMARCA', 'NORUEGA', 'ITALIA', 'GRECIA'], C.allies, 0, .01).color(tl, ['URSS', 'BÁLTICOS', 'POLONIA', 'HUNGRÍA', 'RUMANÍA', 'BULGARIA', 'ESLOVAQUIA'], '#b03030', 0, .01).color(tl, 'ALEMANIA', '#6f7684', 0, .01);
+  m.text(tl, 'ALEMANIA OCCIDENTAL', 730, 480, W('alemania') - .2, 58, { size: 22, fill: '#9fd0ff' }); m.text(tl, 'ALEMANIA ORIENTAL', 900, 420, W('alemania') - .1, 58, { size: 22, fill: '#ffb3b3' });
+  m.line(tl, 'telon', W('telón') - .6, { color: '#FFD23F', width: 12, dash: '18 10', dur: 1.6 });
+  CM.head(H, tl, 'EL <em>TELÓN DE ACERO</em>', 'Europa, dividida', 51.2, W('qué') - .5); tl.from($('map'), { opacity: 0, duration: .3 }, 50.8);
+  /* end card */
+  const end = document.createElement('div'); end.style.cssText = 'position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:rgb(6 12 28 / .8)';
+  end.innerHTML = '<div style="font:400 120px/1 \'Bebas Neue\';text-align:center">¿QUÉ BATALLA QUIERES <span style="color:#FFD23F">VER EN DETALLE</span>?</div><div style="font:800 40px Inter;letter-spacing:.06em">CUÉNTAMELO EN LOS COMENTARIOS</div><div class="sub" style="margin-top:30px;padding:22px 60px;border-radius:16px;background:#d0312d;font:800 44px Inter;letter-spacing:.08em">SUSCRÍBETE</div><div style="margin-top:20px;font:400 90px Bebas Neue;letter-spacing:.14em">CURIOSI<span style="color:#FFD23F">MUNDO</span></div>';
+  $('map').append(end);
+  tl.from(end, { opacity: 0, duration: .5 }, W('qué') - .4).from(end.children[0], { scale: 1.2, opacity: 0, duration: .5, ease: 'expo.out' }, W('qué') - .3)
+    .from(end.children[1], { y: 20, opacity: 0, duration: .3 }, W('cuéntamelo') - .2).from(end.children[2], { scale: 0, duration: .4, ease: 'back.out(2.5)' }, W('suscríbete') - .2)
+    .to(end.children[2], { scale: 1.08, duration: .4, yoyo: true, repeat: 5, ease: 'sine.inOut' }, W('suscríbete') + .3).from(end.children[3], { y: 30, opacity: 0, letterSpacing: '.4em', duration: .7, ease: 'expo.out' }, W('curiosimundo') - .2);
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<!-- WW2 · Capítulo 5 · El Holocausto. Tratamiento sobrio: velas, texto, vías y alambre como símbolos; sin imágenes explícitas. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="42.2">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<section class="scene" id="can" data-start="3.6" data-duration="17.6"></section>
+<section class="scene" id="aus" data-start="21.0" data-duration="10.8"></section>
+<section class="scene" id="mem" data-start="31.6" data-duration="10.6"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id);
+  CM.card($('cards'), tl, 5, '1933 – 1945', 'EL HOLOCAUSTO', 0, 4);
+  /* candles */
+  const cs = CM.svgIn($('can'), 'radial-gradient(ellipse at 50% 85%, #2a2016, #07060a 70%)'), fl = [];
+  for (let r = 0; r < 3; r++) for (let i = 0; i < 13; i++) { const x = 180 + i * 130 + (r % 2) * 65, y = 580 + r * 105, s = .7 + r * .18, g = CM.mk('g', { class: 'cd' }, cs);
+    CM.mk('rect', { x: x - 16 * s, y: y - 70 * s, width: 32 * s, height: 70 * s, rx: 4, fill: '#e9e1cf' }, g);
+    const glow = CM.mk('circle', { cx: x, cy: y - 92 * s, r: 46 * s, fill: 'rgb(255 190 90 / .18)' }, g), f = CM.mk('ellipse', { cx: x, cy: y - 88 * s, rx: 8 * s, ry: 18 * s, fill: '#ffc86a' }, g); fl.push({ f, glow, s, i: r * 13 + i }); }
+  tl.from(cs.querySelectorAll('.cd'), { opacity: 0, duration: .6, stagger: { each: .12, from: 'center' } }, 4.2);
+  gm.onFrame($('can'), (l, info) => fl.forEach(o => { o.f.setAttribute('ry', 18 * o.s * (1 + Math.sin(info.time * 9 + o.i) * .1)); o.glow.setAttribute('opacity', .8 + Math.sin(info.time * 5 + o.i * 2.3) * .2); }));
+  const six = CM.text($('can'), 'big', 'UNOS <em>6 MILLONES</em>', 110, 'font-size:150px'), six2 = CM.text($('can'), 'mid', 'judíos asesinados', 280);
+  const oth = CM.text($('can'), 'mid', 'y también gitanos, personas con discapacidad, opositores políticos…', 345, 'font-size:40px');
+  tl.from(six, { opacity: 0, scale: 1.2, duration: .8, ease: 'expo.out' }, W('seis') - .2).from(six2, { opacity: 0, y: 20, duration: .4 }, W('judíos') - .2).from(oth, { opacity: 0, y: 20, duration: .4 }, W('gitanos') - .3);
+  CM.head(H, tl, 'EL <em>HOLOCAUSTO</em>', 'el mayor crimen de la historia', 4.4, 10.6);
+  /* Auschwitz: rails and wire as symbols */
+  const az = CM.svgIn($('aus'), 'linear-gradient(#2c2f36, #6d6a66)'); CM.mk('rect', { y: 700, width: 1920, height: 380, fill: '#2a2826' }, az);
+  CM.mk('path', { d: 'M760 1080 L940 700 M1160 1080 L980 700', stroke: '#8a8580', 'stroke-width': 10 }, az); for (let i = 0; i < 9; i++) { const y = 1060 - i * 42, w = 400 - i * 38; CM.mk('rect', { x: 960 - w / 2, y, width: w, height: 8, fill: '#4a4540' }, az); }
+  CM.mk('path', { d: 'M700 700 L700 470 L860 470 L860 400 L1060 400 L1060 470 L1220 470 L1220 700Z', fill: '#3a2f2a' }, az); CM.mk('rect', { x: 920, y: 560, width: 80, height: 140, fill: '#15120f' }, az);
+  for (let i = 0; i < 16; i++) { const x = 40 + i * 120; CM.mk('path', { d: `M${x} 760 L${x} 560 L${x + 18} 545`, stroke: '#1a1a1a', 'stroke-width': 8, fill: 'none' }, az); }
+  for (let k = 0; k < 5; k++) CM.mk('path', { d: `M0 ${580 + k * 36} L1920 ${580 + k * 36}`, stroke: '#1a1a1a', 'stroke-width': 3, 'stroke-dasharray': '22 6' }, az);
+  tl.from($('aus'), { opacity: 0, duration: .8 }, 21.0).fromTo(az, { scale: 1 }, { scale: 1.1, duration: 10.8, ease: 'none', transformOrigin: '50% 70%' }, 21.0);
+  const lib = CM.text($('aus'), 'mid', 'liberado por el Ejército Rojo · <b>27 de enero de 1945</b>', 250); tl.from(lib, { opacity: 0, y: 20, duration: .4 }, W('liberado') - .3);
+  CM.head(H, tl, '<em>AUSCHWITZ</em>', 'campo de concentración y exterminio', 21.4, 31.6);
+  /* remembering */
+  const ms = CM.svgIn($('mem'), 'radial-gradient(ellipse at 50% 60%, #2a2418, #07060a 70%)'); const one = CM.mk('g', { transform: 'translate(960 760)' }, ms);
+  CM.mk('rect', { x: -26, y: -140, width: 52, height: 140, rx: 6, fill: '#e9e1cf' }, one); const big = CM.mk('ellipse', { cx: 0, cy: -175, rx: 16, ry: 36, fill: '#ffc86a' }, one); CM.mk('circle', { cx: 0, cy: -175, r: 110, fill: 'rgb(255 190 90 / .14)' }, one);
+  gm.onFrame($('mem'), (l, info) => big.setAttribute('ry', 36 * (1 + Math.sin(info.time * 8) * .08)));
+  const t1 = CM.text($('mem'), 'mid', 'los supervivientes contaron su historia', 230), t2 = CM.text($('mem'), 'big', 'PARA QUE <em>NUNCA</em> VUELVA A OCURRIR', 300, 'font-size:84px');
+  tl.from($('mem'), { opacity: 0, duration: .8 }, 31.6).from(t1, { opacity: 0, y: 20, duration: .4 }, W('supervivientes') - .3).to(t1, { opacity: 0, duration: .3 }, 37.2).from(t2, { opacity: 0, scale: 1.1, duration: .8 }, W('recordarlo') - .1);
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

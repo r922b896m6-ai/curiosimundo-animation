@@ -1,0 +1,96 @@
+<!doctype html>
+<!-- WW2 · Capítulo 6 · 1944–1945: la caída de Alemania. Día D (flota + playa, bandera), París, Bagratión, Ardenas (retirada), bombardeos, Berlín (bandera roja), 8 de mayo, Pacífico, Iwo Jima (bandera), kamikazes. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="93.1">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="map" data-start="3.6" data-duration="66.5"></section>
+<section class="scene" id="fleet" data-start="3.6" data-duration="9.2"></section>
+<section class="scene" id="beach" data-start="12.6" data-duration="9.6"></section>
+<section class="scene" id="bag" data-start="32.6" data-duration="6.6"></section>
+<section class="scene" id="bulge" data-start="39.0" data-duration="7.8"></section>
+<section class="scene" id="bomb" data-start="46.6" data-duration="6.2"></section>
+<section class="scene" id="ber" data-start="56.4" data-duration="6.9"></section>
+<section class="scene" id="ve" data-start="63.1" data-duration="6.9"></section>
+<section class="scene" id="pmap" data-start="69.9" data-duration="8.7"></section>
+<section class="scene" id="iwo" data-start="78.4" data-duration="7.4"></section>
+<section class="scene" id="kam" data-start="85.6" data-duration="7.5"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/europa1939.json').then(r => r.json()), fetch('lib/pacifico.json').then(r => r.json())]).then(([words, geo, pac]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id);
+  CM.card($('cards'), tl, 6, '1944 – 1945', 'LA CAÍDA DE ALEMANIA', 0, 4);
+  /* D-Day: the fleet */
+  const fz = CM.svgIn($('fleet'), 'linear-gradient(#7a8796, #c9c4b4 46%, #4a6a80 46%, #1d3a52)');
+  CM.mk('path', { d: 'M1500 500 Q1700 470 1920 480 L1920 500Z', fill: '#8a8a6a' }, fz);
+  const sh = Array.from({ length: 9 }, (_, i) => { const g = CM.mk('g', {}, fz); CM.ship(g, '#59606b'); return { g, x: 100 + (i % 5) * 300, y: 520 + Math.floor(i / 5) * 50, s: .35 + Math.floor(i / 5) * .1 }; });
+  const lc = Array.from({ length: 6 }, (_, i) => ({ g: CM.lcvp(fz), x: -200 - i * 260, y: 760 + (i % 3) * 100 }));
+  const ap = Array.from({ length: 6 }, (_, i) => CM.fighter(fz, i % 2 ? '#6b7a5a' : '#4a5f7a', i % 2 ? 'roundel' : 'star'));
+  gm.onFrame($('fleet'), (l, info) => { const d = info.time - 3.6;
+    sh.forEach(o => o.g.setAttribute('transform', `translate(${o.x + d * 14} ${o.y}) scale(${o.s})`)); lc.forEach((o, i) => o.g.setAttribute('transform', `translate(${o.x + d * 230} ${o.y + Math.sin(d * 3 + i) * 6}) scale(.8)`));
+    ap.forEach((p, i) => p.setAttribute('transform', `translate(${-200 + d * 380 - (i % 3) * 300} ${110 + i * 45}) scale(.6)`)); });
+  CM.head(H, tl, 'EL <em>DÍA D</em>', '6 de junio de 1944 · Normandía', 4.3, 12.6); tl.from($('fleet'), { opacity: 0, duration: .3 }, 3.6);
+  const n150 = CM.text($('fleet'), 'mid', '<b>+150.000</b> soldados aliados', 260); tl.from(n150, { y: 30, opacity: 0, duration: .35 }, W('ciento') - .3);
+  /* D-Day: the beach */
+  CM.battle($('beach'), { id: 'dd', left: 'US44', right: 'DE2', terrain: 'beach', hedgehogs: true, t0: 12.6, t1: 22.2, n: 8, falls: [1, 4], mg: true, def: 4, artillery: [12.9, 14.0, 15.2, 16.4, 17.6], outcome: { type: 'flag', at: W('tomaron') - .2 }, pan: [0, -1280] });
+  CM.head(H, tl, 'LA MAYOR INVASIÓN <em>POR MAR</em>', 'Omaha, Utah, Gold, Juno y Sword', 12.9, 22.2); tl.from($('beach'), { opacity: 0, duration: .3 }, 12.6);
+  /* map: second front, Paris, Bagration */
+  const m = CM.map($('map'), geo); tl.set(m.g, { x: 960 - 840 * 1.3, y: 540 - 520 * 1.3, scale: 1.3 }, 0);
+  m.color(tl, ['ALEMANIA', 'ESLOVAQUIA', 'POLONIA', 'FRANCIA', 'PAÍSES BAJOS', 'BÉLGICA', 'DINAMARCA', 'NORUEGA', 'BÁLTICOS', 'YUGOSLAVIA', 'GRECIA', 'HUNGRÍA'], C.central, 0, .01)
+   .color(tl, ['REINO UNIDO', 'URSS', 'ITALIA', 'RUMANÍA', 'BULGARIA'], C.allies, 0, .01).color(tl, 'FINLANDIA', '#6f7684', 0, .01);
+  m.line(tl, 'diaD', 22.4, { color: '#2f6fcf', width: 14, arrow: true, dur: 1 }); m.color(tl, 'FRANCIA', C.allies, W('parís') - .2);
+  m.pin(tl, 'París', 'PARÍS LIBERADA', W('parís') - .2, 32.6, { size: 28 });
+  CM.head(H, tl, 'UN <em>SEGUNDO FRENTE</em>', 'agosto de 1944 · París, liberada', 22.5, 25.4);
+  m.line(tl, 'bagration', W('este') - .3, { color: '#FFD23F', width: 16, arrow: true, dur: 1.6 }); m.color(tl, ['BÁLTICOS'], C.allies, W('polonia') - .2);
+  CM.head(H, tl, 'EL FRENTE <em>DEL ESTE</em>', 'el Ejército Rojo avanza hacia Polonia', 25.6, 32.6);
+  CM.tanks($('bag'), 30.4, { n: 3, inf: 'SU', ww2: { color: '#4f5a3a', mark: 'star', markC: '#c0392b' }, sky: 'linear-gradient(#93a6b6, #ddd2ad)', ground: '#5a6a34' });
+  CM.head(H, tl, 'OPERACIÓN <em>BAGRATIÓN</em>', 'junio – agosto de 1944', 32.9, 39.0); tl.from($('bag'), { opacity: 0, duration: .3 }, 32.6);
+  /* Battle of the Bulge: the attack fails, Germans pushed back */
+  CM.battle($('bulge'), { id: 'bu', left: 'US44', right: 'DE2', terrain: 'snow', t0: 39.0, t1: 46.8, n: 7, falls: [], mg: true, artillery: [39.4, 40.6, 41.8, 43.0], outcome: { type: 'retreat', at: W('fracasó') - .3 }, pan: [0, -1280] });
+  CM.head(H, tl, 'LA BATALLA DE <em>LAS ARDENAS</em>', 'diciembre 1944 – enero 1945 · Bastoña resiste', 39.3, 46.6); tl.from($('bulge'), { opacity: 0, duration: .3 }, 39.0);
+  /* bombers */
+  const bz = CM.svgIn($('bomb'), 'linear-gradient(#556372, #b9a88c)'); for (let i = 0; i < 20; i++) { const h = 120 + gm.random('bh' + i) * 200; CM.mk('rect', { x: i * 100, y: 1080 - h, width: 92, height: h, fill: '#2f3238' }, bz); }
+  CM.mk('rect', { x: 1400, y: 760, width: 40, height: 320, fill: '#2a2c30' }, bz); CM.mk('rect', { x: 1480, y: 720, width: 40, height: 360, fill: '#2a2c30' }, bz);
+  const bb = Array.from({ length: 6 }, (_, i) => { const g = CM.mk('g', {}, bz); const f = CM.fighter(g, i % 2 ? '#6b7a5a' : '#8a9099', i % 2 ? 'roundel' : 'star'); return g; });
+  const bex = [47.6, 48.4, 49.3, 50.1, 51.0, 51.8].map((t, i) => CM.explosion(bz, 260 + i * 270, 930, t, 1, 'bb' + i));
+  gm.onFrame($('bomb'), (l, info) => { const d = info.time - 46.6; bb.forEach((g, i) => g.setAttribute('transform', `translate(${-300 + d * 360 + (i % 3) * 220} ${120 + Math.floor(i / 3) * 110 + (i % 3) * 30}) scale(1.1)`)); bex.forEach(f => f(info.time)); });
+  CM.head(H, tl, 'BOMBARDEOS <em>ALIADOS</em>', 'ciudades y fábricas alemanas', 46.9, 52.6); tl.from($('bomb'), { opacity: 0, duration: .3 }, 46.6);
+  /* Berlin */
+  m.zoom(tl, 'Berlín', 2.2, 52.6, .01); m.line(tl, 'berlinE', 53.2, { color: '#c0392b', width: 14, arrow: true, dur: 1 }); m.line(tl, 'berlinW', 53.8, { color: '#2f6fcf', width: 14, arrow: true, dur: 1 });
+  m.pin(tl, 'Berlín', 'BERLÍN', 53.4, null, { size: 32, fill: '#E5484D' });
+  CM.head(H, tl, 'LA BATALLA DE <em>BERLÍN</em>', 'abril – mayo de 1945', 53.1, 56.4);
+  CM.battle($('ber'), { id: 'be', left: 'SU', right: 'DE2', terrain: 'ruins', t0: 56.4, t1: 63.3, n: 7, falls: [], mg: true, artillery: [56.6, 57.6, 58.6], outcome: { type: 'flag', at: W('bandera') - .4 }, pan: [0, -1280] });
+  const h30 = CM.text($('ber'), 'mid', '30 de abril: <b>Hitler se suicida</b>', 380); tl.from(h30, { y: 30, opacity: 0, duration: .35 }, W('suicidó') - .4).to(h30, { opacity: 0, duration: .25 }, W('bandera') - .5);
+  CM.head(H, tl, 'LA BANDERA ROJA <em>SOBRE EL REICHSTAG</em>', 'Berlín, 1945', 56.7, 63.1); tl.from($('ber'), { opacity: 0, duration: .3 }, 56.4);
+  /* VE Day */
+  const vz = CM.svgIn($('ve'), 'linear-gradient(#4f86c4, #e7dcc0)'); CM.mk('rect', { y: 840, width: 1920, height: 240, fill: '#6a6a60' }, vz);
+  const crowd = Array.from({ length: 16 }, (_, i) => CM.civil(vz, 80 + i * 118, 860 + (i % 3) * 30, 1.2, ['#3a3f48', '#6a3a3a', '#3a5a6a', '#5a4a3a'][i % 4]));
+  gm.onFrame($('ve'), (l, info) => crowd.forEach((c, i) => c.setAttribute('transform', `translate(${80 + i * 118} ${860 + (i % 3) * 30 - Math.abs(Math.sin(info.time * 4 + i)) * 26}) scale(1.2)`)));
+  const ve = CM.text($('ve'), 'big', '8 · 5 · <em>1945</em>', 230, 'font-size:150px'), ve2 = CM.text($('ve'), 'mid', 'Alemania se rinde <b>sin condiciones</b>', 430);
+  tl.from($('ve'), { opacity: 0, duration: .3 }, 63.1).from(ve, { scale: 1.3, opacity: 0, duration: .5, ease: 'expo.out' }, 63.3).from(ve2, { y: 30, opacity: 0, duration: .35 }, W('condiciones') - .6);
+  CM.head(H, tl, 'FIN DE LA GUERRA <em>EN EUROPA</em>', '', W('terminado') - 1.2, 70.0);
+  /* Pacific: island hopping */
+  const pm = CM.map($('pmap'), pac); tl.from($('pmap'), { opacity: 0, duration: .3 }, 69.9);
+  tl.set(pm.g, { x: 960 - 780 * 1.15, y: 540 - 640 * 1.15, scale: 1.15 }, 0); pm.color(tl, 'JAPÓN', C.central, 0, .01).color(tl, ['ESTADOS UNIDOS', 'AUSTRALIA'], C.allies, 0, .01).color(tl, ['SUDESTE ASIÁTICO', 'CHINA'], '#7a5a5a', 0, .01);
+  pm.line(tl, 'islas1', W('isla') - .4, { color: '#FFD23F', width: 10, arrow: true, dur: 1.2 }); pm.line(tl, 'islas2', W('isla', 2) - .2, { color: '#FFD23F', width: 10, arrow: true, dur: 1.2 });
+  pm.pin(tl, 'Iwo Jima', 'IWO JIMA', W('iwo') - .2, null, { size: 26 }); pm.pin(tl, 'Okinawa', 'OKINAWA', W('okinawa') - .2, null, { size: 26, dy: -40 });
+  CM.head(H, tl, 'ISLA POR <em>ISLA</em>', 'el Pacífico, 1944 – 1945', 70.3, 78.4);
+  /* Iwo Jima: the flag */
+  CM.battle($('iwo'), { id: 'iw', left: 'US44', right: 'JP', terrain: 'beach', sky: ['#7d8a96', '#d8cdb4'], t0: 78.4, t1: 85.8, n: 7, falls: [], mg: true, artillery: [78.6, 79.6], outcome: { type: 'flag', at: W('levantando') - .4 }, pan: [0, -1280] });
+  CM.head(H, tl, '<em>IWO JIMA</em>', '23 de febrero de 1945 · la bandera en el monte Suribachi', 78.7, 85.6); tl.from($('iwo'), { opacity: 0, duration: .3 }, 78.4);
+  /* kamikaze */
+  const kz = CM.svgIn($('kam'), 'linear-gradient(#5d7d9e, #d8c8a8 52%, #2f5d86 52%, #0f2f50)'); const ship = CM.mk('g', { transform: 'translate(1100 640) scale(.9)' }, kz); CM.carrier(ship, '#59606b');
+  const kp = [0, 1, 2].map(() => CM.fighter(kz, '#c9c3a8', 'sun')), kt = [86.6, 88.4, 90.2];
+  const flak = Array.from({ length: 14 }, (_, i) => CM.mk('circle', { r: 16, fill: '#3a3a3a', opacity: 0 }, kz));
+  const kx = kt.map((t, i) => CM.explosion(kz, i === 1 ? 1300 : 900 + i * 60, 600, t + 1.5, i === 1 ? 1 : .7, 'kz' + i));
+  gm.onFrame($('kam'), (l, info) => { const t = info.time; kp.forEach((p, i) => { const k = gm.clamp((t - kt[i]) / 1.5), x = 200 + k * (i === 1 ? 1100 : 760 + i * 30), y = 120 + k * 480; p.setAttribute('transform', `translate(${x} ${y}) rotate(${20 + k * 12}) scale(.75)`); p.setAttribute('opacity', t < kt[i] + 1.5 ? 1 : 0); });
+    flak.forEach((f, i) => { const ph = (t * 1.3 + i * .37) % 1; f.setAttribute('cx', 300 + (i * 131) % 1500); f.setAttribute('cy', 140 + (i * 77) % 300); f.setAttribute('opacity', (1 - ph) * .6); f.setAttribute('r', 10 + ph * 26); }); kx.forEach(f => f(t)); });
+  CM.head(H, tl, 'LOS <em>KAMIKAZES</em>', 'Okinawa, 1945', 86.0, 92.9); tl.from($('kam'), { opacity: 0, duration: .3 }, 85.6);
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

@@ -12,6 +12,12 @@ Eslogan: "Un mundo de cosas por descubrir". Narración en español, 9:16.
   - **Serie "¿Y si…?"** (hipotéticos): 25–35 s, máximo 40. Los dos primeros, de 50–62 s, perdieron a casi toda la audiencia antes de la mitad.
   - **Resto de vídeos** (curiosidades, historia, animales, misterios…): hasta 1 minuto (unos 50–60 s).
   - Todas las demás reglas de retención valen para los dos tipos.
+  - **Vídeos largos de historia para YouTube:** siempre de unos **10 minutos**, en 16:9 (1920×1080), divididos en capítulos.
+    Reutiliza `youtube/primera-guerra-mundial/lib/` (uniformes por país, batallas que terminan dentro de la trinchera enemiga
+    cuerpo a cuerpo y sin sangre, mapas, tanques, aviones, barcos, subtítulos) y su flujo: `render_all.sh`, `paquete.md`,
+    descripción con capítulos, portada de 1280×720, pantalla final de 20 s y resumen de 1 minuto para TikTok.
+  - **Serie en curso:** "La historia en 10 minutos". Hecho: Primera Guerra Mundial. Siguiente: Segunda Guerra Mundial. Para después,
+    ver qué batalla piden más en los comentarios.
 - **Fotograma 0:** acción visual fuerte y el dato más impactante, con número, ya en pantalla. Nada de intros, logos ni títulos lentos. La frase gancho se oye dentro de los primeros 2 s.
 - **Ritmo:** un cambio de escena o movimiento cada 2–4 s (corte, zoom, texto animado).
 - **Subtítulos:** grandes (unos 90 px), palabra a palabra con píldora amarilla, centrados a unos 1250 px de alto, fuera de la interfaz de TikTok (abajo y a la derecha).

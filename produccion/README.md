@@ -46,6 +46,11 @@ Salen de las métricas de los dos primeros vídeos publicados:
 
 Casi todas las vistas vienen de "Para ti", así que el problema es la retención, no la distribución. Por eso, los vídeos de la serie **"¿Y si…?" duran 25–35 s** y **el resto, hasta 1 minuto**. En todos, el gancho llega en los primeros 2 s, hay un cambio visual cada 2–4 s, los subtítulos son grandes y van palabra a palabra, y el cierre es una pregunta directa.
 
+## Vídeos largos de historia (YouTube)
+- **Duración:** siempre unos **10 minutos**, en 16:9 y por capítulos.
+- **Modelo:** `youtube/primera-guerra-mundial/`, con su librería de animación, la música por secciones (`tools/musica_historia.py`), la portada, la pantalla final y el resumen de 1 minuto para TikTok.
+- **Serie:** "La historia en 10 minutos". La siguiente es la Segunda Guerra Mundial.
+
 ## Guía de estilo
 
 - **Paleta:**

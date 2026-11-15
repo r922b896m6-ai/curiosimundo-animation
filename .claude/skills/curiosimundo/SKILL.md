@@ -8,12 +8,15 @@ description: Reglas del canal de TikTok CURIOSIMUNDO para guiones, narración, s
 Eslogan: "Un mundo de cosas por descubrir". Narración en español, 9:16.
 
 ## Retención (obligatorio, según las métricas de los primeros vídeos)
-- **Duración:** 25–35 s (máximo 40). Los vídeos de 50–62 s perdieron a casi toda la audiencia antes de la mitad (solo el 20–38 % seguía a los 5 s).
+- **Duración:** depende del tipo de vídeo (decisión del dueño del canal, 15 de noviembre de 2026):
+  - **Serie "¿Y si…?"** (hipotéticos): 25–35 s, máximo 40. Los dos primeros, de 50–62 s, perdieron a casi toda la audiencia antes de la mitad.
+  - **Resto de vídeos** (curiosidades, historia, animales, misterios…): hasta 1 minuto (unos 50–60 s).
+  - Todas las demás reglas de retención valen para los dos tipos.
 - **Fotograma 0:** acción visual fuerte y el dato más impactante, con número, ya en pantalla. Nada de intros, logos ni títulos lentos. La frase gancho se oye dentro de los primeros 2 s.
 - **Ritmo:** un cambio de escena o movimiento cada 2–4 s (corte, zoom, texto animado).
 - **Subtítulos:** grandes (unos 90 px), palabra a palabra con píldora amarilla, centrados a unos 1250 px de alto, fuera de la interfaz de TikTok (abajo y a la derecha).
 - **Cierre:** pregunta directa al público ("¿Qué harías tú…? Te leo en comentarios.").
-- **Serie:** "¿Y si…?" en el título o la descripción siempre que encaje.
+- **Serie:** "¿Y si…?" solo para escenarios hipotéticos. No fuerces el "¿Y si…?" en una curiosidad, porque cambiaría la duración que le toca.
 - **Hashtags:** `#curiosidades #curiosidadesdelmundo #curiosidadesaleatorias #curiosidadesentiktok #curiosimundo` y uno del tema. Sin #fyp ni #viral.
 
 ## Estilo

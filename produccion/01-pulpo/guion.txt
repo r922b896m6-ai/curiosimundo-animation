@@ -1,7 +1,12 @@
-# CURIOSIMUNDO · 01 · ¿Y si pensaras con los brazos? (pulpo)
-# rate|pitch|pausa|texto  (una línea = una escena; objetivo 25–35 s)
-+12%|+3Hz|0.2|Tres corazones. Sangre azul. Y piensa con los brazos.
-+10%|+0Hz|0.2|Dos corazones mueven la sangre por las branquias y el tercero, por el resto del cuerpo… y se para cuando nada.
-+9%|+0Hz|0.2|Su sangre es azul porque usa cobre, no hierro, para llevar el oxígeno.
-+9%|+2Hz|0.25|Y de sus quinientos millones de neuronas, la mayoría está en sus ocho brazos: cada uno reacciona solo… y saborea lo que toca.
-+7%|+4Hz|0|Si pudieras tener uno de sus poderes, ¿cuál elegirías? Te leo en comentarios.
+# CURIOSIMUNDO · 01 · El pulpo
+# rate|pitch|pausa|texto  (una línea = una escena; se locuta por separado para variar ritmo y tono)
++12%|+3Hz|0.3|Tres corazones. Sangre azul. Y piensa con los brazos.
++5%|+0Hz|0.3|Es el pulpo, y es más raro de lo que crees.
++6%|+0Hz|0.25|Primero, los corazones: dos bombean sangre a las branquias y el tercero, al resto del cuerpo.
++7%|+2Hz|0.35|Y aquí viene lo curioso: ese tercer corazón deja de latir cuando nada. Por eso los pulpos prefieren arrastrarse.
++5%|+0Hz|0.35|Su sangre es azul porque transporta el oxígeno con cobre en lugar de hierro, gracias a una proteína llamada hemocianina.
++4%|+2Hz|0.3|Pero lo más alucinante es su cerebro… o mejor dicho, sus cerebros.
++6%|+0Hz|0.3|Tiene unos quinientos millones de neuronas, y la mayoría no está en la cabeza, sino repartida por sus ocho brazos.
++7%|+2Hz|0.35|Cada brazo puede reaccionar por su cuenta… y hasta saborear lo que toca con sus ventosas.
++6%|+0Hz|0.35|Cambia de color y de textura en un instante, y puede colarse por cualquier hueco por donde quepa su pico, la única parte dura de su cuerpo.
++4%|+3Hz|0|Si pudieras tener uno de sus poderes, ¿cuál elegirías? Te leo en los comentarios.

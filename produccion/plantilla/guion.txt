@@ -1,7 +1,7 @@
 # CURIOSIMUNDO · NN · TEMA
-# rate|pitch|pausa|texto  (una línea = una escena; objetivo 25–35 s, máximo 40)
+# rate|pitch|pausa|texto  (una línea = una escena; "¿Y si…?": 25–35 s, máx. 40 · resto: hasta 60 s)
 # regla: el dato más impactante, con número, en la PRIMERA línea; cierre con pregunta directa
 # gancho: rápido y agudo (+10%|+3Hz); explicación: normal (+5%|+0Hz); dato serio: lento y grave (-5%|-3Hz); cierre: cercano (+4%|+3Hz)
-+12%|+3Hz|0.2|¿Y si…? Dato más impactante con número, en menos de 2 segundos.
++12%|+3Hz|0.2|Dato más impactante con número, en menos de 2 segundos.
 +5%|+0Hz|0.3|Desarrollo, una idea por línea.
 +4%|+3Hz|0|¿Qué harías tú…? Te leo en comentarios.

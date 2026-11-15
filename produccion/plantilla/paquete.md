@@ -1,6 +1,6 @@
 # CURIOSIMUNDO · Vídeo NN · TEMA
 
-**Categoría:** · **Duración (25–35 s):** · **Formato:** 9:16 (1080×1920)
+**Categoría:** · **Duración ("¿Y si…?" 25–35 s · resto hasta 60 s):** · **Formato:** 9:16 (1080×1920)
 **Publicación prevista:** · **Estado:**
 
 Para regenerar la voz y los subtítulos: `tools/producir.sh produccion/NN-tema`

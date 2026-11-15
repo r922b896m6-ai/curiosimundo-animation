@@ -28,7 +28,7 @@ reels/               ← vídeos animados con givemotion (HTML → MP4)
 1. **Elegir el tema** del calendario y crear la carpeta: `cp -r produccion/plantilla produccion/02-venus`.
 2. **Investigar y verificar** cada dato con al menos una fuente fiable (NASA, ESA, revistas científicas, museos, universidades). Apunta las fuentes en la tabla de control de calidad del paquete.
 3. **Escribir `guion.txt`:** una línea por escena con el formato `velocidad|tono|pausa|texto`, por ejemplo `+6%|+2Hz|0.3|Y aquí viene lo curioso…`.
-4. **Generar la voz y los subtítulos:** `tools/producir.sh produccion/02-venus`. Si el resultado pasa de 35 s, recorta el guion y repite.
+4. **Generar la voz y los subtítulos:** `tools/producir.sh produccion/02-venus`. Si pasa del límite (35 s en "¿Y si…?" o 60 s en el resto), recorta el guion y repite.
 5. **Completar `paquete.md`** con los tiempos reales de `escenas.md`: escenas, prompts, música, descripción, hashtags y portada.
 6. **Animar:**
    - **Opción A:** en este repositorio con givemotion, como los reels de `reels/`. Pídeselo a Claude: "anima el vídeo 02".
@@ -44,7 +44,7 @@ Salen de las métricas de los dos primeros vídeos publicados:
 | "¿Y si respiráramos bajo el agua?" | 50 s | 55 % | 38 % | 9 % | 0 |
 | "¿Y si desapareciera la Luna?" | 62 s | 43 % | 20 % | 2 % | 0 |
 
-Casi todas las vistas vienen de "Para ti", así que el problema es la retención, no la distribución. Por eso, ahora los vídeos duran **25–35 s**, el gancho llega en los primeros 2 s, hay un cambio visual cada 2–4 s, los subtítulos son grandes y van palabra a palabra, y el cierre es una pregunta directa.
+Casi todas las vistas vienen de "Para ti", así que el problema es la retención, no la distribución. Por eso, los vídeos de la serie **"¿Y si…?" duran 25–35 s** y **el resto, hasta 1 minuto**. En todos, el gancho llega en los primeros 2 s, hay un cambio visual cada 2–4 s, los subtítulos son grandes y van palabra a palabra, y el cierre es una pregunta directa.
 
 ## Guía de estilo
 
@@ -69,7 +69,7 @@ Casi todas las vistas vienen de "Para ti", así que el problema es la retención
   - **Gancho hablado:** dentro de los 2 primeros segundos.
   - **Ritmo:** un cambio de escena o movimiento cada 2–4 s (corte, zoom, texto animado).
   - **Final:** pregunta directa al público ("¿Qué harías tú…? Te leo en comentarios.").
-- **Formato de serie:** "¿Y si…?" en el título o la descripción siempre que el tema lo permita.
+- **Formato de serie:** "¿Y si…?" para los escenarios hipotéticos (25–35 s). Las curiosidades llevan su propio título y pueden durar hasta 1 min.
 - **Hashtags:** `#curiosidades` `#curiosidadesdelmundo` `#curiosidadesaleatorias` `#curiosidadesentiktok` `#curiosimundo` y uno del tema. Evita #fyp y #viral.
 - **Marca:** el logo CURIOSIMUNDO en blanco y amarillo en el cierre, siempre en la misma posición.
 - **Voz:** `es-MX-JorgeNeural` frase a frase. Más rápida y aguda en los ganchos y lo divertido; más lenta y grave en lo serio.
@@ -82,7 +82,7 @@ Casi todas las vistas vienen de "Para ti", así que el problema es la retención
 - [ ] Ortografía y gramática revisadas, incluidas tildes y signos ¿ ¡.
 - [ ] La narración coincide con la escena que se ve (comprobar con `escenas.md`).
 - [ ] Los subtítulos están sincronizados y no tapan nada importante.
-- [ ] Duración entre 25 y 35 s (máximo 40).
+- [ ] Duración: "¿Y si…?" entre 25 y 35 s (máximo 40); el resto, hasta 60 s.
 - [ ] Dato con número en pantalla en el fotograma 0 y gancho hablado antes de los 2 s.
 - [ ] Cambio visual cada 2–4 s; termina con una pregunta directa.
 - [ ] Música libre de derechos o de la biblioteca comercial de TikTok.

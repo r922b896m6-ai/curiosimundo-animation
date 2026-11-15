@@ -47,6 +47,6 @@ Loop: plan a shot list (time, what is on screen, camera, transition per scene) �
 <!-- givemotion:end -->
 
 # Canal CURIOSIMUNDO
-Para cualquier vídeo, guion o calendario de CURIOSIMUNDO, sigue `.claude/skills/curiosimundo/SKILL.md` (duración 25–35 s, dato con
+Para cualquier vídeo, guion o calendario de CURIOSIMUNDO, sigue `.claude/skills/curiosimundo/SKILL.md` (duración: "¿Y si…?" 25–35 s, el resto hasta 1 min; dato con
 número en el fotograma 0, cambio visual cada 2–4 s, subtítulos grandes palabra a palabra, pregunta directa al final, serie "¿Y si…?",
 hashtags del canal). Flujo y guía: `produccion/README.md`.

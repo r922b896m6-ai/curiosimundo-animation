@@ -5,24 +5,24 @@
 **Hora de publicación sugerida:** 19:00 (tu hora local), siempre la misma para crear hábito. Es un punto de partida, no un dato: tras 2 semanas, revisa en TikTok Analytics → Seguidores → "Actividad de los seguidores" y mueve la hora al pico real de tu audiencia.
 
 **Reglas (actualizadas el 15 de noviembre por las métricas de retención; ver `README.md`):**
-- **Duración:** **25–35 s** (máximo 40).
+- **Duración:** la serie **"¿Y si…?" dura 25–35 s** (máximo 40); **el resto, hasta 1 minuto**.
 - **Gancho:** con número en el fotograma 0.
 - **Ritmo:** un cambio visual cada 2–4 s.
 - **Final:** pregunta directa.
-- **Serie:** "¿Y si…?" cuando encaje.
+- **Serie:** "¿Y si…?" solo en los escenarios hipotéticos.
 - **Hashtags:** `#curiosidades #curiosidadesdelmundo #curiosidadesaleatorias #curiosidadesentiktok #curiosimundo` y uno del tema.
 - **Variedad:** una categoría distinta cada día.
 - **Temas recientes que no se repiten:** respirar bajo el agua, la Luna desaparece y las trincheras.
 
-| Día | Fecha | Categoría | Título | Gancho (fotograma 0 + menos de 2 s) | Estado |
-|---|---|---|---|---|---|
-| 1 | lun 16 | Experimento mental | ¿Y si la Tierra dejara de girar? 🌍 | **+1.600 KM/H** · "Si la Tierra dejara de girar ahora mismo…" | ✅ **Vídeo terminado** (`02-tierra-sin-girar/out/`) |
-| 2 | mar 17 | Animales | ¿Y si pensaras con los brazos? 🐙 | **3 CORAZONES** · "Tres corazones. Sangre azul." | Guion (28 s), voz y subtítulos listos (`01-pulpo/`); falta animar |
-| 3 | mié 18 | Universo | ¿Y si un día durara más que un año? (Venus) | **243 > 225** · "En Venus, un día dura más que un año." | Pendiente |
-| 4 | jue 19 | Historia | Cleopatra está más cerca de ti que de las pirámides | **2.500 AÑOS** · "Cleopatra vivió más cerca de la llegada a la Luna que de las pirámides." | Pendiente |
-| 5 | vie 20 | Ciencia | ¿Y si doblaras un papel 42 veces? | **42 DOBLECES = LA LUNA** · "Dobla un papel 42 veces… y llegas a la Luna." | Pendiente |
-| 6 | sáb 21 | Misterios | La señal "Wow!": 72 segundos sin explicación | **72 SEGUNDOS** · "En 1977 llegó una señal del espacio… y nunca volvió." | Pendiente |
-| 7 | dom 22 | Experimento mental | ¿Y si cayeras por un agujero que atraviesa la Tierra? | **38 MINUTOS** · "Saltas por un túnel que cruza la Tierra… y llegas en 38 minutos." | Pendiente |
+| Día | Fecha | Categoría | Título | Duración | Gancho (fotograma 0 + menos de 2 s) | Estado |
+|---|---|---|---|---|---|---|
+| 1 | lun 16 | Experimento mental | ¿Y si la Tierra dejara de girar? 🌍 | 25–35 s | **+1.600 KM/H** · "Si la Tierra dejara de girar ahora mismo…" | ✅ **Vídeo terminado** (`02-tierra-sin-girar/out/`) |
+| 2 | mar 17 | Animales | El animal que piensa con los brazos 🐙 | ≤ 1 min | **3 CORAZONES** · "Tres corazones. Sangre azul." | Guion (58,6 s), voz y subtítulos listos (`01-pulpo/`); falta animar |
+| 3 | mié 18 | Universo | El planeta donde un día dura más que un año (Venus) | ≤ 1 min | **243 > 225** · "En Venus, un día dura más que un año." | Pendiente |
+| 4 | jue 19 | Historia | Cleopatra está más cerca de ti que de las pirámides | ≤ 1 min | **2.500 AÑOS** · "Cleopatra vivió más cerca de la llegada a la Luna que de las pirámides." | Pendiente |
+| 5 | vie 20 | Ciencia | ¿Y si doblaras un papel 42 veces? | 25–35 s | **42 DOBLECES = LA LUNA** · "Dobla un papel 42 veces… y llegas a la Luna." | Pendiente |
+| 6 | sáb 21 | Misterios | La señal "Wow!": 72 segundos sin explicación | ≤ 1 min | **72 SEGUNDOS** · "En 1977 llegó una señal del espacio… y nunca volvió." | Pendiente |
+| 7 | dom 22 | Experimento mental | ¿Y si cayeras por un agujero que atraviesa la Tierra? | 25–35 s | **38 MINUTOS** · "Saltas por un túnel que cruza la Tierra… y llegas en 38 minutos." | Pendiente |
 
 El vídeo de los tardígrados pasa a reserva para no repetir dos de naturaleza seguidos.
 
@@ -33,10 +33,10 @@ El vídeo de los tardígrados pasa a reserva para no repetir dos de naturaleza s
 ### Día 1 · ¿Y si la Tierra dejara de girar?
 Vídeo terminado: `02-tierra-sin-girar/out/tierra-sin-girar.mp4`. Paquete y fuentes en `02-tierra-sin-girar/paquete.md`.
 
-### Día 2 · ¿Y si pensaras con los brazos? (pulpo)
+### Día 2 · El animal que piensa con los brazos (pulpo)
 Paquete completo en `01-pulpo/paquete.md`.
 
-### Día 3 · ¿Y si un día durara más que un año? (Venus)
+### Día 3 · El planeta donde un día dura más que un año (Venus)
 - **Idea central:**
   - Venus tarda unos 243 días terrestres en girar sobre sí mismo y unos 225 en dar la vuelta al Sol. Su rotación dura más que su año.
   - Además gira al revés: allí el Sol saldría por el oeste.
@@ -83,7 +83,7 @@ Paquete completo en `01-pulpo/paquete.md`.
 - **Final:** "¿Te tirarías? ¿A qué país llegarías?"
 - **Fuentes:** [Phys.org (Klotz 2015)](https://phys.org/news/2015-03-fall-hole-earth.amp) · [Live Science](https://www.livescience.com/50312-how-long-to-fall-through-earth.html) · [arXiv](https://arxiv.org/abs/1308.1342)
 
-### Reserva · ¿Y si pudieras sobrevivir al espacio sin traje? (tardígrado)
+### Reserva · El animal que sobrevivió al espacio sin traje (tardígrado)
 - **Idea central:** en 2007, la misión FOTON-M3 de la ESA expuso tardígrados deshidratados al vacío y a la radiación del espacio durante 12 días. Muchos sobrevivieron y después se reprodujeron con normalidad.
 - **Precisión:**
   - Sobrevivieron en estado deshidratado (criptobiosis), no "activos".

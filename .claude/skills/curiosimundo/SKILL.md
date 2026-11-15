@@ -16,6 +16,11 @@ Eslogan: "Un mundo de cosas por descubrir". Narración en español, 9:16.
     Reutiliza `youtube/primera-guerra-mundial/lib/` (uniformes por país, batallas que terminan dentro de la trinchera enemiga
     cuerpo a cuerpo y sin sangre, mapas, tanques, aviones, barcos, subtítulos) y su flujo: `render_all.sh`, `paquete.md`,
     descripción con capítulos, portada de 1280×720, pantalla final de 20 s y resumen de 1 minuto para TikTok.
+  - **Desenlace de las batallas** (decisión del dueño del canal): en las **batallas de trincheras**, los atacantes entran en la trinchera
+    enemiga y luchan cuerpo a cuerpo. En las que **no son de trincheras** (guerra de movimientos, ciudades, desiertos, playas, mar, aire)
+    no hace falta el cuerpo a cuerpo; varía el desenlace según la historia: enemigos capturados (manos arriba, apuntados por el otro
+    bando), retiradas, rendiciones, avance de tanques, posiciones tomadas, aviones o barcos derribados o hundidos. Siempre sin sangre y
+    con tono informativo.
   - **Serie en curso:** "La historia en 10 minutos". Hecho: Primera Guerra Mundial. Siguiente: Segunda Guerra Mundial. Para después,
     ver qué batalla piden más en los comentarios.
 - **Fotograma 0:** acción visual fuerte y el dato más impactante, con número, ya en pantalla. Nada de intros, logos ni títulos lentos. La frase gancho se oye dentro de los primeros 2 s.

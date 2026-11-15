@@ -1,0 +1,117 @@
+<!doctype html>
+<!--
+  CURIOSIMUNDO · 03 · La Primera Guerra Mundial en 1 minuto (TikTok, 9:16, 60 s) — resumen del vídeo de YouTube.
+  Formato: titular grande arriba, escenas 16:9 del vídeo largo en la franja central (reutiliza lib/cm.js: uniformes,
+  batallas que terminan dentro de la trinchera enemiga cuerpo a cuerpo, mapas), subtítulos grandes palabra a palabra.
+  Reglas: "65.000.000 SOLDADOS" en el fotograma 0, cambio cada 2–4 s, pregunta final + llamada al vídeo de YouTube.
+-->
+<html data-width="1080" data-height="1920" data-fps="30" data-duration="60" data-safe-zone="reels">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script>
+<style>
+  body { background: radial-gradient(1200px 1400px at 50% 40%, #163a78, #071330 75%); }
+  #band { position:absolute; left:0; top:560px; width:1920px; height:1080px; transform: scale(.5625); transform-origin: 0 0; overflow:hidden; z-index:2; }
+  #frame { position:absolute; left:0; top:556px; width:1080px; height:616px; border-top:4px solid #FFD23F; border-bottom:4px solid #FFD23F; z-index:3; pointer-events:none; }
+  .ttl { position:absolute; left:40px; right:40px; top:250px; height:290px; display:flex; align-items:center; justify-content:center; text-align:center; z-index:5;
+         font: 400 118px/.92 'Bebas Neue'; text-shadow: 0 10px 40px rgb(0 0 0 / .6); opacity:0; }
+  .ttl em { font-style:normal; color:#FFD23F; }
+  #vcaps { position:absolute; inset:0; z-index:8; pointer-events:none; }
+  .vc { position:absolute; left:50px; right:50px; top:1240px; text-align:center; isolation:isolate; font: 850 86px/1.1 Inter; letter-spacing:-.02em; }
+  .vc .w { display:inline-block; padding:0 .14em; --hl:0; position:relative; color: color-mix(in oklab, #0B2A5B calc(var(--hl) * 100%), #fff);
+           text-shadow: 0 5px 0 rgb(0 10 40 / calc(.7 - var(--hl) * .7)), 0 8px 30px rgb(0 0 0 / calc(.5 - var(--hl) * .5)); }
+  .vc .pl { position:absolute; left:0; top:.02em; height:1.08em; border-radius:.22em; z-index:-1; background:#FFD23F; }
+  #promo { z-index: 6; }
+</style></head>
+<body>
+<audio src="voz.mp3"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<div id="band">
+  <section class="scene" id="map" data-start="0" data-duration="60"></section>
+  <section class="scene" id="b1" data-start="0" data-duration="5.2"></section>
+  <section class="scene" id="mn" data-start="15.2" data-duration="3.6"></section>
+  <section class="scene" id="gas" data-start="21.2" data-duration="2.9"></section>
+  <section class="scene" id="st" data-start="24.0" data-duration="2.8"></section>
+  <section class="scene" id="vd" data-start="26.6" data-duration="4.1"></section>
+  <section class="scene" id="sm" data-start="30.6" data-duration="4.1"></section>
+  <section class="scene" id="tk" data-start="34.6" data-duration="3.1"></section>
+  <section class="scene" id="us" data-start="40.0" data-duration="2.6"></section>
+  <section class="scene" id="sp" data-start="42.5" data-duration="3.9"></section>
+  <section class="scene" id="arm" data-start="46.3" data-duration="3.1"></section>
+  <section class="scene" id="tol" data-start="49.3" data-duration="3.2"></section>
+</div>
+<div id="frame"></div>
+<section class="scene" id="promo" data-start="52.3" data-duration="7.7"></section>
+<div id="titles"></div><div id="vcaps"></div>
+<script>
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/europa.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, 0), G = { global: true }, tl = gm.timeline(null, G), C = CM.MAPCOL, $ = id => document.getElementById(id);
+  /* titles: one per beat (2–4 s) */
+  const T = [[0, '<em>65.000.000</em><br>SOLDADOS'], [2.6, '1914 – <em>1918</em>'], [5.3, '<em>SARAJEVO</em>, 1914'], [8.0, 'EL HEREDERO DE<br><em>AUSTRIA-HUNGRÍA</em>'],
+    [11.0, 'LAS <em>ALIANZAS</em>'], [13.2, 'ALEMANIA HACIA<br><em>PARÍS</em>'], [15.3, 'BATALLA DEL<br><em>MARNE</em>'], [18.7, '<em>700 KM</em> DE<br>TRINCHERAS'], [21.3, 'BARRO · RATAS<br>· <em>GAS</em>'],
+    [24.1, 'CONTRA LAS<br><em>AMETRALLADORAS</em>'], [26.7, '<em>VERDÚN</em>'], [28.9, '≈ <em>2.000.000</em><br>DE BAJAS'], [30.7, 'EL <em>SOMME</em>'], [32.4, '<em>57.000</em><br>EN UN DÍA'],
+    [34.7, 'TANQUES · AVIONES<br>· <em>SUBMARINOS</em>'], [37.8, '1917: <em>RUSIA</em><br>SALE'], [40.1, 'ESTADOS UNIDOS<br><em>ENTRA</em>'], [42.6, 'LA ÚLTIMA<br><em>OFENSIVA</em>'], [46.4, '11 · 11 · 1918<br><em>11:00</em>'],
+    [49.4, '<em>9–10 MILLONES</em><br>DE SOLDADOS'], [52.4, '']];
+  T.forEach(([at, html], i) => { const h = Object.assign(document.createElement('div'), { className: 'ttl', innerHTML: '<div>' + html + '</div>' }); $('titles').append(h); if (!html) return;
+    const end = T[i + 1] ? T[i + 1][0] : 99;
+    if (at === 0) { h.style.opacity = 1; tl.fromTo(h, { scale: 1.15 }, { scale: 1, duration: .5, ease: 'expo.out' }, 0); }
+    else tl.fromTo(h, { opacity: 0, y: 90, scale: 1.2, filter: 'blur(10px)' }, { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: .3, ease: 'expo.out' }, at);
+    tl.to(h, { opacity: 0, y: -80, duration: .18, ease: 'power2.in' }, end - .18); });
+  /* map (under everything) */
+  const m = CM.map($('map'), geo);
+  m.color(tl, ['FRANCIA', 'RUSIA', 'REINO UNIDO', 'BÉLGICA', 'SERBIA', 'MONTENEGRO'], C.allies, W('alianzas') - .2).color(tl, ['ALEMANIA', 'AUSTRIA-HUNGRÍA'], C.central, W('alianzas') - .2);
+  tl.set(m.g, { x: 960 - 1000 * 2.4, y: 540 - 820 * 2.4, scale: 2.4 }, 0); m.pin(tl, 'Sarajevo', 'SARAJEVO', W('sarajevo') - .2, 11.0, { size: 18, fill: '#E5484D' });
+  m.zoom(tl, [1000, 600], 1.1, 10.9, 1.0); m.zoom(tl, 'Bruselas', 2.4, 13.0, .8);
+  m.line(tl, 'schlieffen1', W('bélgica') - .3, { color: '#E5484D', width: 10, arrow: true, dur: 1, end: 18.7 }); m.pin(tl, 'París', 'PARÍS', W('parís') - .2, 18.7, { size: 18 });
+  m.zoom(tl, [700, 600], 1.5, 18.7, .6); m.line(tl, 'oeste', 18.9, { color: '#1d1d1d', width: 16, dur: 1.4 }); m.line(tl, 'oeste', 19.0, { color: '#FFD23F', width: 6, dash: '14 10', dur: 1.4 });
+  m.zoom(tl, 'Petrogrado', 1.6, 37.6, .6); m.color(tl, 'RUSIA', '#58637a', W('rusia') - .1, .5);
+  /* battles (each ends inside the enemy trench, hand to hand) */
+  CM.battle($('b1'), { id: 'b1', left: 'UK', right: 'DE', terrain: 'dusk', t0: 0, t1: 5.2, n: 8, falls: [3], mg: true, artillery: [.1, 1.2, 2.4, 3.6, 4.6], labels: false, pan: [0, -1280] });
+  CM.battle($('mn'), { id: 'mn', left: 'FR14', right: 'DE14', terrain: 'fields', t0: 15.2, t1: 18.8, n: 8, mg: true, artillery: [15.3, 16.0], melee: { at: 16.6, step: .5, lead: .9 }, pan: [-600, -1280] });
+  const gs = CM.svgIn($('gas'), 'linear-gradient(#6b6f5a, #a8a582)'); CM.mk('rect', { y: 760, width: 1920, height: 320, fill: '#3b2d20' }, gs);
+  const gf = [0, 1, 2].map(i => CM.figure(gs, 'FR', { pack: false, mask: true })), gasF = CM.gas(gs, 21.0, 24.1, { x0: 0, y: 760, sp: 300, n: 18, spread: 500 });
+  gm.onFrame($('gas'), (l, info) => { gasF(info.time); gf.forEach((f, i) => CM.pose(f, { x: 1100 + i * 260, y: 820, s: 1.7, dir: -1 })); });
+  CM.battle($('st'), { id: 'st', left: 'UK14', right: 'DE14', terrain: 'mud', t0: 24.0, t1: 26.8, n: 8, falls: [0, 2, 3, 5], mg: true, artillery: [24.1, 25.0, 25.9], labels: false, pan: [-400, -1100] });
+  CM.battle($('vd'), { id: 'vd', left: 'DE', right: 'FR', terrain: 'mud', sky: ['#4a4e56', '#8c8a80'], t0: 26.6, t1: 30.7, n: 8, falls: [2], mg: true, artillery: [26.7, 27.4, 28.0], melee: { at: 28.4, step: .5, lead: .9 }, pan: [-600, -1280] });
+  CM.battle($('sm'), { id: 'sm', left: 'UK', right: 'DE', terrain: 'fields', t0: 30.6, t1: 34.7, n: 9, falls: [0, 2, 4, 6], mg: true, artillery: [30.7, 31.5], melee: { at: 32.5, step: .5, lead: .9 }, pan: [-500, -1280] });
+  CM.tanks($('tk'), 34.6, { n: 3, inf: 'UK', planes: true });
+  const ub = CM.uboat($('tk').querySelector('svg')); ub.setAttribute('transform', 'translate(1600 180) scale(.5)');
+  const us = CM.svgIn($('us'), 'linear-gradient(#9fb6cc, #e8d9b0)'); CM.mk('rect', { y: 820, width: 1920, height: 260, fill: '#6b7a48' }, us); CM.flag(us, 'US', 1560, 240, 180, 118);
+  const uf = [0, 1, 2, 3, 4].map(() => CM.figure(us, 'US'));
+  gm.onFrame($('us'), (l, info) => uf.forEach((f, i) => CM.pose(f, { x: 300 + (info.time - 40) * 300 - i * 200, y: 860, s: 1.5, dir: 1, run: .45, ph: info.time * 6 + i })));
+  CM.battle($('sp'), { id: 'sp', left: 'DE', right: 'UK', terrain: 'mud', sky: ['#7a7f86', '#c2b9a0'], t0: 42.5, t1: 46.4, n: 8, mg: true, artillery: [42.6, 43.3], melee: { at: 44.2, step: .5, lead: .9, weapons: ['grenade', 'club', 'shovel'] }, pan: [-600, -1280] });
+  const as = CM.svgIn($('arm'), 'linear-gradient(#3a4a3a, #8a9a7a)'); CM.mk('rect', { y: 800, width: 1920, height: 280, fill: '#2f3a2a' }, as);
+  const clk = CM.mk('g', { transform: 'translate(960 470)' }, as); CM.mk('circle', { r: 260, fill: '#f6f1e6', stroke: '#1d1d1d', 'stroke-width': 18 }, clk);
+  for (let i = 0; i < 12; i++) CM.mk('path', { d: 'M0 -230 V-195', stroke: '#1d1d1d', 'stroke-width': 12, transform: `rotate(${i * 30})` }, clk);
+  const hh = CM.mk('path', { d: 'M0 0 V-140', stroke: '#1d1d1d', 'stroke-width': 18, 'stroke-linecap': 'round' }, clk), mh = CM.mk('path', { d: 'M0 0 V-210', stroke: '#c0392b', 'stroke-width': 12, 'stroke-linecap': 'round' }, clk);
+  const e11 = W('once', 2);
+  gm.onFrame($('arm'), (l, info) => { const k = gm.clamp((info.time - 46.3) / (e11 - 46.3)), mins = -5 + k * 5; hh.setAttribute('transform', `rotate(${(11 + mins / 60) * 30})`); mh.setAttribute('transform', `rotate(${mins * 6})`); });
+  const tz = $('tol'); tz.style.background = '#0b0f18'; const grid = document.createElement('div'); grid.style.cssText = 'position:absolute;left:160px;top:200px;width:1600px;display:grid;grid-template-columns:repeat(20,1fr);gap:22px 10px'; tz.append(grid);
+  for (let i = 0; i < 120; i++) { const s = CM.mk('svg', { viewBox: '-30 -24 60 36', width: 64, height: 36 }, grid); CM.mk('path', { d: 'M-28 4 Q0 -4 28 4 Q0 12 -28 4Z M-16 3 Q0 -22 16 3Z', fill: '#9aa3b0' }, s); }
+  tl.from(grid.children, { opacity: 0, y: -10, duration: .2, stagger: .015 }, 49.4);
+  /* promo for the full YouTube video */
+  const pr = $('promo'); pr.style.background = 'radial-gradient(1200px 1400px at 50% 40%, #163a78, #071330 75%)';
+  pr.innerHTML = `<div style="position:absolute;left:0;right:0;top:250px;text-align:center;font:400 104px/.95 'Bebas Neue'">LA HISTORIA COMPLETA<br>EN <span style="color:#FFD23F">YOUTUBE</span></div>
+    <div id="card" style="position:absolute;left:90px;width:900px;top:520px;height:506px;border-radius:26px;overflow:hidden;box-shadow:0 30px 80px rgb(0 0 0 / .6);border:6px solid #fff">
+      <img src="portada.png" style="width:100%;height:100%;object-fit:cover"><div style="position:absolute;left:50%;top:50%;width:170px;height:120px;margin:-60px 0 0 -85px;background:#E5484D;border-radius:30px"></div>
+      <div style="position:absolute;left:50%;top:50%;margin:-32px 0 0 -18px;border-left:62px solid #fff;border-top:34px solid transparent;border-bottom:34px solid transparent"></div>
+      <div style="position:absolute;right:16px;bottom:14px;background:rgb(0 0 0 / .8);padding:6px 12px;border-radius:8px;font:800 30px Inter">10:22</div></div>`;
+  tl.from(pr, { opacity: 0, duration: .3 }, 52.3).from(pr.children[0], { y: 60, opacity: 0, duration: .4, ease: 'expo.out' }, 52.4).from('#card', { scale: .6, opacity: 0, duration: .5, ease: 'back.out(1.6)' }, 52.6)
+    .to('#card', { scale: 1.04, duration: .5, ease: 'sine.inOut', yoyo: true, repeat: 7 }, 53.4);
+  /* vertical captions */
+  const ws = words.map(w => ({ text: w.word, start: w.start, end: w.end })), ph = [[]];
+  ws.forEach((w, i) => { const cur = ph.at(-1), prev = ws[i - 1];
+    if (cur.length && (cur.length === 3 || cur.map(x => x.text).join(' ').length + w.text.length > 16 || w.start - prev.end > .28 || /[.!?,:…]$/.test(prev.text) || /^¿/.test(w.text))) ph.push([]);
+    ph.at(-1).push(w); });
+  const ct = gm.timeline(null, G), els = ph.map(p => { const el = document.createElement('div'); el.className = 'vc'; el.innerHTML = '<i class="pl"></i>' + p.map(w => `<span class="w">${w.text}</span>`).join(' '); $('vcaps').append(el); return el; });
+  return document.fonts.ready.then(() => ph.forEach((p, k) => {
+    const el = els[k], sp = el.querySelectorAll('.w'), pl = el.querySelector('.pl'), nx = ph[k + 1], bx = i => ({ x: sp[i].offsetLeft, width: sp[i].offsetWidth });
+    ct.fromTo(pl, { ...bx(0), scale: .5, opacity: 0 }, { scale: 1, opacity: 1, duration: .16, ease: 'back.out(2)' }, p[0].start - .04);
+    p.forEach((w, i) => { ct.fromTo(sp[i], { opacity: 0, y: 40, scale: .6 }, { opacity: 1, y: 0, scale: 1, duration: .22, ease: 'back.out(2.4)' }, w.start - .06);
+      if (i) ct.to(pl, { ...bx(i), duration: .1, ease: 'power3.out' }, w.start - .08);
+      ct.to(sp[i], { '--hl': 1, duration: .05 }, w.start - .03).to(sp[i], { '--hl': 0, duration: .05 }, p[i + 1] ? p[i + 1].start - .08 : Math.min(w.end + .3, nx ? nx[0].start - .2 : 99)); });
+    ct.to(el, { opacity: 0, duration: .12 }, nx ? nx[0].start - .18 : p.at(-1).end + .7);
+  }));
+}));
+</script>
+</body>
+</html>

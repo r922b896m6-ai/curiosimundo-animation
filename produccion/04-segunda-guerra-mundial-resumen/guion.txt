@@ -1,0 +1,11 @@
+# CURIOSIMUNDO · 04 · La Segunda Guerra Mundial en 1 minuto (resumen del vídeo de YouTube)
+# rate|pitch|pausa|texto  (curiosidad/historia: hasta 60 s)
++14%|+3Hz|0.2|Seis años, entre setenta y ochenta y cinco millones de muertos… la guerra más grande de la historia.
++13%|+0Hz|0.2|En mil novecientos treinta y nueve, Hitler invadió Polonia. Con la guerra relámpago, Alemania conquistó Francia en seis semanas.
++13%|+1Hz|0.2|Gran Bretaña resistió sola, en el aire.
++13%|+0Hz|0.2|En mil novecientos cuarenta y uno, Alemania atacó a la Unión Soviética, y Japón bombardeó Pearl Harbor. Estados Unidos entró en la guerra.
++14%|+1Hz|0.2|Midway y Stalingrado cambiaron el rumbo.
++0%|-3Hz|0.3|Mientras tanto, los nazis asesinaron a unos seis millones de judíos en el Holocausto.
++13%|+1Hz|0.2|En mil novecientos cuarenta y cuatro llegó el Día D. En mayo de mil novecientos cuarenta y cinco cayó Berlín, y Alemania se rindió.
++6%|-2Hz|0.3|En agosto, dos bombas atómicas cayeron sobre Hiroshima y Nagasaki. Japón se rindió el dos de septiembre.
++11%|+4Hz|0|La historia completa está en nuestro canal de YouTube. ¿Qué batalla quieres ver en detalle? Te leo en comentarios.

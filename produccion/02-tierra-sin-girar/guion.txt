@@ -1,0 +1,9 @@
+# CURIOSIMUNDO · 02 · ¿Y si la Tierra dejara de girar?
+# rate|pitch|pausa|texto  (una línea = una escena; objetivo 25–35 s)
++12%|+3Hz|0.2|Si la Tierra dejara de girar ahora mismo… saldrías disparado a más de mil seiscientos kilómetros por hora.
++12%|+2Hz|0.15|Tú, los coches, los edificios… todo seguiría moviéndose hacia el este.
++10%|+1Hz|0.2|Los océanos arrasarían las costas.
++9%|+0Hz|0.2|Y con el tiempo, el agua se iría hacia los polos y dejaría un continente gigante alrededor del ecuador.
++10%|+2Hz|0.25|Ah, y un día duraría un año: seis meses de sol… y seis meses de noche.
++8%|+1Hz|0.2|Tranquilo, es prácticamente imposible.
++7%|+4Hz|0|Pero dime: ¿qué harías tú con seis meses de noche? Te leo en comentarios.

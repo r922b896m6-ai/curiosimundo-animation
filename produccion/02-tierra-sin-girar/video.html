@@ -1,0 +1,332 @@
+<!doctype html>
+<!--
+  CURIOSIMUNDO · 02 · ¿Y si la Tierra dejara de girar?  (9:16, 32 s)
+  Reglas de retención: dato con número en pantalla desde el fotograma 0, cambio visual cada 2–4 s, subtítulos grandes
+  palabra a palabra en zona segura, pregunta directa al final.
+  LOOK: motion graphics planos. Paleta de marca: azul profundo #0B2A5B → #1565C0, blanco, amarillo #FFD23F
+  (tierra verde/marrón solo en el planeta). Bebas Neue para titulares, Inter 850 para subtítulos.
+
+  BEATS (tiempo de vídeo):
+  0.0  b1  Tierra girando + "+1.600 KM/H" ya en pantalla; en "girar" frena en seco (sacudida).
+  2.5  b2  Ciudad en el ecuador: persona, coche y autobús salen volando hacia el este con líneas de velocidad.
+  6.1  b3  Cortes rápidos: "TÚ" / "LOS COCHES" / "LOS EDIFICIOS" / "TODO → ESTE".
+  10.5 b4  Ola gigante que barre un pueblo costero.
+  12.9 b5  Tierra desde el espacio: el agua fluye a los polos.
+  15.6 b6  Aparece el megacontinente ecuatorial.
+  18.8 b7  "1 DÍA = 1 AÑO": calendario que pasa 12 meses en un día.
+  20.8 b8  Tierra mitad día abrasador / mitad noche helada: "6 MESES ☀ · 6 MESES ☾".
+  23.7 b9  "TRANQUILO": la Tierra vuelve a girar; "prácticamente imposible".
+  26.4 b10 Niño en la línea día/noche con "?": "¿QUÉ HARÍAS TÚ?" + CURIOSIMUNDO.
+-->
+<html data-width="1080" data-height="1920" data-fps="30" data-duration="32" data-safe-zone="reels">
+<head>
+<style>
+  :root { --blue:#0B2A5B; --blue2:#1565C0; --ink:#ffffff; --accent:#FFD23F; --red:#E5484D; --head:"Bebas Neue", Inter, sans-serif; --font: Inter, system-ui, sans-serif; }
+  body { background: var(--blue); color: var(--ink); font-family: var(--font); overflow: hidden; margin: 0; }
+  svg { overflow: visible; }
+  #bg { position:absolute; inset:0; background: radial-gradient(1200px 1000px at 50% 40%, #1565C0 0%, #0B2A5B 70%); }
+  .star { position:absolute; width:4px; height:4px; border-radius:50%; background:#fff; }
+  .scene { z-index: 2; }
+  .hl { position:absolute; left:50px; right:50px; top:290px; margin:0; text-align:center; font-family: var(--head);
+        font-weight:400; font-size:150px; line-height:.9; text-shadow: 0 10px 40px rgb(0 10 40 / .6); }
+  .hl em { font-style:normal; color: var(--accent); }
+  .hl .w { display:inline-block; }
+  .sub { position:absolute; left:60px; right:60px; top:440px; text-align:center; font: 800 46px/1.15 var(--font); letter-spacing:.05em; text-transform:uppercase; color:#cfe3ff; }
+  .sub b { color: var(--accent); }
+  .art { position:absolute; left:0; width:1080px; }
+  #speed { position:absolute; left:0; right:0; top:250px; z-index:4; text-align:center; font: 400 210px/1 var(--head); color: var(--accent); text-shadow: 0 12px 40px rgb(0 10 40 / .6); }
+  #speed small { font-size: 110px; color: #fff; }
+  #series { position:absolute; left:0; right:0; top:470px; z-index:4; text-align:center; font: 800 44px/1.1 var(--font); letter-spacing:.04em; color:#fff; text-shadow: 0 4px 20px rgb(0 10 40 / .8); }
+  #brand { position:absolute; left:0; right:0; top: 1450px; text-align:center; font: 400 84px/1 var(--head); letter-spacing:.14em; }
+  #brand span { color: var(--accent); }
+  #caps { position:absolute; inset:0; z-index: 6; pointer-events:none; }
+  .cap { position:absolute; left:60px; right:60px; top:1250px; text-align:center; isolation:isolate; font-size:92px; font-weight:850; line-height:1.1; letter-spacing:-.02em; }
+  .cap .w { display:inline-block; padding:0 .14em; --hl:0; position:relative; color: color-mix(in oklab, #0B2A5B calc(var(--hl) * 100%), #ffffff);
+            text-shadow: 0 5px 0 rgb(0 10 40 / calc(.7 - var(--hl) * .7)), 0 8px 30px rgb(0 0 0 / calc(.5 - var(--hl) * .5)); }
+  .pill { position:absolute; left:0; top:.02em; height:1.08em; border-radius:.22em; z-index:-1; background: var(--accent); box-shadow: 0 10px 40px rgb(255 210 63 / .45); }
+</style>
+</head>
+<body>
+<audio src="voz.mp3"></audio>
+<audio src="musica.mp3" data-volume="0.55" data-duck="0.45" data-fade-out="1.2"></audio>
+<audio src="sfx.mp3" data-volume="0.75"></audio>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+  <clipPath id="globeClip"><circle r="300"/></clipPath>
+  <radialGradient id="oceanG" cx=".38" cy=".35"><stop offset="0" stop-color="#4FA3F7"/><stop offset="1" stop-color="#1565C0"/></radialGradient>
+  <radialGradient id="atmo"><stop offset=".86" stop-color="#9fd0ff" stop-opacity=".0"/><stop offset=".93" stop-color="#9fd0ff" stop-opacity=".45"/><stop offset="1" stop-color="#9fd0ff" stop-opacity="0"/></radialGradient>
+  <radialGradient id="sunG"><stop offset="0" stop-color="#fff6c8"/><stop offset=".6" stop-color="#FFD23F"/><stop offset="1" stop-color="#ffb020"/></radialGradient>
+  <radialGradient id="sunGlow"><stop offset=".3" stop-color="#FFD23F" stop-opacity=".5"/><stop offset="1" stop-color="#FFD23F" stop-opacity="0"/></radialGradient>
+  <linearGradient id="nightG" x1="0" x2="1"><stop offset=".5" stop-color="#03102a" stop-opacity="0"/><stop offset=".5" stop-color="#03102a" stop-opacity=".78"/></linearGradient>
+  <!-- continents strip, 1200 wide, repeated twice so it can scroll -->
+  <g id="lands" fill="#3fbf7f">
+    <path d="M60 -150 q80 -60 160 -10 q40 60 -20 110 q-60 50 -120 20 q-50 -40 -20 -120z"/><path d="M120 40 q60 -20 90 40 q20 70 -30 140 q-40 30 -60 -30 q-20 -80 0 -150z"/>
+    <path d="M420 -190 q120 -40 220 10 q60 50 -10 90 q-90 30 -170 0 q-70 -40 -40 -100z"/><path d="M460 -50 q70 -10 100 50 q30 90 -40 150 q-60 30 -80 -40 q-20 -100 20 -160z"/>
+    <path d="M760 -120 q90 -40 170 20 q40 60 -30 90 q-80 30 -140 -10 q-40 -50 0 -100z"/><path d="M900 120 q60 -10 90 40 q10 50 -50 60 q-60 0 -60 -50z"/>
+    <path d="M300 230 q120 -30 260 0 q-20 40 -260 20z" fill="#e8f3ff"/><path d="M200 -270 q200 -30 400 0 q-200 30 -400 0z" fill="#e8f3ff"/>
+  </g>
+  <g id="person"><circle cx="0" cy="-74" r="16" fill="#ffd9b0"/><path d="M-16 -56 h32 l6 46 h-44z" fill="#FFD23F"/><path d="M-14 -10 l-6 40 h12 l6 -30 l6 30 h12 l-6 -40z" fill="#0B2A5B"/><path d="M-16 -50 l-26 -20 M16 -50 l26 -24" stroke="#ffd9b0" stroke-width="9" stroke-linecap="round"/></g>
+  <g id="car"><path d="M-90 -10 q0 -30 30 -34 l30 -26 h70 l30 26 q40 4 40 34 v20 h-200z" fill="#E5484D"/><path d="M-22 -64 h56 l22 22 h-96z" fill="#cfe9ff"/><circle cx="-50" cy="12" r="20" fill="#13203a"/><circle cx="60" cy="12" r="20" fill="#13203a"/></g>
+  <g id="bus"><rect x="-150" y="-110" width="300" height="110" rx="16" fill="#FFD23F"/><g fill="#cfe9ff"><rect x="-130" y="-92" width="50" height="40" rx="6"/><rect x="-66" y="-92" width="50" height="40" rx="6"/><rect x="-2" y="-92" width="50" height="40" rx="6"/><rect x="62" y="-92" width="60" height="40" rx="6"/></g><circle cx="-90" cy="6" r="22" fill="#13203a"/><circle cx="90" cy="6" r="22" fill="#13203a"/></g>
+  <g id="house"><path d="M-60 0 v-80 l60 -50 l60 50 v80z" fill="#e8f3ff"/><path d="M-70 -78 l70 -60 l70 60" fill="none" stroke="#E5484D" stroke-width="16" stroke-linejoin="round"/><rect x="-16" y="-44" width="32" height="44" fill="#1565C0"/></g>
+</defs></svg>
+
+<div id="bg"></div>
+<div id="stars"></div>
+
+<!-- persistent hook number (frame 0) -->
+<div id="speed">+1.600 <small>KM/H</small></div>
+<div id="series">¿Y SI LA TIERRA DEJARA DE GIRAR?</div>
+
+<!-- b1 spinning Earth -->
+<section class="scene" id="b1" data-start="0" data-duration="2.65" data-check="carry-ok">
+  <svg class="art" viewBox="-540 -400 1080 800" style="top:600px;height:800px">
+    <circle r="330" fill="url(#atmo)"/>
+    <g clip-path="url(#globeClip)"><circle r="300" fill="url(#oceanG)"/><g id="strip1"><use href="#lands" x="-600"/><use href="#lands" x="600"/></g></g>
+    <path id="arrow1" d="M-360 40 Q0 150 360 40" fill="none" stroke="#FFD23F" stroke-width="14" stroke-linecap="round"/><path id="ahead1" d="M360 40 l-50 -10 l26 40z" fill="#FFD23F"/>
+    <g id="stopmarks" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0"><path d="M-380 -200 l-50 -30"/><path d="M-400 -120 l-60 -6"/><path d="M380 -200 l50 -30"/><path d="M400 -120 l60 -6"/></g>
+  </svg>
+</section>
+
+<!-- b2 city on the equator: everything flies east -->
+<section class="scene" id="b2" data-start="2.5" data-duration="3.75">
+  <svg class="art" viewBox="0 0 1080 800" style="top:600px;height:800px">
+    <g fill="#1d4d8f"><rect x="40" y="300" width="120" height="380"/><rect x="180" y="200" width="150" height="480"/><rect x="360" y="340" width="110" height="340"/><rect x="760" y="240" width="140" height="440"/><rect x="920" y="360" width="130" height="320"/></g>
+    <g fill="#2b6fc4" opacity=".7"><rect x="70" y="330" width="20" height="20"/><rect x="110" y="330" width="20" height="20"/><rect x="210" y="240" width="20" height="20"/><rect x="260" y="240" width="20" height="20"/><rect x="790" y="280" width="20" height="20"/><rect x="840" y="280" width="20" height="20"/></g>
+    <rect x="0" y="680" width="1080" height="400" fill="#0a2149"/><path d="M0 690 H1080" stroke="#FFD23F" stroke-width="6" stroke-dasharray="40 30"/>
+    <text x="960" y="120" text-anchor="end" font-family="Bebas Neue" font-size="64" fill="#FFD23F">ESTE</text><path d="M975 100 h60" stroke="#FFD23F" stroke-width="12" stroke-linecap="round"/><path d="M1035 78 l30 22 l-30 22z" fill="#FFD23F"/>
+    <g id="lines" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity=".8"></g>
+    <g id="flyers"><g id="fPerson"><use href="#person"/></g><g id="fCar"><use href="#car"/></g><g id="fBus"><use href="#bus"/></g></g>
+  </svg>
+</section>
+
+<!-- b3 quick cuts -->
+<section class="scene" id="b3" data-start="6.1" data-duration="4.45">
+  <h2 class="hl" id="c1"><span class="w"><em>TÚ</em></span></h2>
+  <h2 class="hl" id="c2"><span class="w">LOS <em>COCHES</em></span></h2>
+  <h2 class="hl" id="c3"><span class="w">LOS <em>EDIFICIOS</em></span></h2>
+  <h2 class="hl" id="c4"><span class="w">TODO <em>AL ESTE</em></span></h2>
+  <svg class="art" viewBox="0 0 1080 800" style="top:560px;height:800px">
+    <g id="q1" transform="translate(540 420)"><g class="m"><use href="#person" transform="scale(3)"/></g></g>
+    <g id="q2" transform="translate(540 440)"><g class="m"><use href="#car" transform="scale(2.4)"/></g></g>
+    <g id="q3" transform="translate(540 640)"><g class="m"><rect x="-110" y="-520" width="220" height="520" fill="#1d4d8f"/><g fill="#FFD23F"><rect x="-80" y="-480" width="40" height="40"/><rect x="40" y="-480" width="40" height="40"/><rect x="-80" y="-380" width="40" height="40"/><rect x="40" y="-380" width="40" height="40"/><rect x="-80" y="-280" width="40" height="40"/><rect x="40" y="-280" width="40" height="40"/></g></g></g>
+    <g id="q4" transform="translate(540 380)"><g class="m"><circle r="220" fill="none" stroke="#ffffff" stroke-width="8" opacity=".5"/><path d="M-260 0 H200" stroke="#FFD23F" stroke-width="40" stroke-linecap="round"/><path d="M200 -70 L290 0 L200 70z" fill="#FFD23F"/>
+      <text y="-240" text-anchor="middle" font-family="Bebas Neue" font-size="60" fill="#fff">N</text><text x="250" y="-110" text-anchor="middle" font-family="Bebas Neue" font-size="60" fill="#FFD23F">E</text></g></g>
+    <g id="qlines" stroke="#ffffff" stroke-width="7" stroke-linecap="round" opacity=".7"></g>
+  </svg>
+</section>
+
+<!-- b4 giant wave -->
+<section class="scene" id="b4" data-start="10.5" data-duration="2.55">
+  <h2 class="hl"><span class="w">OLAS</span> <span class="w"><em>GIGANTES</em></span></h2>
+  <svg class="art" viewBox="0 0 1080 800" style="top:580px;height:800px">
+    <rect x="0" y="640" width="1080" height="500" fill="#0a2149"/>
+    <g id="houses"><use href="#house" x="520" y="640"/><use href="#house" x="700" y="640"/><use href="#house" x="880" y="640"/><use href="#house" x="1040" y="640"/></g>
+    <g id="wave"><path d="M-900 760 L-900 300 Q-500 120 -260 260 Q-140 330 -200 420 Q-150 360 -80 400 Q-20 450 -40 560 L-40 760Z" fill="#1565C0"/>
+      <path d="M-260 260 Q-140 330 -200 420 Q-150 360 -80 400 Q-20 450 -40 560" fill="none" stroke="#ffffff" stroke-width="26" stroke-linecap="round"/>
+      <g fill="#fff"><circle cx="-60" cy="420" r="18"/><circle cx="-110" cy="380" r="14"/><circle cx="-30" cy="500" r="16"/></g></g>
+  </svg>
+</section>
+
+<!-- b5/b6 globe from space: water to the poles, equatorial megacontinent -->
+<section class="scene" id="b5" data-start="12.9" data-duration="6.05">
+  <h2 class="hl" id="t5a"><span class="w">EL AGUA</span><br><span class="w"><em>A LOS POLOS</em></span></h2>
+  <h2 class="hl" id="t5b"><span class="w">UN</span> <span class="w"><em>MEGACONTINENTE</em></span></h2>
+  <svg class="art" viewBox="-540 -400 1080 800" style="top:600px;height:800px">
+    <circle r="330" fill="url(#atmo)"/>
+    <g clip-path="url(#globeClip)">
+      <circle r="300" fill="url(#oceanG)"/>
+      <g id="strip5"><use href="#lands" x="-600"/><use href="#lands" x="600"/></g>
+      <rect id="belt" x="-320" y="-120" width="640" height="240" fill="#4fbf6a"/>
+      <path id="beltEdge" d="M-320 -120 Q-160 -150 0 -118 T320 -122 M-320 120 Q-160 150 0 118 T320 122" stroke="#c9b26a" stroke-width="14" fill="none"/>
+      <ellipse id="capN" cx="0" cy="-300" rx="340" ry="180" fill="#0E4FA8"/><ellipse id="capS" cx="0" cy="300" rx="340" ry="180" fill="#0E4FA8"/>
+    </g>
+    <g id="flow" stroke="#9fd0ff" stroke-width="10" stroke-linecap="round" fill="none"><path d="M-120 -40 v-150"/><path d="M120 -40 v-150"/><path d="M-120 40 v150"/><path d="M120 40 v150"/></g>
+    <g fill="#9fd0ff"><path id="fh1" d="M-140 -190 l20 -34 l20 34z"/><path d="M100 -190 l20 -34 l20 34z"/><path d="M-140 190 l20 34 l20 -34z"/><path d="M100 190 l20 34 l20 -34z"/></g>
+    <text id="eqLab" x="0" y="12" text-anchor="middle" font-family="Bebas Neue" font-size="52" fill="#0B2A5B">ECUADOR</text>
+  </svg>
+</section>
+
+<!-- b7/b8 one day = one year; half day half night -->
+<section class="scene" id="b7" data-start="18.8" data-duration="5.1">
+  <h2 class="hl" id="t7a"><span class="w">1 DÍA</span> <span class="w">= <em>1 AÑO</em></span></h2>
+  <h2 class="hl" id="t7b" style="font-size:118px"><span class="w"><em>6 MESES</em> DE SOL</span><br><span class="w">6 MESES DE NOCHE</span></h2>
+  <svg class="art" id="cal" viewBox="0 0 1080 800" style="top:580px;height:800px">
+    <g transform="translate(540 380)"><rect x="-230" y="-250" width="460" height="460" rx="40" fill="#ffffff"/><rect x="-230" y="-250" width="460" height="120" rx="40" fill="#E5484D"/><rect x="-230" y="-170" width="460" height="40" fill="#E5484D"/>
+      <text id="month" y="-165" text-anchor="middle" font-family="Bebas Neue" font-size="80" fill="#fff">ENERO</text>
+      <text y="120" text-anchor="middle" font-family="Bebas Neue" font-size="240" fill="#0B2A5B">1</text>
+      <text y="190" text-anchor="middle" font-family="Inter" font-weight="800" font-size="34" fill="#1565C0">UN SOLO DÍA</text></g>
+  </svg>
+  <svg class="art" id="dn" viewBox="-540 -400 1080 800" style="top:600px;height:800px">
+    <circle cx="-430" cy="-300" r="140" fill="url(#sunGlow)"/><circle cx="-430" cy="-300" r="70" fill="url(#sunG)"/>
+    <circle r="330" fill="url(#atmo)"/>
+    <g clip-path="url(#globeClip)"><circle r="300" fill="url(#oceanG)"/><use href="#lands" x="-600"/><rect x="-300" y="-300" width="300" height="600" fill="#ff8a3d" opacity=".35"/><rect x="0" y="-300" width="300" height="600" fill="#03102a" opacity=".78"/>
+      <g fill="#e8f6ff" opacity=".9"><path d="M60 -120 l10 20 l20 -10 l-10 20 l20 10 l-20 10 l10 20 l-20 -10 l-10 20 l-10 -20 l-20 10 l10 -20 l-20 -10 l20 -10 l-10 -20 l20 10z"/><path d="M180 60 l8 16 l16 -8 l-8 16 l16 8 l-16 8 l8 16 l-16 -8 l-8 16 l-8 -16 l-16 8 l8 -16 l-16 -8 l16 -8 l-8 -16 l16 8z"/></g></g>
+    <path d="M0 -330 V330" stroke="#FFD23F" stroke-width="6" stroke-dasharray="14 12"/>
+  </svg>
+</section>
+
+<!-- b9 relax -->
+<section class="scene" id="b9" data-start="23.7" data-duration="2.85">
+  <h2 class="hl"><span class="w"><em>TRANQUILO</em></span></h2>
+  <div class="sub">es prácticamente <b>imposible</b></div>
+  <svg class="art" viewBox="-540 -400 1080 800" style="top:600px;height:800px">
+    <circle r="330" fill="url(#atmo)"/>
+    <g clip-path="url(#globeClip)"><circle r="300" fill="url(#oceanG)"/><g id="strip9"><use href="#lands" x="-600"/><use href="#lands" x="600"/></g></g>
+    <g id="ok" transform="translate(250 -230)"><circle r="80" fill="#3fbf7f"/><path d="M-36 0 l24 26 l48 -52" stroke="#fff" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+  </svg>
+</section>
+
+<!-- b10 question -->
+<section class="scene" id="b10" data-start="26.4" data-duration="5.6">
+  <h2 class="hl"><span class="w">¿QUÉ HARÍAS</span><br><span class="w"><em>TÚ</em>?</span></h2>
+  <svg class="art" viewBox="0 0 1080 800" style="top:560px;height:800px">
+    <rect x="0" y="0" width="540" height="800" fill="#ff8a3d" opacity=".25"/><rect x="540" y="0" width="540" height="800" fill="#03102a" opacity=".6"/>
+    <circle cx="200" cy="140" r="70" fill="url(#sunG)"/><path d="M900 110 a70 70 0 1 0 50 120 a56 56 0 1 1 -50 -120z" fill="#e8f3ff"/>
+    <path d="M540 0 V800" stroke="#FFD23F" stroke-width="6" stroke-dasharray="14 12"/>
+    <g id="kid" transform="translate(540 600)"><g class="m"><use href="#person" transform="scale(2.6)"/></g></g>
+    <text id="qm" x="680" y="330" font-family="Bebas Neue" font-size="240" fill="#FFD23F">?</text>
+  </svg>
+  <div id="brand">CURIOSI<span>MUNDO</span></div>
+</section>
+
+<div id="caps"></div>
+
+<script>
+const NS = 'http://www.w3.org/2000/svg';
+const mk = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.append(e); return e; };
+/* stars that drift */
+const stars = document.getElementById('stars'), ST = [];
+for (let i = 0; i < 60; i++) { const s = document.createElement('div'); s.className = 'star'; let y = gm.random('sy' + i) * 1920; if (y > 1230 && y < 1420) y -= 300;
+  s.style.left = gm.random('sx' + i) * 1080 + 'px'; s.style.top = y + 'px'; stars.append(s); ST.push({ s, ph: gm.random('sp' + i) * 6 }); }
+gm.onFrame(t => ST.forEach(o => o.s.style.opacity = .25 + .35 * (1 + Math.sin(t * 2 + o.ph)) / 2));
+
+const enter = (tl, sel, at, o = {}) => tl.from(sel, { y: 140, opacity: 0, scale: .8, filter: 'blur(12px)', duration: .4, ease: 'expo.out', stagger: .06, ...o }, at);
+const swapIn = (tl, sel, at) => tl.from(sel, { y: 100, scale: 1.4, opacity: 0, filter: 'blur(12px)', duration: .35, ease: 'expo.out', stagger: .08 }, at);
+const out = (tl, sel, at, d = .22) => tl.to(sel, { y: -140, opacity: 0, filter: 'blur(8px)', duration: d, ease: 'power2.in' }, at);
+const shakes = [];
+gm.onFrame(t => { let x = 0, y = 0; shakes.forEach(([t0, a, len]) => { const d = t - t0; if (d >= 0 && d < len) { const k = (1 - d / len) * a; x += (gm.noise(t * 45) - .5) * 2 * k; y += (gm.noise(t * 45 + 7) - .5) * 2 * k; } });
+  document.body.style.translate = `${x}px ${y}px`; });
+
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const norm = s => s.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+  const W = (txt, n = 1) => { let c = 0; for (const w of words) if (norm(w.word) === norm(txt) && ++c === n) return w.start; throw new Error('word ' + txt); };
+  const G = { global: true };
+
+  /* hook number: on screen at frame 0, punches on "girar", steps up, leaves at b3 */
+  const h = gm.timeline(null, G);
+  h.fromTo('#speed', { scale: 1.15 }, { scale: 1, duration: .5, ease: 'expo.out' }, 0)
+   .fromTo('#series', { y: 20, opacity: .0 }, { y: 0, opacity: 1, duration: .35, ease: 'expo.out' }, .05)
+   .to('#speed', { scale: 1.12, duration: .12, ease: 'power2.out', yoyo: true, repeat: 1 }, W('girar'))
+   .to('#series', { opacity: 0, y: -20, duration: .25 }, 2.4)
+   .to('#speed', { scale: .62, y: -40, duration: .35, ease: 'power3.inOut' }, 2.5)
+   .to('#speed', { scale: .9, duration: .25, ease: 'back.out(3)' }, W('mil') - .1).to('#speed', { scale: .62, duration: .3 }, W('kilómetros') + .2)
+   .to('#speed', { opacity: 0, y: -160, duration: .22, ease: 'power2.in' }, 6.0);
+
+  /* b1 spin then stop */
+  const stopT = W('girar') + .1;
+  gm.onFrame('#b1', (l, info) => { const t = info.time; const p = t < stopT ? t * 520 : stopT * 520 + 60 * (1 - Math.exp(-(t - stopT) * 9));
+    document.getElementById('strip1').setAttribute('transform', `translate(${-(p % 1200)} 0)`); });
+  gm.timeline('#b1', G).from('#arrow1', { draw: 0, duration: .5, ease: 'power2.out' }, 0).to('#arrow1, #ahead1', { opacity: 0, duration: .15 }, stopT)
+    .to('#stopmarks', { opacity: 1, duration: .05 }, stopT).to('#stopmarks', { opacity: 0, duration: .3 }, stopT + .4)
+    .to('#b1 .art', { scale: .5, opacity: 0, duration: .25, ease: 'power2.in' }, 2.4);
+  shakes.push([stopT, 26, .55]);
+
+  /* b2 things fly east */
+  const t2 = gm.timeline('#b2', G), f0 = W('saldrías') - .05;
+  t2.from('#b2 .art', { opacity: 0, duration: .15 }, 2.5);
+  [['#fPerson', 300, 560, 1.0], ['#fCar', 520, 620, 1.3], ['#fBus', 760, 640, 1.6]].forEach(([id, x, y, d], i) => {
+    t2.fromTo(id, { x, y, rotate: 0 }, { x: x + 1300, y: y - 260 - i * 60, rotate: 40 + i * 25, duration: d + .8, ease: 'power2.in' }, f0 + i * .25); });
+  const lines = document.getElementById('lines');
+  for (let i = 0; i < 9; i++) mk('path', { d: `M${100 + i * 90} ${220 + (i * 53) % 400} h${120 + (i % 3) * 60}` }, lines);
+  t2.from('#lines path', { draw: 0, opacity: 0, duration: .25, stagger: .05 }, f0).to('#lines', { x: 400, opacity: 0, duration: 1.2, ease: 'power2.in' }, f0 + .4);
+  shakes.push([f0, 14, .5]);
+  t2.to('#b2 .art', { opacity: 0, duration: .15 }, 6.1);
+
+  /* b3 quick cuts */
+  const t3 = gm.timeline('#b3', G), qlines = document.getElementById('qlines');
+  for (let i = 0; i < 8; i++) mk('path', { d: `M${60 + (i % 4) * 60} ${180 + i * 70} h-${160 + (i % 3) * 80}` }, qlines);
+  gm.onFrame('#b3', (l, info) => { qlines.setAttribute('transform', `translate(${(info.time * 900) % 300} 0)`); });
+  const cuts = [['#c1', '#q1', W('tú') - .15], ['#c2', '#q2', W('coches') - .2], ['#c3', '#q3', W('edificios') - .2], ['#c4', '#q4', W('todo') - .15]];
+  cuts.forEach(([hl, art, at], i) => { const end = i < 3 ? cuts[i + 1][2] : 10.45;
+    t3.fromTo(hl, { opacity: 0 }, { opacity: 1, duration: .01 }, at).fromTo(art, { opacity: 0 }, { opacity: 1, duration: .01 }, at)
+      .from(`${hl} .w`, { scale: 1.5, filter: 'blur(10px)', duration: .25, ease: 'expo.out' }, at)
+      .fromTo(`${art} .m`, { x: -160, rotate: -8 }, { x: 160, rotate: 10, duration: end - at, ease: 'none' }, at)
+      .to([hl, art], { opacity: 0, duration: .01 }, end); });
+  t3.to('#q4 .m', { x: 0, rotate: 0, duration: .01 }, W('todo') - .14);
+
+  /* b4 wave */
+  const t4 = gm.timeline('#b4', G);
+  enter(t4, '#b4 .hl .w', 10.55);
+  t4.fromTo('#wave', { x: -200 }, { x: 1500, duration: 2.3, ease: 'power1.in' }, 10.5)
+    .to('#houses use', { y: -60, rotate: 30, opacity: 0, duration: .5, stagger: .25, ease: 'power2.in', transformOrigin: '50% 100%' }, 11.3);
+  shakes.push([W('arrasarían'), 12, .6]);
+  out(t4, '#b4 .hl', 12.8);
+
+  /* b5/b6 globe */
+  const t5 = gm.timeline('#b5', G);
+  enter(t5, '#t5a .w', 12.95);
+  t5.from('#b5 .art', { scale: .6, opacity: 0, duration: .5, ease: 'expo.out' }, 12.9)
+    .fromTo(['#capN', '#capS'], { scaleY: .25 }, { scaleY: 1, duration: 2.4, ease: 'power2.inOut', transformOrigin: '50% 50%' }, W('polos') - .9)
+    .from('#flow path', { draw: 0, duration: .6, stagger: .08 }, W('agua') - .1).to('#flow', { opacity: 0, duration: .3 }, W('continente'))
+    .from('#belt', { scaleY: 0, duration: .9, ease: 'expo.out', transformOrigin: '50% 50%' }, W('continente') - .3).from('#beltEdge', { opacity: 0, duration: .4 }, W('continente'))
+    .from('#eqLab', { opacity: 0, scale: .6, duration: .3, ease: 'back.out(2)' }, W('ecuador') - .2)
+    .to('#b5 .art', { scale: 1.12, duration: 2.6, ease: 'sine.inOut' }, W('continente') - .3);
+  gm.onFrame('#b5', (l, info) => document.getElementById('strip5').setAttribute('transform', `translate(${-((info.time - 12.9) * 30 % 1200)} 0)`));
+  out(t5, '#t5a', W('continente') - .45); swapIn(t5, '#t5b .w', W('continente') - .25);
+  out(t5, ['#t5b', '#b5 .art'], 18.7);
+
+  /* b7 calendar → b8 day/night */
+  const t7 = gm.timeline('#b7', G);
+  enter(t7, '#t7a .w', 18.85);
+  t7.from('#cal', { y: 200, opacity: 0, duration: .4, ease: 'expo.out' }, 18.8);
+  const months = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
+  months.forEach((m, i) => t7.set('#month', { textContent: m }, W('año') - .1 + i * .07));
+  out(t7, ['#t7a', '#cal'], W('seis') - .3);
+  swapIn(t7, '#t7b .w', W('seis') - .1);
+  t7.from('#dn', { scale: .6, opacity: 0, duration: .45, ease: 'expo.out' }, W('seis') - .2).to('#dn', { scale: 1.08, duration: 2.2, ease: 'sine.inOut' }, W('seis') + .3);
+  out(t7, ['#t7b', '#dn'], 23.6);
+
+  /* b9 relax */
+  const t9 = gm.timeline('#b9', G);
+  enter(t9, '#b9 .hl .w', 23.75);
+  t9.from('#b9 .art', { scale: .6, opacity: 0, duration: .4, ease: 'expo.out' }, 23.7).from('#ok', { scale: 0, duration: .35, ease: 'back.out(2.5)' }, W('imposible') - .2)
+    .from('#b9 .sub', { y: 30, opacity: 0, duration: .3 }, W('prácticamente') - .2);
+  gm.onFrame('#b9', (l, info) => document.getElementById('strip9').setAttribute('transform', `translate(${-((info.time * 300) % 1200)} 0)`));
+  out(t9, ['#b9 .hl', '#b9 .sub', '#b9 .art'], 26.3);
+
+  /* b10 question */
+  const t10 = gm.timeline('#b10', G);
+  enter(t10, '#b10 .hl .w', 26.45, { stagger: .1 });
+  t10.from('#b10 .art', { opacity: 0, duration: .35 }, 26.4).from('#kid .m', { y: 300, duration: .5, ease: 'back.out(1.4)' }, 26.5)
+    .from('#qm', { scale: 0, rotate: -30, duration: .45, ease: 'back.out(2.5)', transformOrigin: '50% 80%' }, W('qué') - .1)
+    .to('#qm', { rotate: 10, duration: .5, ease: 'sine.inOut', yoyo: true, repeat: 5, transformOrigin: '50% 80%' }, W('qué') + .4)
+    .to('#b10 .hl em', { scale: 1.2, duration: .25, ease: 'back.out(3)', transformOrigin: '50% 60%' }, W('tú', 2) - .05)
+    .from('#brand', { y: 40, opacity: 0, letterSpacing: '.4em', duration: .7, ease: 'expo.out' }, W('te') - .1);
+
+  /* captions */
+  const ws = words.map(w => ({ text: w.word, start: w.start, end: w.end }));
+  const phrases = [[]];
+  ws.forEach((w, i) => { const cur = phrases.at(-1), prev = ws[i - 1];
+    if (cur.length && (cur.length === 3 || cur.map(x => x.text).join(' ').length + w.text.length > 16 || w.start - prev.end > .28 || /[.!?,:…]$/.test(prev.text) || /^¿/.test(w.text))) phrases.push([]);
+    phrases.at(-1).push(w); });
+  const tl = gm.timeline(null, G);
+  const caps = phrases.map(ph => { const el = document.createElement('div'); el.className = 'cap';
+    el.innerHTML = '<i class="pill"></i>' + ph.map(w => `<span class="w">${w.text}</span>`).join(' '); document.getElementById('caps').append(el); return el; });
+  return document.fonts.ready.then(() => phrases.forEach((ph, p) => {
+    const el = caps[p], spans = el.querySelectorAll('.w'), pill = el.querySelector('.pill'), next = phrases[p + 1];
+    const box = i => ({ x: spans[i].offsetLeft, width: spans[i].offsetWidth });
+    tl.fromTo(pill, { ...box(0), scale: .5, opacity: 0 }, { scale: 1, opacity: 1, duration: .18, ease: 'back.out(2)' }, ph[0].start - .04);
+    ph.forEach((w, i) => {
+      tl.fromTo(spans[i], { opacity: 0, y: 40, scale: .6 }, { opacity: 1, y: 0, scale: 1, duration: .24, ease: 'back.out(2.4)' }, w.start - .06);
+      if (i) tl.to(pill, { ...box(i), duration: .1, ease: 'power3.out' }, w.start - .08);
+      tl.to(spans[i], { '--hl': 1, scale: 1.08, duration: .05 }, w.start - .03)
+        .to(spans[i], { '--hl': 0, scale: 1, duration: .05 }, ph[i + 1] ? ph[i + 1].start - .08 : Math.min(w.end + .3, next ? next[0].start - .2 : 99));
+    });
+    if (!next) tl.to(el, { opacity: 0, duration: .25 }, ph.at(-1).end + .7);
+    else tl.to(el, { y: -50, opacity: 0, duration: .16, ease: 'power2.in' }, next[0].start - .18);
+  }));
+}));
+</script>
+</body>
+</html>

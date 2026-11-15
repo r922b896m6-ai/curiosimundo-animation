@@ -1,17 +1,17 @@
 # CURIOSIMUNDO · Vídeo NN · TEMA
 
-**Categoría:** · **Duración:** · **Formato:** 9:16 (1080×1920)
+**Categoría:** · **Duración (25–35 s):** · **Formato:** 9:16 (1080×1920)
 **Publicación prevista:** · **Estado:**
 
 Para regenerar la voz y los subtítulos: `tools/producir.sh produccion/NN-tema`
 
 ## A. Título
-## B. Gancho inicial (0–3 s)
+## B. Gancho (0–2 s): qué se ve en el fotograma 0 + la frase con el número
 ## C. Guion completo
 ## D. Narración lista para voz IA
 | Escena | Indicación de voz | Texto |
 |---|---|---|
-## E. Escenas numeradas (tiempos de `escenas.md`)
+## E. Escenas (un cambio cada 2–4 s; tiempos de `escenas.md`)
 | # | Tiempo | Qué se ve | Texto en pantalla |
 |---|---|---|---|
 ## F. Prompts de animación por escena
@@ -21,6 +21,7 @@ Ver `subtitulos.srt` y `escenas.md`.
 ## H. Música y efectos de sonido
 ## I. Descripción para TikTok
 ## J. Hashtags
+`#curiosidades` `#curiosidadesdelmundo` `#curiosidadesaleatorias` `#curiosidadesentiktok` `#curiosimundo` `#tema`
 ## K. Portada recomendada
 
 ---

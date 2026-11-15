@@ -28,12 +28,23 @@ reels/               ← vídeos animados con givemotion (HTML → MP4)
 1. **Elegir el tema** del calendario y crear la carpeta: `cp -r produccion/plantilla produccion/02-venus`.
 2. **Investigar y verificar** cada dato con al menos una fuente fiable (NASA, ESA, revistas científicas, museos, universidades). Apunta las fuentes en la tabla de control de calidad del paquete.
 3. **Escribir `guion.txt`:** una línea por escena con el formato `velocidad|tono|pausa|texto`, por ejemplo `+6%|+2Hz|0.3|Y aquí viene lo curioso…`.
-4. **Generar la voz y los subtítulos:** `tools/producir.sh produccion/02-venus`. Si el resultado pasa de 60 s, recorta el guion y repite.
+4. **Generar la voz y los subtítulos:** `tools/producir.sh produccion/02-venus`. Si el resultado pasa de 35 s, recorta el guion y repite.
 5. **Completar `paquete.md`** con los tiempos reales de `escenas.md`: escenas, prompts, música, descripción, hashtags y portada.
 6. **Animar:**
    - **Opción A:** en este repositorio con givemotion, como los reels de `reels/`. Pídeselo a Claude: "anima el vídeo 02".
    - **Opción B:** con los prompts de la sección F en tu herramienta de vídeo IA, y montaje en CapCut con `voz.mp3` y `subtitulos.srt`.
 7. **Control de calidad** (lista de abajo), exportar en 1080×1920 y publicar con la etiqueta de contenido IA.
+
+## Reglas de retención (desde el 15 de noviembre de 2026)
+
+Salen de las métricas de los dos primeros vídeos publicados:
+
+| Vídeo | Duración | Siguen a los 2 s | Siguen a los 5 s | Lo ven completo | Comentarios |
+|---|---|---|---|---|---|
+| "¿Y si respiráramos bajo el agua?" | 50 s | 55 % | 38 % | 9 % | 0 |
+| "¿Y si desapareciera la Luna?" | 62 s | 43 % | 20 % | 2 % | 0 |
+
+Casi todas las vistas vienen de "Para ti", así que el problema es la retención, no la distribución. Por eso, ahora los vídeos duran **25–35 s**, el gancho llega en los primeros 2 s, hay un cambio visual cada 2–4 s, los subtítulos son grandes y van palabra a palabra, y el cierre es una pregunta directa.
 
 ## Guía de estilo
 
@@ -51,12 +62,15 @@ reels/               ← vídeos animados con givemotion (HTML → MP4)
   - Titulares: Bebas Neue (o Montserrat Black).
   - Subtítulos: Inter o Montserrat de grosor 800–900.
 - **Subtítulos:**
-  - Frases de 1 a 3 palabras; la palabra dicha va en una píldora amarilla.
+  - Grandes (unos 90 px) y animados palabra a palabra, en frases de 1 a 3 palabras; la palabra dicha va en una píldora amarilla.
   - Siempre visibles, a unos 1250 px de alto en vertical. Nada importante en los 380 px inferiores ni en los 220 px superiores.
 - **Estructura:**
-  - Gancho visual y hablado en los primeros 3 s.
-  - Una idea por escena, con un cambio visual cada 3–7 s.
-  - Final con una pregunta abierta para comentar.
+  - **Fotograma 0:** acción visual fuerte y el dato más impactante, con número, ya en pantalla. Nada de intros, logos ni títulos lentos.
+  - **Gancho hablado:** dentro de los 2 primeros segundos.
+  - **Ritmo:** un cambio de escena o movimiento cada 2–4 s (corte, zoom, texto animado).
+  - **Final:** pregunta directa al público ("¿Qué harías tú…? Te leo en comentarios.").
+- **Formato de serie:** "¿Y si…?" en el título o la descripción siempre que el tema lo permita.
+- **Hashtags:** `#curiosidades` `#curiosidadesdelmundo` `#curiosidadesaleatorias` `#curiosidadesentiktok` `#curiosimundo` y uno del tema. Evita #fyp y #viral.
 - **Marca:** el logo CURIOSIMUNDO en blanco y amarillo en el cierre, siempre en la misma posición.
 - **Voz:** `es-MX-JorgeNeural` frase a frase. Más rápida y aguda en los ganchos y lo divertido; más lenta y grave en lo serio.
 
@@ -68,7 +82,9 @@ reels/               ← vídeos animados con givemotion (HTML → MP4)
 - [ ] Ortografía y gramática revisadas, incluidas tildes y signos ¿ ¡.
 - [ ] La narración coincide con la escena que se ve (comprobar con `escenas.md`).
 - [ ] Los subtítulos están sincronizados y no tapan nada importante.
-- [ ] Duración entre 40 y 60 s.
+- [ ] Duración entre 25 y 35 s (máximo 40).
+- [ ] Dato con número en pantalla en el fotograma 0 y gancho hablado antes de los 2 s.
+- [ ] Cambio visual cada 2–4 s; termina con una pregunta directa.
 - [ ] Música libre de derechos o de la biblioteca comercial de TikTok.
 - [ ] Etiqueta **"Contenido generado por IA"** activada en TikTok si la voz o las imágenes son sintéticas, y mención en la descripción.
 

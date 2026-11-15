@@ -1,0 +1,73 @@
+<!doctype html>
+<!-- Capítulo 7 · Las consecuencias: el precio, Versalles, imperios caídos y nuevos países, camino a 1939, la amapola, cierre. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="63.7">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="2.5"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="toll" data-start="3.6" data-duration="7.2"></section>
+<section class="scene" id="ver" data-start="10.6" data-duration="10.2"></section>
+<section class="scene" id="map" data-start="20.6" data-duration="16.9"></section>
+<section class="scene" id="q" data-start="37.3" data-duration="10.0"></section>
+<section class="scene" id="pop" data-start="47.1" data-duration="16.6"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/europa.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id);
+  CM.card($('cards'), tl, 7, '1919', 'EL PRECIO DE LA GUERRA', 0, 4);
+  /* the toll */
+  const tz = $('toll'); tz.style.background = 'radial-gradient(1100px 800px at 50% 50%, #2a2f3a, #0b0f18)';
+  const grid = document.createElement('div'); grid.style.cssText = 'position:absolute;left:260px;top:520px;width:1400px;display:grid;grid-template-columns:repeat(20,1fr);gap:14px 8px'; tz.append(grid);
+  for (let i = 0; i < 80; i++) { const s = CM.mk('svg', { viewBox: '-30 -24 60 36', width: 60, height: 32 }, grid); CM.mk('path', { d: 'M-28 4 Q0 -4 28 4 Q0 12 -28 4Z M-16 3 Q0 -22 16 3Z', fill: '#9aa3b0' }, s); }
+  const n = CM.text(tz, 'big', '9 – 10 <em>MILLONES</em>', 140, 'font-size:170px'), n2 = CM.text(tz, 'mid', 'de soldados muertos · <b>y millones de civiles</b>', 360);
+  tl.from(tz, { opacity: 0, duration: .3 }, 3.6).from(n, { scale: 1.4, opacity: 0, filter: 'blur(14px)', duration: .5, ease: 'expo.out' }, W('nueve') - .3)
+    .from(grid.children, { opacity: 0, y: -12, duration: .25, stagger: .03 }, W('nueve')).from(n2, { y: 30, opacity: 0, duration: .3 }, W('civiles') - .5);
+  /* Versailles */
+  const vz = $('ver'); vz.style.background = 'radial-gradient(1100px 800px at 50% 50%, #3a2f22, #120d08)';
+  const doc = document.createElement('div'); doc.style.cssText = 'position:absolute;left:520px;top:200px;width:880px;height:640px;background:#efe6cf;border-radius:10px;box-shadow:0 30px 80px rgb(0 0 0 / .6);color:#3a2a1a;padding:44px 60px;font:600 36px/1.6 Georgia,serif;transform:rotate(-2deg)';
+  doc.innerHTML = '<div style="font:400 72px/1 \'Bebas Neue\'">TRATADO DE VERSALLES</div><div style="font-size:28px;margin:6px 0 24px">28 de junio de 1919</div><div class="it">· Alemania acepta la responsabilidad de la guerra</div><div class="it">· pierde territorios y colonias</div><div class="it">· paga enormes reparaciones</div>';
+  vz.append(doc); const its = doc.querySelectorAll('.it');
+  tl.from(vz, { opacity: 0, duration: .3 }, 10.6).from(doc, { y: 300, rotate: 6, duration: .6, ease: 'expo.out' }, 10.8)
+    .from(its[0], { x: -30, opacity: 0, duration: .3 }, W('responsabilidad') - .4).from(its[1], { x: -30, opacity: 0, duration: .3 }, W('territorios') - .3).from(its[2], { x: -30, opacity: 0, duration: .3 }, W('reparaciones') - .3);
+  /* map: losses, empires fall, new countries */
+  const m = CM.map($('map'), geo);
+  m.color(tl, ['FRANCIA', 'REINO UNIDO', 'BÉLGICA', 'SERBIA', 'MONTENEGRO', 'ITALIA', 'RUMANÍA', 'GRECIA'], C.allies, 0, .01).color(tl, ['ALEMANIA', 'AUSTRIA-HUNGRÍA', 'IMPERIO OTOMANO', 'BULGARIA', 'RUSIA'], C.central, 0, .01);
+  tl.set(m.g, { x: 960 - 640 * 2.6, y: 540 - 600 * 2.6, scale: 2.6 }, 0);
+  const [vx, vy] = geo.cities['Verdún'];
+  m.text(tl, 'ALSACIA Y LORENA', vx + 70, vy + 40, W('alsacia') - .3, W('cuatro') - .2, { size: 16, fill: '#FFD23F' });
+  m.pin(tl, 'Verdún', '', W('alsacia') - .3, W('cuatro') - .2, { r: 6 });
+  CM.head(H, tl, 'ALEMANIA <em>PIERDE</em>', 'colonias · Alsacia y Lorena vuelven a Francia', 21.0, W('cuatro') - .3);
+  m.zoom(tl, [1100, 520], 1.05, W('cuatro') - .3, 1.4);
+  [['ALEMANIA', 'Berlín', 'IMPERIO ALEMÁN', W('alemán')], ['AUSTRIA-HUNGRÍA', 'Viena', 'AUSTRIA-HUNGRÍA', W('austrohúngaro')], ['RUSIA', 'Moscú', 'IMPERIO RUSO', W('ruso')], ['IMPERIO OTOMANO', 'Constantinopla', 'IMPERIO OTOMANO', W('otomano')]].forEach(([g, c, lab, at]) => {
+    m.color(tl, g, '#58637a', at - .1, .6); const [x, y] = geo.cities[c]; const t = m.text(tl, lab, x, y - 20, at - .1, null, { size: 32 });
+    const line = CM.mk('path', { d: `M${x - 120} ${y - 30} L${x + 120} ${y - 30}`, stroke: '#E5484D', 'stroke-width': 6 }, m.over); tl.from(line, { draw: 0, duration: .3 }, at + .2); });
+  [['Varsovia', 'POLONIA', 0, -10], ['Viena', 'CHECOSLOVAQUIA', 0, -70], ['Petrogrado', 'FINLANDIA', -40, -90], ['Riga', 'PAÍSES BÁLTICOS', 0, -30]].forEach(([c, lab, dx, dy], i) => {
+    const [x, y] = geo.cities[c]; m.text(tl, lab, x + dx, y + dy, W('nacieron') + .3 + i * .45, null, { size: 30, fill: '#FFD23F' }); });
+  CM.head(H, tl, 'CAEN <em>CUATRO IMPERIOS</em>', 'y nacen nuevos países', W('cuatro') - .2, 37.3);
+  /* the war to end all wars ... 1939 */
+  const qz = $('q'); qz.style.background = 'radial-gradient(1100px 800px at 50% 50%, #1c2a48, #060b18)';
+  const q1 = CM.text(qz, 'big', '«LA GUERRA QUE ACABARÍA<br>CON <em>TODAS LAS GUERRAS</em>»', 260, 'font-size:110px'), q2 = CM.text(qz, 'big', '<em>1939</em>', 620, 'font-size:220px;color:#E5484D'), q3 = CM.text(qz, 'mid', 'solo veinte años después', 860);
+  tl.from(qz, { opacity: 0, duration: .3 }, 37.3).from(q1, { scale: 1.2, opacity: 0, duration: .5, ease: 'expo.out' }, W('llamaron') - .2)
+    .from(q2, { scale: 1.5, opacity: 0, filter: 'blur(14px)', duration: .5, ease: 'expo.out' }, W('veinte') - .6).from(q3, { y: 20, opacity: 0, duration: .3 }, W('veinte') - .2);
+  /* poppies + end card */
+  const ps = CM.svgIn($('pop'), 'linear-gradient(#f2b27a, #f7dcae 55%, #6b8a3a 55%, #3f5a24)');
+  const P = Array.from({ length: 60 }, (_, i) => { const g = CM.mk('g', {}, ps), sc = .5 + gm.random('ps' + i) * 1.1; CM.mk('path', { d: 'M0 0 Q-6 60 4 140', stroke: '#3c6b34', 'stroke-width': 6, fill: 'none' }, g);
+    [[0, -24], [24, 0], [0, 24], [-24, 0]].forEach(([x, y]) => CM.mk('ellipse', { cx: x, cy: y, rx: 28, ry: 26, fill: '#d0312d' }, g)); CM.mk('circle', { r: 12, fill: '#1d1d1d' }, g);
+    return { g, x: gm.random('px' + i) * 1980 - 30, y: 620 + gm.random('py' + i) * 420, sc, ph: gm.random('pp' + i) * 6 }; }).sort((a, b) => a.y - b.y);
+  P.forEach(p => ps.append(p.g));
+  gm.onFrame($('pop'), (l, info) => P.forEach(p => p.g.setAttribute('transform', `translate(${p.x} ${p.y}) scale(${p.sc}) rotate(${Math.sin(info.time * 1.2 + p.ph) * 6})`)));
+  tl.from($('pop'), { opacity: 0, duration: .6 }, 47.1).from(P.map(p => p.g), { opacity: 0, duration: .5, stagger: .03 }, 47.3);
+  CM.head(H, tl, 'LOS CAMPOS DE <em>FLANDES</em>', 'la amapola, símbolo del recuerdo', 47.6, W('qué') - .5);
+  const end = document.createElement('div'); end.style.cssText = 'position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:rgb(6 12 28 / .78)';
+  end.innerHTML = '<div style="font:400 120px/1 \'Bebas Neue\';text-align:center">¿QUÉ BATALLA TE <span style="color:#FFD23F">SORPRENDIÓ MÁS</span>?</div><div style="font:800 40px Inter;letter-spacing:.06em">CUÉNTAMELO EN LOS COMENTARIOS</div><div class="sub" style="margin-top:30px;padding:22px 60px;border-radius:16px;background:#d0312d;font:800 44px Inter;letter-spacing:.08em">SUSCRÍBETE</div><div style="margin-top:20px;font:400 90px Bebas Neue;letter-spacing:.14em">CURIOSI<span style="color:#FFD23F">MUNDO</span></div>';
+  $('pop').append(end);
+  tl.from(end, { opacity: 0, duration: .5 }, W('qué') - .4).from(end.children[0], { scale: 1.2, opacity: 0, duration: .5, ease: 'expo.out' }, W('qué') - .3)
+    .from(end.children[1], { y: 20, opacity: 0, duration: .3 }, W('cuéntamelo') - .2).from(end.children[2], { scale: 0, duration: .4, ease: 'back.out(2.5)' }, W('suscríbete') - .2)
+    .to(end.children[2], { scale: 1.08, duration: .4, yoyo: true, repeat: 5, ease: 'sine.inOut' }, W('suscríbete') + .3).from(end.children[3], { y: 30, opacity: 0, letterSpacing: '.4em', duration: .7, ease: 'expo.out' }, W('curiosimundo') - .2);
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

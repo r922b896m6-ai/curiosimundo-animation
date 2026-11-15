@@ -1,0 +1,9 @@
+# Capítulo 5 · 1917: el año que lo cambió todo
++3%|+0Hz|0.3|Mil novecientos diecisiete cambió el rumbo de la guerra.
++3%|+0Hz|0.35|En Rusia, el hambre y las derrotas provocaron una revolución. El zar abdicó en marzo, y en noviembre los bolcheviques de Lenin tomaron el poder.
++3%|+0Hz|0.35|Poco después, Rusia firmó la paz con Alemania en Brest-Litovsk. Alemania ya no tenía que luchar en dos frentes.
++4%|+1Hz|0.3|Pero ese mismo año, Estados Unidos entró en la guerra. Alemania había vuelto a hundir barcos sin previo aviso con sus submarinos…
++4%|+1Hz|0.4|y los británicos interceptaron un telegrama secreto, el telegrama Zimmermann, en el que Alemania proponía a México una alianza contra Estados Unidos. En abril, Estados Unidos declaró la guerra.
+-3%|-2Hz|0.35|En Bélgica, la tercera batalla de Ypres, en Passchendaele, se libró en un mar de barro. Hombres y caballos se hundían en los cráteres llenos de agua.
++4%|+1Hz|0.35|En los Alpes, en Caporetto, austrohúngaros y alemanes rompieron el frente italiano con tácticas de infiltración. Más de doscientos sesenta mil italianos fueron capturados.
++4%|+1Hz|0.4|Y en noviembre, en Cambrai, los británicos lanzaron por primera vez cientos de tanques juntos. La guerra estaba cambiando.

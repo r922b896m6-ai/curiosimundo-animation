@@ -1,0 +1,107 @@
+<!doctype html>
+<!-- Capítulo 4 · 1916: el año del desgaste. Verdún (DE vs FR azul horizonte), Somme (UK vs DE), primer tanque, Jutlandia, Brusílov, ases del aire. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="97.8">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="map" data-start="3.6" data-duration="14.4"></section>
+<section class="scene" id="ver" data-start="17.8" data-duration="12.4"></section>
+<section class="scene" id="toll" data-start="30.0" data-duration="7.9"></section>
+<section class="scene" id="map2" data-start="37.7" data-duration="5.8"></section>
+<section class="scene" id="som" data-start="43.3" data-duration="8.4"></section>
+<section class="scene" id="tank" data-start="51.6" data-duration="15.0"></section>
+<section class="scene" id="jut" data-start="66.6" data-duration="12.6"></section>
+<section class="scene" id="map3" data-start="79.0" data-duration="7.6"></section>
+<section class="scene" id="air" data-start="86.4" data-duration="11.4"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/europa.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id);
+  const base = mm => mm.color(tl, ['FRANCIA', 'RUSIA', 'REINO UNIDO', 'BÉLGICA', 'SERBIA', 'MONTENEGRO', 'ITALIA'], C.allies, 0, .01).color(tl, ['ALEMANIA', 'AUSTRIA-HUNGRÍA', 'IMPERIO OTOMANO', 'BULGARIA'], C.central, 0, .01);
+  CM.card($('cards'), tl, 4, '1916', 'EL AÑO DEL DESGASTE', 0, 4);
+  /* map: Verdun */
+  const m = CM.map($('map'), geo); base(m); tl.set(m.g, { x: 0, y: 0, scale: 1 }, 0);
+  m.line(tl, 'oeste', 0, { color: '#FFD23F', width: 6, dash: '14 10', dur: .01 });
+  CM.head(H, tl, '1916 · <em>DESGASTE</em>', 'batallas para agotar al enemigo', 4.4, W('febrero') - .4);
+  m.zoom(tl, 'Verdún', 3.2, W('febrero') - .4, 1.6); m.pin(tl, 'Verdún', 'VERDÚN', W('verdún') - .2, null, { size: 14 });
+  CM.head(H, tl, '<em>VERDÚN</em>', '21 de febrero – 18 de diciembre de 1916', W('verdún') - .1, 17.8);
+  /* Verdun battle: Germans (Stahlhelm) attack, French in horizon blue hold */
+  CM.battle($('ver'), { id: 'vd', left: 'DE', right: 'FR', terrain: 'mud', sky: ['#4a4e56', '#8c8a80'], t0: 17.8, t1: 30.2, n: 8, falls: [1, 4, 6], mg: true, def: 4,
+    artillery: [18.0, 18.9, 19.8, 21.0, 22.1, 23.0, 24.2, 25.1, 26.3, 27.5], melee: { at: 26.0, step: .6 }, pan: [0, -1280] });
+  CM.head(H, tl, 'BATALLA DE <em>VERDÚN</em>', 'un paisaje lunar de cráteres', 18.0, 29.9);
+  const np = CM.text($('ver'), 'big', '«NO <em>PASARÁN</em>»', 300, 'font-size:150px'); tl.from(np, { scale: 1.5, opacity: 0, filter: 'blur(14px)', duration: .45, ease: 'expo.out' }, W('pasarán') - .3);
+  tl.from($('ver'), { opacity: 0, duration: .3 }, 17.8);
+  /* toll */
+  const ts = CM.svgIn($('toll'), 'linear-gradient(#2e2e34, #5a564e)'); CM.mk('rect', { y: 760, width: 1920, height: 320, fill: '#3b2d20' }, ts);
+  for (let i = 0; i < 16; i++) CM.mk('ellipse', { cx: 60 + i * 120, cy: 820 + (i % 3) * 60, rx: 90, ry: 24, fill: '#2a2017' }, ts);
+  for (let i = 0; i < 6; i++) CM.mk('path', { d: `M${150 + i * 300} 780 l0 -${120 + (i % 3) * 40} l-14 -30 M${150 + i * 300} ${700 - (i % 3) * 40} l18 -26`, stroke: '#1d1712', 'stroke-width': 10, fill: 'none', 'stroke-linecap': 'round' }, ts);
+  const n7 = CM.text($('toll'), 'big', '≈ 0', 230, 'color:#FFD23F'), n7b = CM.text($('toll'), 'mid', 'bajas entre los dos bandos', 460), n7c = CM.text($('toll'), 'mid', 'y el frente <b>apenas se movió</b>', 560);
+  const c7 = W('setecientas') - .3; gm.onFrame($('toll'), (l, info) => { n7.innerHTML = '≈ ' + String(Math.round(700000 * gm.ease.outCubic(gm.clamp((info.time - c7) / 1.2)))).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); });
+  tl.from($('toll'), { opacity: 0, duration: .3 }, 30.0).from(n7b, { y: 30, opacity: 0, duration: .3 }, W('bajas') - .2).from(n7c, { y: 30, opacity: 0, duration: .3 }, W('apenas') - .4);
+  /* map: Somme */
+  const m2 = CM.map($('map2'), geo); base(m2); tl.set(m2.g, { x: 960 - 640 * 3, y: 540 - 610 * 3, scale: 3 }, 0); m2.line(tl, 'oeste', 0, { color: '#FFD23F', width: 3, dash: '8 6', dur: .01 });
+  m2.pin(tl, 'Somme', 'RÍO SOMME', W('somme') - .3, null, { size: 14 }); m2.pin(tl, 'Verdún', 'VERDÚN', 37.9, null, { size: 14, fill: '#E5484D' });
+  CM.head(H, tl, 'EL <em>SOMME</em>', '1 de julio – 18 de noviembre de 1916', 38.0, 43.2);
+  /* Somme first day: British (Brodie) advance into German machine guns */
+  CM.battle($('som'), { id: 'sm', left: 'UK', right: 'DE', terrain: 'fields', sky: ['#a9bccf', '#e3d6b4'], t0: 43.3, t1: 51.7, n: 9, falls: [0, 1, 3, 4, 6, 7], mg: true, def: 3,
+    artillery: [43.5, 45.2, 47.4, 49.6], pan: [0, -900] });
+  const d1 = CM.text($('som'), 'big', '<em>57.000</em>', 230, 'font-size:180px'), d1b = CM.text($('som'), 'mid', 'bajas británicas en <b>un solo día</b>', 420);
+  tl.from(d1, { scale: 1.5, opacity: 0, filter: 'blur(14px)', duration: .45, ease: 'expo.out' }, W('cincuenta') - .3).from(d1b, { y: 30, opacity: 0, duration: .3 }, W('bajas', 2) - .3);
+  CM.head(H, tl, '1 DE JULIO DE <em>1916</em>', 'el peor día del ejército británico', 43.6, 51.5);
+  tl.from($('som'), { opacity: 0, duration: .3 }, 43.3);
+  /* the first tanks */
+  const tk = CM.svgIn($('tank'), 'linear-gradient(#8a8f94, #cfc6aa)'); CM.mk('rect', { y: 780, width: 1920, height: 300, fill: '#4a3a28' }, tk);
+  CM.mk('rect', { x: 1060, y: 780, width: 160, height: 120, fill: '#2a2017' }, tk); for (let k = 0; k < 4; k++) CM.mk('rect', { x: 1040 + k * 50, y: 752, width: 52, height: 28, rx: 10, fill: '#8a7a58' }, tk);
+  const wire = CM.mk('path', { d: 'M700 770 ' + Array.from({ length: 12 }, (_, k) => `l20 ${k % 2 ? 20 : -20}`).join(' '), stroke: '#1a1410', 'stroke-width': 4, fill: 'none' }, tk);
+  const tank = CM.tank(tk), inf = [0, 1, 2].map(() => CM.figure(tk, 'UK'));
+  gm.onFrame($('tank'), (l, info) => { const t = info.time, x = -260 + (t - 51.6) * 120, bump = x > 1000 && x < 1300 ? Math.sin((x - 1000) / 300 * Math.PI) * 30 : 0;
+    tank.setAttribute('transform', `translate(${x} ${790 - bump}) rotate(${x > 1000 && x < 1300 ? Math.cos((x - 1000) / 300 * Math.PI) * -8 : 0})`);
+    tank.querySelector('.track').setAttribute('stroke-dashoffset', -t * 80); wire.setAttribute('opacity', x > 760 ? .25 : 1);
+    inf.forEach((f, i) => CM.pose(f, { x: x - 330 - i * 130, y: 800, s: 1.3, dir: 1, run: .6, ph: t * 7 + i })); });
+  CM.head(H, tl, 'EL <em>TANQUE</em>', '15 de septiembre de 1916 · el Somme', W('septiembre') - .3, 60.9);
+  const mil = CM.text($('tank'), 'big', '+<em>1.000.000</em>', 230, 'font-size:170px'), milb = CM.text($('tank'), 'mid', 'de bajas en la batalla del Somme', 420);
+  tl.from(mil, { scale: 1.5, opacity: 0, filter: 'blur(14px)', duration: .45, ease: 'expo.out' }, W('millón') - .6).from(milb, { y: 30, opacity: 0, duration: .3 }, W('millón') - .3);
+  tl.from($('tank'), { opacity: 0, duration: .3 }, 51.6);
+  /* Jutland */
+  const js = CM.svgIn($('jut'), 'linear-gradient(#6f7f92, #b9c4cc 50%, #2f4f70 50%, #12304f)');
+  const uk = [0, 1, 2].map(() => CM.ship(js, '#59606b')), de = [0, 1, 2].map(() => CM.ship(js, '#6b6f63'));
+  const sx = [], spl = Array.from({ length: 10 }, (_, i) => { const g = CM.mk('g', {}, js); CM.mk('path', { d: 'M-20 0 Q-10 -90 0 -120 Q10 -90 20 0Z', fill: '#e8f3ff', opacity: .9 }, g); return g; });
+  const fl = [...uk, ...de].map(() => CM.mk('circle', { r: 40, fill: 'url(#cmFlash)' }, js));
+  gm.onFrame($('jut'), (l, info) => { const t = info.time;
+    uk.forEach((s, i) => s.setAttribute('transform', `translate(${300 + i * 120 + Math.sin(t * .5) * 10} ${560 + i * 70}) scale(${.55 + i * .12})`));
+    de.forEach((s, i) => s.setAttribute('transform', `translate(${1640 - i * 120 + Math.sin(t * .5 + 1) * 10} ${560 + i * 70}) scale(${-(.55 + i * .12)} ${.55 + i * .12})`));
+    fl.forEach((f, i) => { const sh = i < 3 ? uk[i] : de[i - 3], on = gm.random('jf' + i + ':' + Math.floor(t * 2)) > .6 && (t * 2) % 1 < .25;
+      const x = i < 3 ? 300 + i * 120 + 170 * (.55 + i * .12) : 1640 - (i - 3) * 120 - 170 * (.55 + (i - 3) * .12); f.setAttribute('cx', x); f.setAttribute('cy', 560 + (i % 3) * 70 - 30); f.setAttribute('opacity', on ? 1 : 0); });
+    spl.forEach((g, i) => { const k = Math.floor(t * 1.4 + i / 10), ph = (t * 1.4 + i / 10) % 1, x = 500 + gm.random('sp' + i + k) * 900, y = 600 + gm.random('sy' + i + k) * 220;
+      g.setAttribute('transform', `translate(${x} ${y}) scale(${Math.sin(ph * Math.PI) * 1.1})`); g.setAttribute('opacity', 1 - ph); }); });
+  CM.flag(js, 'UK', 120, 300, 110, 70); CM.flag(js, 'DE', 1690, 300, 110, 70);
+  CM.head(H, tl, '<em>JUTLANDIA</em>', '31 de mayo – 1 de junio de 1916', 66.9, 79.0);
+  const jt = CM.text($('jut'), 'mid', 'los británicos pierden más barcos… <b>pero controlan el mar</b>', 300); tl.from(jt, { y: 30, opacity: 0, duration: .35 }, W('británicos', 2) - .4);
+  tl.from($('jut'), { opacity: 0, duration: .3 }, 66.6);
+  /* Brusilov offensive */
+  const m3 = CM.map($('map3'), geo); base(m3); tl.set(m3.g, { x: 960 - 1220 * 1.8, y: 540 - 560 * 1.8, scale: 1.8 }, 0);
+  m3.line(tl, 'este', 0, { color: '#FFD23F', width: 5, dash: '10 8', dur: .01 }); m3.line(tl, 'brusilov', W('ofensiva') - .3, { color: '#2f6fcf', width: 12, arrow: true, dur: 1.4 });
+  m3.pin(tl, 'Lutsk', 'LUTSK', W('brusílov') - .2, null, { size: 18 });
+  CM.head(H, tl, 'OFENSIVA <em>BRUSÍLOV</em>', 'junio – septiembre de 1916', W('brusílov') - .3, 86.5);
+  tl.from($('map3'), { opacity: 0, duration: .3 }, 79.0);
+  /* the air war */
+  const as = CM.svgIn($('air'), 'linear-gradient(#5f8fc4, #cfe0ef)');
+  const clouds = Array.from({ length: 6 }, (_, i) => CM.mk('ellipse', { rx: 220, ry: 60, fill: '#fff', opacity: .7 }, as));
+  const p1 = CM.plane(as, 'UK'), p2 = CM.plane(as, 'DE', '#c0392b'), tr = CM.mk('path', { stroke: '#ffe08a', 'stroke-width': 4, 'stroke-dasharray': '16 18', fill: 'none' }, as);
+  gm.onFrame($('air'), (l, info) => { const t = info.time, d = t - 86.4;
+    clouds.forEach((c, i) => { c.setAttribute('cx', ((i * 420 - d * 90) % 2300 + 2300) % 2300 - 200); c.setAttribute('cy', 200 + (i % 3) * 230); });
+    const x1 = 900 + Math.cos(d * .9) * 520, y1 = 520 + Math.sin(d * 1.8) * 190, x2 = 900 + Math.cos(d * .9 - .7) * 520, y2 = 520 + Math.sin(d * 1.8 - 1.4) * 190;
+    const a1 = Math.atan2(Math.cos(d * 1.8) * 190 * 1.8, -Math.sin(d * .9) * 520 * .9) * 180 / Math.PI, a2 = Math.atan2(Math.cos(d * 1.8 - 1.4) * 342, -Math.sin(d * .9 - .7) * 468) * 180 / Math.PI;
+    p1.setAttribute('transform', `translate(${x1} ${y1}) rotate(${a1}) scale(1.1 ${Math.abs(a1) > 90 ? -1.1 : 1.1})`); p2.setAttribute('transform', `translate(${x2} ${y2}) rotate(${a2}) scale(1.1 ${Math.abs(a2) > 90 ? -1.1 : 1.1})`);
+    const fire = (t * 3) % 1 < .5; tr.setAttribute('d', fire ? `M${x2} ${y2} L${x2 + (x1 - x2) * .8} ${y2 + (y1 - y2) * .8}` : ''); });
+  CM.head(H, tl, 'LA GUERRA <em>EN EL AIRE</em>', 'nacen los ases', 86.7, W('barón') - .5);
+  CM.head(H, tl, 'EL <em>BARÓN ROJO</em>', 'Manfred von Richthofen', W('barón') - .3, 97.6);
+  tl.from($('air'), { opacity: 0, duration: .3 }, 86.4);
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

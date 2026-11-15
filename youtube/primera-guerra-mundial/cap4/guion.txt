@@ -1,0 +1,12 @@
+# Capítulo 4 · 1916: el año del desgaste
+-3%|-2Hz|0.35|Mil novecientos dieciséis fue el año de las grandes batallas de desgaste.
++3%|+0Hz|0.3|En febrero, Alemania atacó Verdún, una fortaleza clave para Francia. Su objetivo era desgastar al ejército francés hasta agotarlo.
++3%|+0Hz|0.3|Durante unos diez meses, la artillería convirtió el campo en un paisaje lunar. Los franceses, ya con su uniforme azul horizonte y casco de acero, resistieron con una consigna: «No pasarán».
+-4%|-2Hz|0.4|Verdún costó unas setecientas mil bajas entre los dos bandos. Y al final, el frente apenas se movió.
++3%|+0Hz|0.3|Para aliviar a Verdún, británicos y franceses atacaron en el río Somme el primero de julio.
+-5%|-3Hz|0.4|Fue un desastre. Solo ese primer día, el ejército británico sufrió más de cincuenta y siete mil bajas.
++3%|+0Hz|0.35|En septiembre, en el Somme, apareció por primera vez un arma nueva: el tanque. Lento y poco fiable… pero era el futuro de la guerra.
++3%|+0Hz|0.35|Cuando terminó, en noviembre, la batalla del Somme había causado más de un millón de bajas.
++4%|+0Hz|0.3|En el mar, las flotas británica y alemana chocaron en Jutlandia, la mayor batalla naval de la guerra. Los británicos perdieron más barcos, pero la flota alemana casi no volvió a salir a mar abierto.
++4%|+1Hz|0.4|Y en el este, el general ruso Brusílov lanzó una gran ofensiva que estuvo a punto de hundir al ejército austrohúngaro.
++4%|+1Hz|0.4|Y en el cielo, los aviones pasaron de solo observar a combatir entre ellos. Nacieron los ases, como el alemán Manfred von Richthofen, el famoso Barón Rojo.

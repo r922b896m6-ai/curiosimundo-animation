@@ -1,0 +1,9 @@
+# Capítulo 3 · 1915: estancados
++3%|+0Hz|0.3|En mil novecientos quince, el frente occidental estaba atascado. Atacar una trinchera defendida por ametralladoras y alambre de púas era casi un suicidio.
+-2%|-2Hz|0.35|En abril, en Ypres, Alemania usó por primera vez gas cloro a gran escala. Las máscaras antigás pronto se volvieron parte del equipo de todo soldado.
++3%|+0Hz|0.3|La vida en las trincheras era dura: barro, ratas, piojos y frío, con turnos entre la primera línea y la retaguardia.
++3%|+0Hz|0.3|Los aliados buscaron otra salida: atacar al Imperio otomano, aliado de Alemania, en la península de Galípoli, para abrir el paso hacia Rusia.
++4%|+1Hz|0.3|Soldados británicos, franceses, australianos y neozelandeses, los famosos Anzac, desembarcaron en sus playas.
++3%|+0Hz|0.4|Pero los otomanos, dirigidos en parte por un joven oficial llamado Mustafá Kemal, resistieron en las colinas. Tras más de ocho meses, los aliados se retiraron.
++3%|+0Hz|0.3|Ese año, Italia cambió de bando y entró en la guerra junto a los aliados, abriendo un nuevo frente en los Alpes.
+-2%|-1Hz|0.4|Y en el mar, un submarino alemán hundió el transatlántico británico Lusitania. Murieron casi mil doscientas personas, entre ellas más de cien estadounidenses.

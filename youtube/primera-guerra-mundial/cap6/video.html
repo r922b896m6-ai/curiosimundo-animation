@@ -1,0 +1,87 @@
+<!doctype html>
+<!-- Capítulo 6 · 1918: Ofensiva de Primavera (tropas de asalto DE vs UK), Belleau (US vs DE), segundo Marne, Amiens (tanques y aviones), gripe, cien días, revolución en Alemania, armisticio. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="99.3">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1.5"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="map" data-start="3.6" data-duration="5.6"></section>
+<section class="scene" id="spr" data-start="9.0" data-duration="12.1"></section>
+<section class="scene" id="map2" data-start="20.9" data-duration="9.2"></section>
+<section class="scene" id="bel" data-start="29.9" data-duration="12.1"></section>
+<section class="scene" id="map3" data-start="41.8" data-duration="7.1"></section>
+<section class="scene" id="ami" data-start="48.7" data-duration="12.3"></section>
+<section class="scene" id="flu" data-start="60.8" data-duration="8.6"></section>
+<section class="scene" id="map4" data-start="69.2" data-duration="18.2"></section>
+<section class="scene" id="arm" data-start="87.0" data-duration="12.3"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/europa.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id);
+  const base = mm => mm.color(tl, ['FRANCIA', 'REINO UNIDO', 'BÉLGICA', 'SERBIA', 'MONTENEGRO', 'ITALIA', 'RUMANÍA', 'GRECIA'], C.allies, 0, .01).color(tl, ['ALEMANIA', 'AUSTRIA-HUNGRÍA', 'IMPERIO OTOMANO', 'BULGARIA'], C.central, 0, .01).color(tl, 'RUSIA', '#58637a', 0, .01);
+  CM.card($('cards'), tl, 6, '1918', 'LA ÚLTIMA OFENSIVA', 0, 4);
+  const m = CM.map($('map'), geo); base(m); tl.set(m.g, { x: 960 - 700 * 2.2, y: 540 - 600 * 2.2, scale: 2.2 }, 0); m.line(tl, 'oeste', 0, { color: '#FFD23F', width: 5, dash: '12 8', dur: .01 });
+  CM.head(H, tl, '1918 · LA ÚLTIMA <em>CARTA</em>', 'Alemania se juega todo en el oeste', 4.3, 9.0);
+  /* Spring Offensive: stormtroopers infiltrate */
+  CM.battle($('spr'), { id: 'sp', left: 'DE', right: 'UK', terrain: 'mud', sky: ['#7a7f86', '#c2b9a0'], t0: 9.0, t1: 21.1, n: 8, falls: [3], mg: true, def: 4,
+    artillery: [9.2, 10.0, 10.8, 11.6, 13.0, 14.6], melee: { at: 16.4, step: .6, weapons: ['grenade', 'club', 'shovel'] }, pan: [0, -1280] });
+  CM.head(H, tl, 'OFENSIVA DE <em>PRIMAVERA</em>', '21 de marzo de 1918 · tropas de asalto', 9.3, 20.9);
+  const fl = CM.text($('spr'), 'mid', 'granadas · <b>lanzallamas</b> · ametralladoras ligeras', 380); tl.from(fl, { y: 30, opacity: 0, duration: .3 }, W('granadas') - .3).from($('spr'), { opacity: 0, duration: .3 }, 9.0);
+  const m2 = CM.map($('map2'), geo); base(m2); tl.set(m2.g, { x: 960 - 640 * 3.2, y: 540 - 600 * 3.2, scale: 3.2 }, 0);
+  m2.line(tl, 'oeste', 0, { color: '#FFD23F', width: 3, dash: '8 6', dur: .01 }); m2.line(tl, 'primavera', 21.3, { color: '#E5484D', width: 9, arrow: true, dur: 1.4 });
+  m2.pin(tl, 'París', 'PARÍS', W('parís') - .3, null, { size: 14 });
+  CM.head(H, tl, 'CERCA DE <em>PARÍS</em>', 'pero sin reservas', 21.2, 29.9);
+  const tired = CM.text($('map2'), 'mid', 'agotados y <b>sin reemplazos</b>', 760); tl.from(tired, { y: 30, opacity: 0, duration: .3 }, W('agotados') - .3);
+  /* Belleau Wood: US Marines */
+  CM.battle($('bel'), { id: 'bw', left: 'US', right: 'DE', terrain: 'forest', t0: 29.9, t1: 42.0, n: 8, falls: [2, 5], mg: true, def: 4,
+    artillery: [30.4, 32.0, 33.8, 35.5], melee: { at: 36.4, step: .6 }, pan: [0, -1280] });
+  CM.head(H, tl, 'BOSQUE DE <em>BELLEAU</em>', 'junio de 1918 · los marines', 30.2, 41.8);
+  const usn = CM.text($('bel'), 'mid', '<b>cientos de miles</b> de estadounidenses cada mes', 380); tl.from(usn, { y: 30, opacity: 0, duration: .3 }, W('cientos') - .3).to(usn, { opacity: 0, duration: .25 }, W('junio') - .3).from($('bel'), { opacity: 0, duration: .3 }, 29.9);
+  /* Second Marne */
+  const m3 = CM.map($('map3'), geo); base(m3); tl.set(m3.g, { x: 960 - 640 * 3.2, y: 540 - 600 * 3.2, scale: 3.2 }, 0);
+  m3.line(tl, 'primavera', 0, { color: '#E5484D', width: 9, dur: .01 }); m3.line(tl, 'marne', W('detuvieron') - .2, { color: '#2f6fcf', width: 12, arrow: true, dur: 1.2 });
+  m3.pin(tl, 'Marne', 'MARNE', 42.2, null, { size: 14 });
+  CM.head(H, tl, 'SEGUNDA BATALLA DEL <em>MARNE</em>', 'julio de 1918 · los aliados contraatacan', 42.1, 48.7);
+  /* Amiens: tanks, planes, infantry */
+  CM.tanks($('ami'), 48.7, { n: 5, inf: ['UK', 'ANZ', 'FR'], planes: true, sky: 'linear-gradient(#b8c7d6, #e8dcc0)' });
+  CM.head(H, tl, '<em>AMIENS</em>', '8 de agosto de 1918', 49.0, 60.8);
+  const bd = CM.text($('ami'), 'big', '«EL DÍA <em>NEGRO</em><br>DEL EJÉRCITO ALEMÁN»', 330, 'font-size:110px'); tl.from(bd, { scale: 1.3, opacity: 0, duration: .45, ease: 'expo.out' }, W('negro') - .6).from($('ami'), { opacity: 0, duration: .3 }, 48.7);
+  /* 1918 flu */
+  const fs = CM.svgIn($('flu'), 'linear-gradient(#cfd6dc, #9aa6b0)');
+  for (let i = 0; i < 6; i++) { const x = 160 + i * 300; CM.mk('rect', { x, y: 760, width: 240, height: 40, rx: 8, fill: '#f2f2ee' }, fs); CM.mk('rect', { x, y: 800, width: 10, height: 80, fill: '#6b6f78' }, fs); CM.mk('rect', { x: x + 230, y: 800, width: 10, height: 80, fill: '#6b6f78' }, fs); CM.mk('rect', { x, y: 720, width: 40, height: 50, rx: 6, fill: '#fff' }, fs); }
+  const nurse = CM.figure(fs, 'US', { weapon: 'none', pack: false }); CM.pose(nurse, { x: 960, y: 900, s: 1.4, dir: 1 });
+  CM.head(H, tl, 'LA GRIPE DE <em>1918</em>', 'una pandemia en plena guerra', 61.0, 69.2);
+  tl.from($('flu'), { opacity: 0, duration: .3 }, 60.8);
+  /* hundred days, surrenders, revolution */
+  const m4 = CM.map($('map4'), geo); base(m4); tl.set(m4.g, { x: 0, y: 0, scale: 1 }, 0);
+  m4.line(tl, 'cienDias', W('cien') - .3, { color: '#2f6fcf', width: 12, arrow: true, dur: 2 });
+  CM.head(H, tl, 'LOS <em>CIEN DÍAS</em>', 'agosto – noviembre de 1918', W('cien') - .4, W('alemania', 2) - .3);
+  [['BULGARIA', 'Sofía', '29 SEP', W('bulgaria')], ['IMPERIO OTOMANO', 'Constantinopla', '30 OCT', W('otomano')], ['AUSTRIA-HUNGRÍA', 'Viena', '3 NOV', W('austria-hungría')]].forEach(([g, c, d, at]) => {
+    m4.color(tl, g, '#58637a', at - .1, .5); m4.text(tl, d, ...geo.cities[c].map((v, i) => v + (i ? 50 : 0)), at - .1, null, { size: 30, fill: '#FFD23F' }); });
+  m4.pin(tl, 'Kiel', 'MOTÍN DE KIEL', W('marineros') - .3, null, { size: 26, fill: '#E5484D' });
+  tl.to(m4.paths['ALEMANIA'], { fill: '#ff6a5a', duration: .3, yoyo: true, repeat: 5 }, W('revolución') - .2);
+  CM.head(H, tl, 'REVOLUCIÓN EN <em>ALEMANIA</em>', '9 de noviembre · abdica Guillermo II', W('alemania', 2) - .3, 87.0);
+  /* Armistice, Compiègne, 11:00 */
+  const as = CM.svgIn($('arm'), 'linear-gradient(#3a4a3a, #8a9a7a)'); CM.mk('rect', { y: 800, width: 1920, height: 280, fill: '#2f3a2a' }, as);
+  for (let i = 0; i < 12; i++) { const x = 60 + i * 170; CM.mk('rect', { x: x - 10, y: 420, width: 20, height: 400, fill: '#2a2017' }, as); CM.mk('circle', { cx: x, cy: 400, r: 90, fill: '#2f4a24' }, as); }
+  CM.mk('rect', { x: 560, y: 600, width: 800, height: 200, rx: 12, fill: '#4a3a2a' }, as); for (let i = 0; i < 6; i++) CM.mk('rect', { x: 600 + i * 125, y: 640, width: 80, height: 60, fill: '#e8d9a8' }, as);
+  CM.mk('rect', { x: 540, y: 800, width: 840, height: 16, fill: '#222' }, as);
+  const clk = CM.mk('g', { transform: 'translate(1640 560)' }, as); CM.mk('circle', { r: 150, fill: '#f6f1e6', stroke: '#1d1d1d', 'stroke-width': 12 }, clk);
+  for (let i = 0; i < 12; i++) CM.mk('path', { d: 'M0 -130 V-110', stroke: '#1d1d1d', 'stroke-width': 8, transform: `rotate(${i * 30})` }, clk);
+  const hh = CM.mk('path', { d: 'M0 0 V-80', stroke: '#1d1d1d', 'stroke-width': 12, 'stroke-linecap': 'round' }, clk), mh = CM.mk('path', { d: 'M0 0 V-120', stroke: '#c0392b', 'stroke-width': 8, 'stroke-linecap': 'round' }, clk);
+  const so = [['UK', 260], ['FR', 420], ['US', 1260], ['DE', 1700]].map(([n, x]) => ({ f: CM.figure(as, n), x }));
+  const eleven = W('once', 2) - .2;
+  gm.onFrame($('arm'), (l, info) => { const t = info.time, k = gm.clamp((t - 87) / (eleven - 87)), mins = -6 + k * 6;
+    hh.setAttribute('transform', `rotate(${(11 + mins / 60) * 30})`); mh.setAttribute('transform', `rotate(${mins * 6})`);
+    so.forEach((s, i) => CM.pose(s.f, { x: s.x, y: 900, s: 1.3, dir: s.x < 960 ? 1 : -1, armRot: t > W('callaron') ? 70 : 0 })); });
+  const ad = CM.text($('arm'), 'big', '11 · 11 · 1918 — <em>11:00</em>', 120, 'font-size:130px'), ad2 = CM.text($('arm'), 'mid', 'entra en vigor el <b>armisticio</b>', 270);
+  tl.from($('arm'), { opacity: 0, duration: .4 }, 87.0).from(ad, { scale: 1.3, opacity: 0, duration: .5, ease: 'expo.out' }, W('once') - .3).from(ad2, { y: 30, opacity: 0, duration: .3 }, W('armisticio') - .3)
+    .to(ad2, { opacity: 0, duration: .3 }, W('callaron') - .8);
+  const silent = CM.text($('arm'), 'mid', 'las armas <b>callaron</b>', 270); tl.from(silent, { y: 30, opacity: 0, duration: .4 }, W('callaron') - .5);
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

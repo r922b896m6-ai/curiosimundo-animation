@@ -1,0 +1,24 @@
+:root { --accent:#FFD23F; --head:"Bebas Neue", Inter, sans-serif; --font: Inter, system-ui, sans-serif; }
+body { background:#0b1f40; color:#fff; font-family: var(--font); overflow:hidden; margin:0; }
+svg { overflow: hidden; }
+.scene { z-index: 2; overflow: hidden; }
+.head { position:absolute; left:70px; top:56px; z-index:5; padding:16px 34px 18px 28px; border-left:8px solid var(--accent);
+        background: linear-gradient(90deg, rgb(6 12 28 / .82), rgb(6 12 28 / 0)); }
+.head .ht { font: 400 88px/1 var(--head); letter-spacing:.01em; text-shadow: 0 6px 30px rgb(0 0 0 / .6); }
+.head .ht em { font-style:normal; color: var(--accent); }
+.head .hs { font: 800 28px/1.2 var(--font); letter-spacing:.08em; text-transform:uppercase; color: var(--accent); margin-top:8px; }
+.big { position:absolute; left:0; right:0; text-align:center; font: 400 200px/1 var(--head); text-shadow: 0 12px 50px rgb(0 0 0 / .7); z-index:5; }
+.big em { font-style:normal; color: var(--accent); }
+.mid { position:absolute; left:0; right:0; text-align:center; font: 800 46px/1.2 var(--font); letter-spacing:.06em; text-transform:uppercase; z-index:5; text-shadow: 0 4px 24px rgb(0 0 0 / .8); }
+.mid b { color: var(--accent); }
+.card { position:absolute; inset:0; z-index:7; background: radial-gradient(1200px 800px at 50% 45%, #163a78, #071330 75%);
+        display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.card .cn { font: 800 38px/1 var(--font); letter-spacing:.35em; color: var(--accent); }
+.card .cy { font: 400 300px/1 var(--head); margin: 10px 0; text-shadow: 0 12px 60px rgb(0 0 0 / .6); }
+.card .cname { font: 400 92px/1 var(--head); letter-spacing:.04em; }
+#caps { position:absolute; inset:0; z-index:8; pointer-events:none; }
+.cap { position:absolute; left:140px; right:140px; top:936px; text-align:center; isolation:isolate; font: 800 52px/1.15 var(--font); letter-spacing:-.01em; }
+.cap .w { display:inline-block; padding:0 .12em; --hl:0; position:relative; color: color-mix(in oklab, #0b1f40 calc(var(--hl) * 100%), #ffffff);
+          text-shadow: 0 3px 0 rgb(0 0 0 / calc(.75 - var(--hl) * .75)), 0 6px 24px rgb(0 0 0 / calc(.7 - var(--hl) * .7)); }
+.cap .pill { position:absolute; left:0; top:.04em; height:1.1em; border-radius:.2em; z-index:-1; background: var(--accent); }
+.vig { position:absolute; inset:0; z-index:4; pointer-events:none; background: radial-gradient(1400px 900px at 50% 45%, rgb(0 0 0 / 0) 55%, rgb(0 0 0 / .45)); }

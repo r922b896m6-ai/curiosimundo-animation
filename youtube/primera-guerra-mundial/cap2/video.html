@@ -1,0 +1,98 @@
+<!doctype html>
+<!-- Capítulo 2 · 1914: la guerra de movimientos. Plan Schlieffen, uniformes de 1914, Marne (FR14 vs DE14), Tannenberg (RU vs DE14), frente occidental, tregua de Navidad. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="82.4">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="map" data-start="3.6" data-duration="78.8"></section>
+<section class="scene" id="march" data-start="12.9" data-duration="4.3"></section>
+<section class="scene" id="unif" data-start="16.6" data-duration="10.4"></section>
+<section class="scene" id="marne" data-start="35.0" data-duration="10.8"></section>
+<section class="scene" id="taxi" data-start="36.4" data-duration="3.4"></section>
+<section class="scene" id="tann" data-start="45.6" data-duration="7.4"></section>
+<section class="scene" id="truce" data-start="68.8" data-duration="13.6"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+const svgIn = (sec, bg) => { sec.style.background = bg; const s = CM.mk('svg', { viewBox: '0 0 1920 1080', width: 1920, height: 1080, style: 'position:absolute;inset:0' }, sec); CM.defs(s); return s; };
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/europa.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id);
+  CM.card($('cards'), tl, 2, '1914', 'LA GUERRA DE MOVIMIENTOS', 0, 4);
+  /* map: Schlieffen plan */
+  const m = CM.map($('map'), geo);
+  m.color(tl, ['FRANCIA', 'RUSIA', 'REINO UNIDO', 'BÉLGICA', 'SERBIA', 'MONTENEGRO'], C.allies, 0, .01).color(tl, ['ALEMANIA', 'AUSTRIA-HUNGRÍA'], C.central, 0, .01).color(tl, ['ITALIA', 'IMPERIO OTOMANO'], '#58637a', 0, .01);
+  tl.set(m.g, { x: 0, y: 0, scale: 1 }, 0); m.zoom(tl, 'Bruselas', 2.4, 4.0, 2.4);
+  CM.head(H, tl, 'EL PLAN <em>SCHLIEFFEN</em>', 'derrotar a Francia en semanas', W('schlieffen') - .6, 12.7);
+  m.line(tl, 'schlieffen1', W('cruzando') - .4, { color: '#E5484D', width: 9, arrow: true, dur: 1.4, end: 34.6 });
+  m.line(tl, 'schlieffen2', W('cruzando') - .1, { color: '#E5484D', width: 9, arrow: true, dur: 1.4, end: 34.6 });
+  m.pin(tl, 'París', 'PARÍS', W('derrotar') - .2, 34.6, { size: 20 });
+  m.text(tl, '¿Y LUEGO RUSIA?', ...geo.cities['Berlín'].map((v, i) => v + (i ? -40 : 60)), W('rusia') - .2, 12.7, { size: 22, fill: '#FFD23F' });
+  /* marching: "home by Christmas" */
+  const ms = svgIn($('march'), 'linear-gradient(#9fb6cc, #e8d9b0)'); CM.mk('rect', { y: 800, width: 1920, height: 300, fill: '#6b7a48' }, ms);
+  const col = Array.from({ length: 7 }, (_, i) => ({ f: CM.figure(ms, i % 2 ? 'DE14' : 'DE14'), x: -200 - i * 190 }));
+  gm.onFrame($('march'), (l, info) => col.forEach((c, i) => CM.pose(c.f, { x: c.x + 700 + (info.time - 12.9) * 260, y: 820, s: 1.55, run: .45, ph: info.time * 6 + i, dir: 1 })));
+  const xm = Object.assign(document.createElement('div'), { className: 'big', innerHTML: '«EN CASA PARA <em>NAVIDAD</em>»' }); xm.style.cssText += ';top:220px;font-size:130px'; $('march').append(xm);
+  tl.from($('march'), { opacity: 0, duration: .3 }, 12.9).from(xm, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, W('casa') - .3);
+  /* uniforms of 1914, side by side */
+  const us = svgIn($('unif'), 'radial-gradient(1100px 800px at 50% 50%, #1c3f7a, #071330)');
+  const fr = CM.figure(us, 'FR14'), de = CM.figure(us, 'DE14'); CM.pose(fr, { x: 640, y: 900, s: 3.2, dir: 1 }); CM.pose(de, { x: 1280, y: 900, s: 3.2, dir: -1 });
+  CM.flag(us, 'FR', 560, 250, 160, 106); CM.flag(us, 'DE', 1200, 250, 160, 106);
+  const call = (x, y, lx, ly, txt) => { const g = CM.mk('g', {}, us); CM.mk('path', { d: `M${x} ${y} L${lx} ${ly}`, stroke: '#FFD23F', 'stroke-width': 4 }, g); CM.mk('circle', { cx: x, cy: y, r: 8, fill: '#FFD23F' }, g);
+    const t = CM.mk('text', { x: lx + (lx < x ? -10 : 10), y: ly + 10, 'text-anchor': lx < x ? 'end' : 'start', 'font-family': 'Inter', 'font-weight': 800, 'font-size': 34, fill: '#fff' }, g); t.textContent = txt; return g; };
+  const cs = [[call(640, 380, 420, 330, 'QUEPIS'), W('abrigo') - .2], [call(630, 560, 420, 520, 'ABRIGO AZUL'), W('abrigo')], [call(620, 760, 420, 760, 'PANTALONES ROJOS'), W('rojos') - .3],
+    [call(1290, 340, 1490, 300, 'CASCO DE PINCHO'), W('pincho') - .3], [call(1280, 560, 1490, 540, 'GRIS DE CAMPAÑA'), W('gris') - .2]];
+  cs.forEach(([g, at]) => tl.from(g, { opacity: 0, x: -20, duration: .3 }, at));
+  tl.from($('unif'), { opacity: 0, duration: .3 }, 16.6).from([fr.o, de.o], { opacity: 0, duration: .4, stagger: .3 }, 16.8);
+  CM.head(H, tl, 'UNIFORMES DE <em>1914</em>', 'Francia · Alemania', 16.9, 26.7);
+  /* map again: advance to the Marne */
+  m.pin(tl, 'Marne', 'RÍO MARNE', W('marne') - .3, 34.6, { size: 18, fill: '#E5484D' });
+  m.text(tl, '< 50 KM DE PARÍS', ...geo.cities['París'].map((v, i) => v + (i ? 30 : 0)), W('cincuenta') - .2, 34.6, { size: 16, fill: '#FFD23F' });
+  CM.head(H, tl, 'SEPTIEMBRE <em>1914</em>', 'los alemanes, a las puertas de París', W('septiembre') - .3, W('contraatacaron') - .2);
+  /* Battle of the Marne: French (1914 uniforms) and British counter-attack */
+  const mb = CM.battle($('marne'), { id: 'mn', left: 'FR14', right: 'DE14', terrain: 'fields', t0: 35.0, t1: 45.8, n: 8, falls: [2, 5], mg: true, def: 4,
+    artillery: [35.4, 36.8, 38.1, 39.9, 41.2, 42.6], melee: { at: 42.4, step: .6 }, pan: [0, -1280] });
+  CM.head(H, tl, 'BATALLA DEL <em>MARNE</em>', '6 – 12 de septiembre de 1914', W('contraatacaron') - .1, 45.6);
+  tl.from($('marne'), { opacity: 0, duration: .3 }, 35.0);
+  const ts = svgIn($('taxi'), 'linear-gradient(#2a3550, #6b6f80)'); CM.mk('rect', { y: 760, width: 1920, height: 320, fill: '#3a3a40' }, ts);
+  const taxis = Array.from({ length: 5 }, (_, i) => { const g = CM.mk('g', {}, ts); CM.mk('path', { d: 'M-120 0 L-110 -60 L-40 -70 L-20 -110 L60 -110 L80 -60 L120 -50 L120 0Z', fill: '#c0392b' }, g);
+    CM.mk('rect', { x: -10, y: -100, width: 60, height: 36, fill: '#9fb6cc' }, g); CM.mk('circle', { cx: -70, cy: 6, r: 24, fill: '#111' }, g); CM.mk('circle', { cx: 80, cy: 6, r: 24, fill: '#111' }, g); return g; });
+  gm.onFrame($('taxi'), (l, info) => taxis.forEach((g, i) => g.setAttribute('transform', `translate(${-300 + (info.time - 36.4) * 700 - i * 330} 780)`)));
+  const tx = Object.assign(document.createElement('div'), { className: 'mid', innerHTML: 'los <b>taxis de París</b> llevan soldados al frente' }); tx.style.top = '250px'; $('taxi').append(tx);
+  tl.from($('taxi'), { opacity: 0, duration: .25 }, 36.4).to($('taxi'), { opacity: 0, duration: .25 }, 39.5);
+  const fail = Object.assign(document.createElement('div'), { className: 'mid', innerHTML: 'la guerra rápida <b>fracasa</b>' }); fail.style.top = '300px'; $('marne').append(fail);
+  tl.from(fail, { y: 30, opacity: 0, duration: .35 }, W('fracasado') - .5);
+  /* Tannenberg: Russians attack, Germans hold */
+  CM.battle($('tann'), { id: 'tb', left: 'RU', right: 'DE14', terrain: 'forest', t0: 45.6, t1: 53.0, n: 8, falls: [1, 3, 4, 6], mg: true, def: 4,
+    artillery: [46.0, 47.2, 48.4, 49.7, 51.0], pan: [0, -1280] });
+  CM.head(H, tl, '<em>TANNENBERG</em>', 'agosto de 1914 · derrota rusa en el este', 45.8, 52.8);
+  tl.from($('tann'), { opacity: 0, duration: .3 }, 45.6);
+  /* race to the sea + trench line */
+  m.zoom(tl, 'Somme', 2.2, 52.6, .01);
+  CM.head(H, tl, 'LA CARRERA <em>HACIA EL MAR</em>', 'otoño de 1914', W('rodearse') - .6, W('cavaron') - .3);
+  m.line(tl, 'carrera', W('rodearse') - .3, { color: '#FFD23F', width: 10, arrow: true, dur: 2.5, end: W('cavaron') - .2 });
+  m.zoom(tl, [700, 600], 1.5, W('cavaron') - .3, 1.4);
+  m.line(tl, 'oeste', W('cavaron'), { color: '#1d1d1d', width: 16, dur: 3, end: 68.8 }); m.line(tl, 'oeste', W('cavaron') + .1, { color: '#FFD23F', width: 6, dash: '14 10', dur: 3, end: 68.8 });
+  CM.head(H, tl, 'EL FRENTE <em>OCCIDENTAL</em>', 'unos 700 km de trincheras', W('cavaron'), 68.6);
+  m.pin(tl, 'Ypres', 'MAR DEL NORTE', W('norte') - .3, 68.6, { size: 18 }); m.text(tl, 'SUIZA', 940, 850, W('suiza') - .3, 68.6, { size: 26, fill: '#FFD23F' });
+  /* Christmas truce (night, snow) */
+  const xs = svgIn($('truce'), 'linear-gradient(#060b1a, #1d2a4a)'); CM.mk('rect', { y: 820, width: 1920, height: 260, fill: '#d9e2ef' }, xs);
+  [[200, 'UK14'], [1720, 'DE14']].forEach(([x]) => { for (let k = 0; k < 5; k++) CM.mk('rect', { x: x - 110 + k * 46, y: 790 - (k % 2) * 8, width: 50, height: 28, rx: 10, fill: '#8a7a58' }, xs); });
+  const tree = CM.mk('g', { transform: 'translate(1700 760)' }, xs); CM.mk('path', { d: 'M0 -160 L60 0 L-60 0Z', fill: '#2f5a34' }, tree); [[-20, -60], [20, -90], [0, -130], [-30, -20], [30, -30]].forEach(([x, y]) => CM.mk('circle', { cx: x, cy: y, r: 6, fill: '#FFD23F' }, tree));
+  const uk = [0, 1, 2].map(i => CM.figure(xs, 'UK14', { weapon: 'none', pack: false })), dk = [0, 1, 2].map(i => CM.figure(xs, 'DE14', { weapon: 'none', pack: false }));
+  const ball = CM.mk('circle', { r: 16, fill: '#8a5a2a' }, xs), flakes = Array.from({ length: 70 }, (_, i) => CM.mk('circle', { r: 3 + gm.random('sn' + i) * 3, fill: '#fff', opacity: .8 }, xs));
+  const tm = W('salieron') - .4, tb = W('regalos');
+  gm.onFrame($('truce'), (l, info) => { const t = info.time, p = gm.clamp((t - tm) / 3.2);
+    uk.forEach((f, i) => CM.pose(f, { x: 260 + i * 70 + p * 520, y: 840 + i * 12, s: 1.5, dir: 1, run: p > 0 && p < 1 ? .4 : 0, ph: t * 6 + i, armRot: t > tb ? 50 : 0 }));
+    dk.forEach((f, i) => CM.pose(f, { x: 1660 - i * 70 - p * 520, y: 840 + i * 12, s: 1.5, dir: -1, run: p > 0 && p < 1 ? .4 : 0, ph: t * 6 + i, armRot: t > tb ? 50 : 0 }));
+    const kb = gm.clamp((t - tb - .6) / 2); ball.setAttribute('cx', 900 + Math.sin(kb * 9) * 140); ball.setAttribute('cy', 880 - Math.abs(Math.sin(kb * 18)) * 60); ball.setAttribute('opacity', t > tb ? 1 : 0);
+    flakes.forEach((f, i) => { f.setAttribute('cx', (gm.random('fx' + i) * 1920 + Math.sin(t + i) * 30)); f.setAttribute('cy', ((gm.random('fy' + i) * 1080 + t * 60) % 1080)); }); });
+  CM.head(H, tl, 'LA TREGUA DE <em>NAVIDAD</em>', 'diciembre de 1914', 69.0, 82.2);
+  const sing = Object.assign(document.createElement('div'), { className: 'mid', innerHTML: 'villancicos · <b>regalos</b> · fútbol' }); sing.style.top = '300px'; $('truce').append(sing);
+  tl.from($('truce'), { opacity: 0, duration: .4 }, 68.8).from(sing, { y: 30, opacity: 0, duration: .4 }, W('villancicos') - .3);
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

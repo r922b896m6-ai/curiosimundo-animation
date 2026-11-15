@@ -1,0 +1,11 @@
+# Capítulo 6 · 1918: la última ofensiva y el armisticio
++3%|+0Hz|0.3|En la primavera de mil novecientos dieciocho, Alemania jugó su última carta.
++4%|+1Hz|0.3|Con las tropas liberadas del frente ruso, lanzó la Ofensiva de Primavera. Sus tropas de asalto se infiltraban entre las líneas enemigas con granadas, lanzallamas y ametralladoras ligeras.
++3%|+0Hz|0.35|Avanzaron más que en cuatro años, y volvieron a acercarse a París. Pero estaban agotados, y no tenían con qué reemplazar a los caídos.
++4%|+1Hz|0.35|Mientras tanto, cada mes llegaban cientos de miles de soldados estadounidenses. En junio, en el bosque de Belleau, los marines frenaron a los alemanes en duros combates cuerpo a cuerpo.
++4%|+0Hz|0.3|En julio, en la segunda batalla del Marne, los aliados detuvieron el último gran ataque alemán y contraatacaron.
++5%|+1Hz|0.35|El ocho de agosto, en Amiens, cientos de tanques, aviones e infantería aliada atravesaron las líneas alemanas. El general alemán Ludendorff lo llamó «el día negro del ejército alemán».
++2%|-1Hz|0.35|Y por si fuera poco, una nueva amenaza se extendía por los ejércitos y las ciudades: la gran pandemia de gripe de mil novecientos dieciocho.
++4%|+0Hz|0.35|Empezaron los cien días: un avance aliado tras otro. Bulgaria, el Imperio otomano y Austria-Hungría se rindieron uno tras otro.
+-2%|-1Hz|0.35|En Alemania, los marineros se amotinaron y estalló la revolución. El káiser Guillermo segundo abdicó y huyó a los Países Bajos.
+-6%|-4Hz|0.5|Y el once de noviembre de mil novecientos dieciocho, a las once de la mañana, entró en vigor el armisticio. Después de más de cuatro años, las armas callaron.

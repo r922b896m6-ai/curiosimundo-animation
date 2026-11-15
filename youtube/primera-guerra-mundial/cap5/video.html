@@ -1,0 +1,71 @@
+<!doctype html>
+<!-- Capítulo 5 · 1917: revolución rusa, Estados Unidos entra (submarinos, telegrama Zimmermann), Passchendaele (UK vs DE en el barro), Caporetto (AH vs IT en los Alpes), Cambrai (tanques). -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="76.1">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="map" data-start="3.6" data-duration="21.4"></section>
+<section class="scene" id="sub" data-start="24.8" data-duration="8.4"></section>
+<section class="scene" id="tel" data-start="33.0" data-duration="12.9"></section>
+<section class="scene" id="pas" data-start="45.7" data-duration="10.4"></section>
+<section class="scene" id="cap" data-start="55.9" data-duration="11.1"></section>
+<section class="scene" id="cam" data-start="66.8" data-duration="9.3"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/europa.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id);
+  CM.card($('cards'), tl, 5, '1917', 'EL AÑO QUE LO CAMBIÓ TODO', 0, 4);
+  /* Russia: revolution and exit */
+  const m = CM.map($('map'), geo);
+  m.color(tl, ['FRANCIA', 'RUSIA', 'REINO UNIDO', 'BÉLGICA', 'SERBIA', 'MONTENEGRO', 'ITALIA', 'RUMANÍA', 'GRECIA'], C.allies, 0, .01).color(tl, ['ALEMANIA', 'AUSTRIA-HUNGRÍA', 'IMPERIO OTOMANO', 'BULGARIA'], C.central, 0, .01);
+  tl.set(m.g, { x: 0, y: 0, scale: 1 }, 0); m.line(tl, 'este', 0, { color: '#FFD23F', width: 6, dash: '12 8', dur: .01, end: W('Brest-Litovsk') });
+  CM.head(H, tl, '<em>1917</em>', 'el rumbo de la guerra cambia', 4.3, W('rusia') - .3);
+  m.zoom(tl, 'Petrogrado', 1.8, W('rusia') - .3, 1.4);
+  tl.to(m.paths['RUSIA'], { fill: '#d0312d', duration: .25, yoyo: true, repeat: 5 }, W('revolución') - .2);
+  m.pin(tl, 'Petrogrado', 'PETROGRADO', W('revolución') - .2, null, { size: 28, fill: '#E5484D' });
+  CM.head(H, tl, 'REVOLUCIÓN <em>RUSA</em>', 'marzo: cae el zar · noviembre: Lenin', W('revolución') - .4, W('Brest-Litovsk') - .5);
+  m.zoom(tl, 'Brest-Litovsk', 2.2, W('poco') - .3, 1.4); m.color(tl, 'RUSIA', '#58637a', W('paz') - .1, .8);
+  m.pin(tl, 'Brest-Litovsk', 'BREST-LITOVSK', W('Brest-Litovsk') - .2, null, { size: 22 });
+  CM.head(H, tl, 'PAZ DE <em>BREST-LITOVSK</em>', 'marzo de 1918 · Rusia sale de la guerra', W('Brest-Litovsk') - .3, 24.8);
+  m.text(tl, 'UN SOLO FRENTE', ...geo.cities['Berlín'].map((v, i) => v + (i ? -60 : 0)), W('frentes') - .6, null, { size: 26, fill: '#FFD23F' });
+  /* U-boats */
+  const ss = CM.svgIn($('sub'), 'linear-gradient(#8fa9c4, #d7dfe6 52%, #3a6a96 52%, #10325a)');
+  const ship = CM.ship(ss, '#6b6f63'), ub = CM.uboat(ss), ex = CM.explosion(ss, 1200, 620, W('submarinos') - .3, 1, 'sb');
+  gm.onFrame($('sub'), (l, info) => { const t = info.time, sk = gm.clamp((t - W('submarinos')) / 4); ship.setAttribute('transform', `translate(1250 ${600 + sk * 160}) rotate(${-sk * 10}) scale(.8)`); ub.setAttribute('transform', `translate(380 ${650 + Math.sin(t) * 4}) scale(.7)`); ex(t); });
+  CM.flag(ss, 'US', 1580, 330, 120, 78);
+  CM.head(H, tl, 'ESTADOS <em>UNIDOS</em>', 'la guerra submarina sin restricciones', 25.0, 33.0);
+  tl.from($('sub'), { opacity: 0, duration: .3 }, 24.8);
+  /* Zimmermann telegram */
+  const tz = $('tel'); tz.style.background = 'radial-gradient(1100px 800px at 50% 50%, #2a3b5a, #0b1530)';
+  const doc = document.createElement('div'); doc.style.cssText = 'position:absolute;left:560px;top:250px;width:800px;height:560px;background:#efe6cf;border-radius:10px;box-shadow:0 30px 80px rgb(0 0 0 / .6);transform:rotate(-3deg);color:#3a2a1a;padding:40px 54px;font:600 30px/1.5 Georgia,serif';
+  doc.innerHTML = '<div style="font:400 64px/1 \'Bebas Neue\';color:#3a2a1a">TELEGRAMA ZIMMERMANN</div><div style="margin-top:10px">Enero de 1917 · Berlín → México</div><div style="margin-top:24px">«…proponemos a México una alianza… recuperar los territorios perdidos de Texas, Nuevo México y Arizona…»</div><div style="margin-top:16px;letter-spacing:.3em">13042 13401 8501 115 3528 416…</div>';
+  tz.append(doc); const stamp = CM.text(tz, 'big', '<span style="border:10px solid #d0312d;color:#d0312d;padding:0 30px;border-radius:12px">INTERCEPTADO</span>', 420, 'font-size:120px;transform:rotate(-12deg)');
+  const us = CM.text(tz, 'big', '6 DE ABRIL DE <em>1917</em>', 120, 'font-size:130px'), us2 = CM.text(tz, 'mid', 'Estados Unidos <b>declara la guerra</b> a Alemania', 270);
+  tl.from(tz, { opacity: 0, duration: .3 }, 33.0).from(doc, { y: 400, rotate: 10, duration: .6, ease: 'expo.out' }, 33.2).from(stamp, { scale: 2, opacity: 0, duration: .3, ease: 'back.out(2)' }, W('interceptaron') - .1)
+    .to([doc, stamp], { opacity: 0, y: 200, duration: .4, ease: 'power2.in' }, W('abril') - .6).from(us, { scale: 1.4, opacity: 0, duration: .45, ease: 'expo.out' }, W('abril') - .3).from(us2, { y: 30, opacity: 0, duration: .3 }, W('abril'));
+  const usvg = CM.svgIn(tz); const usf = [0, 1, 2, 3, 4].map(() => CM.figure(usvg, 'US'));
+  gm.onFrame(tz, (l, info) => usf.forEach((f, i) => { CM.pose(f, { x: -200 + (info.time - W('abril')) * 260 - i * 190, y: 920, s: 1.3, dir: 1, run: .45, ph: info.time * 6 + i }); f.o.style.display = info.time > W('abril') ? '' : 'none'; }));
+  /* Passchendaele: mud and rain */
+  CM.battle($('pas'), { id: 'pa', left: 'UK', right: 'DE', terrain: 'mud', sky: ['#3f444c', '#6f6f6a'], t0: 45.7, t1: 56.1, n: 8, falls: [1, 3, 5, 6], mg: true, def: 3, artillery: [46.0, 47.6, 49.4, 51.2, 53.0, 54.6], pan: [0, -1100] });
+  const rs = CM.mk('g', { stroke: 'rgb(200 210 230 / .5)', 'stroke-width': 3 }, $('pas').querySelector('svg')), RD = Array.from({ length: 60 }, () => CM.mk('line', {}, rs));
+  const pw = CM.mk('g', {}, $('pas').querySelector('svg')); for (let i = 0; i < 6; i++) CM.mk('ellipse', { cx: 150 + i * 330, cy: 900 + (i % 2) * 70, rx: 120, ry: 22, fill: '#5d7480', opacity: .8 }, pw);
+  gm.onFrame($('pas'), (l, info) => RD.forEach((r, i) => { const y = ((gm.random('ry' + i) * 1080 + info.time * 1400) % 1180) - 100, x = gm.random('rx' + i) * 1980; r.setAttribute('x1', x); r.setAttribute('y1', y); r.setAttribute('x2', x - 10); r.setAttribute('y2', y + 40); }));
+  CM.head(H, tl, '<em>PASSCHENDAELE</em>', 'tercera batalla de Ypres · julio – noviembre de 1917', 46.0, 55.9);
+  tl.from($('pas'), { opacity: 0, duration: .3 }, 45.7);
+  /* Caporetto: Austro-Hungarians (and Germans) break the Italian front in the Alps */
+  CM.battle($('cap'), { id: 'cp', left: 'AH', right: 'IT', terrain: 'mountains', t0: 55.9, t1: 67.0, n: 8, falls: [4], mg: true, def: 4, artillery: [56.2, 57.6, 59.0, 60.6], melee: { at: 61.4, step: .6 }, pan: [0, -1280] });
+  CM.head(H, tl, '<em>CAPORETTO</em>', '24 de octubre de 1917 · frente italiano', 56.2, 66.7);
+  const pr = CM.text($('cap'), 'big', '+<em>260.000</em>', 360, 'font-size:150px'), pr2 = CM.text($('cap'), 'mid', 'soldados italianos <b>capturados</b>', 530);
+  tl.from(pr, { scale: 1.5, opacity: 0, duration: .45, ease: 'expo.out' }, W('doscientos') - .3).from(pr2, { y: 30, opacity: 0, duration: .3 }, W('capturados') - .4).from($('cap'), { opacity: 0, duration: .3 }, 55.9);
+  /* Cambrai: hundreds of tanks */
+  CM.tanks($('cam'), 66.8, { n: 4, inf: 'UK' });
+  CM.head(H, tl, '<em>CAMBRAI</em>', '20 de noviembre de 1917 · cientos de tanques', 67.1, 75.9);
+  tl.from($('cam'), { opacity: 0, duration: .3 }, 66.8);
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

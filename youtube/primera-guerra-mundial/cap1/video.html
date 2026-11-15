@@ -1,0 +1,82 @@
+<!doctype html>
+<!-- Capítulo 1 · Las causas y la chispa (1914). Mapa de Europa (bloques), carrera naval, Balcanes, Sarajevo, efecto dominó. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="87.7">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="map" data-start="3.6" data-duration="84.1"></section>
+<section class="scene" id="navy" data-start="14.6" data-duration="6.4"></section>
+<section class="scene" id="sar" data-start="52.0" data-duration="9.6"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/europa.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL;
+  CM.card(document.getElementById('cards'), tl, 1, '1914', 'LAS CAUSAS Y LA CHISPA', 0, 4);
+  const m = CM.map(document.getElementById('map'), geo), sec = document.getElementById('map');
+  tl.set(m.g, { x: -200, y: -120, scale: 1.2 }, 0).to(m.g, { x: 0, y: 0, scale: 1, duration: 6, ease: 'sine.inOut' }, 3.6);
+  CM.head(H, tl, 'EUROPA, <em>1914</em>', 'un barril de pólvora', W('pólvora') - 1.2, W('potencias') - .4);
+  // great powers light up
+  const powers = ['ALEMANIA', 'FRANCIA', 'REINO UNIDO', 'RUSIA', 'AUSTRIA-HUNGRÍA', 'ITALIA', 'IMPERIO OTOMANO'];
+  m.color(tl, powers, '#58637a', W('potencias'));
+  CM.head(H, tl, 'LAS GRANDES <em>POTENCIAS</em>', 'colonias · fábricas · ejércitos', W('potencias') - .2, W('flota') - 1.2);
+  [['ALEMANIA', 'Berlín'], ['FRANCIA', 'París'], ['REINO UNIDO', 'Londres'], ['RUSIA', 'Moscú'], ['AUSTRIA-HUNGRÍA', 'Viena'], ['ITALIA', 'Roma'], ['IMPERIO OTOMANO', 'Constantinopla']]
+    .forEach(([n, c], i) => m.pin(tl, c, n, W('competían') + i * .25, W('entente') - .6, { size: 42 }));
+  // naval race interlude
+  const nv = document.getElementById('navy'); nv.style.background = 'linear-gradient(#5a7ea8, #9db8d0 55%, #2a5a8a 55%, #123a66)';
+  const ns = CM.mk('svg', { viewBox: '0 0 1920 1080', width: 1920, height: 1080, style: 'position:absolute;inset:0' }, nv);
+  const s1 = CM.mk('g', {}, ns), s2 = CM.mk('g', {}, ns); CM.ship(s1, '#59606b'); CM.ship(s2, '#6b6f63');
+  CM.flag(ns, 'UK', 420, 430, 110, 70); CM.flag(ns, 'DE', 1390, 430, 110, 70);
+  gm.onFrame(nv, (l, info) => { const t = info.time; s1.setAttribute('transform', `translate(${520 + Math.sin(t * .8) * 20} ${640 + Math.sin(t * 1.3) * 6}) scale(1.1)`);
+    s2.setAttribute('transform', `translate(${1400 + Math.sin(t * .7 + 1) * 20} ${660 + Math.sin(t * 1.2 + 2) * 6}) scale(-1.1 1.1)`); });
+  CM.head(H, tl, 'LA CARRERA <em>NAVAL</em>', 'Reino Unido contra Alemania', W('flota') - 1.0, W('además') - .3);
+  tl.from(nv, { opacity: 0, duration: .3 }, 14.6).to(nv, { opacity: 0, duration: .3 }, 20.7);
+  // blocs
+  m.color(tl, ['FRANCIA', 'RUSIA', 'REINO UNIDO'], C.allies, W('entente') - .1);
+  CM.head(H, tl, 'TRIPLE <em>ENTENTE</em>', 'Francia · Rusia · Reino Unido', W('entente') - .3, W('otro') - .3);
+  m.color(tl, ['ALEMANIA', 'AUSTRIA-HUNGRÍA', 'ITALIA'], C.central, W('alianza') - .1);
+  CM.head(H, tl, 'TRIPLE <em>ALIANZA</em>', 'Alemania · Austria-Hungría · Italia', W('alianza') - .3, W('balcanes') - .4);
+  m.color(tl, 'ITALIA', '#8a6f8f', W('duraría') - .3);
+  m.text(tl, '¿?', ...geo.cities['Roma'].map((v, i) => v - (i ? 30 : 0)), W('duraría'), W('balcanes'), { size: 60, fill: '#FFD23F' });
+  // Balkans
+  m.zoom(tl, 'Sarajevo', 2.6, W('balcanes') - .4, 1.6);
+  m.color(tl, ['SERBIA', 'MONTENEGRO'], '#4f86d6', W('serbia') - .2);
+  CM.head(H, tl, 'LOS <em>BALCANES</em>', 'nacionalismo · Serbia contra Austria-Hungría', W('balcanes') - .2, W('veintiocho') - .4);
+  m.pin(tl, 'Belgrado', 'SERBIA', W('serbia'), W('veintiocho') - .4, { size: 22 }); m.pin(tl, 'Sarajevo', 'SARAJEVO', W('veintiocho') - .2, 61.4, { size: 22, fill: '#E5484D' });
+  // Sarajevo vignette (no violence shown: the car, the date, the names)
+  const sr = document.getElementById('sar'); sr.style.background = 'linear-gradient(#c9b38a, #a58a62)';
+  const ss = CM.mk('svg', { viewBox: '0 0 1920 1080', width: 1920, height: 1080, style: 'position:absolute;inset:0' }, sr);
+  ss.innerHTML = `<g fill="#8a6f4f">${[0, 1, 2, 3, 4, 5].map(i => `<rect x="${i * 330}" y="${260 + (i % 2) * 60}" width="300" height="${520 - (i % 2) * 60}"/>`).join('')}</g>
+    <g fill="#6f5a40">${[0, 1, 2, 3, 4, 5].map(i => `<rect x="${i * 330 + 40}" y="${340 + (i % 2) * 60}" width="50" height="80"/><rect x="${i * 330 + 180}" y="${340 + (i % 2) * 60}" width="50" height="80"/>`).join('')}</g>
+    <rect y="780" width="1920" height="300" fill="#7a6a55"/><g id="car"><path d="M-260 0 L-250 -70 L-120 -80 L-90 -120 L60 -120 L90 -80 L240 -70 L260 0Z" fill="#1d1d24"/>
+    <circle cx="-160" cy="10" r="46" fill="#111"/><circle cx="160" cy="10" r="46" fill="#111"/><circle cx="-160" cy="10" r="18" fill="#777"/><circle cx="160" cy="10" r="18" fill="#777"/>
+    <g transform="translate(-30 -120)"><circle cy="-40" r="20" fill="#d9a77c"/><path d="M-26 -58 L26 -58 L18 -74 L-18 -74Z" fill="#1f2a44"/><path d="M-6 -74 Q10 -110 28 -90 Q12 -84 2 -74Z" fill="#2f8a4c"/><rect x="-26" y="-20" width="52" height="40" fill="#5a6f8a"/></g>
+    <g transform="translate(40 -120)"><circle cy="-40" r="18" fill="#d9a77c"/><path d="M-24 -54 Q0 -80 24 -54Z" fill="#f2efe6"/><rect x="-24" y="-20" width="48" height="40" fill="#efe8dc"/></g></g>`;
+  const car = ss.querySelector('#car');
+  gm.onFrame(sr, (l, info) => { const t = info.time, x = gm.interpolate(t, [52, 57], [-300, 900], { easing: 'out-cubic' }); car.setAttribute('transform', `translate(${x} 800)`); });
+  const date = Object.assign(document.createElement('div'), { className: 'big', innerHTML: '28 · 6 · <em>1914</em>' }); date.style.top = '90px'; sr.append(date);
+  const who = Object.assign(document.createElement('div'), { className: 'mid', innerHTML: 'Gavrilo Princip asesina al <b>archiduque Francisco Fernando</b><br>y a su esposa Sofía' }); who.style.top = '320px'; sr.append(who);
+  tl.from(sr, { opacity: 0, duration: .4 }, 52.0).from(date, { scale: 1.4, opacity: 0, filter: 'blur(12px)', duration: .5, ease: 'expo.out' }, 52.3)
+    .from(who, { y: 30, opacity: 0, duration: .4 }, W('gavrilo') - .2).to(sr, { opacity: 0, duration: .4 }, 61.2);
+  // domino
+  m.zoom(tl, [1100, 560], 1.05, 61.4, 1.4);
+  const DE = W('declaró'), RU = W('movilizó'), DR = W('declaró', 2), FR = W('francia', 2), BE = W('bélgica'), UK = W('reino', 3);
+  CM.head(H, tl, 'EFECTO <em>DOMINÓ</em>', 'julio – agosto de 1914', W('dominó') - .4, 86.8);
+  CM.list(document.getElementById('heads'), tl, [[DE - .2, '28 JUL', 'Austria-Hungría declara la guerra a Serbia'], [RU - .2, '30 JUL', 'Rusia moviliza su ejército'],
+    [DR - .2, '1 AGO', 'Alemania declara la guerra a Rusia'], [FR - .3, '3 AGO', 'Alemania declara la guerra a Francia'], [BE - .3, '4 AGO', 'Alemania invade Bélgica (neutral)'],
+    [UK - .2, '4 AGO', 'El Reino Unido entra en la guerra']], { x: 1180, y: 250, end: 86.8 });
+  tl.to(m.paths['AUSTRIA-HUNGRÍA'], { fill: '#ff6a5a', duration: .2, yoyo: true, repeat: 3 }, DE);
+  m.color(tl, 'SERBIA', C.allies, DE + .2); m.color(tl, 'RUSIA', '#5b9cff', RU); m.color(tl, 'RUSIA', C.allies, RU + .6);
+  m.color(tl, 'BÉLGICA', C.allies, BE); m.line(tl, 'schlieffen1', BE - .1, { color: '#E5484D', width: 12, arrow: true, dur: 1.3 });
+  m.color(tl, 'REINO UNIDO', '#5b9cff', UK); m.color(tl, 'REINO UNIDO', C.allies, UK + .6);
+  m.color(tl, 'ITALIA', C.neutral, UK + .2); m.color(tl, 'IMPERIO OTOMANO', '#58637a', UK);
+  const lg = document.createElement('div'); lg.style.cssText = 'position:absolute;left:70px;top:860px;z-index:5;display:flex;gap:30px;font:800 26px Inter;letter-spacing:.06em';
+  lg.innerHTML = `<span><i style="display:inline-block;width:26px;height:26px;background:${C.allies};vertical-align:middle;margin-right:10px"></i>ALIADOS</span><span><i style="display:inline-block;width:26px;height:26px;background:${C.central};vertical-align:middle;margin-right:10px"></i>POTENCIAS CENTRALES</span>`;
+  sec.append(lg); tl.from(lg, { opacity: 0, duration: .4 }, W('entente') - .1);
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

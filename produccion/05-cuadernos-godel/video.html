@@ -1,0 +1,129 @@
+<!doctype html>
+<!--
+  CURIOSIMUNDO · 05 · Los cuadernos secretos de Gödel (TikTok, 9:16, 60 s).
+  Formato: titular grande arriba, escena 16:9 en la franja central, subtítulos grandes palabra a palabra.
+  Datos: la IA trabajó sobre las transcripciones de Jan von Plato (no leyó la taquigrafía); 663 posibles teoremas,
+  unos 400 correctos tal cual, otros con arreglos, unos 50 falsos (prensa, nov. 2026). "663" en el fotograma 0.
+-->
+<html data-width="1080" data-height="1920" data-fps="30" data-duration="60" data-safe-zone="reels">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script>
+<style>
+  body { background: radial-gradient(1200px 1400px at 50% 40%, #1e2a44, #0a0d18 75%); }
+  #band { position:absolute; left:0; top:560px; width:1920px; height:1080px; transform: scale(.5625); transform-origin: 0 0; overflow:hidden; z-index:2; }
+  #frame { position:absolute; left:0; top:556px; width:1080px; height:616px; border-top:4px solid #FFD23F; border-bottom:4px solid #FFD23F; z-index:3; pointer-events:none; }
+  .ttl { position:absolute; left:40px; right:40px; top:250px; height:290px; display:flex; align-items:center; justify-content:center; text-align:center; z-index:5;
+         font: 400 118px/.92 'Bebas Neue'; text-shadow: 0 10px 40px rgb(0 0 0 / .6); opacity:0; }
+  .ttl em { font-style:normal; color:#FFD23F; }
+  #vcaps { position:absolute; inset:0; z-index:8; pointer-events:none; }
+  .vc { position:absolute; left:50px; right:50px; top:1240px; text-align:center; isolation:isolate; font: 850 86px/1.1 Inter; letter-spacing:-.02em; }
+  .vc .w { display:inline-block; padding:0 .14em; --hl:0; position:relative; color: color-mix(in oklab, #0B2A5B calc(var(--hl) * 100%), #fff);
+           text-shadow: 0 5px 0 rgb(0 10 40 / calc(.7 - var(--hl) * .7)), 0 8px 30px rgb(0 0 0 / calc(.5 - var(--hl) * .5)); }
+  .vc .pl { position:absolute; left:0; top:.02em; height:1.08em; border-radius:.22em; z-index:-1; background:#FFD23F; }
+  #promo { z-index: 6; }
+</style></head>
+<body>
+<audio src="voz.mp3"></audio>
+<audio src="musica.mp3" data-volume="0.45" data-duck="0.4" data-fade-out="1"></audio>
+<div id="band">
+  <section class="scene" id="nb" data-start="0" data-duration="6.0"></section>
+  <section class="scene" id="gd" data-start="5.8" data-duration="11.5"></section>
+  <section class="scene" id="ein" data-start="17.1" data-duration="5.1"></section>
+  <section class="scene" id="sh" data-start="22.0" data-duration="8.1"></section>
+  <section class="scene" id="vp" data-start="29.9" data-duration="6.8"></section>
+  <section class="scene" id="ai" data-start="36.5" data-duration="7.0"></section>
+  <section class="scene" id="chk" data-start="43.2" data-duration="6.8"></section>
+  <section class="scene" id="q" data-start="49.8" data-duration="10.2"></section>
+</div>
+<div id="frame"></div>
+<div id="titles"></div><div id="vcaps"></div>
+<script>
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, 0), G = { global: true }, tl = gm.timeline(null, G), $ = id => document.getElementById(id), mk = CM.mk;
+  /* titles: one per beat */
+  const T = [[0, '<em>663</em><br>TEOREMAS'], [2.6, 'EN CUADERNOS<br><em>QUE NADIE LEÍA</em>'], [5.9, '<em>KURT GÖDEL</em>'], [10.3, '1931 · <em>25 AÑOS</em>'], [13.4, 'VERDADES<br><em>INDEMOSTRABLES</em>'],
+    [17.3, '<em>EINSTEIN</em><br>Y GÖDEL'], [22.1, 'TAQUIGRAFÍA<br><em>GABELSBERGER</em>'], [27.5, '<em>MILES</em><br>DE PÁGINAS'], [30.0, 'JAN VON PLATO<br><em>HELSINKI</em>'], [34.3, 'NOVIEMBRE<br><em>2026</em>'],
+    [36.6, '<em>1.009</em> PÁGINAS<br>A UNA IA'], [40.2, '<em>663</em> POSIBLES<br>TEOREMAS'], [43.3, 'AL <em>COMPROBARLOS</em>…'], [49.9, '¿GÖDEL O LA<br><em>MÁQUINA</em>?'], [54.3, '¿PUEDE UNA IA<br><em>DESCUBRIR</em> MATES?'], [60, '']];
+  T.forEach(([at, html], i) => { const h = Object.assign(document.createElement('div'), { className: 'ttl', innerHTML: '<div>' + html + '</div>' }); $('titles').append(h); if (!html) return;
+    const end = T[i + 1] ? T[i + 1][0] : 99;
+    if (at === 0) { h.style.opacity = 1; tl.fromTo(h, { scale: 1.15 }, { scale: 1, duration: .5, ease: 'expo.out' }, 0); }
+    else tl.fromTo(h, { opacity: 0, y: 90, scale: 1.2, filter: 'blur(10px)' }, { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', duration: .3, ease: 'expo.out' }, at);
+    if (end < 60) tl.to(h, { opacity: 0, y: -80, duration: .18, ease: 'power2.in' }, end - .18); });
+  /* shorthand squiggle generator (decorative, not real Gabelsberger) */
+  const squig = (g, x, y, w, lines, seed, col = '#2a2a3a', sw = 3) => { for (let l = 0; l < lines; l++) { let d = `M${x} ${y + l * 34}`, cx = x;
+      while (cx < x + w) { const r = k => gm.random(seed + l + '_' + cx + k); const dx = 14 + r('a') * 26, dy = (r('b') - .5) * 26; d += ` q${dx / 2} ${dy} ${dx} ${(r('c') - .5) * 8}`; cx += dx; if (r('d') > .8) { d += ` m10 0`; cx += 10; } }
+      mk('path', { d, fill: 'none', stroke: col, 'stroke-width': sw, 'stroke-linecap': 'round', class: 'sq' }, g); } };
+  const page = (p, x, y, w, h, rot, seed) => { const g = mk('g', { transform: `translate(${x} ${y}) rotate(${rot})` }, p); mk('rect', { x: -w / 2, y: -h / 2, width: w, height: h, rx: 6, fill: '#efe6cf', stroke: '#b9a983', 'stroke-width': 3 }, g);
+    squig(g, -w / 2 + 30, -h / 2 + 50, w - 60, Math.floor((h - 80) / 34), seed); return g; };
+  /* 0: notebooks nobody could read */
+  const nz = CM.svgIn($('nb'), 'radial-gradient(circle at 50% 45%, #3a3226, #0f0c09)');
+  const pages = [[-40, -8], [40, 6], [0, -2]].map(([dx, r], i) => page(nz, 960 + dx * 4, 560, 620, 760, r, 'p' + i));
+  const lock = mk('g', { transform: 'translate(960 560)' }, nz); mk('rect', { x: -90, y: -40, width: 180, height: 150, rx: 18, fill: '#FFD23F', stroke: '#111', 'stroke-width': 6 }, lock);
+  mk('path', { d: 'M-55 -40 v-50 a55 55 0 0 1 110 0 v50', fill: 'none', stroke: '#111', 'stroke-width': 16 }, lock); mk('circle', { cy: 25, r: 16, fill: '#111' }, lock);
+  const lockW = mk('g', {}, nz); lockW.append(lock);
+  tl.from(lockW, { scale: 0, duration: .4, ease: 'back.out(2.5)', transformOrigin: '960px 560px' }, W('nadie') - .2).fromTo(nz, { scale: 1.1 }, { scale: 1, duration: 6, ease: 'none', transformOrigin: '50% 50%' }, 0);
+  /* 1: Gödel at the blackboard */
+  const gz = CM.svgIn($('gd'), 'linear-gradient(#2c3a4a, #1a2230)'); mk('rect', { x: 260, y: 140, width: 1400, height: 620, rx: 12, fill: '#24382c', stroke: '#6a5032', 'stroke-width': 22 }, gz);
+  mk('rect', { y: 900, width: 1920, height: 180, fill: '#3a2c20' }, gz);
+  const g1 = mk('text', { x: 960, y: 330, 'text-anchor': 'middle', 'font-family': 'Bebas Neue', 'font-size': 120, fill: '#e8efe6' }, gz); g1.textContent = 'TEOREMA DE INCOMPLETITUD';
+  const g2 = mk('text', { x: 960, y: 500, 'text-anchor': 'middle', 'font-family': 'Inter', 'font-weight': 800, 'font-size': 58, fill: '#FFD23F' }, gz); g2.textContent = '«ESTA FRASE NO SE PUEDE DEMOSTRAR»';
+  const g3 = mk('text', { x: 960, y: 640, 'text-anchor': 'middle', 'font-family': 'Bebas Neue', 'font-size': 110, fill: '#e8efe6' }, gz); g3.textContent = '1931';
+  const prof = CM.civil(gz, 1700, 1000, 2.3, '#2b2b33'); const glasses = mk('g', {}, gz);
+  tl.from($('gd'), { opacity: 0, duration: .3 }, 5.8).from(g3, { opacity: 0, duration: .3 }, W('treinta') - .3).from(g1, { opacity: 0, y: 30, duration: .4 }, W('demostró') - .3).from(g2, { opacity: 0, scale: .8, duration: .4, transformOrigin: '960px 480px' }, W('verdades') - .2);
+  /* 2: Einstein and Gödel walking home (silhouettes) */
+  const ez = CM.svgIn($('ein'), 'linear-gradient(#e8a86a, #6a4a6a)'); mk('rect', { y: 860, width: 1920, height: 220, fill: '#3a4a2a' }, ez);
+  mk('path', { d: 'M1250 860 L1250 520 L1450 400 L1650 520 L1650 860Z', fill: '#4a3a4a' }, ez); mk('rect', { x: 1420, y: 330, width: 60, height: 110, fill: '#4a3a4a' }, ez);
+  for (let i = 0; i < 6; i++) { mk('rect', { x: 120 + i * 190, y: 640, width: 16, height: 220, fill: '#2a2020' }, ez); mk('circle', { cx: 128 + i * 190, cy: 610, r: 80, fill: '#3a4a30' }, ez); }
+  const walkers = [CM.civil(ez, 0, 0, 2, '#1d1d24'), CM.civil(ez, 0, 0, 2, '#2a2a34')];
+  gm.onFrame($('ein'), (l, info) => walkers.forEach((w, i) => w.setAttribute('transform', `translate(${300 + (info.time - 17.1) * 120 + i * 170} ${920 - Math.abs(Math.sin(info.time * 5 + i)) * 8}) scale(2)`)));
+  tl.from($('ein'), { opacity: 0, duration: .3 }, 17.1);
+  /* 3: Gabelsberger shorthand, then thousands of pages */
+  const sz = CM.svgIn($('sh'), '#d9cfb4'); const big = mk('g', {}, sz); mk('rect', { x: 120, y: 80, width: 1680, height: 920, fill: '#efe6cf' }, big); squig(big, 180, 170, 1560, 24, 'big', '#2a2a3a', 5);
+  tl.from(big.querySelectorAll('.sq'), { draw: 0, duration: .5, stagger: .12, ease: 'none' }, 22.2).fromTo(big, { scale: 1.6 }, { scale: 1, duration: 5.2, ease: 'power2.inOut', transformOrigin: '50% 30%' }, 22.0);
+  const stack = mk('g', {}, sz); for (let i = 0; i < 40; i++) page(mk('g', {}, stack), 200 + (i % 10) * 170, 300 + Math.floor(i / 10) * 180, 300, 380, (gm.random('sr' + i) - .5) * 30, 's' + i);
+  tl.from($('sh'), { opacity: 0, duration: .3 }, 22.0).from(stack.children, { opacity: 0, y: -200, duration: .3, stagger: .04, ease: 'power2.out' }, W('miles') - .3);
+  /* 4: von Plato transcribing: shorthand on the left, typed lines on the right */
+  const vz = CM.svgIn($('vp'), 'linear-gradient(#2a2620, #14110d)'); mk('rect', { y: 760, width: 1920, height: 320, fill: '#5a3e26' }, vz);
+  const lamp = mk('path', { d: 'M960 0 L960 120 M880 200 L1040 200 L1000 120 L920 120Z', stroke: '#888', 'stroke-width': 10, fill: '#FFD23F' }, vz); mk('ellipse', { cx: 960, cy: 760, rx: 760, ry: 90, fill: 'rgb(255 220 140 / .12)' }, vz);
+  const lp = page(vz, 600, 520, 560, 640, -4, 'vl'); const rp = mk('g', { transform: 'translate(1320 520) rotate(3)' }, vz); mk('rect', { x: -280, y: -320, width: 560, height: 640, rx: 6, fill: '#fff', stroke: '#bbb', 'stroke-width': 3 }, rp);
+  const typed = Array.from({ length: 14 }, (_, i) => mk('rect', { x: -230, y: -270 + i * 38, width: 200 + gm.random('tl' + i) * 260, height: 14, rx: 7, fill: '#3a3f4a' }, rp));
+  tl.from($('vp'), { opacity: 0, duration: .3 }, 29.9).from(typed, { scaleX: 0, transformOrigin: 'left center', duration: .25, stagger: .3, ease: 'none' }, 30.6);
+  /* 5: transcribed pages flow into an AI, counter to 663 */
+  const az = CM.svgIn($('ai'), 'radial-gradient(circle at 50% 50%, #1b2a55, #070b18 70%)'); const chipW = mk('g', {}, az), chip = mk('g', { transform: 'translate(1260 540)' }, chipW);
+  for (let i = 0; i < 6; i++) { mk('rect', { x: -170 + i * 60, y: -230, width: 16, height: 50, fill: '#8aa0d0' }, chip); mk('rect', { x: -170 + i * 60, y: 180, width: 16, height: 50, fill: '#8aa0d0' }, chip); }
+  mk('rect', { x: -190, y: -190, width: 380, height: 380, rx: 30, fill: '#22305a', stroke: '#8aa0d0', 'stroke-width': 8 }, chip); const ia = mk('text', { y: 40, 'text-anchor': 'middle', 'font-family': 'Bebas Neue', 'font-size': 150, fill: '#FFD23F' }, chip); ia.textContent = 'IA';
+  const glow = mk('circle', { cx: 1260, cy: 540, r: 260, fill: 'rgb(255 210 63 / .12)' }, az); az.insertBefore(glow, chipW);
+  const fly = Array.from({ length: 12 }, (_, i) => { const g = mk('g', {}, az); mk('rect', { x: -60, y: -80, width: 120, height: 160, rx: 6, fill: '#fff' }, g); for (let k = 0; k < 6; k++) mk('rect', { x: -44, y: -60 + k * 22, width: 60 + (k % 3) * 14, height: 8, rx: 4, fill: '#3a3f4a' }, g); return g; });
+  const cnt = CM.text($('ai'), 'big', '0', 380, 'font-size:220px;left:120px;right:auto;width:700px;text-align:center;color:#FFD23F'), t663 = W('seiscientos', 2);
+  gm.onFrame($('ai'), (l, info) => { const t = info.time; fly.forEach((g, i) => { const k = ((t - 36.6) * .7 + i / 12) % 1; g.setAttribute('transform', `translate(${-100 + k * 1360} ${540 + Math.sin(k * 6 + i) * 160 * (1 - k)}) rotate(${(1 - k) * 30 - 15}) scale(${1 - k * .6})`); g.setAttribute('opacity', t < t663 ? Math.min(1, k * 4) * (1 - k) * 1.3 : 0); });
+    cnt.textContent = Math.round(663 * gm.clamp((t - (t663 - 1.2)) / 2)).toLocaleString('es-ES'); glow.setAttribute('r', 260 + Math.sin(t * 4) * 20); });
+  tl.from($('ai'), { opacity: 0, duration: .3 }, 36.5).from(cnt, { opacity: 0, duration: .2 }, t663 - 1.2);
+  /* 6: checked: about 400 right, others fixed, about 50 false */
+  const cz = CM.svgIn($('chk'), '#0e1320'); const bars = [['UNOS 400', 'CORRECTOS', 400, '#3fbf6a', W('cuatrocientos') - .2], ['OTROS', 'CON ARREGLOS', 200, '#FFD23F', W('necesitaban') - .2], ['UNOS 50', 'FALSOS', 50, '#E5484D', W('cincuenta') - .2]];
+  bars.forEach(([n, lab, v, col, at], i) => { const y = 220 + i * 260, bw = v * 2.6, g = mk('g', {}, cz);
+    const bar = mk('rect', { x: 560, y, width: bw, height: 150, rx: 16, fill: col }, g); const t1 = mk('text', { x: 520, y: y + 70, 'text-anchor': 'end', 'font-family': 'Bebas Neue', 'font-size': 84, fill: '#fff' }, g); t1.textContent = n;
+    const t2 = mk('text', { x: 520, y: y + 130, 'text-anchor': 'end', 'font-family': 'Inter', 'font-weight': 800, 'font-size': 34, fill: col }, g); t2.textContent = lab;
+    tl.from(g, { opacity: 0, duration: .2 }, at).from(bar, { attr: { width: 0 }, duration: .6, ease: 'expo.out' }, at); });
+  tl.from($('chk'), { opacity: 0, duration: .3 }, 43.2);
+  /* 7: Gödel or the machine? */
+  const qz = CM.svgIn($('q'), 'linear-gradient(90deg, #3a3226 50%, #1b2a55 50%)'); page(qz, 480, 540, 520, 640, -5, 'qp'); const ch2 = mk('g', { transform: 'translate(1440 540) scale(.8)' }, qz);
+  mk('rect', { x: -190, y: -190, width: 380, height: 380, rx: 30, fill: '#22305a', stroke: '#8aa0d0', 'stroke-width': 8 }, ch2); const ia2 = mk('text', { y: 40, 'text-anchor': 'middle', 'font-family': 'Bebas Neue', 'font-size': 150, fill: '#FFD23F' }, ch2); ia2.textContent = 'IA';
+  const qm = CM.text($('q'), 'big', '?', 260, 'font-size:420px;color:#FFD23F'); tl.from($('q'), { opacity: 0, duration: .3 }, 49.8).from(qm, { scale: 0, opacity: 0, duration: .5, ease: 'back.out(2.5)' }, W('cuánto') - .2)
+    .to(qm, { scale: 1.08, duration: .5, yoyo: true, repeat: 9, ease: 'sine.inOut' }, 52.0);
+  /* vertical captions */
+  const ws = words.map(w => ({ text: w.word, start: w.start, end: w.end })), ph = [[]];
+  ws.forEach((w, i) => { const cur = ph.at(-1), prev = ws[i - 1];
+    if (cur.length && (cur.length === 3 || cur.map(x => x.text).join(' ').length + w.text.length > 16 || w.start - prev.end > .28 || /[.!?,:…]$/.test(prev.text) || /^¿/.test(w.text))) ph.push([]);
+    ph.at(-1).push(w); });
+  const ct = gm.timeline(null, G), els = ph.map(p => { const el = document.createElement('div'); el.className = 'vc'; el.innerHTML = '<i class="pl"></i>' + p.map(w => `<span class="w">${w.text}</span>`).join(' '); $('vcaps').append(el); return el; });
+  return document.fonts.ready.then(() => ph.forEach((p, k) => {
+    const el = els[k], sp = el.querySelectorAll('.w'), pl = el.querySelector('.pl'), nx = ph[k + 1], bx = i => ({ x: sp[i].offsetLeft, width: sp[i].offsetWidth });
+    ct.fromTo(pl, { ...bx(0), scale: .5, opacity: 0 }, { scale: 1, opacity: 1, duration: .16, ease: 'back.out(2)' }, p[0].start - .04);
+    p.forEach((w, i) => { ct.fromTo(sp[i], { opacity: 0, y: 40, scale: .6 }, { opacity: 1, y: 0, scale: 1, duration: .22, ease: 'back.out(2.4)' }, w.start - .06);
+      if (i) ct.to(pl, { ...bx(i), duration: .1, ease: 'power3.out' }, w.start - .08);
+      ct.to(sp[i], { '--hl': 1, duration: .05 }, w.start - .03).to(sp[i], { '--hl': 0, duration: .05 }, p[i + 1] ? p[i + 1].start - .08 : Math.min(w.end + .3, nx ? nx[0].start - .2 : 99)); });
+    ct.to(el, { opacity: 0, duration: .12 }, nx ? nx[0].start - .18 : p.at(-1).end + .7);
+  }));
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+# CURIOSIMUNDO · 05 · Los cuadernos secretos de Gödel (curiosidad, hasta 60 s)
+# rate|pitch|pausa|texto
++19%|+3Hz|0.2|Seiscientos sesenta y tres posibles teoremas, escondidos en unos cuadernos que casi nadie podía leer.
++17%|+0Hz|0.2|Su autor: Kurt Gödel, uno de los matemáticos más importantes de la historia.
++17%|+0Hz|0.2|En mil novecientos treinta y uno, con solo veinticinco años, demostró que en matemáticas siempre habrá verdades imposibles de demostrar.
++17%|+1Hz|0.2|Einstein decía que iba a su despacho solo por el placer de volver caminando a casa con Gödel.
++17%|+0Hz|0.2|Pero Gödel escribía en Gabelsberger, una taquigrafía alemana que dejó de enseñarse hace un siglo. Miles de páginas quedaron casi sin leer.
++17%|+0Hz|0.2|Un lógico de Helsinki, Jan von Plato, pasó años transcribiéndolas.
++18%|+1Hz|0.2|En noviembre de dos mil veintiséis contó que le dio a una inteligencia artificial mil nueve páginas ya transcritas, y que esta encontró seiscientos sesenta y tres posibles teoremas.
++17%|+0Hz|0.2|Al comprobarlos, unos cuatrocientos eran correctos tal cual, otros necesitaban arreglos… y unos cincuenta eran falsos.
++13%|-1Hz|0.3|Ahora la gran pregunta es: ¿cuánto es idea de Gödel, y cuánto de la máquina?
++18%|+4Hz|0|¿Crees que una inteligencia artificial puede descubrir matemáticas? Te leo en comentarios.

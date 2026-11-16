@@ -1,0 +1,9 @@
+# CURIOSIMUNDO · 06 · ¿Y si doblaras un papel 42 veces?
+# rate|pitch|pausa|texto  (una línea = una escena; objetivo 25–35 s)
++18%|+3Hz|0.2|Si doblaras un papel cuarenta y dos veces… llegarías a la Luna.
++18%|+2Hz|0.15|Una hoja mide una décima de milímetro, y cada doblez duplica su grosor.
++18%|+2Hz|0.15|Con diez dobleces, es como un libro. Con veinte, más de cien metros.
++18%|+2Hz|0.15|Con treinta, unos ciento siete kilómetros: ya estarías en el espacio.
++17%|+2Hz|0.2|Y con cuarenta y dos, unos cuatrocientos cuarenta mil kilómetros. Más lejos que la Luna.
++16%|+1Hz|0.2|Tranquilo, en realidad es imposible. En dos mil dos, una estudiante lo dobló doce veces… con un rollo de papel de más de un kilómetro.
++14%|+4Hz|0|¿Cuántas veces crees que puedes doblar una hoja? Pruébalo y cuéntame.

@@ -1,0 +1,71 @@
+<!doctype html>
+<!--
+  CURIOSIMUNDO · Serie "El soldado en Tenochtitlan" · Parte 2 de 5 (9:16, serie "¿Y si…?").
+  Sección 2 · Tecnología: un códice con el futuro, la rueda (conocida en juguetes mesoamericanos, sin animales de tiro) y la cuarentena.
+-->
+<html data-width="1080" data-height="1920" data-fps="30" data-duration="33.3" data-safe-zone="reels">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="common.js"></script>
+<style>
+  body { background: radial-gradient(1200px 1400px at 50% 40%, #1565C0, #0B2A5B 75%); }
+  #band { position:absolute; left:0; top:560px; width:1920px; height:1080px; transform: scale(.5625); transform-origin: 0 0; overflow:hidden; z-index:2; }
+  #frame { position:absolute; left:0; top:556px; width:1080px; height:616px; border-top:4px solid #FFD23F; border-bottom:4px solid #FFD23F; z-index:3; pointer-events:none; }
+  .ttl { position:absolute; left:40px; right:40px; top:250px; height:290px; display:flex; align-items:center; justify-content:center; text-align:center; z-index:5;
+         font: 400 118px/.92 'Bebas Neue'; text-shadow: 0 10px 40px rgb(0 0 0 / .6); opacity:0; }
+  .ttl em { font-style:normal; color:#FFD23F; }
+  #vcaps { position:absolute; inset:0; z-index:8; pointer-events:none; }
+  .vc { position:absolute; left:50px; right:50px; top:1240px; text-align:center; isolation:isolate; font: 850 86px/1.1 Inter; letter-spacing:-.02em; }
+  .vc .w { display:inline-block; padding:0 .14em; --hl:0; position:relative; color: color-mix(in oklab, #0B2A5B calc(var(--hl) * 100%), #fff);
+           text-shadow: 0 5px 0 rgb(0 10 40 / calc(.7 - var(--hl) * .7)), 0 8px 30px rgb(0 0 0 / calc(.5 - var(--hl) * .5)); }
+  .vc .pl { position:absolute; left:0; top:.02em; height:1.08em; border-radius:.22em; z-index:-1; background:#FFD23F; }
+  #promo { z-index: 6; }
+</style></head>
+<body>
+<audio src="voz.mp3"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.45" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.6"></audio>
+<section class="scene" id="s0" data-start="0" data-duration="5.7"></section>
+<section class="scene" id="s1" data-start="5.5" data-duration="6.3"></section>
+<section class="scene" id="s2" data-start="11.6" data-duration="9.5"></section>
+<section class="scene" id="s3" data-start="20.9" data-duration="7.7"></section>
+<section class="scene" id="s4" data-start="28.4" data-duration="5.0"></section>
+<div id="titles"></div><div id="vcaps"></div>
+<script>
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, 0), tl = gm.timeline(null, S.G), { mk, $, sv } = S, DUR = 33.3;
+  const ground = (z, c = '#c9b48c') => mk('rect', { y: 1560, width: 1080, height: 360, fill: c }, z);
+  const SUN = 'linear-gradient(#f2b26a, #8fb8de 45%)', DAY = 'linear-gradient(#8fb8de, #e8d9b0 60%)', DUSK = 'linear-gradient(#e8a86a, #6a4a6a)', NIGHT = 'radial-gradient(circle at 50% 45%, #2a3550, #0a0e18 70%)';
+  S.titles(tl, [[0, '<em>0</em> BALAS'], [3.4, 'PERO <em>SABE</em><br>MUCHO'], [5.7, 'UN <em>CÓDICE</em><br>DEL FUTURO'], [10.0, '<em>1519</em>'], [11.8, 'LA <em>RUEDA</em>'], [13.9, 'SOLO EN<br><em>JUGUETES</em>'], [18.9, '<em>CARRETILLAS</em>'], [21.0, 'LA <em>CUARENTENA</em>'], [26.6, 'FRENAR UNA<br><em>EPIDEMIA</em>'], [28.5, '¿QUÉ <em>INVENTO</em><br>LES ENSEÑARÍAS?'], [33.3, '']], DUR); S.badge('PARTE 2/5');
+
+  const z0 = sv('s0', NIGHT); const s0 = CM.figure(z0, 'MXSF', { weapon: 'carbine' }); CM.pose(s0, { x: 400, y: 1820, s: 2.3, dir: 1, armRot: -10 });
+  const mag = mk('g', { transform: 'translate(820 1640)' }, z0); mk('rect', { x: -50, y: -140, width: 100, height: 280, rx: 14, fill: '#111', stroke: '#555', 'stroke-width': 6 }, mag); const mt = mk('text', { y: 30, 'text-anchor': 'middle', 'font-family': 'Bebas Neue', 'font-size': 120, fill: '#ff8080' }, mag); mt.textContent = '0';
+  const bulb = mk('g', {}, z0); mk('circle', { cx: 540, cy: 760, r: 110, fill: '#FFD23F' }, bulb); mk('rect', { x: 500, y: 860, width: 80, height: 60, rx: 10, fill: '#9aa0aa' }, bulb); mk('circle', { cx: 540, cy: 760, r: 190, fill: 'rgb(255 210 63 / .15)' }, bulb);
+  tl.from(bulb, { scale: 0, opacity: 0, duration: .4, ease: 'back.out(2)', transformOrigin: '540px 800px' }, W('mejor') - .2);
+  const z1 = sv('s1', '#d9cfb4'); const cod = mk('g', {}, z1); mk('rect', { x: 80, y: 560, width: 920, height: 900, rx: 10, fill: '#efe7d2', stroke: '#7a5a3a', 'stroke-width': 8 }, cod);
+  for (let i = 1; i < 3; i++) mk('line', { x1: 80 + i * 307, y1: 560, x2: 80 + i * 307, y2: 1460, stroke: '#c9b48c', 'stroke-width': 5 }, cod);
+  const sh = mk('g', { transform: 'translate(235 900) scale(.7)' }, cod); CM.caravel(sh); const ho = mk('g', { transform: 'translate(540 1000) scale(1.1)' }, cod); CM.horse(ho, '#7a5236');
+  const dt = mk('text', { x: 845, y: 960, 'text-anchor': 'middle', 'font-family': 'Bebas Neue', 'font-size': 150, fill: '#c0392b' }, cod); dt.textContent = '1519';
+  tl.from(sh, { opacity: 0, duration: .3 }, W('barcos') - .2).from(ho, { opacity: 0, duration: .3 }, W('caballos') - .2).from(dt, { opacity: 0, scale: 1.4, duration: .3, transformOrigin: '845px 900px' }, W('diecinueve') - .6);
+  const z2 = sv('s2', DAY); ground(z2); S.city(z2, 1, 160).canoes.forEach(c => c.remove()); ground(z2);
+  const toy = mk('g', { transform: 'translate(540 1100)' }, z2); mk('rect', { x: -110, y: -80, width: 220, height: 90, rx: 30, fill: '#d8b88a', stroke: '#8a6a4a', 'stroke-width': 6 }, toy); mk('circle', { cx: 120, cy: -100, r: 50, fill: '#d8b88a', stroke: '#8a6a4a', 'stroke-width': 6 }, toy);
+  const tw = [-70, 70].map(x => mk('circle', { cx: x, cy: 30, r: 34, fill: '#efe7d2', stroke: '#8a6a4a', 'stroke-width': 8 }, toy));
+  const wb = mk('g', {}, z2); mk('path', { d: 'M-160 -70 L120 -70 L80 10 L-120 10Z', fill: '#8a6a4a' }, wb); const wheel = mk('circle', { cx: -170, cy: 20, r: 40, fill: '#5a3e26', stroke: '#3a2a1a', 'stroke-width': 8 }, wb); mk('path', { d: 'M120 -60 L220 -10', stroke: '#5a3e26', 'stroke-width': 12 }, wb);
+  for (let i = 0; i < 4; i++) mk('circle', { cx: -120 + i * 60, cy: -84, r: 26, fill: '#7d7d80' }, wb);
+  const pusher = CM.figure(z2, 'MEX', { weapon: 'none', shield: false });
+  gm.onFrame($('s2'), (l, info) => { const t = info.time, d = t - 18.6; toy.style.display = t < 18.6 ? '' : 'none'; wb.style.display = pusher.o.style.display = t >= 18.6 ? '' : 'none';
+    toy.setAttribute('transform', `translate(${300 + (t - 11.6) * 50} 1760) scale(1.3)`); tw.forEach(w => w.setAttribute('stroke-dasharray', '20 8'));
+    wb.setAttribute('transform', `translate(${560 + d * 90} 1780) scale(-1 1)`); CM.pose(pusher, { x: 300 + d * 90, y: 1820, s: 1.9, dir: 1, run: .4, ph: t * 6, lean: 10 }); });
+  const z3 = sv('s3', DAY); mk('rect', { y: 900, width: 1080, height: 1020, fill: '#3f86b4' }, z3); mk('ellipse', { cx: 760, cy: 1400, rx: 280, ry: 90, fill: '#c9b48c' }, z3);
+  const hut = mk('g', {}, z3); mk('rect', { x: 680, y: 1240, width: 160, height: 130, fill: '#e4d6b8' }, hut); mk('path', { d: 'M660 1250 L760 1170 L860 1250Z', fill: '#8a6a4a' }, hut);
+  const sick = CM.figure(z3, 'MEX', { weapon: 'none', shield: false }); CM.pose(sick, { x: 620, y: 1420, s: 1.4, dir: 1 }); mk('rect', { y: 1500, width: 1080, height: 420, fill: '#c9b48c' }, z3);
+  const g1 = CM.figure(z3, 'MEX'); CM.pose(g1, { x: 160, y: 1820, s: 1.9, dir: 1 }); const sol = CM.figure(z3, 'MXSF', { weapon: 'none' }); CM.pose(sol, { x: 380, y: 1820, s: 2, dir: 1, armRot: -40 });
+  const stop = mk('g', {}, z3); mk('rect', { x: 120, y: 560, width: 840, height: 200, rx: 30, fill: '#E5484D' }, stop); const st = mk('text', { x: 540, y: 700, 'text-anchor': 'middle', 'font-family': 'Bebas Neue', 'font-size': 120, fill: '#fff' }, stop); st.textContent = 'AISLAMIENTO';
+  tl.from(stop, { scale: 0, opacity: 0, duration: .35, ease: 'back.out(2)', transformOrigin: '540px 660px' }, W('aísla') - .3);
+  const z4 = sv('s4', SUN); S.city(z4, 1, 380).canoes.forEach(c => c.remove()); ground(z4); const s4 = CM.figure(z4, 'MXSF', { weapon: 'none' }); CM.pose(s4, { x: 540, y: 1820, s: 2.1, dir: 1 });
+  const qm = CM.text($('s4'), 'big', '?', 560, 'font-size:220px;color:#FFD23F'); tl.from(qm, { scale: 0, duration: .4, ease: 'back.out(2.5)' }, 28.6);
+
+  ['s1','s2','s3','s4'].forEach(id => tl.from($(id), { opacity: 0, duration: .2 }, +$(id).dataset.start));
+  return S.captions(words);
+}));
+</script>
+</body>
+</html>

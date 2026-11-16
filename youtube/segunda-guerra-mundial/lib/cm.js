@@ -29,7 +29,9 @@ const U = CM.U = {
   DEAK: { name: 'AFRIKA KORPS', tunic: '#c2a96e', pants: '#b39a60', legs: '#8a7a50', boots: '#5a4a2a', hat: 'stahl', hatC: '#b49a62', belt: '#5a4a2a', pack: '#9a8a5a', flag: 'DE2' },
   UKD:  { name: 'REINO UNIDO', tunic: '#c9b07a', pants: '#b89f68', legs: '#9a8656', boots: '#2a1f14', hat: 'brodie', hatC: '#8f8458', belt: '#e0d3a4', pack: '#a8955f', flag: 'UK' },
   MXSF: { name: 'MÉXICO · FUERZAS ESPECIALES', tunic: '#6d7150', pants: '#666a4a', legs: '#666a4a', boots: '#2a2420', hat: 'mich', hatC: '#55593e', belt: '#2f3128', pack: '#55593e', flag: 'MX', vest: '#4a4d38', camo: true },
-  MEX:  { name: 'MEXICAS', tunic: '#efe7d2', pants: '#efe7d2', legs: '#a8714a', boots: '#7a5a3a', hat: 'plume', hatC: '#2f8f5a', belt: '#c0392b', pack: '#7a5a3a', flag: 'MEX', skin: '#a8714a' },
+  MEX:  { name: 'MEXICAS', tunic: '#efe7d2', pants: '#efe7d2', legs: '#a8714a', boots: '#7a5a3a', hat: 'plume', hatC: '#2f8f5a', belt: '#c0392b', pack: '#7a5a3a', flag: 'MEX', skin: '#a8714a', weapon: 'macua', shield: true, noFire: true, noPack: true },
+  TLX:  { name: 'TLAXCALA', tunic: '#efe7d2', pants: '#efe7d2', legs: '#a8714a', boots: '#7a5a3a', hat: 'plume', hatC: '#e8e0d0', belt: '#d8b23a', pack: '#7a5a3a', flag: 'TLX', skin: '#a8714a', weapon: 'macua', shield: true, noFire: true, noPack: true },
+  ES:   { name: 'ESPAÑA', tunic: '#9aa0aa', pants: '#7a2a2a', legs: '#5a4a3a', boots: '#3a2a1a', hat: 'morion', hatC: '#c3c8d0', belt: '#5a3a1e', pack: '#6b5a3e', flag: 'ESB', noPack: true, bayonet: false },
   US:   { name: 'ESTADOS UNIDOS', tunic: '#6b6a3f', pants: '#625f38', legs: '#b8a77c', boots: '#2a1f14', hat: 'brodie', hatC: '#55553a', belt: '#a99a6a', pack: '#6b6a3f', flag: 'US' },
 };
 const SKIN0 = '#d9a77c'; let SKIN = SKIN0;
@@ -47,6 +49,7 @@ function hat(g, u) {
     case 'm1': mk('path', { d: 'M-17 -148 Q3 -182 23 -148 L25 -145 L-19 -145Z', fill: c }, g); mk('path', { d: 'M-12 -160 Q3 -150 18 -160', stroke: 'rgb(0 0 0 / .2)', 'stroke-width': 3, fill: 'none' }, g); break;
     case 'ssh': mk('path', { d: 'M-16 -150 Q3 -180 22 -150Z', fill: c }, g); mk('path', { d: 'M-19 -150 Q3 -144 25 -150 Q3 -154 -19 -150Z', fill: c }, g); break;
     case 'jp': mk('path', { d: 'M-15 -150 Q3 -178 21 -150Z', fill: c }, g); mk('path', { d: 'M-15 -150 L-19 -128 L-8 -132 L-6 -150Z', fill: '#c2b47a' }, g); break;
+    case 'morion': mk('path', { d: 'M-26 -150 Q-20 -142 3 -146 Q26 -142 32 -150 Q22 -158 20 -158 Q3 -184 -14 -158 Q-22 -158 -26 -150Z', fill: c, stroke: '#7d838c', 'stroke-width': 2 }, g); mk('path', { d: 'M-8 -160 Q3 -192 14 -160', fill: c, stroke: '#7d838c', 'stroke-width': 2 }, g); break;
     case 'mich': mk('path', { d: 'M-16 -148 Q3 -180 22 -148 L22 -142 L-16 -142Z', fill: c }, g); mk('rect', { x: -2, y: -178, width: 10, height: 8, rx: 2, fill: '#222' }, g); mk('rect', { x: 14, y: -160, width: 12, height: 8, rx: 2, fill: '#2a2a2a' }, g); break;
     case 'plume': mk('path', { d: 'M-12 -156 Q3 -166 18 -156 L18 -150 L-12 -150Z', fill: '#c0392b' }, g); for (let i = 0; i < 5; i++) mk('path', { d: `M${-8 + i * 6} -158 Q${-14 + i * 6} -190 ${-20 + i * 9} -205 Q${-6 + i * 6} -188 ${-4 + i * 6} -158Z`, fill: i % 2 ? '#2f8f5a' : '#1f6fb0' }, g); break;
     case 'm33': mk('path', { d: 'M-16 -148 Q3 -180 22 -148 L23 -144 L-17 -144Z', fill: c }, g); break;
@@ -58,7 +61,7 @@ CM.figure = function (parent, nation, opts = {}) {
   const u = U[nation], o = mk('g', {}, parent), b = mk('g', {}, o); SKIN = u.skin || SKIN0;
   const legL = mk('g', { transform: 'translate(-8 -84)' }, b), legR = mk('g', { transform: 'translate(8 -84)' }, b);
   for (const lg of [legL, legR]) { mk('path', { d: 'M-9 0 L-7 70 L7 70 L9 0Z', fill: u.pants }, lg); mk('rect', { x: -8, y: 40, width: 15, height: 32, fill: u.legs }, lg); mk('path', { d: 'M-9 70 h18 l6 8 h-24z', fill: u.boots }, lg); }
-  if (opts.pack !== false) mk('rect', { x: -38, y: -148, width: 17, height: 52, rx: 6, fill: u.pack }, b);
+  if (opts.pack !== false && !u.noPack) mk('rect', { x: -38, y: -148, width: 17, height: 52, rx: 6, fill: u.pack }, b);
   if (u.roll) mk('path', { d: 'M-22 -150 Q0 -126 22 -96', stroke: u.roll, 'stroke-width': 9, fill: 'none' }, b);
   mk('path', { d: 'M-21 -150 Q0 -156 21 -150 L25 -82 L-25 -82 Z', fill: u.tunic }, b);
   if (nation === 'FR14') mk('path', { d: 'M-25 -84 L-28 -60 L28 -60 L25 -84Z', fill: u.tunic }, b);     // greatcoat skirt
@@ -72,18 +75,18 @@ CM.figure = function (parent, nation, opts = {}) {
   if (opts.mask) { mk('path', { d: 'M-10 -176 Q20 -178 20 -150 Q18 -138 0 -140 Q-14 -150 -10 -176Z', fill: '#59604a' }, b); mk('circle', { cx: 12, cy: -164, r: 6, fill: '#bcd0c6', stroke: '#2f3426', 'stroke-width': 2 }, b);
     mk('path', { d: 'M14 -150 l14 12 l-6 8 l-14 -10z', fill: '#3d4234' }, b); }
   const arm = mk('g', { transform: 'translate(6 -140)' }, b);
-  const weapon = opts.weapon || 'rifle';
+  const weapon = opts.weapon || u.weapon || 'rifle';
   if (weapon === 'rifle') { mk('path', { d: 'M-8 26 L56 -6', stroke: '#6b4a2a', 'stroke-width': 7, 'stroke-linecap': 'round' }, arm); mk('path', { d: 'M50 -3 L92 -24', stroke: '#3a3a3a', 'stroke-width': 4, 'stroke-linecap': 'round' }, arm);
-    if (opts.bayonet !== false) mk('path', { d: 'M90 -23 L112 -34', stroke: '#c9c2b0', 'stroke-width': 3, 'stroke-linecap': 'round' }, arm); }
+    if (opts.bayonet !== false && u.bayonet !== false) mk('path', { d: 'M90 -23 L112 -34', stroke: '#c9c2b0', 'stroke-width': 3, 'stroke-linecap': 'round' }, arm); }
   if (weapon === 'carbine') { mk('path', { d: 'M-8 24 L40 -2', stroke: '#1d1d1d', 'stroke-width': 8, 'stroke-linecap': 'round' }, arm); mk('path', { d: 'M36 0 L84 -24', stroke: '#2a2a2a', 'stroke-width': 6, 'stroke-linecap': 'round' }, arm); mk('rect', { x: 26, y: -16, width: 22, height: 9, rx: 2, fill: '#111', transform: 'rotate(-28 37 -12)' }, arm); mk('path', { d: 'M30 4 L34 18', stroke: '#1d1d1d', 'stroke-width': 7 }, arm); }
   if (weapon === 'macua') { mk('path', { d: 'M10 0 L70 -28', stroke: '#6b4a2a', 'stroke-width': 10, 'stroke-linecap': 'round' }, arm); for (let i = 0; i < 5; i++) { const x = 30 + i * 9, y = -9 - i * 4.2; mk('path', { d: `M${x} ${y - 6} l4 -7 l4 6z M${x + 2} ${y + 6} l4 6 l3 -7z`, fill: '#1a1a22' }, arm); } }
-  if (opts.shield) { const sh = mk('g', { transform: 'translate(22 -120)' }, b); mk('circle', { r: 26, fill: '#efe7d2', stroke: '#c0392b', 'stroke-width': 5 }, sh); mk('path', { d: 'M-14 -10 h28 M-14 0 h28 M-14 10 h28', stroke: '#1f6fb0', 'stroke-width': 4 }, sh); for (let i = 0; i < 5; i++) mk('path', { d: `M${-12 + i * 6} 24 l-2 16`, stroke: '#2f8f5a', 'stroke-width': 4 }, sh); }
+  if (opts.shield !== undefined ? opts.shield : (!opts.weapon && u.shield)) { const sh = mk('g', { transform: 'translate(22 -120)' }, b); mk('circle', { r: 26, fill: '#efe7d2', stroke: '#c0392b', 'stroke-width': 5 }, sh); mk('path', { d: 'M-14 -10 h28 M-14 0 h28 M-14 10 h28', stroke: '#1f6fb0', 'stroke-width': 4 }, sh); for (let i = 0; i < 5; i++) mk('path', { d: `M${-12 + i * 6} 24 l-2 16`, stroke: '#2f8f5a', 'stroke-width': 4 }, sh); }
   if (weapon === 'shovel') { mk('path', { d: 'M0 0 L60 0', stroke: '#6b5236', 'stroke-width': 7, 'stroke-linecap': 'round' }, arm); mk('path', { d: 'M58 -12 L86 -9 L88 12 L58 14 Z', fill: '#8e8f86' }, arm); }
   if (weapon === 'club') { mk('path', { d: 'M10 0 L58 0', stroke: '#6b5236', 'stroke-width': 8, 'stroke-linecap': 'round' }, arm); mk('rect', { x: 54, y: -11, width: 30, height: 24, rx: 8, fill: '#4a3826' }, arm); }
   if (weapon === 'grenade') { mk('path', { d: 'M0 0 L40 -6', stroke: '#6b5236', 'stroke-width': 6 }, arm); mk('rect', { x: 36, y: -14, width: 14, height: 20, rx: 3, fill: '#4a4a40' }, arm); }
   const sleeve = mk('path', { d: 'M-4 -7 L34 4 L32 14 L-6 8 Z', fill: u.tunic }, arm); mk('circle', { cx: 36, cy: 10, r: 6, fill: SKIN }, arm);
   if (weapon === 'fist') mk('circle', { cx: 40, cy: 10, r: 9, fill: SKIN }, arm);
-  const flash = mk('circle', { cx: 116, cy: -36, r: 22, fill: 'url(#cmFlash)', opacity: 0 }, arm);
+  const flash = mk('circle', { cx: 116, cy: -36, r: u.noFire ? 0 : 22, fill: 'url(#cmFlash)', opacity: 0 }, arm);
   const up = mk('g', { style: 'display:none' }, b);   // hands up (surrender / captured)
   mk('path', { d: 'M-16 -146 L-24 -206', stroke: u.tunic, 'stroke-width': 13, 'stroke-linecap': 'round' }, up); mk('path', { d: 'M18 -146 L26 -206', stroke: u.tunic, 'stroke-width': 13, 'stroke-linecap': 'round' }, up);
   mk('circle', { cx: -25, cy: -212, r: 7, fill: SKIN }, up); mk('circle', { cx: 27, cy: -212, r: 7, fill: SKIN }, up);
@@ -112,6 +115,8 @@ CM.flag = function (parent, code, x, y, w = 90, h = 60) {
      US: () => { for (let i = 0; i < 7; i++) R(0, i * h / 7, w, h / 14 + .5, '#c0392b'); for (let i = 0; i < 7; i++) R(0, i * h / 7 + h / 14, w, h / 14 + .5, '#fff'); R(0, 0, w * .42, h * .54, '#1f3a8a'); },
      MX: () => { const w3 = w / 3; R(0, 0, w3, h, '#006847'); R(w3, 0, w3, h, '#fff'); R(w3 * 2, 0, w3, h, '#ce1126'); mk('circle', { cx: w / 2, cy: h / 2, r: h * .16, fill: '#8a6a2a' }, g); },
      MEX: () => { R(0, 0, w, h, '#efe7d2'); mk('circle', { cx: w / 2, cy: h / 2, r: h * .34, fill: 'none', stroke: '#1f6fb0', 'stroke-width': 4 }, g); mk('path', { d: `M${w * .3} ${h * .5} h${w * .4} M${w * .5} ${h * .25} v${h * .5}`, stroke: '#c0392b', 'stroke-width': 5 }, g); },
+     ESB: () => { R(0, 0, w, h, '#fff'); mk('path', { d: `M${w * .15} ${h * .1} L${w * .85} ${h * .9} M${w * .85} ${h * .1} L${w * .15} ${h * .9}`, stroke: '#c0392b', 'stroke-width': h * .14, 'stroke-dasharray': `${h * .12} ${h * .04}` }, g); },
+     TLX: () => { R(0, 0, w, h, '#fff'); mk('path', { d: `M${w * .25} ${h * .75} L${w * .5} ${h * .2} L${w * .75} ${h * .75}Z`, fill: '#d8b23a' }, g); },
      PL: () => hz(['#fff', '#d0312d']), JP: () => { R(0, 0, w, h, '#fff'); mk('circle', { cx: w / 2, cy: h / 2, r: h * .3, fill: '#c0392b' }, g); },
      SU: () => { R(0, 0, w, h, '#c0392b'); mk('path', { d: `M${w * .2} ${h * .18} l4 9 l10 0 l-8 6 l3 10 l-9 -6 l-9 6 l3 -10 l-8 -6 l10 0z`, fill: '#ffd23f', transform: `scale(${h / 60})`, 'transform-origin': `${w * .2}px ${h * .18}px` }, g); },
      DE2: () => { R(0, 0, w, h, '#e9e6dc'); mk('path', { d: `M${w / 2} ${h * .12} V${h * .88} M${w * .3} ${h / 2} H${w * .7}`, stroke: '#111', 'stroke-width': h * .2 }, g); mk('path', { d: `M${w / 2} ${h * .12} V${h * .88} M${w * .3} ${h / 2} H${w * .7}`, stroke: '#111', 'stroke-width': h * .1, 'stroke-linecap': 'square' }, g); },
@@ -335,6 +340,18 @@ CM.ship = function (parent, color = '#5a6270') {
   return g;
 };
 
+/* horse (side view, facing right); call CM.horsePose(h, t) to animate the legs */
+CM.horse = function (parent, color = '#7a5236') { const g = mk('g', {}, parent), legs = [];
+  [-48, -30, 40, 58].forEach(x => { const l = mk('g', { transform: `translate(${x} -70)` }, g); mk('rect', { x: -6, y: 0, width: 12, height: 70, rx: 5, fill: color }, l); mk('rect', { x: -7, y: 62, width: 14, height: 9, fill: '#2a1f14' }, l); legs.push(l); });
+  mk('ellipse', { cx: 6, cy: -96, rx: 78, ry: 38, fill: color }, g); mk('path', { d: 'M60 -116 L92 -168 L120 -160 L128 -140 L104 -132 L84 -100Z', fill: color }, g);
+  mk('path', { d: 'M66 -124 L92 -170 L84 -128Z', fill: '#3a2618' }, g); mk('path', { d: 'M-70 -110 Q-110 -90 -96 -40 Q-84 -80 -66 -96Z', fill: '#3a2618' }, g); mk('circle', { cx: 108, cy: -152, r: 3, fill: '#111' }, g);
+  return { g, legs }; };
+CM.horsePose = function (h, t, run = 1) { h.legs.forEach((l, i) => { const x = [-48, -30, 40, 58][i]; l.setAttribute('transform', `translate(${x} -70) rotate(${Math.sin(t * 9 + i * 1.6) * 24 * run})`); }); };
+/* 16th-century caravel/nao (facing right) */
+CM.caravel = function (parent) { const g = mk('g', {}, parent);
+  mk('path', { d: 'M-150 -20 L160 -20 L120 40 L-120 40Z', fill: '#5a3e26', stroke: '#3a2a1a', 'stroke-width': 4 }, g); mk('path', { d: 'M-150 -20 L-150 -60 L-90 -60 L-90 -20Z M110 -20 L110 -50 L160 -50 L160 -20Z', fill: '#6b4a2e' }, g);
+  [[-60, 150], [30, 190], [100, 120]].forEach(([x, hh]) => { mk('rect', { x: x - 4, y: -20 - hh, width: 8, height: hh, fill: '#3a2a1a' }, g); mk('path', { d: `M${x - 40} ${-10 - hh} Q${x} ${-hh + 20} ${x + 40} ${-10 - hh} L${x + 40} ${-50} Q${x} ${-30} ${x - 40} -50Z`, fill: '#efe7d2', stroke: '#c9bfa6', 'stroke-width': 2 }, g); });
+  const fl = mk('g', { transform: 'translate(34 -230)' }, g); CM.flag(fl, 'ESB', 0, 0, 44, 30); return g; };
 CM.svgIn = function (sec, bg) { if (bg) sec.style.background = bg; const s = mk('svg', { viewBox: '0 0 1920 1080', width: 1920, height: 1080, style: 'position:absolute;inset:0' }, sec); CM.defs(s); return s; };
 CM.text = function (sec, cls, html, top, extra = '') { const d = document.createElement('div'); d.className = cls; d.innerHTML = html; d.style.cssText += `;top:${top}px;${extra}`; sec.append(d); return d; };
 /* ocean liner (Lusitania-style, 4 funnels) and U-boat */

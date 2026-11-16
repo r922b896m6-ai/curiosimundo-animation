@@ -1,0 +1,71 @@
+<!doctype html>
+<!--
+  CURIOSIMUNDO · Serie "El soldado en Tenochtitlan" · Parte 4 de 5 (9:16, serie "¿Y si…?").
+  Sección 3 · La guerra (1): abril de 1519, 11 barcos, unos 500 soldados y 16 caballos (cifras habituales); aquí nadie se une a Cortés y la viruela de 1520 encuentra cuarentena.
+-->
+<html data-width="1080" data-height="1920" data-fps="30" data-duration="27.1" data-safe-zone="reels">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="common.js"></script>
+<style>
+  body { background: radial-gradient(1200px 1400px at 50% 40%, #1565C0, #0B2A5B 75%); }
+  #band { position:absolute; left:0; top:560px; width:1920px; height:1080px; transform: scale(.5625); transform-origin: 0 0; overflow:hidden; z-index:2; }
+  #frame { position:absolute; left:0; top:556px; width:1080px; height:616px; border-top:4px solid #FFD23F; border-bottom:4px solid #FFD23F; z-index:3; pointer-events:none; }
+  .ttl { position:absolute; left:40px; right:40px; top:250px; height:290px; display:flex; align-items:center; justify-content:center; text-align:center; z-index:5;
+         font: 400 118px/.92 'Bebas Neue'; text-shadow: 0 10px 40px rgb(0 0 0 / .6); opacity:0; }
+  .ttl em { font-style:normal; color:#FFD23F; }
+  #vcaps { position:absolute; inset:0; z-index:8; pointer-events:none; }
+  .vc { position:absolute; left:50px; right:50px; top:1240px; text-align:center; isolation:isolate; font: 850 86px/1.1 Inter; letter-spacing:-.02em; }
+  .vc .w { display:inline-block; padding:0 .14em; --hl:0; position:relative; color: color-mix(in oklab, #0B2A5B calc(var(--hl) * 100%), #fff);
+           text-shadow: 0 5px 0 rgb(0 10 40 / calc(.7 - var(--hl) * .7)), 0 8px 30px rgb(0 0 0 / calc(.5 - var(--hl) * .5)); }
+  .vc .pl { position:absolute; left:0; top:.02em; height:1.08em; border-radius:.22em; z-index:-1; background:#FFD23F; }
+  #promo { z-index: 6; }
+</style></head>
+<body>
+<audio src="voz.mp3"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.45" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.6"></audio>
+<section class="scene" id="s0" data-start="0" data-duration="6.1"></section>
+<section class="scene" id="s1" data-start="5.9" data-duration="4.5"></section>
+<section class="scene" id="s2" data-start="10.2" data-duration="6.7"></section>
+<section class="scene" id="s3" data-start="16.7" data-duration="5.5"></section>
+<section class="scene" id="s4" data-start="22.0" data-duration="5.2"></section>
+<div id="titles"></div><div id="vcaps"></div>
+<script>
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, 0), tl = gm.timeline(null, S.G), { mk, $, sv } = S, DUR = 27.1;
+  const ground = (z, c = '#c9b48c') => mk('rect', { y: 1560, width: 1080, height: 360, fill: c }, z);
+  const SUN = 'linear-gradient(#f2b26a, #8fb8de 45%)', DAY = 'linear-gradient(#8fb8de, #e8d9b0 60%)', DUSK = 'linear-gradient(#e8a86a, #6a4a6a)', NIGHT = 'radial-gradient(circle at 50% 45%, #2a3550, #0a0e18 70%)';
+  S.titles(tl, [[0, '<em>11</em> BARCOS'], [1.8, 'ABRIL DE<br><em>1519</em>'], [6.0, 'LOS <em>VIGÍAS</em>'], [7.7, 'EL AVISO<br><em>LLEGA ANTES</em>'], [10.3, 'UNOS <em>500</em><br>SOLDADOS'], [12.2, '<em>16</em> CABALLOS'], [14.1, 'Y <em>NINGÚN</em><br>ALIADO'], [16.8, '<em>1520</em>:<br>LA VIRUELA'], [19.9, '<em>CUARENTENA</em>'], [22.1, '¿SE <em>ATREVERÁ</em>?'], [24.5, 'MAÑANA:<br><em>EL FINAL</em>'], [27.1, '']], DUR); S.badge('PARTE 4/5');
+
+  const z0 = sv('s0', 'linear-gradient(#8fb8de, #e8d9b0 45%, #3f86b4 45%, #1d4f7a)');
+  const fleet = Array.from({ length: 11 }, (_, i) => { const g = mk('g', {}, z0); CM.caravel(g); return { g, x: 120 + (i % 4) * 260 + (Math.floor(i / 4) % 2) * 120, y: 980 + Math.floor(i / 4) * 230, s: .5 + Math.floor(i / 4) * .15 }; });
+  gm.onFrame($('s0'), (l, info) => fleet.forEach((f, i) => f.g.setAttribute('transform', `translate(${f.x - 400 + Math.min(info.time, 4) * 100} ${f.y + Math.sin(info.time * 2 + i) * 6}) scale(${f.s})`)));
+  const z1 = sv('s1', DAY); mk('rect', { y: 1450, width: 1080, height: 470, fill: '#3f86b4' }, z1); mk('path', { d: 'M-50 1520 L380 1020 L720 1520Z', fill: '#6f8f5a' }, z1);
+  const look = CM.figure(z1, 'MEX'); CM.pose(look, { x: 380, y: 1030, s: 1.6, dir: -1 }); const sh = mk('g', { transform: 'translate(900 1500) scale(.4)' }, z1); CM.caravel(sh);
+  const smoke = mk('g', {}, z1); for (let k = 0; k < 5; k++) mk('circle', { cx: 300 + k * 10, cy: 950 - k * 60, r: 26 + k * 10, fill: '#e8e8e8', opacity: .9 - k * .15 }, smoke);
+  const runner = CM.figure(z1, 'MEX', { weapon: 'none', shield: false }); gm.onFrame($('s1'), (l, info) => CM.pose(runner, { x: -100 + (info.time - 7.5) * 500, y: 1820, s: 1.6, dir: 1, run: 1, ph: info.time * 12 }));
+  mk('rect', { y: 1700, width: 1080, height: 220, fill: '#c9b48c' }, z1); z1.append(runner.o);
+  tl.from(smoke, { opacity: 0, y: 60, duration: .5 }, W('vieron') - .3);
+  const z2 = sv('s2', 'linear-gradient(#8fb8de, #f0d9a8)'); mk('rect', { y: 1560, width: 1080, height: 360, fill: '#e2cf9e' }, z2);
+  const horses = [0, 1].map(i => CM.horse(z2, i ? '#3a2a1a' : '#8a5a36')); horses.forEach((h, i) => h.g.setAttribute('transform', `translate(${680 + i * 220} 1830) scale(1.2)`));
+  const esq = Array.from({ length: 5 }, () => CM.figure(z2, 'ES')); esq.forEach((f, i) => CM.pose(f, { x: 90 + i * 110, y: 1820, s: 1.8, dir: 1 }));
+  const flagE = mk('g', {}, z2); mk('rect', { x: 60, y: 1300, width: 8, height: 520, fill: '#3a2a1a' }, flagE); CM.flag(flagE, 'ESB', 68, 1300, 150, 100);
+  const allies = [0, 1, 2].map(() => CM.figure(z2, 'TLX', { weapon: 'none', shield: false }));
+  const no = CM.text($('s2'), 'big', 'NO', 560, 'font-size:200px;color:#E5484D;left:560px;right:auto;width:440px');
+  gm.onFrame($('s2'), (l, info) => { const t = info.time; horses.forEach(h => CM.horsePose(h, t, 0)); allies.forEach((f, i) => { const away = gm.clamp((t - 15.4) / 1.5); CM.pose(f, { x: 1200 - Math.min(t - 13.8, 1.2) * 300 + away * 700 + i * 100, y: 1820, s: 1.8, dir: away > 0 ? 1 : -1, run: t > 13.8 && t < 15 || away > 0 ? 1 : 0, ph: t * 10 + i }); }); });
+  tl.from(no, { scale: 0, duration: .3, ease: 'back.out(2.5)' }, W('nadie') - .2);
+  const z3 = sv('s3', DAY); mk('rect', { y: 1100, width: 1080, height: 820, fill: '#3f86b4' }, z3); const sh3 = mk('g', { transform: 'translate(220 1200) scale(.6)' }, z3); CM.caravel(sh3);
+  const virW = mk('g', {}, z3), vir = mk('g', { transform: 'translate(220 1000)' }, virW); mk('circle', { r: 60, fill: '#c94a4a' }, vir); for (let i = 0; i < 10; i++) { const a = i * Math.PI / 5; mk('circle', { cx: Math.cos(a) * 80, cy: Math.sin(a) * 80, r: 12, fill: '#e07a7a' }, vir); }
+  mk('rect', { y: 1560, width: 1080, height: 360, fill: '#c9b48c' }, z3); const gate = mk('g', {}, z3); mk('rect', { x: 540, y: 1300, width: 30, height: 520, fill: '#5a3e26' }, gate); mk('rect', { x: 940, y: 1300, width: 30, height: 520, fill: '#5a3e26' }, gate); mk('rect', { x: 540, y: 1290, width: 430, height: 70, fill: '#c0392b' }, gate);
+  const gt = mk('text', { x: 755, y: 1345, 'text-anchor': 'middle', 'font-family': 'Bebas Neue', 'font-size': 56, fill: '#fff' }, gate); gt.textContent = 'CUARENTENA';
+  const guards = [0, 1].map(() => CM.figure(z3, 'MEX')); guards.forEach((f, i) => CM.pose(f, { x: 640 + i * 230, y: 1820, s: 1.9, dir: -1 }));
+  tl.from(virW, { scale: 0, duration: .3, ease: 'back.out(2)', transformOrigin: '220px 1000px' }, W('viruela') - .2).from(gate, { y: 300, opacity: 0, duration: .4 }, W('cuarentena') - .5);
+  const z4 = sv('s4', DUSK); mk('path', { d: 'M0 1400 L300 1100 L600 1400 L900 1150 L1080 1300 L1080 1560 L0 1560Z', fill: '#4a3a5a' }, z4); ground(z4, '#8a6a4a');
+  const cz = CM.figure(z4, 'ES', { weapon: 'none' }); CM.pose(cz, { x: 380, y: 1820, s: 2.2, dir: 1 }); const qm = CM.text($('s4'), 'big', '?', 560, 'font-size:220px;color:#FFD23F');
+  tl.from(qm, { scale: 0, duration: .4, ease: 'back.out(2.5)' }, 22.2);
+
+  ['s1','s2','s3','s4'].forEach(id => tl.from($(id), { opacity: 0, duration: .2 }, +$(id).dataset.start));
+  return S.captions(words);
+}));
+</script>
+</body>
+</html>

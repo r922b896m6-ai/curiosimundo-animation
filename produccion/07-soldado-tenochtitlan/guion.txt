@@ -1,0 +1,8 @@
+# CURIOSIMUNDO · 07 · ¿Y si un soldado de fuerzas especiales mexicanas apareciera en Tenochtitlan 100 años antes de la conquista?
+# rate|pitch|pausa|texto  (serie "¿Y si…?": 25–35 s)
++16%|+3Hz|0.2|Si un soldado de fuerzas especiales mexicanas apareciera en Tenochtitlan en mil cuatrocientos veintiuno, cien años antes de los españoles…
++16%|+2Hz|0.15|encontraría una ciudad sobre un lago, que todavía pagaba tributo a Azcapotzalco.
++17%|+1Hz|0.15|Su GPS no encontraría ni un satélite, y su radio no tendría con quién hablar.
++17%|+2Hz|0.15|Su rifle asombraría a todos… hasta la última bala, porque nadie podría fabricar otra.
++14%|+1Hz|0.2|Su mejor arma sería lo que sabe: avisar de que en cien años llegarían barcos… y la viruela, que mataría a una gran parte de la población.
++12%|+4Hz|0|¿Le creerían? ¿Y tú, qué les dirías? Te leo en comentarios.

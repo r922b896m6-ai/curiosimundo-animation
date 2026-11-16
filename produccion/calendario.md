@@ -98,7 +98,21 @@ Paquete completo en `01-pulpo/paquete.md`.
 - Por qué los flamencos son rosas (su dieta).
 - El Big Ben no es la torre, es la campana.
 - El rayo que cae dos veces: el récord de Roy Sullivan.
-- ¿Y si el Sol se apagara? Tardaríamos 8 minutos en notarlo.
+- ¿Y si el Sol se apagara? → preparado abajo (Idea preparada · ¿Y si el Sol se apagara?).
+
+### Idea preparada · ¿Y si el Sol se apagara? (serie "¿Y si…?", 25–35 s)
+- **Gancho (fotograma 0):** **8 MINUTOS** · "Si el Sol se apagara ahora mismo… no te enterarías hasta dentro de 8 minutos."
+- **Idea central:**
+  - La luz del Sol tarda unos 8 minutos y 20 segundos en llegar a la Tierra; durante ese tiempo lo seguirías viendo brillar.
+  - La gravedad también viaja a la velocidad de la luz: unos 8 minutos después, la Tierra dejaría de girar alrededor del Sol y saldría en línea recta.
+  - La Luna también se vería oscura, porque solo brilla con la luz del Sol.
+  - Sin fotosíntesis, las plantas empezarían a morir; algunos árboles grandes aguantarían bastante más.
+  - En una semana, la temperatura media bajaría de −18 °C; en un año, a unos −73 °C (estimaciones aproximadas).
+  - La superficie del mar se congelaría, pero el océano profundo seguiría líquido mucho tiempo gracias al calor del interior de la Tierra.
+- **Precisión:** es imposible que el Sol "se apague" de golpe; hay que decirlo. Las cifras de temperatura son estimaciones y varían según la fuente: usar "unos" y "aproximadamente".
+- **Visual:** reloj de 8:20 en cuenta atrás con el Sol aún brillando, apagón total, la Luna que desaparece, la Tierra saliendo en línea recta de su órbita, termómetro que se desploma, mar helándose por arriba.
+- **Final:** "¿Qué harías en esos 8 minutos?"
+- **Fuentes:** [Live Science](https://www.livescience.com/planet-earth/what-would-happen-to-earth-if-the-sun-suddenly-vanished) · [Popular Science (D. Stevenson, Caltech)](https://www.popsci.com/science/article/2013-07/if-sun-went-out-how-long-could-life-earth-survive/) · [Wonderopolis](https://wonderopolis.org/wonder/what-would-earth-be-like-without-the-sun)
 - Las abejas reconocen caras.
 
 Cada tema se verifica antes de escribir el guion.

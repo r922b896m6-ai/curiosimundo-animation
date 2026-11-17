@@ -2,3 +2,4 @@ snapshots/
 .gm-parts/
 out_render.log
 /out/
+out_render_all.log

@@ -1,0 +1,65 @@
+<!doctype html>
+<!-- La conquista de México · Capítulo 7 · Las consecuencias: Ciudad de México y Nueva España, primer virrey (1535), epidemias, Nojpetén (1697), sociedad mestiza, lenguas indígenas, aliados y viruela, pregunta final. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="75.9">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/cq.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="cdmx" data-start="3.6" data-duration="6.8"></section>
+<section class="scene" id="vir" data-start="10.2" data-duration="10.5"></section>
+<section class="scene" id="pop" data-start="20.5" data-duration="11.8"></section>
+<section class="scene" id="map" data-start="32.1" data-duration="9.3"></section>
+<section class="scene" id="mes" data-start="41.2" data-duration="7.2"></section>
+<section class="scene" id="len" data-start="48.2" data-duration="9.1"></section>
+<section class="scene" id="ide" data-start="57.1" data-duration="10.5"></section>
+<section class="scene" id="end" data-start="67.4" data-duration="8.6"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/mexico1519.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id), mk = CM.mk;
+  const svgOf = id => CM.svgIn($(id)), cy = k => geo.cities[k];
+  const fadeIn = ids => ids.forEach(id => tl.from($(id), { opacity: 0, duration: .3 }, +$(id).dataset.start));
+  const mexMap = (id) => { const m = CM.map($(id), geo); m.color(tl, 'MÉXICO', '#7a5a3a', 0, .01).color(tl, 'CENTROAMÉRICA', '#6a5a3a', 0, .01).color(tl, 'CUBA', '#4a5a6a', 0, .01).color(tl, 'LAGO', '#3f86b4', 0, .01); return m; };
+  const Z = (m, at, c, s, d = .01) => m.zoom(tl, c, s, at, d);
+
+  const virus = (s, x, y, r = 80) => { const g = mk('g', {}, s), v = mk('g', { transform: `translate(${x} ${y})` }, g); mk('circle', { r, fill: '#c94a4a' }, v); for (let i = 0; i < 12; i++) { const a = i * Math.PI / 6; mk('line', { x1: Math.cos(a) * r, y1: Math.sin(a) * r, x2: Math.cos(a) * r * 1.4, y2: Math.sin(a) * r * 1.4, stroke: '#c94a4a', 'stroke-width': r / 8 }, v); mk('circle', { cx: Math.cos(a) * r * 1.45, cy: Math.sin(a) * r * 1.45, r: r / 6, fill: '#e07a7a' }, v); } return g; };
+
+  CM.card($('cards'), tl, 7, 'DESPUÉS DE 1521', 'LAS CONSECUENCIAS', 0, 4);
+  const zc = svgOf('cdmx'), cc = CQ.city(zc, { temple: false }); const ch = mk('g', {}, zc); mk('rect', { x: 760, y: 360, width: 400, height: 300, fill: '#d8c8a2', stroke: '#a8916a', 'stroke-width': 4 }, ch);
+  [[800, 240], [1080, 240]].forEach(([x, y]) => { mk('rect', { x, y, width: 50, height: 120, fill: '#d8c8a2' }, ch); mk('path', { d: `M${x - 6} ${y} L${x + 25} ${y - 40} L${x + 56} ${y}Z`, fill: '#a8916a' }, ch); }); mk('path', { d: 'M900 360 Q960 260 1020 360Z', fill: '#c9b48c' }, ch); mk('rect', { x: 930, y: 540, width: 60, height: 120, fill: '#5a3e26' }, ch);
+  tl.from(ch, { y: 300, opacity: 0, duration: 1.2, ease: 'power2.out' }, 4.6); CM.head(H, tl, 'CIUDAD DE <em>MÉXICO</em>', 'sobre las ruinas de Tenochtitlan · capital de la Nueva España', 4.4, 10.2);
+  const zv = svgOf('vir'); $('vir').style.background = 'linear-gradient(#5a4a3a, #2a2018)'; const co = CM.figure(zv, 'ES', { weapon: 'none' }); CM.pose(co, { x: 500, y: 980, s: 3, dir: 1 });
+  const d = CM.doc($('vir'), 'NUEVA ESPAÑA', 'virreinato', ['1535', 'Primer virrey:', 'Antonio de Mendoza'], { x: 980, y: 240, w: 640, h: 480, rot: 2 }); tl.from(d, { y: 160, opacity: 0, rotate: 8, duration: .5, ease: 'expo.out' }, W('virrey') - .8);
+  CM.head(H, tl, 'LA <em>CORONA</em> TOMA EL CONTROL', 'Cortés pierde el poder', 10.4, 20.4);
+  const zp = svgOf('pop'); $('pop').style.background = '#0e1218'; const people = Array.from({ length: 10 }, (_, i) => { const g = mk('g', {}, zp); const f = CM.figure(g, 'MEX', { weapon: 'none', shield: false }); CM.pose(f, { x: 240 + i * 160, y: 920, s: 2, dir: 1 }); return g; });
+  tl.to(people.slice(1), { opacity: .12, duration: .3, stagger: .15 }, W('noventa') - 1.6); const v = virus(zp, 1700, 300, 70); tl.from(v, { scale: 0, duration: .4, ease: 'back.out(2)', transformOrigin: '1700px 300px' }, W('epidemias') - .3);
+  const pct = CM.text($('pop'), 'big', 'HASTA UN <em>90 %</em>', 260, 'font-size:140px'); tl.from(pct, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, W('noventa') - .3);
+  CM.head(H, tl, 'LAS <em>EPIDEMIAS</em>', 'algunas estimaciones: hasta un 90 % menos en un siglo', 20.7, 32.0);
+  const m = mexMap('map'); Z(m, 0, [600, 640], 1.3); m.pin(tl, 'Tenochtitlan', '1521', 32.4, null, { r: 6, size: 22, dy: 16 }); m.pin(tl, 'Nojpetén', 'NOJPETÉN · 1697', W('nojpetén') - .3, null, { r: 7, size: 24, fill: '#FFD23F', dy: 18 });
+  CM.head(H, tl, 'EL ÚLTIMO <em>REINO MAYA</em>', 'Nojpetén resistió hasta 1697', 32.4, 41.1);
+  const zm = svgOf('mes'); $('mes').style.background = 'linear-gradient(#efe7d2, #d9cfb4)'; const ic = ['CASTELLANO', 'CRISTIANISMO', 'CABALLOS', 'TRIGO'].map((t, i) => CM.text($('mes'), 'big', t, 300 + Math.floor(i / 2) * 170, `font-size:90px;color:#3a2a1a;left:${i % 2 ? 980 : 160}px;right:auto;width:780px`));
+  ['castellano', 'cristianismo', 'animales', 'cultivos…'].forEach((w, i) => tl.from(ic[i], { opacity: 0, scale: 1.3, duration: .3 }, W(w) - .2));
+  CM.head(H, tl, 'UNA SOCIEDAD <em>MESTIZA</em>', 'llegaron nuevas lenguas, creencias, animales y cultivos', 41.4, 48.1);
+  const zl = $('len'); zl.style.background = 'radial-gradient(1200px 800px at 50% 45%, #2f8f5a, #0e2a1a 75%)'; const n7 = CM.text(zl, 'big', '<em>+7.000.000</em>', 280, 'font-size:220px'), n7b = CM.text(zl, 'mid', 'de personas en México hablan una <b>lengua indígena</b>', 560);
+  tl.from(n7, { scale: 1.4, opacity: 0, duration: .5, ease: 'expo.out' }, W('siete') - .3).from(n7b, { opacity: 0, y: 20, duration: .3 }, W('personas') - .2);
+  CM.head(H, tl, 'LAS LENGUAS <em>SIGUEN VIVAS</em>', 'náhuatl, maya y muchas más', 48.4, 57.0);
+  const zi = svgOf('ide'); $('ide').style.background = 'linear-gradient(#9cc4e6, #efe2bf)'; mk('rect', { y: 900, width: 1920, height: 180, fill: '#a8916a' }, zi);
+  const few = [0, 1].map(() => CM.figure(zi, 'ES')); few.forEach((f, i) => CM.pose(f, { x: 220 + i * 120, y: 980, s: 2, dir: 1 }));
+  const many = Array.from({ length: 18 }, (_, i) => CM.figure(zi, i % 3 ? 'TLX' : 'TOT')); many.forEach((f, i) => CM.pose(f, { x: 520 + (i % 9) * 140, y: 900 + Math.floor(i / 9) * 110, s: 1.4 + Math.floor(i / 9) * .4, dir: 1 }));
+  tl.from(many.map(f => f.o), { opacity: 0, duration: .25, stagger: .05 }, W('aliados') - .4); const vi = virus(zi, 1700, 330, 70); tl.from(vi, { scale: 0, duration: .4, ease: 'back.out(2)', transformOrigin: '1700px 330px' }, W('viruela') - .3);
+  CM.head(H, tl, '¿QUIÉN <em>CONQUISTÓ</em>?', 'unos cientos de españoles… sus aliados indígenas… y la viruela', 57.3, 67.3);
+  const end = document.createElement('div'); end.style.cssText = 'position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:radial-gradient(1200px 800px at 50% 45%, #6a3a1a, #1a0e08 75%)';
+  end.innerHTML = '<div style="font:400 120px/1 \'Bebas Neue\';text-align:center">¿QUÉ FUE LO MÁS <span style="color:#FFD23F">DECISIVO</span>?</div><div style="font:800 40px Inter;letter-spacing:.06em">CUÉNTAMELO EN LOS COMENTARIOS</div><div class="sub" style="margin-top:30px;padding:22px 60px;border-radius:16px;background:#d0312d;font:800 44px Inter;letter-spacing:.08em">SUSCRÍBETE</div><div style="margin-top:20px;font:400 90px Bebas Neue;letter-spacing:.14em">CURIOSI<span style="color:#FFD23F">MUNDO</span></div>';
+  $('end').append(end);
+  tl.from(end, { opacity: 0, duration: .5 }, W('qué') - .4).from(end.children[0], { scale: 1.2, opacity: 0, duration: .5, ease: 'expo.out' }, W('qué') - .3)
+    .from(end.children[1], { y: 20, opacity: 0, duration: .3 }, W('cuéntamelo') - .2).from(end.children[2], { scale: 0, duration: .4, ease: 'back.out(2.5)' }, W('suscríbete') - .2)
+    .to(end.children[2], { scale: 1.08, duration: .4, yoyo: true, repeat: 3, ease: 'sine.inOut' }, W('suscríbete') + .3).from(end.children[3], { y: 30, opacity: 0, letterSpacing: '.4em', duration: .7, ease: 'expo.out' }, W('curiosimundo') - .2);
+  fadeIn(['vir', 'pop', 'map', 'mes', 'len', 'ide']);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<!-- La conquista de México · Capítulo 6 · 1521 · El sitio: Cuauhtémoc, la viruela, 13 bergantines, dominio del lago, calzadas bloqueadas y agua cortada, aliados indígenas, casa por casa, Tlatelolco, captura de Cuauhtémoc. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="74.9">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/cq.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="cua" data-start="3.6" data-duration="9.5"></section>
+<section class="scene" id="berg" data-start="12.9" data-duration="16.1"></section>
+<section class="scene" id="map" data-start="28.8" data-duration="16.8"></section>
+<section class="scene" id="casa" data-start="45.4" data-duration="14.8"></section>
+<section class="scene" id="tla" data-start="60.0" data-duration="4.9"></section>
+<section class="scene" id="cap" data-start="64.7" data-duration="10.3"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/mexico1519.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id), mk = CM.mk;
+  const svgOf = id => CM.svgIn($(id)), cy = k => geo.cities[k];
+  const fadeIn = ids => ids.forEach(id => tl.from($(id), { opacity: 0, duration: .3 }, +$(id).dataset.start));
+  const mexMap = (id) => { const m = CM.map($(id), geo); m.color(tl, 'MÉXICO', '#7a5a3a', 0, .01).color(tl, 'CENTROAMÉRICA', '#6a5a3a', 0, .01).color(tl, 'CUBA', '#4a5a6a', 0, .01).color(tl, 'LAGO', '#3f86b4', 0, .01); return m; };
+  const Z = (m, at, c, s, d = .01) => m.zoom(tl, c, s, at, d);
+
+  const virus = (s, x, y, r = 80) => { const g = mk('g', {}, s), v = mk('g', { transform: `translate(${x} ${y})` }, g); mk('circle', { r, fill: '#c94a4a' }, v); for (let i = 0; i < 12; i++) { const a = i * Math.PI / 6; mk('line', { x1: Math.cos(a) * r, y1: Math.sin(a) * r, x2: Math.cos(a) * r * 1.4, y2: Math.sin(a) * r * 1.4, stroke: '#c94a4a', 'stroke-width': r / 8 }, v); mk('circle', { cx: Math.cos(a) * r * 1.45, cy: Math.sin(a) * r * 1.45, r: r / 6, fill: '#e07a7a' }, v); } return g; };
+
+  CM.card($('cards'), tl, 6, '1521', 'EL SITIO', 0, 4);
+  const zc = svgOf('cua'), cc = CQ.city(zc, { sky: ['#8a96a8', '#d6cbb0'] }); gm.onFrame($('cua'), (l, i) => cc.tick(i.time)); const cu = CM.figure(zc, 'MEX'); CM.pose(cu, { x: 760, y: 1060, s: 3.4, dir: 1 });
+  const vv = virus(zc, 1400, 380, 90); tl.from(vv, { scale: 0, opacity: 0, duration: .4, ease: 'back.out(2)', transformOrigin: '1400px 380px' }, W('viruela') - .3);
+  CM.head(H, tl, '<em>CUAUHTÉMOC</em>', 'el último tlatoani mexica', 4.4, 8.1); CM.head(H, tl, 'LA <em>VIRUELA</em>', 'miles de muertos en todo el valle', 8.2, 12.8);
+  const zb = svgOf('berg'); $('berg').style.background = 'linear-gradient(#9cc4e6, #efe2bf)'; mk('rect', { y: 620, width: 1920, height: 460, fill: '#3f86b4' }, zb); mk('rect', { y: 860, width: 900, height: 220, fill: '#a8916a' }, zb);
+  const brig = (s) => { const g = mk('g', {}, s); mk('path', { d: 'M-130 -10 L130 -10 L100 30 L-100 30Z', fill: '#5a3e26', stroke: '#3a2a1a', 'stroke-width': 4 }, g); for (let k = 0; k < 6; k++) mk('line', { x1: -80 + k * 32, y1: 20, x2: -96 + k * 32, y2: 54, stroke: '#3a2a1a', 'stroke-width': 4 }, g);
+    mk('rect', { x: -4, y: -170, width: 8, height: 160, fill: '#3a2a1a' }, g); mk('path', { d: 'M4 -160 L80 -50 L4 -40Z', fill: '#efe7d2' }, g); mk('rect', { x: 100, y: -24, width: 40, height: 10, fill: '#222' }, g); const fl = mk('g', { transform: 'translate(-2 -200)' }, g); CM.flag(fl, 'ESB', 0, 0, 40, 28); return g; };
+  const b1 = brig(zb), b2 = brig(zb), b3 = brig(zb); const car = [0, 1, 2].map(i => ({ f: CM.figure(zb, 'TLX', { weapon: 'none', shield: false }), x0: -100 - i * 180, y: 960, s: 1.8 }));
+  const can = Array.from({ length: 8 }, (_, i) => { const g = mk('g', {}, zb); mk('path', { d: 'M-60 0 L60 0 L44 16 L-44 16Z', fill: '#6b4a2a' }, g); const w = CM.figure(g, 'MEX', { shield: false }); CM.pose(w, { x: 0, y: 0, s: .8, dir: -1 }); return g; });
+  const flashes = [0, 1, 2].map(() => mk('circle', { r: 0, fill: 'url(#cmFlash)' }, zb)); const tLake = W('bergantines', 2) - .4;
+  gm.onFrame($('berg'), (l, info) => { const t = info.time; CQ.walk(car, Math.min(t, 19.5), 12.9, 110); car.forEach(o => o.f.o.style.display = t < 23.0 ? '' : 'none');
+    const launch = gm.clamp((t - (W('botó') - .3)) / 1.2), lake = t >= tLake;
+    [b1, b2, b3].forEach((b, i) => { const x = lake ? 400 + i * 320 + (t - tLake) * 60 : 500 + i * 300, y = lake ? 760 + i * 30 : 860 - launch * 140 * (i === 0 ? 1 : 0) + (i ? 0 : 0); b.setAttribute('transform', `translate(${x} ${lake ? y : (i === 0 ? 860 - launch * 120 : 2000)}) scale(${lake ? .9 : 1.1})`); });
+    can.forEach((c, i) => { const away = lake ? gm.clamp((t - tLake - 1.5) / 3) : 0; c.setAttribute('transform', `translate(${1300 + (i % 4) * 150 + away * 500} ${700 + Math.floor(i / 4) * 140})`); c.style.display = lake ? '' : 'none'; });
+    flashes.forEach((f, i) => { const k = ((t - tLake) * 1.2 + i * .33) % 1; f.setAttribute('cx', 580 + i * 320 + (t - tLake) * 60); f.setAttribute('cy', 740 + i * 30); f.setAttribute('r', lake && k < .3 ? 50 : 0); }); });
+  CM.head(H, tl, '<em>13 BERGANTINES</em>', 'construidos con ayuda de miles de tlaxcaltecas · Texcoco', 13.2, 22.9); CM.head(H, tl, 'EL LAGO, <em>DOMINADO</em>', 'cañones contra canoas', 23.1, 28.7);
+  const m = mexMap('map'); Z(m, 0, [192, 578], 26); m.pin(tl, 'Tenochtitlan', 'TENOCHTITLAN', 29.0, null, { r: .45, size: 1.4, dy: -1.1 });
+  ['cTacuba', 'cIztapalapa', 'cTepeyac'].forEach((k, i) => m.line(tl, k, 29.2 + i * .3, { color: '#c9b48c', width: .7, dur: .6 }));
+  const water = m.line(tl, 'agua', 29.8, { color: '#5bc0ff', width: .5, dur: .6 }); m.text(tl, 'CHAPULTEPEC', cy('Chapultepec')[0] - 2, cy('Chapultepec')[1] + 1.8, W('chapultepec') - .3, null, { size: 1.1, fill: '#9fe3ff' });
+  const xx = m.text(tl, '✕', cy('Chapultepec')[0] + 2.4, cy('Chapultepec')[1] + .4, W('cortaron') - .2, null, { size: 2.2, fill: '#E5484D' }); tl.to(water, { opacity: .2, duration: .3 }, W('cortaron'));
+  [['Tlacopan', 'TLACOPAN'], ['Iztapalapa', 'IZTAPALAPA'], ['Tepeyac', 'TEPEYAC']].forEach(([k, l]) => m.pin(tl, k, l, W('bloquearon') - .2, null, { r: .4, size: 1.1, fill: '#E5484D', dy: 1 }));
+  const ally = CM.text($('map'), 'mid', '<b>Decenas de miles</b> de guerreros indígenas', 860, 'background:rgb(10 6 4 / .6);left:420px;right:420px;padding:10px 20px;border-radius:12px'); tl.from(ally, { opacity: 0, y: 20, duration: .35 }, W('decenas') - .3);
+  CM.head(H, tl, 'EL <em>SITIO</em>', 'mayo de 1521 · agua cortada y calzadas bloqueadas', 29.1, 37.4); CM.head(H, tl, 'LOS <em>ALIADOS</em>', 'la mayoría del ejército era indígena', 37.6, 45.3);
+  CM.battle($('casa'), { id: 'cs', left: 'TLX', right: 'MEX', terrain: 'ruins', t0: 45.4, t1: 60.1, n: 8, falls: [], mg: false, def: 6, artillery: [45.8, 47.4, 49.0, 50.8, 52.6, 54.4], pan: [0, -1280] });
+  const hw = CM.text($('casa'), 'big', 'HAMBRE · SIN AGUA · <em>EPIDEMIA</em>', 360, 'font-size:90px'); tl.from(hw, { opacity: 0, scale: 1.2, duration: .35 }, W('hambre') - .3);
+  CM.head(H, tl, 'CASA POR <em>CASA</em>', 'derribaban las casas para rellenar los canales', 45.6, 52.0); CM.head(H, tl, 'CASI <em>TRES MESES</em>', 'de resistencia mexica', 52.1, 59.9);
+  const zt = svgOf('tla'), ct = CQ.city(zt, { sky: ['#8a7a6a', '#c9b49a'] }); tl.fromTo(ct.g, { scale: 1.3 }, { scale: 1.1, duration: 4.8, ease: 'none', transformOrigin: '50% 50%' }, 60.0);
+  CM.head(H, tl, '<em>TLATELOLCO</em>', 'el último refugio', 60.2, 64.6);
+  const zk = svgOf('cap'); $('cap').style.background = 'linear-gradient(#9aa7b8, #d6cbb0)'; mk('rect', { y: 560, width: 1920, height: 520, fill: '#3f86b4' }, zk);
+  const bg = brig(zk); const cn = mk('g', {}, zk); mk('path', { d: 'M-90 0 L90 0 L66 22 L-66 22Z', fill: '#6b4a2a' }, cn); const ca = CM.figure(cn, 'MEX', { weapon: 'none', shield: false }); const ro = CM.figure(cn, 'MEX', { weapon: 'none', shield: false });
+  const tCap = W('capturado') - .4;
+  gm.onFrame($('cap'), (l, info) => { const t = info.time, k = gm.clamp((t - 65.5) / 3); cn.setAttribute('transform', `translate(${1500 - k * 600} 800) scale(1.4)`); bg.setAttribute('transform', `translate(${200 + k * 500} 780) scale(1.3)`);
+    CM.pose(ca, { x: -20, y: 0, s: 1, dir: -1, up: t > tCap }); CM.pose(ro, { x: 40, y: 0, s: 1, dir: -1, up: t > tCap }); });
+  CM.head(H, tl, '13 DE AGOSTO DE <em>1521</em>', 'Cuauhtémoc intenta escapar en canoa… y es capturado', 64.9, 71.9);
+  const fall = CM.text($('cap'), 'big', 'TENOCHTITLAN <em>HA CAÍDO</em>', 300, 'font-size:130px'); tl.from(fall, { scale: 1.3, opacity: 0, filter: 'blur(12px)', duration: .6, ease: 'expo.out' }, W('caído') - .8);
+  fadeIn(['berg', 'map', 'casa', 'tla', 'cap']);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

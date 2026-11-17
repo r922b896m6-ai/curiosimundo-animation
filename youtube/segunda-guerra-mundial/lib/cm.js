@@ -31,6 +31,9 @@ const U = CM.U = {
   MXSF: { name: 'MÉXICO · FUERZAS ESPECIALES', tunic: '#6d7150', pants: '#666a4a', legs: '#666a4a', boots: '#2a2420', hat: 'mich', hatC: '#55593e', belt: '#2f3128', pack: '#55593e', flag: 'MX', vest: '#4a4d38', camo: true },
   MEX:  { name: 'MEXICAS', tunic: '#efe7d2', pants: '#efe7d2', legs: '#a8714a', boots: '#7a5a3a', hat: 'plume', hatC: '#2f8f5a', belt: '#c0392b', pack: '#7a5a3a', flag: 'MEX', skin: '#a8714a', weapon: 'macua', shield: true, noFire: true, noPack: true },
   TLX:  { name: 'TLAXCALA', tunic: '#efe7d2', pants: '#efe7d2', legs: '#a8714a', boots: '#7a5a3a', hat: 'plume', hatC: '#e8e0d0', belt: '#d8b23a', pack: '#7a5a3a', flag: 'TLX', skin: '#a8714a', weapon: 'macua', shield: true, noFire: true, noPack: true },
+  MAYA: { name: 'MAYAS CHONTALES', tunic: '#e8dcc0', pants: '#e8dcc0', legs: '#9a6440', boots: '#6a4a2a', hat: 'plume', hatC: '#2f8f5a', belt: '#2f6fcf', pack: '#7a5a3a', flag: 'MAYA', skin: '#9a6440', weapon: 'macua', shield: true, noFire: true, noPack: true },
+  TOT:  { name: 'TOTONACAS', tunic: '#f2ead6', pants: '#f2ead6', legs: '#a8714a', boots: '#7a5a3a', hat: 'plume', hatC: '#2f8f5a', belt: '#2f8f5a', pack: '#7a5a3a', flag: 'TLX', skin: '#a8714a', weapon: 'macua', shield: true, noFire: true, noPack: true },
+  TLA:  { name: 'MOCTEZUMA', tunic: '#1f8fa0', pants: '#efe7d2', legs: '#a8714a', boots: '#c9a46a', hat: 'xiuh', hatC: '#1fb5b0', belt: '#d8b23a', pack: '#7a5a3a', flag: 'MEX', skin: '#a8714a', weapon: 'none', noFire: true, noPack: true },
   ES:   { name: 'ESPAÑA', tunic: '#9aa0aa', pants: '#7a2a2a', legs: '#5a4a3a', boots: '#3a2a1a', hat: 'morion', hatC: '#c3c8d0', belt: '#5a3a1e', pack: '#6b5a3e', flag: 'ESB', noPack: true, bayonet: false },
   US:   { name: 'ESTADOS UNIDOS', tunic: '#6b6a3f', pants: '#625f38', legs: '#b8a77c', boots: '#2a1f14', hat: 'brodie', hatC: '#55553a', belt: '#a99a6a', pack: '#6b6a3f', flag: 'US' },
 };
@@ -50,6 +53,7 @@ function hat(g, u) {
     case 'ssh': mk('path', { d: 'M-16 -150 Q3 -180 22 -150Z', fill: c }, g); mk('path', { d: 'M-19 -150 Q3 -144 25 -150 Q3 -154 -19 -150Z', fill: c }, g); break;
     case 'jp': mk('path', { d: 'M-15 -150 Q3 -178 21 -150Z', fill: c }, g); mk('path', { d: 'M-15 -150 L-19 -128 L-8 -132 L-6 -150Z', fill: '#c2b47a' }, g); break;
     case 'morion': mk('path', { d: 'M-26 -150 Q-20 -142 3 -146 Q26 -142 32 -150 Q22 -158 20 -158 Q3 -184 -14 -158 Q-22 -158 -26 -150Z', fill: c, stroke: '#7d838c', 'stroke-width': 2 }, g); mk('path', { d: 'M-8 -160 Q3 -192 14 -160', fill: c, stroke: '#7d838c', 'stroke-width': 2 }, g); break;
+    case 'xiuh': mk('path', { d: 'M-14 -152 L-12 -176 Q3 -186 18 -176 L20 -152Z', fill: c, stroke: '#d8b23a', 'stroke-width': 3 }, g); mk('path', { d: 'M18 -176 L30 -190 L22 -168Z', fill: c }, g); for (let i = 0; i < 4; i++) mk('path', { d: `M${-10 + i * 6} -178 Q${-24 + i * 5} -206 ${-34 + i * 7} -214 Q${-16 + i * 6} -196 ${-6 + i * 6} -178Z`, fill: i % 2 ? '#2f8f5a' : '#1fb5b0' }, g); break;
     case 'mich': mk('path', { d: 'M-16 -148 Q3 -180 22 -148 L22 -142 L-16 -142Z', fill: c }, g); mk('rect', { x: -2, y: -178, width: 10, height: 8, rx: 2, fill: '#222' }, g); mk('rect', { x: 14, y: -160, width: 12, height: 8, rx: 2, fill: '#2a2a2a' }, g); break;
     case 'plume': mk('path', { d: 'M-12 -156 Q3 -166 18 -156 L18 -150 L-12 -150Z', fill: '#c0392b' }, g); for (let i = 0; i < 5; i++) mk('path', { d: `M${-8 + i * 6} -158 Q${-14 + i * 6} -190 ${-20 + i * 9} -205 Q${-6 + i * 6} -188 ${-4 + i * 6} -158Z`, fill: i % 2 ? '#2f8f5a' : '#1f6fb0' }, g); break;
     case 'm33': mk('path', { d: 'M-16 -148 Q3 -180 22 -148 L23 -144 L-17 -144Z', fill: c }, g); break;
@@ -117,6 +121,7 @@ CM.flag = function (parent, code, x, y, w = 90, h = 60) {
      MEX: () => { R(0, 0, w, h, '#efe7d2'); mk('circle', { cx: w / 2, cy: h / 2, r: h * .34, fill: 'none', stroke: '#1f6fb0', 'stroke-width': 4 }, g); mk('path', { d: `M${w * .3} ${h * .5} h${w * .4} M${w * .5} ${h * .25} v${h * .5}`, stroke: '#c0392b', 'stroke-width': 5 }, g); },
      ESB: () => { R(0, 0, w, h, '#fff'); mk('path', { d: `M${w * .15} ${h * .1} L${w * .85} ${h * .9} M${w * .85} ${h * .1} L${w * .15} ${h * .9}`, stroke: '#c0392b', 'stroke-width': h * .14, 'stroke-dasharray': `${h * .12} ${h * .04}` }, g); },
      TLX: () => { R(0, 0, w, h, '#fff'); mk('path', { d: `M${w * .25} ${h * .75} L${w * .5} ${h * .2} L${w * .75} ${h * .75}Z`, fill: '#d8b23a' }, g); },
+     MAYA: () => { R(0, 0, w, h, '#e8dcc0'); mk('rect', { x: w * .2, y: h * .2, width: w * .6, height: h * .6, fill: 'none', stroke: '#2f6fcf', 'stroke-width': 5 }, g); },
      PL: () => hz(['#fff', '#d0312d']), JP: () => { R(0, 0, w, h, '#fff'); mk('circle', { cx: w / 2, cy: h / 2, r: h * .3, fill: '#c0392b' }, g); },
      SU: () => { R(0, 0, w, h, '#c0392b'); mk('path', { d: `M${w * .2} ${h * .18} l4 9 l10 0 l-8 6 l3 10 l-9 -6 l-9 6 l3 -10 l-8 -6 l10 0z`, fill: '#ffd23f', transform: `scale(${h / 60})`, 'transform-origin': `${w * .2}px ${h * .18}px` }, g); },
      DE2: () => { R(0, 0, w, h, '#e9e6dc'); mk('path', { d: `M${w / 2} ${h * .12} V${h * .88} M${w * .3} ${h / 2} H${w * .7}`, stroke: '#111', 'stroke-width': h * .2 }, g); mk('path', { d: `M${w / 2} ${h * .12} V${h * .88} M${w * .3} ${h / 2} H${w * .7}`, stroke: '#111', 'stroke-width': h * .1, 'stroke-linecap': 'square' }, g); },
@@ -388,22 +393,22 @@ CM.map = function (section, data, { id = 'm' } = {}) {
   const svg = mk('svg', { viewBox: '0 0 1920 1080', width: 1920, height: 1080, style: 'position:absolute;inset:0' }, section); CM.defs(svg);
   mk('rect', { width: 1920, height: 1080, fill: CM.MAPCOL.sea }, svg);
   const g = mk('g', { style: 'transform-origin:0px 0px' }, svg), paths = {};
-  for (const [k, d] of Object.entries(data.groups)) paths[k] = mk('path', { d, fill: k === 'OTROS' ? CM.MAPCOL.other : k === 'NEUTRAL' ? CM.MAPCOL.neutral : CM.MAPCOL.land, stroke: '#0b1f40', 'stroke-width': 1.5, 'stroke-linejoin': 'round' }, g);
+  for (const [k, d] of Object.entries(data.groups)) paths[k] = mk('path', { d, fill: k === 'OTROS' ? CM.MAPCOL.other : k === 'NEUTRAL' ? CM.MAPCOL.neutral : CM.MAPCOL.land, stroke: '#0b1f40', 'stroke-width': 1.5, 'stroke-linejoin': 'round', 'vector-effect': 'non-scaling-stroke' }, g);
   const over = mk('g', {}, g), labels = mk('g', { 'font-family': 'Bebas Neue', 'text-anchor': 'middle' }, g);
   const api = {
     svg, g, paths, over, labels,
     color(tl, keys, col, at, d = .5) { [].concat(keys).forEach(k => tl.to(paths[k], { fill: col, duration: d, ease: 'power2.inOut' }, at)); return api; },
     text(tl, txt, x, y, at, end, { size = 34, fill = '#fff', stroke = 'rgb(0 0 0 / .6)' } = {}) { const t = mk('text', { x, y, 'font-size': size, fill, stroke, 'stroke-width': size / 8, 'paint-order': 'stroke' }, labels); t.textContent = txt;
       tl.from(t, { opacity: 0, y: 14, duration: .35, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; },
-    pin(tl, city, txt, at, end, o = {}) { const [x, y] = data.cities[city], pg = mk('g', {}, over); const ring = mk('circle', { cx: x, cy: y, r: o.r || 12, fill: o.fill || '#FFD23F', stroke: '#111', 'stroke-width': 3 }, pg);
+    pin(tl, city, txt, at, end, o = {}) { const [x, y] = data.cities[city], pg = mk('g', {}, over); const R0 = o.r || 12, ring = mk('circle', { cx: x, cy: y, r: R0, fill: o.fill || '#FFD23F', stroke: '#111', 'stroke-width': R0 / 4 }, pg);
       tl.from(pg, { opacity: 0, duration: .01 }, at); tl.from(ring, { scale: 0, duration: .35, ease: 'back.out(2.5)', transformOrigin: `${x}px ${y}px` }, at);
-      const pulse = mk('circle', { cx: x, cy: y, r: o.r || 12, fill: 'none', stroke: o.fill || '#FFD23F', 'stroke-width': 4 }, pg);
-      tl.fromTo(pulse, { attr: { r: 12 }, opacity: 1 }, { attr: { r: 60 }, opacity: 0, duration: 1.2, repeat: 2 }, at);
+      const pulse = mk('circle', { cx: x, cy: y, r: R0, fill: 'none', stroke: o.fill || '#FFD23F', 'stroke-width': R0 / 3 }, pg);
+      tl.fromTo(pulse, { attr: { r: R0 }, opacity: 1 }, { attr: { r: R0 * 5 }, opacity: 0, duration: 1.2, repeat: 2 }, at);
       if (txt) api.text(tl, txt, x + (o.dx || 0), y - (o.dy || 26), at + .1, end, { size: o.size || 34 }); if (end) tl.to(pg, { opacity: 0, duration: .25 }, end); return pg; },
     line(tl, key, at, { color = '#FFD23F', width = 8, dash, arrow = false, dur = 1.2, end } = {}) { const p = mk('path', { d: data.lines[key], stroke: color, 'stroke-width': width, fill: 'none', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, over);
       if (dash) p.setAttribute('stroke-dasharray', dash); tl.from(p, { draw: 0, duration: dur, ease: 'power2.inOut' }, at);
       if (arrow) { const pts = data.lines[key].replace('M', '').split(' L').map(s => s.split(' ').map(Number)), [a, b] = pts.slice(-2), ang = Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI;
-        const h = mk('path', { d: 'M0 0 L-30 -18 L-30 18 Z', fill: color, transform: `translate(${b[0]} ${b[1]}) rotate(${ang})` }, over); tl.from(h, { opacity: 0, duration: .2 }, at + dur - .1); if (end) tl.to(h, { opacity: 0, duration: .25 }, end); }
+        const h = mk('path', { d: `M0 0 L${-(width < 4 ? width * 4 : Math.max(30, width * 3.2))} ${-(width < 4 ? width * 2.4 : Math.max(18, width * 2))} L${-(width < 4 ? width * 4 : Math.max(30, width * 3.2))} ${(width < 4 ? width * 2.4 : Math.max(18, width * 2))} Z`, fill: color, transform: `translate(${b[0]} ${b[1]}) rotate(${ang})` }, over); tl.from(h, { opacity: 0, duration: .2 }, at + dur - .1); if (end) tl.to(h, { opacity: 0, duration: .25 }, end); }
       if (end) tl.to(p, { opacity: 0, duration: .25 }, end); return p; },
     zoom(tl, city, s, at, d = 1.2) { const [x, y] = typeof city === 'string' ? data.cities[city] : city; tl.to(g, { x: 960 - x * s, y: 540 - y * s, scale: s, duration: d, ease: 'power2.inOut' }, at); return api; },
   };

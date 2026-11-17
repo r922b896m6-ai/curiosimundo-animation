@@ -1,0 +1,72 @@
+<!doctype html>
+<!-- La conquista de México · Capítulo 2 · 1519 · La llegada: Cuba, Cozumel, Centla (retirada maya), Malintzin, enviados de Moctezuma, Veracruz, barcos hundidos, Cempoala. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="98.4">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/cq.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="map" data-start="3.6" data-duration="19.6"></section>
+<section class="scene" id="centla" data-start="23.0" data-duration="9.6"></section>
+<section class="scene" id="mal" data-start="32.4" data-duration="14.7"></section>
+<section class="scene" id="coast" data-start="46.9" data-duration="26.2"></section>
+<section class="scene" id="ships" data-start="72.9" data-duration="9.8"></section>
+<section class="scene" id="cem" data-start="82.5" data-duration="16.0"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/mexico1519.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id), mk = CM.mk;
+  const svgOf = id => CM.svgIn($(id)), cy = k => geo.cities[k];
+  const fadeIn = ids => ids.forEach(id => tl.from($(id), { opacity: 0, duration: .3 }, +$(id).dataset.start));
+  const mexMap = (id) => { const m = CM.map($(id), geo); m.color(tl, 'MÉXICO', '#7a5a3a', 0, .01).color(tl, 'CENTROAMÉRICA', '#6a5a3a', 0, .01).color(tl, 'CUBA', '#4a5a6a', 0, .01).color(tl, 'LAGO', '#3f86b4', 0, .01); return m; };
+  const Z = (m, at, c, s, d = .01) => m.zoom(tl, c, s, at, d);
+
+  const horseIn = (id, t0, n = 2, y = 900, dir = 1, sp = 420) => { const s = $(id).querySelector('svg'), hs = Array.from({ length: n }, (_, i) => ({ h: CM.horse(s, i % 2 ? '#3a2a1a' : '#8a5a36'), r: CM.figure(s, 'ES', { weapon: 'none' }) }));
+    gm.onFrame($(id), (l, info) => { const t = info.time - t0; hs.forEach((o, i) => { const x = (dir > 0 ? -300 : 2200) + dir * (t * sp - i * 380); o.h.g.setAttribute('transform', `translate(${x} ${y + i * 40}) scale(${dir * 1.3} 1.3)`); CM.horsePose(o.h, info.time); CM.pose(o.r, { x: x + dir * 8, y: y + i * 40 - 118, s: 1.4, dir }); }); }); };
+
+  CM.card($('cards'), tl, 2, '1519', 'LA LLEGADA', 0, 4);
+  const m = mexMap('map'); Z(m, 0, [1000, 520], 1.05);
+  m.pin(tl, 'Cuba', 'CUBA', W('cuba') - .2, 23.0, { r: 9, size: 30, dy: 26 }); m.line(tl, 'mar', W('zarpó') - .2, { color: '#FFD23F', width: 6, dash: '14 10', arrow: true, dur: 16 });
+  const f = CM.text($('map'), 'mid', '<b>11</b> barcos · unos <b>500</b> soldados · <b>16</b> caballos', 860); tl.from(f, { y: 30, opacity: 0, duration: .35 }, W('once') - .3).to(f, { opacity: 0, duration: .25 }, 17.6);
+  m.pin(tl, 'Cozumel', 'COZUMEL', W('cozumel') - .2, 23.0, { r: 8, size: 28, dy: 24 });
+  CM.head(H, tl, 'HERNÁN <em>CORTÉS</em>', 'zarpa de Cuba · febrero de 1519', 4.4, 13.3); CM.head(H, tl, 'DIEGO <em>VELÁZQUEZ</em>', 'el gobernador de Cuba intentó detenerlo', 13.4, 17.7);
+  CM.head(H, tl, 'JERÓNIMO DE <em>AGUILAR</em>', 'náufrago español que hablaba maya', 17.9, 22.9);
+  CM.battle($('centla'), { id: 'ce', left: 'ES', right: 'MAYA', terrain: 'fields', t0: 23.0, t1: 32.5, n: 7, falls: [], mg: false, def: 5, artillery: [23.4, 24.6, 25.8, 27.2, 29.0], outcome: { type: 'retreat', at: W('decidieron') - .2 }, pan: [0, -1280] });
+  horseIn('centla', W('caballos', 2) - 1, 2, 900);
+  CM.head(H, tl, 'BATALLA DE <em>CENTLA</em>', 'Tabasco · marzo de 1519', 23.3, 32.4);
+  const z = svgOf('mal'); $('mal').style.background = 'linear-gradient(#e8a86a, #6a4a6a)'; mk('rect', { y: 900, width: 1920, height: 180, fill: '#8a6a4a' }, z);
+  const co = CM.figure(z, 'ES', { weapon: 'none' }); CM.pose(co, { x: 420, y: 980, s: 3, dir: 1 }); const ag = CM.figure(z, 'ES', { weapon: 'none' }); CM.pose(ag, { x: 1500, y: 980, s: 2.8, dir: -1 });
+  const mlW = mk('g', {}, z), ml = CQ.woman(mlW, 960, 980, 3, { band: '#2f8f5a' });
+  const chain = CM.text($('mal'), 'mid', 'NÁHUATL → <b>MALINTZIN</b> → MAYA → <b>AGUILAR</b> → ESPAÑOL', 240, 'font-size:44px'); tl.from(chain, { opacity: 0, y: 20, duration: .4 }, W('voz') - .6);
+  tl.from(mlW, { opacity: 0, y: 40, duration: .4 }, W('una') - .2);
+  CM.head(H, tl, 'TRAS LA <em>DERROTA</em>', 'los mayas entregan regalos y 20 mujeres esclavizadas', 32.9, 40.5); CM.head(H, tl, '<em>MALINTZIN</em>', 'la Malinche: hablaba náhuatl y maya', 40.7, 46.9);
+  const zc = svgOf('coast'), cs = CQ.coast(zc, { n: 5 });
+  const env = [0, 1, 2].map(i => ({ f: CM.figure(zc, 'MEX', { weapon: 'none', shield: false }), x0: 1900 + i * 150, y: 960 + (i % 2) * 20, s: 2 }));
+  const gifts = env.map(() => mk('rect', { width: 70, height: 50, rx: 8, fill: '#d8b23a', stroke: '#8a6a2a', 'stroke-width': 4 }, zc));
+  const spa = [0, 1, 2].map(i => CM.figure(zc, 'ES')); spa.forEach((f, i) => CM.pose(f, { x: 300 + i * 150, y: 980, s: 2.1, dir: 1 }));
+  gm.onFrame($('coast'), (l, info) => { const t = info.time, d = Math.min(t - 48.0, 6); env.forEach((o, i) => { CM.pose(o.f, { x: o.x0 - Math.max(0, d) * 160, y: o.y, s: o.s, dir: -1, run: d < 6 && d > 0 ? .4 : 0, ph: t * 6 + i }); gifts[i].setAttribute('transform', `translate(${o.x0 - Math.max(0, d) * 160 - 30} ${o.y - 380})`); }); });
+  const sun = mk('g', {}, zc); mk('circle', { cx: 760, cy: 360, r: 150, fill: '#e8b92a', stroke: '#a8801a', 'stroke-width': 10 }, sun); for (let i = 0; i < 16; i++) mk('rect', { x: 752, y: 180, width: 16, height: 40, fill: '#e8b92a', transform: `rotate(${i * 22.5} 760 360)` }, sun);
+  const moon = mk('g', {}, zc); mk('circle', { cx: 1160, cy: 360, r: 150, fill: '#d6d9de', stroke: '#9aa0aa', 'stroke-width': 10 }, moon); mk('circle', { cx: 1210, cy: 330, r: 120, fill: '#c3c8d0' }, moon);
+  tl.from(sun, { scale: 0, opacity: 0, duration: .4, ease: 'back.out(1.8)', transformOrigin: '760px 360px' }, W('sol') - .5).from(moon, { scale: 0, opacity: 0, duration: .4, ease: 'back.out(1.8)', transformOrigin: '1160px 360px' }, W('luna') - .5);
+  const pt = mk('g', {}, zc); mk('rect', { x: 1340, y: 640, width: 260, height: 180, rx: 6, fill: '#efe7d2', stroke: '#7a5a3a', 'stroke-width': 5 }, pt); const pz = mk('g', { transform: 'translate(1470 760) scale(.4)' }, pt); CM.caravel(pz); const hp = mk('g', { transform: 'translate(1400 800) scale(.35)' }, pt); CM.horse(hp);
+  tl.from(pt, { opacity: 0, y: 40, duration: .4 }, W('pintores') - .2).to(pt, { opacity: 0, duration: .3 }, 62.8);
+  CM.head(H, tl, '<em>VERACRUZ</em>', 'abril de 1519 · llegan enviados de Moctezuma', 47.2, 53.0); CM.head(H, tl, 'EMBAJADORES, <em>PINTORES</em> Y REGALOS', 'Moctezuma quería saber quiénes eran', 53.1, 62.8);
+  CM.head(H, tl, 'EL <em>ORO</em>', 'solo despertó más ambición', 62.9, 66.4); CM.head(H, tl, 'UN <em>SOL</em> DE ORO, UNA <em>LUNA</em> DE PLATA', 'regalos de Moctezuma', 66.5, 72.9);
+  const zs = svgOf('ships'), c2 = CQ.coast(zs, { n: 4, sky: ['#7d8b99', '#d8cdb4'] });
+  gm.onFrame($('ships'), (l, info) => { const k = gm.clamp((info.time - 78.0) / 3); c2.ships.forEach((s, i) => s.setAttribute('transform', `translate(${900 + i * 200} ${560 + (i % 2) * 40 + k * 120}) rotate(${k * (i % 2 ? -12 : 10)}) scale(${.45 + (i % 2) * .1})`)); });
+  CM.head(H, tl, 'VILLA RICA DE LA <em>VERA CRUZ</em>', 'Cortés manda hundir sus barcos', 73.2, 82.4);
+  const nq = CM.text($('ships'), 'big', 'NO LOS QUEMÓ: <em>LOS HUNDIÓ</em>', 260, 'font-size:110px'); tl.from(nq, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, W('quemó') - .4);
+  const zq = svgOf('cem'), cc = CQ.city(zq, { temple: true, causeway: false }); gm.onFrame($('cem'), (l, i) => cc.tick(i.time));
+  const cac = CM.figure(zq, 'TOT', { weapon: 'none', shield: false }); CM.pose(cac, { x: 1180, y: 1060, s: 3.2, dir: -1 }); cac.b.setAttribute('transform', 'scale(1.35 1)');
+  const cort = CM.figure(zq, 'ES', { weapon: 'none' }); CM.pose(cort, { x: 700, y: 1060, s: 3, dir: 1 });
+  const tots = [0, 1, 2, 3].map(i => ({ f: CM.figure(zq, 'TOT'), x0: 2000 + i * 140, y: 1040, s: 2 }));
+  gm.onFrame($('cem'), (l, info) => tots.forEach((o, i) => CM.pose(o.f, { x: o.x0 - Math.max(0, Math.min(info.time - 91.6, 3)) * 280, y: o.y, s: o.s, dir: -1, run: info.time > 91.6 && info.time < 94.6 ? .5 : 0, ph: info.time * 7 + i })));
+  CM.head(H, tl, '<em>CEMPOALA</em>', 'el «cacique gordo» se queja del tributo mexica', 82.8, 91.6); CM.head(H, tl, 'LOS PRIMEROS <em>ALIADOS</em>', 'los totonacas se unen a Cortés', 91.7, 98.3);
+  fadeIn(['map', 'centla', 'mal', 'coast', 'ships', 'cem']);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<!-- La conquista de México · Capítulo 5 · 1520 · La Noche Triste: muerte de Moctezuma (causa discutida), huida por la calzada de Tacuba, canoas y puentes quitados, Otumba (retirada mexica), refugio en Tlaxcala, Cuitláhuac y la viruela. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="78.3">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/cq.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="gue" data-start="3.6" data-duration="14.4"></section>
+<section class="scene" id="oro" data-start="17.8" data-duration="6.1"></section>
+<section class="scene" id="noche" data-start="23.7" data-duration="21.2"></section>
+<section class="scene" id="tri" data-start="44.7" data-duration="3.8"></section>
+<section class="scene" id="otu" data-start="48.3" data-duration="7.3"></section>
+<section class="scene" id="map" data-start="55.4" data-duration="6.6"></section>
+<section class="scene" id="rec" data-start="61.8" data-duration="5.9"></section>
+<section class="scene" id="cui" data-start="67.5" data-duration="10.9"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/mexico1519.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id), mk = CM.mk;
+  const svgOf = id => CM.svgIn($(id)), cy = k => geo.cities[k];
+  const fadeIn = ids => ids.forEach(id => tl.from($(id), { opacity: 0, duration: .3 }, +$(id).dataset.start));
+  const mexMap = (id) => { const m = CM.map($(id), geo); m.color(tl, 'MÉXICO', '#7a5a3a', 0, .01).color(tl, 'CENTROAMÉRICA', '#6a5a3a', 0, .01).color(tl, 'CUBA', '#4a5a6a', 0, .01).color(tl, 'LAGO', '#3f86b4', 0, .01); return m; };
+  const Z = (m, at, c, s, d = .01) => m.zoom(tl, c, s, at, d);
+
+  const horseIn = (id, t0, n = 2, y = 900, dir = 1, sp = 420) => { const s = $(id).querySelector('svg'), hs = Array.from({ length: n }, (_, i) => ({ h: CM.horse(s, i % 2 ? '#3a2a1a' : '#8a5a36'), r: CM.figure(s, 'ES', { weapon: 'none' }) }));
+    gm.onFrame($(id), (l, info) => { const t = info.time - t0; hs.forEach((o, i) => { const x = (dir > 0 ? -300 : 2200) + dir * (t * sp - i * 380); o.h.g.setAttribute('transform', `translate(${x} ${y + i * 40}) scale(${dir * 1.3} 1.3)`); CM.horsePose(o.h, info.time); CM.pose(o.r, { x: x + dir * 8, y: y + i * 40 - 118, s: 1.4, dir }); }); }); };
+
+  const virus = (s, x, y, r = 80) => { const g = mk('g', {}, s), v = mk('g', { transform: `translate(${x} ${y})` }, g); mk('circle', { r, fill: '#c94a4a' }, v); for (let i = 0; i < 12; i++) { const a = i * Math.PI / 6; mk('line', { x1: Math.cos(a) * r, y1: Math.sin(a) * r, x2: Math.cos(a) * r * 1.4, y2: Math.sin(a) * r * 1.4, stroke: '#c94a4a', 'stroke-width': r / 8 }, v); mk('circle', { cx: Math.cos(a) * r * 1.45, cy: Math.sin(a) * r * 1.45, r: r / 6, fill: '#e07a7a' }, v); } return g; };
+
+  CM.card($('cards'), tl, 5, '1520', 'LA NOCHE TRISTE', 0, 4);
+  const zg = svgOf('gue'), cg = CQ.city(zg, { sky: ['#c96a3a', '#4a2a2a'], dusk: true }); gm.onFrame($('gue'), (l, i) => cg.tick(i.time));
+  const v1 = CM.text($('gue'), 'mid', 'Según los españoles: <b>las piedras de su pueblo</b>', 300, 'font-size:46px;text-transform:none;letter-spacing:0;left:260px;right:260px;background:rgb(10 6 4 / .7);padding:12px 24px;border-radius:12px'), v2 = CM.text($('gue'), 'mid', 'Según las fuentes indígenas: <b>los españoles</b>', 400, 'font-size:46px;text-transform:none;letter-spacing:0;left:260px;right:260px;background:rgb(10 6 4 / .7);padding:12px 24px;border-radius:12px');
+  tl.from(v1, { opacity: 0, y: 20, duration: .3 }, W('dijeron') - .5).from(v2, { opacity: 0, y: 20, duration: .3 }, W('fuentes') - .3);
+  CM.head(H, tl, 'UNA CIUDAD <em>EN GUERRA</em>', 'junio de 1520', 4.4, 7.2); CM.head(H, tl, 'MUERE <em>MOCTEZUMA</em>', 'y todavía se discute cómo', 7.3, 17.7);
+  const zo = svgOf('oro'); $('oro').style.background = 'linear-gradient(#2a2018, #120c08)'; mk('rect', { y: 860, width: 1920, height: 220, fill: '#3a2a20' }, zo);
+  const gold = mk('g', {}, zo); for (let i = 0; i < 16; i++) mk('rect', { x: 700 + (i % 6) * 90, y: 820 - Math.floor(i / 6) * 40, width: 80, height: 36, rx: 4, fill: '#e8b92a', stroke: '#a8801a', 'stroke-width': 3 }, gold);
+  const sl = [0, 1, 2].map(() => CM.figure(zo, 'ES')); sl.forEach((f, i) => CM.pose(f, { x: [400, 1500, 1700][i], y: 960, s: 2.8, dir: i ? -1 : 1, armRot: 20 }));
+  CM.head(H, tl, 'HUIR <em>CON EL ORO</em>', 'cada soldado tomó lo que quiso', 18.0, 23.6);
+  const zn = svgOf('noche'); $('noche').style.background = 'linear-gradient(#050816, #1a2440)'; for (let i = 0; i < 60; i++) mk('circle', { cx: gm.random('nx' + i) * 1920, cy: gm.random('ny' + i) * 400, r: 1 + gm.random('nr' + i) * 2, fill: '#fff', opacity: .6 }, zn);
+  mk('rect', { y: 560, width: 1920, height: 520, fill: '#16304a' }, zn); const cw = mk('rect', { y: 700, width: 1920, height: 70, fill: '#5a4a38' }, zn);
+  const gaps = [520, 1240].map(x => mk('rect', { x, y: 700, width: 0, height: 70, fill: '#16304a' }, zn));
+  const col = Array.from({ length: 9 }, (_, i) => ({ f: CM.figure(zn, i % 3 === 2 ? 'TLX' : 'ES'), x0: -200 - i * 150, y: 720, s: 1.4 }));
+  const hz = CM.horse(zn, '#3a2a1a'); const splash = Array.from({ length: 4 }, () => mk('ellipse', { rx: 0, ry: 0, fill: 'none', stroke: '#9fd0ff', 'stroke-width': 4 }, zn));
+  const can = Array.from({ length: 12 }, (_, i) => { const g = mk('g', {}, zn); mk('path', { d: 'M-70 0 L70 0 L52 18 L-52 18Z', fill: '#2a1a10' }, g); for (let k = 0; k < 2; k++) { const w = CM.figure(g, 'MEX', { shield: false }); CM.pose(w, { x: -30 + k * 50, y: 0, s: .9, dir: i % 2 ? -1 : 1 }); } return { g, x: 100 + (i % 6) * 320, y: i < 6 ? 640 : 900 + (i % 3) * 40, side: i < 6 ? -1 : 1 }; });
+  const tGap = W('puentes') - .4, tCan = W('cientos') - .4, tFall = W('hundieron') - .5;
+  gm.onFrame($('noche'), (l, info) => { const t = info.time, d = t - 23.7;
+    col.forEach((o, i) => { let x = o.x0 + Math.min(d, 9.6) * 150; const fall = t > tFall && (i === 1 || i === 4) ? gm.clamp((t - tFall - i * .2) / .5) : 0; CM.pose(o.f, { x, y: o.y + fall * 120, s: o.s, dir: 1, run: d < 9.6 ? .4 : 0, ph: t * 6 + i }); o.f.o.style.opacity = 1 - fall; });
+    hz.g.setAttribute('transform', `translate(${-60 + Math.min(d, 9.6) * 150} 720) scale(.9)`); CM.horsePose(hz, t, d < 9.6 ? 1 : 0);
+    gaps.forEach(g => g.setAttribute('width', 160 * gm.clamp((t - tGap) / .6)));
+    can.forEach((c, i) => { const k = gm.clamp((t - tCan) / 2); c.g.setAttribute('transform', `translate(${c.x} ${c.y + c.side * (1 - k) * 260})`); c.g.style.opacity = k; });
+    splash.forEach((s, i) => { const k = gm.clamp((t - tFall - i * .3) / 1); s.setAttribute('cx', 560 + i * 200); s.setAttribute('cy', 800); s.setAttribute('rx', k * 90); s.setAttribute('ry', k * 20); s.setAttribute('opacity', 1 - k); }); });
+  CM.head(H, tl, '30 DE JUNIO DE <em>1520</em>', 'huida en silencio por la calzada de Tacuba', 23.9, 31.2); CM.head(H, tl, 'LOS <em>DESCUBRIERON</em>', 'puentes quitados y cientos de canoas', 31.3, 41.8);
+  const lost = CM.text($('noche'), 'mid', 'Cortés perdió a <b>gran parte de sus hombres</b>', 260); tl.from(lost, { opacity: 0, y: 20, duration: .35 }, W('perdió') - .4);
+  const tri = $('tri'); tri.style.background = 'radial-gradient(circle at 50% 50%, #1a2440, #050816 75%)'; const tt = CM.text(tri, 'big', 'LA <em>NOCHE TRISTE</em>', 400, 'font-size:180px'); tl.from(tt, { scale: 1.3, opacity: 0, filter: 'blur(14px)', duration: .7, ease: 'expo.out' }, 44.9);
+  CM.battle($('otu'), { id: 'ot', left: 'ES', right: 'MEX', terrain: 'fields', t0: 48.3, t1: 55.5, n: 6, falls: [], mg: false, def: 6, artillery: [48.6, 49.8], outcome: { type: 'retreat', at: W('ganaron') - .2 }, pan: [-300, -1280] });
+  horseIn('otu', 49.0, 2, 900); CM.head(H, tl, '<em>OTUMBA</em>', '7 de julio de 1520 · una victoria desesperada', 48.5, 55.4);
+  const m = mexMap('map'); Z(m, 0, [222, 570], 10); m.pin(tl, 'Tenochtitlan', 'TENOCHTITLAN', 55.6, null, { r: 1, size: 3, dy: 2 }); m.line(tl, 'noche', 55.8, { color: '#E5484D', width: 1.2, arrow: true, dur: 2.5 });
+  m.pin(tl, 'Otumba', 'OTUMBA', 56.6, null, { r: .9, size: 2.8, dy: -2 }); m.pin(tl, 'Tlaxcala', 'TLAXCALA · REFUGIO', W('llegaron') - .2, null, { r: 1.4, size: 3.2, fill: '#FFD23F', dy: 2.6 });
+  CM.head(H, tl, 'REFUGIO EN <em>TLAXCALA</em>', 'sus aliados no los entregaron', 55.6, 61.8);
+  const zr = svgOf('rec'), cr = CQ.city(zr); gm.onFrame($('rec'), (l, i) => cr.tick(i.time)); const fl = mk('g', {}, zr); mk('rect', { x: 1000, y: 200, width: 8, height: 250, fill: '#3a2a1a' }, fl); CM.flag(fl, 'MEX', 1008, 200, 150, 100);
+  CM.head(H, tl, 'LA CIUDAD, <em>RECUPERADA</em>', 'parecía que la invasión había terminado', 62.0, 67.4);
+  const zc = svgOf('cui'); $('cui').style.background = 'radial-gradient(circle at 50% 50%, #2a2420, #0a0806 75%)'; const cu = CM.figure(zc, 'TLA'); CM.pose(cu, { x: 760, y: 980, s: 3.4, dir: 1 }); const vv = virus(zc, 1300, 520, 110);
+  tl.from(vv, { scale: 0, opacity: 0, duration: .4, ease: 'back.out(2)', transformOrigin: '1300px 520px' }, W('viruela') - .3);
+  CM.head(H, tl, '<em>CUITLÁHUAC</em>', 'nuevo tlatoani · murió de viruela en 1520', 67.8, 78.2);
+  fadeIn(['oro', 'noche', 'tri', 'otu', 'map', 'rec', 'cui']);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

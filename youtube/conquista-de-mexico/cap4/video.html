@@ -1,0 +1,54 @@
+<!doctype html>
+<!-- La conquista de México · Capítulo 4 · 1519–1520 · Tenochtitlan: encuentro en Iztapalapa, «cosa de encantamiento», Tlatelolco, Moctezuma rehén, el oro, Narváez (capturado), Tóxcatl (tarjeta sobria), la ciudad se levanta. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="68.8">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/cq.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="meet" data-start="3.6" data-duration="10.7"></section>
+<section class="scene" id="enc" data-start="14.1" data-duration="14.5"></section>
+<section class="scene" id="reh" data-start="28.4" data-duration="14.8"></section>
+<section class="scene" id="map" data-start="43.0" data-duration="7.3"></section>
+<section class="scene" id="nar" data-start="50.1" data-duration="5.5"></section>
+<section class="scene" id="tox" data-start="55.4" data-duration="10.3"></section>
+<section class="scene" id="rev" data-start="65.5" data-duration="3.4"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/mexico1519.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id), mk = CM.mk;
+  const svgOf = id => CM.svgIn($(id)), cy = k => geo.cities[k];
+  const fadeIn = ids => ids.forEach(id => tl.from($(id), { opacity: 0, duration: .3 }, +$(id).dataset.start));
+  const mexMap = (id) => { const m = CM.map($(id), geo); m.color(tl, 'MÉXICO', '#7a5a3a', 0, .01).color(tl, 'CENTROAMÉRICA', '#6a5a3a', 0, .01).color(tl, 'CUBA', '#4a5a6a', 0, .01).color(tl, 'LAGO', '#3f86b4', 0, .01); return m; };
+  const Z = (m, at, c, s, d = .01) => m.zoom(tl, c, s, at, d);
+
+  CM.card($('cards'), tl, 4, '1519 – 1520', 'TENOCHTITLAN', 0, 4);
+  const zm = svgOf('meet'), cm = CQ.city(zm); gm.onFrame($('meet'), (l, i) => cm.tick(i.time)); mk('rect', { y: 900, width: 1920, height: 180, fill: '#bfa77c' }, zm);
+  const mo = CM.figure(zm, 'TLA'); CM.pose(mo, { x: 1180, y: 1000, s: 3, dir: -1 }); const es = [0, 1, 2].map(i => CM.figure(zm, 'ES')); es.forEach((f, i) => CM.pose(f, { x: 760 - i * 200, y: 1000 + i * 10, s: 3 - i * .2, dir: 1 }));
+  const nob = [0, 1].map(() => CM.figure(zm, 'MEX', { weapon: 'none', shield: false })); nob.forEach((f, i) => CM.pose(f, { x: 1420 + i * 200, y: 1000, s: 2.8, dir: -1 })); const mal = CQ.woman(zm, 960, 1000, 2.8, { band: '#2f8f5a' });
+  CM.head(H, tl, '8 DE NOVIEMBRE DE <em>1519</em>', 'Moctezuma recibe a Cortés en la calzada de Iztapalapa', 4.4, 10.7); CM.head(H, tl, 'EL PALACIO DE <em>AXAYÁCATL</em>', 'los españoles, alojados por Moctezuma', 10.8, 14.1);
+  const ze = svgOf('enc'), ce = CQ.city(ze); gm.onFrame($('enc'), (l, i) => ce.tick(i.time)); tl.fromTo(ce.g, { scale: 1 }, { scale: 1.12, duration: 5.6, ease: 'none', transformOrigin: '50% 45%' }, 14.1);
+  const q = CM.text($('enc'), 'big', '«COSA DE <em>ENCANTAMIENTO</em>»', 250, 'font-size:110px'); tl.from(q, { scale: 1.3, opacity: 0, duration: .5, ease: 'expo.out' }, W('encantamiento') - .8).to(q, { opacity: 0, duration: .25 }, 19.7);
+  const mk2 = mk('g', {}, ze); mk('rect', { y: 760, width: 1920, height: 320, fill: '#c9b48c' }, mk2); for (let i = 0; i < 8; i++) { mk('rect', { x: 60 + i * 240, y: 820, width: 200, height: 20, fill: '#8a6a4a' }, mk2); mk('path', { d: `M${50 + i * 240} 820 L${160 + i * 240} 760 L${270 + i * 240} 820Z`, fill: ['#c0392b', '#e8d9b0', '#2f8f5a', '#d8b23a'][i % 4] }, mk2); }
+  const crowd = Array.from({ length: 14 }, (_, i) => CM.figure(mk2, 'MEX', { weapon: 'none', shield: false })); crowd.forEach((f, i) => CM.pose(f, { x: 40 + i * 140, y: 1040 + (i % 2) * 30, s: 1.4, dir: i % 2 ? 1 : -1 }));
+  tl.from(mk2, { opacity: 0, duration: .4 }, 19.8); CM.head(H, tl, 'BERNAL <em>DÍAZ DEL CASTILLO</em>', 'soldado y cronista', 14.4, 19.7); CM.head(H, tl, 'EL MERCADO DE <em>TLATELOLCO</em>', 'decenas de miles de personas', 19.9, 28.3);
+  const zr = svgOf('reh'); $('reh').style.background = 'linear-gradient(#5a4a3a, #2a2018)'; mk('rect', { y: 860, width: 1920, height: 220, fill: '#6a5040' }, zr); for (let i = 0; i < 5; i++) mk('rect', { x: 120 + i * 400, y: 200, width: 80, height: 660, fill: '#7a6050' }, zr);
+  const m4 = CM.figure(zr, 'TLA'); CM.pose(m4, { x: 960, y: 960, s: 3.2, dir: 1 }); const gs = [0, 1, 2, 3].map(() => CM.figure(zr, 'ES')); gs.forEach((f, i) => CM.pose(f, { x: [520, 700, 1220, 1400][i], y: 970, s: 2.8, dir: i < 2 ? 1 : -1 }));
+  const gold = mk('g', {}, zr); for (let i = 0; i < 12; i++) mk('rect', { x: 1500 + (i % 4) * 90 - Math.floor(i / 4) * 45 + 90, y: 880 - Math.floor(i / 4) * 40, width: 80, height: 36, rx: 4, fill: '#e8b92a', stroke: '#a8801a', 'stroke-width': 3 }, gold);
+  tl.from(gold.children, { opacity: 0, y: -40, duration: .2, stagger: .08 }, W('fundieron') - .3);
+  CM.head(H, tl, 'MOCTEZUMA, <em>REHÉN</em>', 'en su propia ciudad', 28.6, 34.4); CM.head(H, tl, 'VASALLO DEL <em>REY DE ESPAÑA</em>', 'y el oro del palacio, fundido', 34.5, 42.9);
+  const m = mexMap('map'); Z(m, 0, [960, 520], 1.05); m.line(tl, 'narvaez', W('envió') - .3, { color: '#E5484D', width: 6, arrow: true, dur: 2 }); m.pin(tl, 'Cempoala', 'CEMPOALA', W('arrestar') - .3, null, { r: 8, size: 26, dy: 24 });
+  CM.head(H, tl, 'PÁNFILO DE <em>NARVÁEZ</em>', 'mayo de 1520 · enviado para arrestar a Cortés', 43.3, 50.1);
+  CM.battle($('nar'), { id: 'na', left: 'ES', right: 'ES', terrain: 'night', t0: 50.1, t1: 55.5, n: 7, falls: [], mg: false, def: 4, artillery: [50.3, 51.2], outcome: { type: 'capture', at: 52.3 }, labels: false, pan: [-500, -1280] });
+  CM.head(H, tl, '<em>CEMPOALA</em>', 'Cortés derrota a Narváez… y se queda con sus hombres', 50.3, 55.4);
+  CQ.memorial($('tox'), 'MAYO DE 1520', '<em>TÓXCATL</em>', 'Pedro de Alvarado atacó a los mexicas durante la fiesta, en el Templo Mayor', tl, 55.6, W);
+  const zv = svgOf('rev'), cr = CQ.city(zv, { sky: ['#c96a3a', '#4a2a2a'], dusk: true }); const ws = [0, 1, 2, 3, 4].map(() => CM.figure(zv, 'MEX')); ws.forEach((f, i) => CM.pose(f, { x: 300 + i * 330, y: 1060, s: 2.6, dir: 1, armRot: -40 }));
+  CM.head(H, tl, 'LA CIUDAD <em>SE LEVANTA</em>', 'junio de 1520', 65.7, 68.7);
+  fadeIn(['enc', 'reh', 'map', 'nar', 'tox', 'rev']);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

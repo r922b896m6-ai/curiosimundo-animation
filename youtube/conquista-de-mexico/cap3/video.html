@@ -1,0 +1,57 @@
+<!doctype html>
+<!-- La conquista de México · Capítulo 3 · 1519 · Tlaxcala y Cholula: combates y alianza con Tlaxcala, Xicoténcatl, la matanza de Cholula (tarjeta sobria), Paso de Cortés, el valle. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="79.7">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/cq.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="map" data-start="3.6" data-duration="4.6"></section>
+<section class="scene" id="tlx" data-start="8.0" data-duration="14.5"></section>
+<section class="scene" id="ali" data-start="22.3" data-duration="14.8"></section>
+<section class="scene" id="xic" data-start="36.9" data-duration="8.1"></section>
+<section class="scene" id="cho" data-start="44.8" data-duration="12.7"></section>
+<section class="scene" id="map2" data-start="57.3" data-duration="15.8"></section>
+<section class="scene" id="val" data-start="72.9" data-duration="6.9"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(Promise.all([fetch('voz.json').then(r => r.json()), fetch('lib/mexico1519.json').then(r => r.json())]).then(([words, geo]) => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), C = CM.MAPCOL, $ = id => document.getElementById(id), mk = CM.mk;
+  const svgOf = id => CM.svgIn($(id)), cy = k => geo.cities[k];
+  const fadeIn = ids => ids.forEach(id => tl.from($(id), { opacity: 0, duration: .3 }, +$(id).dataset.start));
+  const mexMap = (id) => { const m = CM.map($(id), geo); m.color(tl, 'MÉXICO', '#7a5a3a', 0, .01).color(tl, 'CENTROAMÉRICA', '#6a5a3a', 0, .01).color(tl, 'CUBA', '#4a5a6a', 0, .01).color(tl, 'LAGO', '#3f86b4', 0, .01); return m; };
+  const Z = (m, at, c, s, d = .01) => m.zoom(tl, c, s, at, d);
+
+  const horseIn = (id, t0, n = 2, y = 900, dir = 1, sp = 420) => { const s = $(id).querySelector('svg'), hs = Array.from({ length: n }, (_, i) => ({ h: CM.horse(s, i % 2 ? '#3a2a1a' : '#8a5a36'), r: CM.figure(s, 'ES', { weapon: 'none' }) }));
+    gm.onFrame($(id), (l, info) => { const t = info.time - t0; hs.forEach((o, i) => { const x = (dir > 0 ? -300 : 2200) + dir * (t * sp - i * 380); o.h.g.setAttribute('transform', `translate(${x} ${y + i * 40}) scale(${dir * 1.3} 1.3)`); CM.horsePose(o.h, info.time); CM.pose(o.r, { x: x + dir * 8, y: y + i * 40 - 118, s: 1.4, dir }); }); }); };
+
+  CM.card($('cards'), tl, 3, '1519', 'TLAXCALA Y CHOLULA', 0, 4);
+  const m = mexMap('map'); Z(m, 0, [320, 590], 5); m.line(tl, 'tierra', 4.6, { color: '#FFD23F', width: 2, dash: '5 4', dur: 3 }); m.pin(tl, 'Veracruz', 'VERACRUZ', 3.8, null, { r: 1.6, size: 6, dy: 4 }); m.pin(tl, 'Tlaxcala', 'TLAXCALA', W('tlaxcala') - .3, null, { r: 2, size: 7, fill: '#E5484D', dy: 4.5 });
+  CM.head(H, tl, 'HACIA EL <em>INTERIOR</em>', 'agosto de 1519', 4.4, 8.0);
+  CM.battle($('tlx'), { id: 'tx', left: 'ES', right: 'TLX', terrain: 'mountains', t0: 8.0, t1: 22.4, n: 7, falls: [], mg: false, def: 6, artillery: [8.4, 9.8, 11.4, 13.0, 15.0, 17.2, 19.4], pan: [0, -1280] });
+  horseIn('tlx', 9.0, 2, 900);
+  CM.head(H, tl, 'LOS <em>TLAXCALTECAS</em>', 'semanas de combates · septiembre de 1519', 8.3, 12.8); CM.head(H, tl, 'UN SEÑORÍO <em>CERCADO</em>', 'gobernado por un consejo · sin sal ni algodón', 12.9, 22.3);
+  const za = svgOf('ali'); $('ali').style.background = 'linear-gradient(#9cc4e6, #efe2bf)'; mk('path', { d: 'M0 700 L400 420 L800 700 L1200 380 L1920 700 L1920 1080 L0 1080Z', fill: '#7a8f5a' }, za); mk('rect', { y: 900, width: 1920, height: 180, fill: '#a8916a' }, za);
+  const e = CM.figure(za, 'ES', { weapon: 'none' }), t = CM.figure(za, 'TLX', { weapon: 'none', shield: false }); CM.pose(e, { x: 760, y: 980, s: 3, dir: 1, armRot: -10 }); CM.pose(t, { x: 1160, y: 980, s: 3, dir: -1, armRot: -10 });
+  CM.flag(za, 'ESB', 300, 380, 220, 150); CM.flag(za, 'TLX', 1400, 380, 220, 150);
+  CM.head(H, tl, 'LA <em>ALIANZA</em>', 'Tlaxcala y Cortés, contra los mexicas', 24.2, 30.7); CM.head(H, tl, 'UNA <em>OPORTUNIDAD</em>', 'para vengarse de su viejo enemigo', 30.8, 36.9);
+  const zx = svgOf('xic'); $('xic').style.background = 'linear-gradient(#5a5f66, #b3a898)'; mk('rect', { y: 900, width: 1920, height: 180, fill: '#6a5a44' }, zx); const x = CM.figure(zx, 'TLX'); CM.pose(x, { x: 960, y: 1000, s: 3.6, dir: -1 });
+  CM.head(H, tl, 'XICOTÉNCATL <em>EL JOVEN</em>', 'el capitán tlaxcalteca se opuso a la alianza', 37.1, 44.7); tl.fromTo(zx, { scale: 1 }, { scale: 1.08, duration: 7.8, ease: 'none', transformOrigin: '50% 80%' }, 36.9);
+  CQ.memorial($('cho'), 'OCTUBRE DE 1519', '<em>CHOLULA</em>', 'Cortés y sus aliados mataron a miles de cholultecas en pocas horas', tl, 45.0, W);
+  const doubt = CM.text($('cho'), 'mid', '¿Una emboscada? <b>Muchos historiadores lo dudan</b>', 760, 'font-size:40px;text-transform:none;letter-spacing:0'); tl.from(doubt, { opacity: 0, y: 20, duration: .5 }, W('emboscada') - .3);
+  const m2 = mexMap('map2'); Z(m2, 0, [260, 600], 9); m2.line(tl, 'tierra', 57.5, { color: '#FFD23F', width: 1.2, dash: '3 2', dur: 2 });
+  m2.pin(tl, 'Cholula', 'CHOLULA', 57.6, null, { r: 1, size: 3.4, dy: 2.4 }); m2.pin(tl, 'Tenochtitlan', 'TENOCHTITLAN', 58.9, null, { r: 1.2, size: 3.6, fill: '#E5484D', dy: 2.4 });
+  Z(m2, 65.0, [214, 598], 16, 1.2); m2.text(tl, 'POPOCATÉPETL', cy('Popocatépetl')[0] + 4, cy('Popocatépetl')[1] + 3, W('popocatépetl') - .2, null, { size: 2.2, fill: '#fff' });
+  m2.text(tl, 'IZTACCÍHUATL', cy('Iztaccíhuatl')[0] + 4, cy('Iztaccíhuatl')[1] - 1, W('iztaccíhuatl') - .2, null, { size: 2.2, fill: '#fff' }); m2.pin(tl, 'Paso de Cortés', 'PASO DE CORTÉS', W('paso') - .2, null, { r: .6, size: 2.2, fill: '#FFD23F', dy: -2.4 });
+  CM.head(H, tl, 'MÁS <em>EMBAJADAS</em>', 'Moctezuma intentó frenarlo', 57.5, 64.9); CM.head(H, tl, 'EL <em>PASO DE CORTÉS</em>', 'entre los volcanes', 65.2, 72.8);
+  const zv = svgOf('val'), cv = CQ.city(zv); gm.onFrame($('val'), (l, i) => cv.tick(i.time)); mk('path', { d: 'M0 1080 L0 820 L500 760 L900 900 L1300 980 L1920 860 L1920 1080Z', fill: '#4a3a2a' }, zv);
+  const watch = [0, 1, 2].map(i => CM.figure(zv, i ? 'TLX' : 'ES')); watch.forEach((f, i) => CM.pose(f, { x: 260 + i * 170, y: 800 + i * 10, s: 1.8, dir: 1 }));
+  tl.fromTo(cv.g, { scale: 1.1 }, { scale: 1, duration: 6.8, ease: 'none', transformOrigin: '50% 50%' }, 72.9); CM.head(H, tl, 'EL <em>VALLE DE MÉXICO</em>', 'la ciudad sobre el lago', 73.2, 79.6);
+  fadeIn(['map', 'tlx', 'ali', 'xic', 'cho', 'map2', 'val']);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,975 @@
+1
+00:00:00,349 --> 00:00:02,424
+Ha sobrevivido al vacío del espacio,
+
+2
+00:00:02,506 --> 00:00:04,679
+al frío casi absoluto y a dosis de
+
+3
+00:00:04,491 --> 00:00:07,044
+radiación que matarían a cualquier persona.
+
+4
+00:00:07,689 --> 00:00:09,617
+Y mide menos de un milímetro.
+
+5
+00:00:09,967 --> 00:00:12,017
+Esta es la historia del tardígrado,
+
+6
+00:00:12,092 --> 00:00:14,404
+el animal más resistente del mundo.
+
+7
+00:00:21,852 --> 00:00:23,972
+En mil setecientos setenta y tres,
+
+8
+00:00:24,055 --> 00:00:26,356
+el pastor y naturalista alemán Johann
+
+9
+00:00:26,169 --> 00:00:28,843
+August Ephraim Goeze miró una gota de agua
+
+10
+00:00:28,656 --> 00:00:31,124
+por el microscopio y vio algo increíble:
+
+11
+00:00:31,272 --> 00:00:33,972
+un animalito regordete que caminaba como un
+
+12
+00:00:33,785 --> 00:00:34,332
+oso.
+
+13
+00:00:34,734 --> 00:00:37,112
+Lo llamó «pequeño oso de agua».
+
+14
+00:00:37,463 --> 00:00:38,797
+Tres años después,
+
+15
+00:00:38,868 --> 00:00:41,504
+el italiano Lazzaro Spallanzani le puso el
+
+16
+00:00:41,316 --> 00:00:42,535
+nombre científico:
+
+17
+00:00:42,605 --> 00:00:43,501
+tardígrado,
+
+18
+00:00:43,559 --> 00:00:46,272
+que significa «el que camina despacio».
+
+19
+00:00:46,623 --> 00:00:49,143
+La mayoría mide menos de un milímetro.
+
+20
+00:00:49,834 --> 00:00:52,276
+Tiene ocho patas cortas y regordetas,
+
+21
+00:00:52,321 --> 00:00:54,505
+cada una con garras para agarrarse.
+
+22
+00:00:54,857 --> 00:00:56,642
+Con una boca en forma de tubo,
+
+23
+00:00:56,738 --> 00:00:59,335
+perfora las células de musgos y algas para
+
+24
+00:00:59,148 --> 00:01:00,675
+chuparles el contenido.
+
+25
+00:01:01,366 --> 00:01:04,014
+Algunos cazan otros animales diminutos.
+
+26
+00:01:04,366 --> 00:01:06,808
+Pertenecen a su propio grupo de animales,
+
+27
+00:01:06,879 --> 00:01:08,806
+emparentado con los artrópodos,
+
+28
+00:01:08,838 --> 00:01:10,829
+como los insectos y las arañas,
+
+29
+00:01:10,874 --> 00:01:13,071
+y con los gusanos aterciopelados.
+
+30
+00:01:13,423 --> 00:01:15,569
+Hoy se conocen unas mil trescientas
+
+31
+00:01:15,381 --> 00:01:16,213
+especies,
+
+32
+00:01:16,284 --> 00:01:18,326
+y viven en casi todas partes:
+
+33
+00:01:18,332 --> 00:01:20,169
+en las montañas más altas,
+
+34
+00:01:20,175 --> 00:01:21,380
+en el fondo del mar,
+
+35
+00:01:21,451 --> 00:01:22,514
+en la Antártida…
+
+36
+00:01:22,585 --> 00:01:24,396
+y en el musgo del tejado de tu
+
+37
+00:01:24,209 --> 00:01:24,847
+casa.
+
+38
+00:01:25,198 --> 00:01:27,770
+Necesitan una fina capa de agua para estar
+
+39
+00:01:27,582 --> 00:01:28,414
+activos.
+
+40
+00:01:29,105 --> 00:01:31,521
+Pero su secreto empieza justo cuando esa
+
+41
+00:01:31,334 --> 00:01:32,526
+agua desaparece.
+
+42
+00:01:32,928 --> 00:01:35,576
+Y no hace falta un laboratorio para verlos:
+
+43
+00:01:35,621 --> 00:01:38,128
+con un microscopio sencillo y un poco de
+
+44
+00:01:37,941 --> 00:01:39,455
+musgo remojado en agua,
+
+45
+00:01:39,616 --> 00:01:41,646
+mucha gente los encuentra en casa.
+
+46
+00:01:46,952 --> 00:01:49,213
+Cuando su charco o su musgo se secan,
+
+47
+00:01:49,336 --> 00:01:50,811
+el tardígrado no muere:
+
+48
+00:01:50,895 --> 00:01:52,152
+recoge las patas,
+
+49
+00:01:52,183 --> 00:01:54,484
+encoge la cabeza y se convierte en una
+
+50
+00:01:54,297 --> 00:01:56,005
+bolita con forma de barril.
+
+51
+00:01:56,695 --> 00:01:58,931
+Los científicos lo llaman «tun»,
+
+52
+00:01:59,002 --> 00:02:01,032
+que en alemán significa tonel.
+
+53
+00:02:01,433 --> 00:02:03,605
+En ese estado pierde más del noventa y
+
+54
+00:02:03,418 --> 00:02:05,190
+cinco por ciento de su agua,
+
+55
+00:02:05,274 --> 00:02:07,664
+y su metabolismo cae casi a cero.
+
+56
+00:02:08,355 --> 00:02:10,617
+Es lo más parecido a pausar la vida.
+
+57
+00:02:10,969 --> 00:02:13,411
+A este truco se le llama criptobiosis:
+
+58
+00:02:13,494 --> 00:02:14,596
+vida escondida.
+
+59
+00:02:14,948 --> 00:02:16,720
+Para no romperse por dentro,
+
+60
+00:02:16,791 --> 00:02:18,949
+sus células se llenan de azúcares y de
+
+61
+00:02:18,762 --> 00:02:20,496
+proteínas especiales que,
+
+62
+00:02:20,463 --> 00:02:21,359
+al secarse,
+
+63
+00:02:21,469 --> 00:02:23,331
+forman una especie de cristal,
+
+64
+00:02:23,389 --> 00:02:25,831
+como si el animal se convirtiera en vidrio.
+
+65
+00:02:26,182 --> 00:02:28,483
+Ese vidrio inmoviliza las piezas de sus
+
+66
+00:02:28,296 --> 00:02:30,596
+células y las protege hasta que vuelva el
+
+67
+00:02:30,409 --> 00:02:30,944
+agua.
+
+68
+00:02:31,296 --> 00:02:32,346
+Y cuando llega,
+
+69
+00:02:32,391 --> 00:02:33,983
+el tardígrado se hincha,
+
+70
+00:02:34,041 --> 00:02:35,452
+estira las patas y,
+
+71
+00:02:35,510 --> 00:02:36,870
+en minutos u horas,
+
+72
+00:02:36,940 --> 00:02:38,790
+vuelve a caminar como si nada.
+
+73
+00:02:39,191 --> 00:02:41,582
+Así puede esperar años a que llueva otra
+
+74
+00:02:41,395 --> 00:02:42,007
+vez.
+
+75
+00:02:42,359 --> 00:02:44,195
+No son los únicos que lo hacen:
+
+76
+00:02:44,279 --> 00:02:45,407
+algunas semillas,
+
+77
+00:02:45,464 --> 00:02:47,932
+bacterias y otros animales diminutos,
+
+78
+00:02:47,952 --> 00:02:49,234
+como los rotíferos,
+
+79
+00:02:49,305 --> 00:02:50,020
+también.
+
+80
+00:02:50,711 --> 00:02:52,715
+Pero pocos lo llevan tan lejos.
+
+81
+00:02:58,052 --> 00:02:59,476
+Convertidos en tonel,
+
+82
+00:02:59,637 --> 00:03:01,898
+los tardígrados han superado pruebas que
+
+83
+00:03:01,711 --> 00:03:04,154
+acabarían con casi cualquier ser vivo.
+
+84
+00:03:04,505 --> 00:03:05,143
+Frío:
+
+85
+00:03:05,214 --> 00:03:07,334
+han sobrevivido sumergidos en helio
+
+86
+00:03:07,147 --> 00:03:07,849
+líquido,
+
+87
+00:03:07,907 --> 00:03:10,375
+a unos doscientos setenta y dos grados bajo
+
+88
+00:03:10,188 --> 00:03:10,762
+cero,
+
+89
+00:03:10,845 --> 00:03:13,069
+apenas un grado por encima del cero
+
+90
+00:03:12,881 --> 00:03:13,700
+absoluto.
+
+91
+00:03:14,052 --> 00:03:14,612
+Calor:
+
+92
+00:03:14,709 --> 00:03:15,953
+en un experimento,
+
+93
+00:03:16,075 --> 00:03:18,169
+la mitad aguantó una hora a más de
+
+94
+00:03:17,982 --> 00:03:19,148
+ochenta grados.
+
+95
+00:03:19,839 --> 00:03:20,696
+Activos,
+
+96
+00:03:20,703 --> 00:03:21,534
+en cambio,
+
+97
+00:03:21,618 --> 00:03:23,364
+son mucho más delicados.
+
+98
+00:03:23,715 --> 00:03:24,560
+Radiación:
+
+99
+00:03:24,643 --> 00:03:25,771
+para una persona,
+
+100
+00:03:25,919 --> 00:03:28,297
+unos cinco grays pueden ser mortales.
+
+101
+00:03:28,988 --> 00:03:31,597
+Algunos tardígrados soportan entre tres mil
+
+102
+00:03:31,410 --> 00:03:32,267
+y cinco mil:
+
+103
+00:03:32,325 --> 00:03:33,801
+unas mil veces más.
+
+104
+00:03:34,153 --> 00:03:34,855
+Presión:
+
+105
+00:03:34,977 --> 00:03:37,252
+en pruebas de laboratorio sobrevivieron a
+
+106
+00:03:37,065 --> 00:03:39,572
+impactos con presiones de más de once mil
+
+107
+00:03:39,385 --> 00:03:41,582
+veces la del aire que respiramos.
+
+108
+00:03:41,933 --> 00:03:42,920
+Y el tiempo:
+
+109
+00:03:42,964 --> 00:03:44,286
+en dos mil dieciséis,
+
+110
+00:03:44,330 --> 00:03:46,889
+científicos japoneses descongelaron un
+
+111
+00:03:46,702 --> 00:03:49,311
+trozo de musgo antártico guardado durante
+
+112
+00:03:49,124 --> 00:03:50,626
+unos treinta años.
+
+113
+00:03:51,316 --> 00:03:53,462
+Dos tardígrados volvieron a la vida,
+
+114
+00:03:53,546 --> 00:03:55,460
+y uno incluso tuvo crías.
+
+115
+00:03:55,861 --> 00:03:56,435
+Ojo:
+
+116
+00:03:56,596 --> 00:03:58,355
+muchas de estas cifras salen de
+
+117
+00:03:58,168 --> 00:04:00,623
+experimentos con especies concretas.
+
+118
+00:04:01,314 --> 00:04:03,975
+No todos los tardígrados aguantan lo mismo.
+
+119
+00:04:09,352 --> 00:04:10,853
+Si aguantan tanto aquí,
+
+120
+00:04:10,911 --> 00:04:12,554
+¿qué pasaría en el espacio?
+
+121
+00:04:12,906 --> 00:04:14,794
+En septiembre de dos mil siete,
+
+122
+00:04:14,916 --> 00:04:16,817
+la misión FOTON-M3,
+
+123
+00:04:16,965 --> 00:04:19,330
+un satélite ruso con experimentos de la
+
+124
+00:04:19,143 --> 00:04:20,851
+Agencia Espacial Europea,
+
+125
+00:04:20,947 --> 00:04:23,466
+llevó tardígrados secos a la órbita de la
+
+126
+00:04:23,279 --> 00:04:23,930
+Tierra.
+
+127
+00:04:24,282 --> 00:04:26,647
+Durante diez días quedaron expuestos al
+
+128
+00:04:26,460 --> 00:04:27,781
+vacío del espacio.
+
+129
+00:04:28,472 --> 00:04:29,329
+Algunos,
+
+130
+00:04:29,387 --> 00:04:30,141
+además,
+
+131
+00:04:30,160 --> 00:04:31,713
+a la luz directa del Sol,
+
+132
+00:04:31,809 --> 00:04:33,788
+sin la protección de la atmósfera.
+
+133
+00:04:34,139 --> 00:04:34,932
+Al volver,
+
+134
+00:04:35,093 --> 00:04:37,032
+los científicos les dieron agua.
+
+135
+00:04:37,723 --> 00:04:39,856
+Más del sesenta y ocho por ciento de
+
+136
+00:04:39,669 --> 00:04:41,635
+los que se habían protegido del sol
+
+137
+00:04:41,447 --> 00:04:43,026
+revivieron en media hora.
+
+138
+00:04:43,378 --> 00:04:44,815
+Y lo más sorprendente:
+
+139
+00:04:44,911 --> 00:04:47,444
+después pusieron huevos y tuvieron crías
+
+140
+00:04:47,257 --> 00:04:48,153
+normales.
+
+141
+00:04:48,504 --> 00:04:50,933
+La radiación ultravioleta del Sol sí fue
+
+142
+00:04:50,746 --> 00:04:52,441
+demasiado para la mayoría.
+
+143
+00:04:53,132 --> 00:04:53,938
+Aun así,
+
+144
+00:04:54,060 --> 00:04:56,425
+fueron los primeros animales conocidos en
+
+145
+00:04:56,238 --> 00:04:58,435
+sobrevivir a la exposición directa al
+
+146
+00:04:58,248 --> 00:04:58,989
+espacio.
+
+147
+00:04:59,391 --> 00:05:01,330
+Desde entonces han vuelto a volar:
+
+148
+00:05:01,414 --> 00:05:02,464
+en dos mil once,
+
+149
+00:05:02,574 --> 00:05:04,707
+en el último viaje del transbordador
+
+150
+00:05:04,520 --> 00:05:05,222
+Endeavour,
+
+151
+00:05:05,344 --> 00:05:07,297
+y más tarde a la Estación Espacial
+
+152
+00:05:07,110 --> 00:05:08,122
+Internacional,
+
+153
+00:05:08,231 --> 00:05:10,480
+donde se estudia cómo se adaptan a vivir
+
+154
+00:05:10,293 --> 00:05:11,330
+sin gravedad.
+
+155
+00:05:16,652 --> 00:05:18,965
+En febrero de dos mil diecinueve despegó
+
+156
+00:05:18,778 --> 00:05:19,571
+Beresheet,
+
+157
+00:05:19,693 --> 00:05:22,431
+una nave israelí privada que quería posarse
+
+158
+00:05:22,244 --> 00:05:23,037
+en la Luna.
+
+159
+00:05:23,389 --> 00:05:26,037
+Su nombre significa «en el principio»,
+
+160
+00:05:26,069 --> 00:05:26,849
+en hebreo,
+
+161
+00:05:26,933 --> 00:05:29,645
+y la construyó la organización SpaceIL.
+
+162
+00:05:29,997 --> 00:05:32,594
+A bordo llevaba una biblioteca en miniatura
+
+163
+00:05:32,407 --> 00:05:34,437
+con información sobre la humanidad…
+
+164
+00:05:34,494 --> 00:05:36,898
+y miles de tardígrados deshidratados.
+
+165
+00:05:37,249 --> 00:05:38,416
+El once de abril,
+
+166
+00:05:38,525 --> 00:05:39,782
+durante el descenso,
+
+167
+00:05:39,930 --> 00:05:42,063
+un fallo apagó el motor principal.
+
+168
+00:05:42,766 --> 00:05:45,170
+La nave se estrelló contra la superficie
+
+169
+00:05:44,983 --> 00:05:45,621
+lunar.
+
+170
+00:05:45,973 --> 00:05:47,152
+¿Sobrevivieron?
+
+171
+00:05:47,843 --> 00:05:48,945
+Para averiguarlo,
+
+172
+00:05:49,080 --> 00:05:51,458
+unos científicos dispararon tardígrados
+
+173
+00:05:51,271 --> 00:05:53,455
+contra objetivos en el laboratorio.
+
+174
+00:05:54,144 --> 00:05:56,728
+Aguantaron impactos a cientos de metros por
+
+175
+00:05:56,541 --> 00:05:57,231
+segundo,
+
+176
+00:05:57,302 --> 00:05:59,499
+pero no a velocidades más altas.
+
+177
+00:05:59,850 --> 00:06:02,203
+Es posible que algunos sigan enteros en la
+
+178
+00:06:02,015 --> 00:06:02,615
+Luna.
+
+179
+00:06:03,306 --> 00:06:04,678
+Pero sin agua líquida,
+
+180
+00:06:04,736 --> 00:06:06,212
+sin aire y sin comida,
+
+181
+00:06:06,360 --> 00:06:08,854
+nunca podrán despertar ni reproducirse.
+
+182
+00:06:09,205 --> 00:06:10,127
+Así que no:
+
+183
+00:06:10,262 --> 00:06:12,524
+la Luna no está colonizada por osos de
+
+184
+00:06:12,337 --> 00:06:12,897
+agua.
+
+185
+00:06:13,588 --> 00:06:15,051
+Solo hay unos cuantos,
+
+186
+00:06:15,122 --> 00:06:16,597
+dormidos para siempre.
+
+187
+00:06:21,952 --> 00:06:24,162
+Los científicos quieren saber cómo lo
+
+188
+00:06:23,975 --> 00:06:24,561
+hacen.
+
+189
+00:06:25,252 --> 00:06:26,689
+En dos mil dieciséis,
+
+190
+00:06:26,734 --> 00:06:28,983
+al estudiar el genoma de una especie de
+
+191
+00:06:28,796 --> 00:06:30,143
+tardígrado en Japón,
+
+192
+00:06:30,291 --> 00:06:32,359
+encontraron una proteína nueva:
+
+193
+00:06:32,430 --> 00:06:32,978
+Dsup.
+
+194
+00:06:33,329 --> 00:06:35,024
+Su nombre viene del inglés:
+
+195
+00:06:35,056 --> 00:06:36,558
+supresora de daños.
+
+196
+00:06:37,248 --> 00:06:39,536
+Se pega al ADN y lo envuelve como
+
+197
+00:06:39,349 --> 00:06:41,276
+un escudo frente a la radiación.
+
+198
+00:06:41,627 --> 00:06:44,005
+Cuando la introdujeron en células humanas
+
+199
+00:06:43,818 --> 00:06:44,843
+de laboratorio,
+
+200
+00:06:44,952 --> 00:06:47,652
+esas células sufrieron mucho menos daño por
+
+201
+00:06:47,465 --> 00:06:48,735
+los rayos X.
+
+202
+00:06:49,086 --> 00:06:49,892
+Además,
+
+203
+00:06:49,937 --> 00:06:51,490
+cuando reciben radiación,
+
+204
+00:06:51,586 --> 00:06:54,325
+activan muchos genes que reparan su ADN a
+
+205
+00:06:54,138 --> 00:06:55,407
+toda velocidad.
+
+206
+00:06:55,759 --> 00:06:57,737
+Otras proteínas del tardígrado,
+
+207
+00:06:57,885 --> 00:06:59,992
+las que forman ese vidrio protector,
+
+208
+00:07:00,102 --> 00:07:02,595
+se están estudiando para conservar vacunas
+
+209
+00:07:02,408 --> 00:07:04,619
+y medicinas sin necesidad de frío.
+
+210
+00:07:04,970 --> 00:07:05,943
+Y algún día,
+
+211
+00:07:06,065 --> 00:07:08,546
+quizá ayuden a proteger a los astronautas
+
+212
+00:07:08,359 --> 00:07:10,402
+en viajes largos por el espacio.
+
+213
+00:07:11,093 --> 00:07:13,316
+Pero todavía estamos lejos de eso.
+
+214
+00:07:18,652 --> 00:07:19,754
+Con todo esto,
+
+215
+00:07:19,837 --> 00:07:22,434
+parece que los tardígrados son inmortales.
+
+216
+00:07:23,125 --> 00:07:24,059
+No lo son.
+
+217
+00:07:24,411 --> 00:07:26,402
+Cuando están activos son frágiles:
+
+218
+00:07:26,498 --> 00:07:28,451
+viven de unos meses a un par de
+
+219
+00:07:28,264 --> 00:07:28,863
+años,
+
+220
+00:07:28,947 --> 00:07:31,015
+y un poco de calor o sequedad mal
+
+221
+00:07:30,828 --> 00:07:32,446
+llegada puede matarlos.
+
+222
+00:07:32,797 --> 00:07:35,369
+Su superpoder es saber pausarse a tiempo.
+
+223
+00:07:35,720 --> 00:07:38,098
+En forma de tonel pueden esperar años,
+
+224
+00:07:38,181 --> 00:07:40,740
+y todavía no se sabe con exactitud cuál
+
+225
+00:07:40,553 --> 00:07:41,487
+es su límite.
+
+226
+00:07:41,839 --> 00:07:42,683
+Aun así,
+
+227
+00:07:42,779 --> 00:07:44,784
+son supervivientes antiguos.
+
+228
+00:07:45,474 --> 00:07:48,200
+Se han encontrado tardígrados fosilizados
+
+229
+00:07:48,013 --> 00:07:50,545
+en ámbar de hace unos dieciséis millones de
+
+230
+00:07:50,358 --> 00:07:50,958
+años,
+
+231
+00:07:51,028 --> 00:07:53,690
+y sus antepasados probablemente vivían hace
+
+232
+00:07:53,503 --> 00:07:55,391
+más de quinientos millones.
+
+233
+00:07:55,742 --> 00:07:58,159
+Un estudio de dos mil diecisiete calculó
+
+234
+00:07:57,972 --> 00:08:00,169
+que solo algo como la muerte del Sol
+
+235
+00:07:59,982 --> 00:08:01,870
+acabaría con todos ellos.
+
+236
+00:08:02,222 --> 00:08:04,432
+Así que la próxima vez que veas musgo
+
+237
+00:08:04,245 --> 00:08:05,051
+en una pared,
+
+238
+00:08:05,095 --> 00:08:05,837
+recuerda:
+
+239
+00:08:05,920 --> 00:08:08,259
+ahí dentro puede haber miles de pequeños
+
+240
+00:08:08,072 --> 00:08:09,651
+osos esperando la lluvia.
+
+241
+00:08:10,051 --> 00:08:12,243
+¿Qué otro animal crees que se le acerca?
+
+242
+00:08:12,909 --> 00:08:14,557
+Cuéntamelo en los comentarios,
+
+243
+00:08:14,592 --> 00:08:16,735
+y suscríbete a Curiosimundo para más
+
+244
+00:08:16,548 --> 00:08:17,243
+ciencia.

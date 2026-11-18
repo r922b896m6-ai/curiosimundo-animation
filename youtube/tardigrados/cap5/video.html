@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- Tardígrados · Capítulo 5 · Tardígrados en la Luna: Beresheet (SpaceIL, 2019), biblioteca y tardígrados, choque, experimentos de impacto, sin agua no despertarán. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="65.3">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/td.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="launch" data-start="3.6" data-duration="13.8"></section>
+<section class="scene" id="lib" data-start="17.2" data-duration="7.5"></section>
+<section class="scene" id="crash" data-start="24.5" data-duration="9.0"></section>
+<section class="scene" id="gun" data-start="33.3" data-duration="14.0"></section>
+<section class="scene" id="moon" data-start="47.1" data-duration="18.3"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id), mk = CM.mk;
+
+  const svgOf = (id, bg) => { const s = CM.svgIn($(id)); if (bg) $(id).style.background = bg; return s; };
+  const fadeIn = ids => ids.forEach(id => tl.from($(id), { opacity: 0, duration: .3 }, +$(id).dataset.start));
+  const big = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'big', html, top, extra); tl.from(t, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const mid = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'mid', html, top, extra); tl.from(t, { y: 20, opacity: 0, duration: .35 }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  /* walking bear in a wrapper (safe for tweens) */
+  const bearAt = (s, x, y, sc = 1, dir = 1, walk = 0, opts = {}) => { const w = mk('g', {}, s), b = TD.bear(w, opts); b.g.setAttribute('transform', `translate(${x} ${y}) scale(${sc * dir} ${sc})`); return { w, b, x, y, sc, dir, walk }; };
+  const walkers = (sec, list, t0) => gm.onFrame($(sec), (l, info) => list.forEach(o => { const t = info.time; o.b.setWalk(t, o.walk ? 1 : .25); if (o.walk) o.b.g.setAttribute('transform', `translate(${o.x + o.dir * (t - t0) * o.walk} ${o.y}) scale(${o.sc * o.dir} ${o.sc})`); }));
+  const thermo = (s, x, y, h = 600) => { const g = mk('g', {}, s); mk('rect', { x: x - 40, y: y - h, width: 80, height: h, rx: 40, fill: '#e8eef4', stroke: '#9aa7b8', 'stroke-width': 8 }, g); mk('circle', { cx: x, cy: y + 40, r: 70, fill: '#e8eef4', stroke: '#9aa7b8', 'stroke-width': 8 }, g);
+    const bulb = mk('circle', { cx: x, cy: y + 40, r: 52, fill: '#E5484D' }, g), col = mk('rect', { x: x - 22, y: y - h / 2, width: 44, height: h / 2 + 20, rx: 22, fill: '#E5484D' }, g); return { g, set: (k, c) => { col.setAttribute('y', y - h * k); col.setAttribute('height', h * k + 20); col.setAttribute('fill', c); bulb.setAttribute('fill', c); } }; };
+  const bar = (s, x, y, w, h, col, label, sub) => { const g = mk('g', {}, s), r = mk('rect', { x, y, width: w, height: h, rx: 14, fill: col }, g); const t = mk('text', { x: x - 30, y: y + h / 2 + 18, 'text-anchor': 'end', 'font-family': 'Bebas Neue', 'font-size': 64, fill: '#fff' }, g); t.textContent = label;
+    if (sub) { const u = mk('text', { x: x + w + 24, y: y + h / 2 + 18, 'font-family': 'Bebas Neue', 'font-size': 64, fill: col }, g); u.textContent = sub; } return { g, r }; };
+  const virusDot = (s, x, y, r) => mk('circle', { cx: x, cy: y, r, fill: '#c94a4a' }, s);
+
+
+  CM.card($('cards'), tl, 5, '2019', 'TARDÍGRADOS EN LA LUNA', 0, 4);
+  const stars = s => { for (let i = 0; i < 90; i++) mk('circle', { cx: gm.random('x' + i) * 1920, cy: gm.random('y' + i) * 1080, r: 1 + gm.random('r' + i) * 2, fill: '#fff', opacity: .3 + gm.random('o' + i) * .6 }, s); };
+  const moonDisc = (s, x, y, r) => { mk('circle', { cx: x, cy: y, r, fill: '#cfcfc8' }, s); [[-.3, -.2, .18], [.25, .1, .14], [-.05, .35, .1], [.3, -.35, .08]].forEach(([a, b, c]) => mk('circle', { cx: x + a * r, cy: y + b * r, r: c * r, fill: '#b5b5ac' }, s)); };
+  const zl = svgOf('launch', '#030817'); stars(zl); mk('circle', { cx: 300, cy: 860, r: 260, fill: '#1e6fd0' }, zl); moonDisc(zl, 1600, 260, 140);
+  const path = mk('path', { d: 'M420 700 Q900 300 1480 300', stroke: '#FFD23F', 'stroke-width': 5, 'stroke-dasharray': '14 12', fill: 'none' }, zl); tl.from(path, { draw: 0, duration: 4, ease: 'power1.inOut' }, 5.0);
+  const ship = mk('g', {}, zl); mk('path', { d: 'M-40 -20 L40 -20 L50 20 L-50 20Z', fill: '#d8dde6' }, ship); [-40, 40].forEach(x => mk('path', { d: `M${x} 20 L${x * 1.5} 60`, stroke: '#d8dde6', 'stroke-width': 6 }, ship));
+  gm.onFrame($('launch'), (l, i) => { const k = gm.clamp((i.time - 5) / 4), x = (1 - k) ** 2 * 420 + 2 * (1 - k) * k * 900 + k * k * 1480, y = (1 - k) ** 2 * 700 + 2 * (1 - k) * k * 300 + k * k * 300; ship.setAttribute('transform', `translate(${x} ${y}) scale(1.2)`); });
+  CM.head(H, tl, '<em>BERESHEET</em>', 'febrero de 2019 · nave israelí privada', 4.4, 10.9); CM.head(H, tl, '«EN EL <em>PRINCIPIO</em>»', 'construida por SpaceIL', 11.1, 17.1);
+  const zb = svgOf('lib', '#10151c'); const disc = mk('g', {}, zb); mk('circle', { cx: 960, cy: 600, r: 300, fill: '#c9cdd4', stroke: '#8a9099', 'stroke-width': 8 }, disc); mk('circle', { cx: 960, cy: 600, r: 70, fill: '#10151c' }, disc);
+  for (let i = 0; i < 40; i++) { const a = i * 0.7, r = 120 + (i * 13) % 160; mk('ellipse', { cx: 960 + Math.cos(a) * r, cy: 600 + Math.sin(a) * r, rx: 7, ry: 5, fill: '#a8784a' }, disc); }
+  tl.fromTo(disc, { rotate: 0 }, { rotate: 40, duration: 7.4, ease: 'none', transformOrigin: '960px 600px' }, 17.2);
+  big('lib', 'BIBLIOTECA <em>EN MINIATURA</em>', 120, W('biblioteca') - .3, 'font-size:100px'); mid('lib', '+ <b>miles de tardígrados</b> deshidratados', 960, W('miles') - .3);
+  const zc = svgOf('crash', '#030817'); stars(zc); const ground = mk('path', { d: 'M0 820 Q480 780 960 820 T1920 810 L1920 1080 L0 1080Z', fill: '#9a9a92' }, zc); [[300, 900, 60], [1300, 920, 90], [1700, 860, 40]].forEach(([x, y, r]) => mk('ellipse', { cx: x, cy: y, rx: r, ry: r * .3, fill: '#7d7d76' }, zc));
+  const lan = mk('g', {}, zc); mk('path', { d: 'M-50 -30 L50 -30 L60 20 L-60 20Z', fill: '#d8dde6' }, lan); [-50, 50].forEach(x => mk('path', { d: `M${x} 20 L${x * 1.5} 60`, stroke: '#d8dde6', 'stroke-width': 6 }, lan)); const fl = mk('path', { d: 'M-20 20 L0 90 L20 20Z', fill: '#ffb040' }, lan);
+  const dust = mk('ellipse', { cx: 1100, cy: 820, rx: 0, ry: 0, fill: '#c9c9c0', opacity: .8 }, zc); const tOff = W('apagó') - .2, tHit = W('estrelló') - .1;
+  gm.onFrame($('crash'), (l, i) => { const t = i.time, k = gm.clamp((t - 24.5) / (tHit - 24.5)); lan.setAttribute('transform', `translate(${700 + k * 400} ${200 + k * k * 600}) rotate(${t > tOff ? (t - tOff) * 20 : 0}) scale(1.4)`); fl.style.display = t < tOff ? '' : 'none'; lan.style.display = t < tHit ? '' : 'none';
+    const d = gm.clamp((t - tHit) / 1.5); dust.setAttribute('rx', d * 320); dust.setAttribute('ry', d * 90); dust.setAttribute('opacity', .8 * (1 - d * .5)); });
+  CM.head(H, tl, '11 DE ABRIL DE <em>2019</em>', 'un fallo apaga el motor principal', 24.9, 33.2);
+  const zg = svgOf('gun', 'linear-gradient(#e8eef4, #c9d6e2)'); mk('rect', { x: 100, y: 500, width: 700, height: 80, rx: 20, fill: '#5a5f66' }, zg); mk('rect', { x: 1500, y: 360, width: 60, height: 360, fill: '#8a6a4a' }, zg);
+  const proj = mk('circle', { r: 30, fill: '#c9a07a', stroke: '#8a6040', 'stroke-width': 5 }, zg); const flash = mk('circle', { cx: 1500, cy: 540, r: 0, fill: 'url(#cmFlash)' }, zg);
+  gm.onFrame($('gun'), (l, i) => { const k = ((i.time - 37.5) * .8) % 1; proj.setAttribute('cx', 800 + k * 700); proj.setAttribute('cy', 540); proj.style.display = i.time > 37.5 ? '' : 'none'; flash.setAttribute('r', k > .9 ? 120 : 0); });
+  mid('gun', 'cientos de m/s: <b>aguantaron</b>', 220, W('aguantaron') - .2, 'font-size:50px'); mid('gun', 'más rápido: <b>no</b>', 300, W('altas') - .6, 'font-size:50px'); CM.head(H, tl, '¿<em>SOBREVIVIERON</em>?', 'experimentos de impacto en laboratorio', 33.6, 47.0);
+  const zm = svgOf('moon', '#030817'); stars(zm); mk('path', { d: 'M0 700 Q480 660 960 700 T1920 690 L1920 1080 L0 1080Z', fill: '#9a9a92' }, zm); mk('circle', { cx: 1600, cy: 220, r: 120, fill: '#1e6fd0' }, zm);
+  for (let i = 0; i < 9; i++) { const g = mk('g', {}, zm); const t = TD.tun(g); t.setAttribute('transform', `translate(${200 + i * 190} ${820 + (i % 3) * 40}) scale(.3)`); }
+  const ic = [['AGUA', 'agua'], ['AIRE', 'aire'], ['COMIDA', 'comida,']].map(([t, w], i) => { const d = CM.text($('moon'), 'big', `<span style="text-decoration:line-through;text-decoration-color:#E5484D;text-decoration-thickness:10px">${t}</span>`, 260, `font-size:110px;left:${160 + i * 560}px;right:auto;width:500px`); tl.from(d, { opacity: 0, scale: 1.4, duration: .3 }, W(w, w === 'agua' ? 1 : 1) - .2); return d; });
+  tl.to(ic, { opacity: 0, duration: .3 }, 56.6); CM.head(H, tl, 'DORMIDOS <em>PARA SIEMPRE</em>', 'la Luna no está colonizada por osos de agua', 47.4, 65.1);
+  fadeIn(['lib', 'crash', 'gun', 'moon']);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

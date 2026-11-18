@@ -1,0 +1,20 @@
+<!doctype html>
+<!-- Portada de YouTube 1280×720: tardígrado gigante en el microscopio, la Tierra y la Luna, "EL ANIMAL MÁS RESISTENTE". -->
+<html data-width="1280" data-height="720" data-fps="30" data-duration="1">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/td.js"></script>
+<style>.t1{position:absolute;left:30px;right:0;top:30px;font:400 150px/.9 'Bebas Neue';color:#FFD23F;text-shadow:0 8px 0 #111,0 0 40px rgb(0 0 0 / .8);-webkit-text-stroke:4px #111;width:700px}
+.t1 span{color:#fff}.tag{position:absolute;left:28px;bottom:24px;font:400 46px/1 'Bebas Neue';letter-spacing:.12em;color:#fff;background:rgb(6 12 28 / .85);padding:10px 18px;border-radius:10px;border-left:6px solid #FFD23F}
+.tag span{color:#FFD23F}.ww{position:absolute;right:28px;top:24px;font:400 54px/1 'Bebas Neue';letter-spacing:.04em;color:#111;background:#FFD23F;padding:10px 18px;border-radius:10px}</style></head>
+<body>
+<section class="scene" id="p" data-start="0" data-duration="1"></section>
+<script>
+const p = document.getElementById('p');
+const s = CM.mk('svg', { viewBox: '0 0 1920 1080', width: 1280, height: 720, style: 'position:absolute;inset:0' }, p);
+CM.mk('rect', { width: 1920, height: 1080, fill: '#030817' }, s); for (let i = 0; i < 120; i++) CM.mk('circle', { cx: gm.random('x' + i) * 1920, cy: gm.random('y' + i) * 1080, r: 1 + gm.random('r' + i) * 3, fill: '#fff', opacity: .5 }, s);
+CM.mk('circle', { cx: 1700, cy: 1150, r: 420, fill: '#1e6fd0' }, s);
+const inner = TD.scope(s, 1300, 560, 470); s.querySelector('rect').setAttribute('fill', 'transparent');
+const b = TD.bear(inner); b.g.setAttribute('transform', 'translate(1280 780) scale(1.55)'); b.setWalk(.4);
+p.insertAdjacentHTML('beforeend', '<div class="t1">EL ANIMAL<br><span>MÁS</span><br>RESISTENTE</div><div class="ww">−272 °C · ESPACIO · RADIACIÓN</div><div class="tag">CURIOSI<span>MUNDO</span></div>');
+</script>
+</body>
+</html>

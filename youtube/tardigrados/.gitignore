@@ -1,0 +1,5 @@
+snapshots/
+.gm-parts/
+out_render.log
+out_render_all.log
+/out/

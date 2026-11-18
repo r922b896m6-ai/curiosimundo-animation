@@ -1,0 +1,68 @@
+<!doctype html>
+<!-- Tardígrados · Capítulo 3 · Los récords: frío (−272 °C), calor (80 °C una hora), radiación (×1.000), presión (+11.000 atm), 30 años congelados, matiz. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="71.3">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/td.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="intro" data-start="3.6" data-duration="7.0"></section>
+<section class="scene" id="cold" data-start="10.4" data-duration="9.7"></section>
+<section class="scene" id="heat" data-start="19.9" data-duration="9.9"></section>
+<section class="scene" id="rad" data-start="29.6" data-duration="10.6"></section>
+<section class="scene" id="pres" data-start="40.0" data-duration="8.2"></section>
+<section class="scene" id="time" data-start="48.0" data-duration="14.5"></section>
+<section class="scene" id="note" data-start="62.3" data-duration="9.1"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id), mk = CM.mk;
+
+  const svgOf = (id, bg) => { const s = CM.svgIn($(id)); if (bg) $(id).style.background = bg; return s; };
+  const fadeIn = ids => ids.forEach(id => tl.from($(id), { opacity: 0, duration: .3 }, +$(id).dataset.start));
+  const big = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'big', html, top, extra); tl.from(t, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const mid = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'mid', html, top, extra); tl.from(t, { y: 20, opacity: 0, duration: .35 }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  /* walking bear in a wrapper (safe for tweens) */
+  const bearAt = (s, x, y, sc = 1, dir = 1, walk = 0, opts = {}) => { const w = mk('g', {}, s), b = TD.bear(w, opts); b.g.setAttribute('transform', `translate(${x} ${y}) scale(${sc * dir} ${sc})`); return { w, b, x, y, sc, dir, walk }; };
+  const walkers = (sec, list, t0) => gm.onFrame($(sec), (l, info) => list.forEach(o => { const t = info.time; o.b.setWalk(t, o.walk ? 1 : .25); if (o.walk) o.b.g.setAttribute('transform', `translate(${o.x + o.dir * (t - t0) * o.walk} ${o.y}) scale(${o.sc * o.dir} ${o.sc})`); }));
+  const thermo = (s, x, y, h = 600) => { const g = mk('g', {}, s); mk('rect', { x: x - 40, y: y - h, width: 80, height: h, rx: 40, fill: '#e8eef4', stroke: '#9aa7b8', 'stroke-width': 8 }, g); mk('circle', { cx: x, cy: y + 40, r: 70, fill: '#e8eef4', stroke: '#9aa7b8', 'stroke-width': 8 }, g);
+    const bulb = mk('circle', { cx: x, cy: y + 40, r: 52, fill: '#E5484D' }, g), col = mk('rect', { x: x - 22, y: y - h / 2, width: 44, height: h / 2 + 20, rx: 22, fill: '#E5484D' }, g); return { g, set: (k, c) => { col.setAttribute('y', y - h * k); col.setAttribute('height', h * k + 20); col.setAttribute('fill', c); bulb.setAttribute('fill', c); } }; };
+  const bar = (s, x, y, w, h, col, label, sub) => { const g = mk('g', {}, s), r = mk('rect', { x, y, width: w, height: h, rx: 14, fill: col }, g); const t = mk('text', { x: x - 30, y: y + h / 2 + 18, 'text-anchor': 'end', 'font-family': 'Bebas Neue', 'font-size': 64, fill: '#fff' }, g); t.textContent = label;
+    if (sub) { const u = mk('text', { x: x + w + 24, y: y + h / 2 + 18, 'font-family': 'Bebas Neue', 'font-size': 64, fill: col }, g); u.textContent = sub; } return { g, r }; };
+  const virusDot = (s, x, y, r) => mk('circle', { cx: x, cy: y, r, fill: '#c94a4a' }, s);
+
+
+  CM.card($('cards'), tl, 3, 'AL LÍMITE', 'LOS RÉCORDS', 0, 4);
+  const zi = svgOf('intro', 'radial-gradient(circle at 50% 70%, #3a3a46, #0a0a10 70%)'); const spot = mk('ellipse', { cx: 960, cy: 820, rx: 420, ry: 80, fill: 'rgb(255 255 220 / .18)' }, zi); const it = mk('g', {}, zi); const tu = TD.tun(it); tu.setAttribute('transform', 'translate(960 820) scale(1.4)');
+  tl.fromTo(it, { scale: .7 }, { scale: 1, duration: 6, ease: 'none', transformOrigin: '960px 700px' }, 3.6); CM.head(H, tl, 'EN FORMA DE <em>TONEL</em>', 'pruebas que acabarían con casi cualquier ser vivo', 4.4, 10.3);
+  const zc = svgOf('cold', 'linear-gradient(#0e2a4a, #6fa8d8)'); const th = thermo(zc, 360, 820); const fl = mk('g', {}, zc); mk('path', { d: 'M1100 300 L1100 820 Q1100 900 1180 900 L1460 900 Q1540 900 1540 820 L1540 300', fill: 'rgb(200 230 255 / .25)', stroke: '#cfe6ff', 'stroke-width': 8 }, fl);
+  mk('rect', { x: 1108, y: 520, width: 424, height: 372, fill: 'rgb(160 210 255 / .4)' }, fl); const ct = mk('g', {}, fl); const ctun = TD.tun(ct); ctun.setAttribute('transform', 'translate(1320 800) scale(.9)');
+  gm.onFrame($('cold'), (l, i) => { const k = gm.clamp((i.time - 10.8) / 4); th.set(.5 - k * .48, k > .5 ? '#5bc0ff' : '#E5484D'); });
+  big('cold', '<em>−272 °C</em>', 160, W('doscientos') - .3, 'font-size:180px;left:520px;right:auto;width:1000px'); mid('cold', 'helio líquido: a <b>1 grado</b> del cero absoluto', 380, W('apenas') - .3, 'left:520px;right:auto;width:1000px');
+  CM.head(H, tl, '<em>FRÍO</em>', '', 10.7, 19.8);
+  const zh = svgOf('heat', 'linear-gradient(#e8a86a, #6a2a1a)'); const th2 = thermo(zh, 360, 820); gm.onFrame($('heat'), (l, i) => th2.set(.3 + gm.clamp((i.time - 20.3) / 3) * .55, '#E5484D'));
+  const hb = mk('g', {}, zh); const ht = TD.tun(hb); ht.setAttribute('transform', 'translate(1300 800) scale(1)');
+  big('heat', '<em>+80 °C</em> · 1 HORA', 160, W('ochenta') - .4, 'font-size:150px;left:520px;right:auto;width:1200px'); mid('heat', 'la <b>mitad</b> sobrevivió (en tonel)', 380, W('mitad') - .2, 'left:520px;right:auto;width:1200px');
+  mid('heat', 'activos, <b>mucho más delicados</b>', 460, W('activos,') - .2, 'left:520px;right:auto;width:1200px'); CM.head(H, tl, '<em>CALOR</em>', '', 20.3, 29.5);
+  const zr = svgOf('rad', '#10151c'); const b1 = bar(zr, 520, 400, 4, 120, '#E5484D', 'PERSONA', '≈5 GY'), b2 = bar(zr, 520, 640, 880, 120, '#5bd08a', 'TARDÍGRADO', '');
+  b1.g.querySelectorAll('text')[1].textContent = '5 GY'; const lbl = mk('text', { x: 1420, y: 720, 'font-family': 'Bebas Neue', 'font-size': 64, fill: '#5bd08a' }, zr); lbl.textContent = '3.000–5.000 GY';
+  tl.from(b1.g, { opacity: 0, duration: .3 }, W('persona,') - .2).from(b2.r, { attr: { width: 0 }, duration: 1.2, ease: 'power2.out' }, W('soportan') - .3).from(lbl, { opacity: 0, duration: .3 }, W('soportan') + .6);
+  big('rad', '× <em>1.000</em>', 160, W('veces') - .5, 'font-size:160px'); CM.head(H, tl, '<em>RADIACIÓN</em>', '', 30.2, 39.9);
+  const zp = svgOf('pres', 'linear-gradient(#5a5f66, #2a2e34)'); const press = mk('g', {}, zp); mk('rect', { x: 760, y: 0, width: 400, height: 420, fill: '#8a9099' }, press); mk('rect', { x: 700, y: 420, width: 520, height: 60, fill: '#a8afb8' }, press);
+  mk('rect', { x: 600, y: 860, width: 720, height: 80, fill: '#6a6e74' }, zp); const pt = mk('g', {}, zp); const pun = TD.tun(pt); pun.setAttribute('transform', 'translate(960 860) scale(.9)');
+  tl.fromTo(press, { y: -200 }, { y: 220, duration: .6, ease: 'power3.in' }, W('impactos') - .4).to(press, { y: -200, duration: .6 }, W('impactos') + .6);
+  big('pres', '<em>+11.000</em> VECES', 160, W('once') - .3, 'font-size:130px;left:auto;right:60px;width:700px'); mid('pres', 'la presión del aire', 320, W('aire') - .3, 'left:auto;right:60px;width:700px'); CM.head(H, tl, '<em>PRESIÓN</em>', '', 40.5, 47.9);
+  const zt = svgOf('time', 'linear-gradient(#cfe0ef, #eef4f8)'); const ice = mk('rect', { x: 560, y: 360, width: 800, height: 520, rx: 40, fill: 'rgb(170 210 240 / .7)', stroke: '#fff', 'stroke-width': 10 }, zt); const im = TD.moss(zt, 960, 860, 3, 20);
+  const tb1 = bearAt(zt, 820, 860, .5, 1, 0), tb2 = bearAt(zt, 1100, 860, .5, -1, 0); [tb1, tb2].forEach(o => o.w.style.opacity = 0); tl.to([tb1.w, tb2.w], { opacity: 1, duration: .6, stagger: .3 }, W('volvieron') - .3).to(ice, { opacity: .15, duration: 1 }, W('descongelaron') - .2);
+  walkers('time', [tb1, tb2], 0); const eggs = mk('g', {}, zt); for (let i = 0; i < 5; i++) mk('ellipse', { cx: 1180 + i * 28, cy: 850, rx: 12, ry: 9, fill: '#f2e6c8', stroke: '#a88a5a', 'stroke-width': 2 }, eggs); tl.from(eggs, { opacity: 0, duration: .4 }, W('crías') - .2);
+  big('time', 'UNOS <em>30 AÑOS</em> CONGELADOS', 230, W('treinta') - .4, 'font-size:110px'); CM.head(H, tl, 'EL <em>TIEMPO</em>', '2016 · musgo antártico', 48.4, 62.2);
+  const zn = svgOf('note', 'linear-gradient(#efe7d2, #d9cfb4)'); const card = mk('g', {}, zn); mk('rect', { x: 460, y: 300, width: 1000, height: 480, rx: 20, fill: '#fffaf0', stroke: '#c9b48c', 'stroke-width': 6, transform: 'rotate(-2 960 540)' }, card);
+  big('note', '<em>OJO</em>', 360, 62.6, 'font-size:150px;color:#c0392b'); mid('note', 'cada especie aguanta <span style="color:#c0392b">cosas distintas</span>', 560, W('especies') - .3, 'color:#3a2a1a');
+  fadeIn(['cold', 'heat', 'rad', 'pres', 'time', 'note']);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

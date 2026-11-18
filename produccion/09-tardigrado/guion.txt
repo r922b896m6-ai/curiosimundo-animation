@@ -1,0 +1,9 @@
+# CURIOSIMUNDO · 09 · El tardígrado, el animal más resistente del mundo (curiosidad, hasta 60 s)
+# rate|pitch|pausa|texto
++12%|+3Hz|0.2|Mide menos de un milímetro… y ha aguantado unos doscientos setenta y dos grados bajo cero.
++10%|+1Hz|0.2|Es el tardígrado, el oso de agua: ocho patas con garras… y probablemente vive en el musgo de tu calle.
++10%|+0Hz|0.2|Cuando se seca, se encoge como un barril, pierde casi toda su agua y su cuerpo casi se detiene.
++10%|+1Hz|0.2|Así resiste el frío extremo, el vacío y unas mil veces la radiación que mataría a una persona.
++10%|+1Hz|0.2|En dos mil siete viajó al espacio sin traje. Diez días después, la mayoría de los que iban protegidos del sol revivió con un poco de agua.
++9%|+0Hz|0.25|Y en dos mil diecinueve, miles de tardígrados se estrellaron en la Luna. Probablemente siguen allí, secos.
++10%|+4Hz|0|La historia completa está en nuestro canal de YouTube. ¿Conoces un animal más duro? Te leo en comentarios.

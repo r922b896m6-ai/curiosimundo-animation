@@ -1,0 +1,7 @@
+# Capítulo 6 · El secreto en su ADN
+-3%|+0Hz|0.3|Los científicos quieren saber cómo lo hacen. En dos mil dieciséis, al estudiar el genoma de una especie de tardígrado en Japón, encontraron una proteína nueva: Dsup.
+-3%|+0Hz|0.3|Su nombre viene del inglés: supresora de daños. Se pega al ADN y lo envuelve como un escudo frente a la radiación.
+-3%|+0Hz|0.3|Cuando la introdujeron en células humanas de laboratorio, esas células sufrieron mucho menos daño por los rayos X.
+-3%|+0Hz|0.3|Además, cuando reciben radiación, activan muchos genes que reparan su ADN a toda velocidad.
+-3%|+0Hz|0.3|Otras proteínas del tardígrado, las que forman ese vidrio protector, se están estudiando para conservar vacunas y medicinas sin necesidad de frío.
+-3%|+0Hz|0.35|Y algún día, quizá ayuden a proteger a los astronautas en viajes largos por el espacio. Pero todavía estamos lejos de eso.

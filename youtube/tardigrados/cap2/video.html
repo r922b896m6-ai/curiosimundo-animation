@@ -1,0 +1,68 @@
+<!doctype html>
+<!-- Tardígrados · Capítulo 2 · La criptobiosis: el tonel, 95 % de agua fuera, metabolismo casi cero, vidrio de azúcares y proteínas, el despertar, otros que lo hacen. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="71.1">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/td.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="dry" data-start="3.6" data-duration="14.8"></section>
+<section class="scene" id="pct" data-start="18.2" data-duration="10.3"></section>
+<section class="scene" id="crypto" data-start="28.3" data-duration="3.7"></section>
+<section class="scene" id="glass" data-start="31.8" data-duration="16.5"></section>
+<section class="scene" id="wake" data-start="48.1" data-duration="11.3"></section>
+<section class="scene" id="others" data-start="59.2" data-duration="12.0"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id), mk = CM.mk;
+
+  const svgOf = (id, bg) => { const s = CM.svgIn($(id)); if (bg) $(id).style.background = bg; return s; };
+  const fadeIn = ids => ids.forEach(id => tl.from($(id), { opacity: 0, duration: .3 }, +$(id).dataset.start));
+  const big = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'big', html, top, extra); tl.from(t, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const mid = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'mid', html, top, extra); tl.from(t, { y: 20, opacity: 0, duration: .35 }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  /* walking bear in a wrapper (safe for tweens) */
+  const bearAt = (s, x, y, sc = 1, dir = 1, walk = 0, opts = {}) => { const w = mk('g', {}, s), b = TD.bear(w, opts); b.g.setAttribute('transform', `translate(${x} ${y}) scale(${sc * dir} ${sc})`); return { w, b, x, y, sc, dir, walk }; };
+  const walkers = (sec, list, t0) => gm.onFrame($(sec), (l, info) => list.forEach(o => { const t = info.time; o.b.setWalk(t, o.walk ? 1 : .25); if (o.walk) o.b.g.setAttribute('transform', `translate(${o.x + o.dir * (t - t0) * o.walk} ${o.y}) scale(${o.sc * o.dir} ${o.sc})`); }));
+  const thermo = (s, x, y, h = 600) => { const g = mk('g', {}, s); mk('rect', { x: x - 40, y: y - h, width: 80, height: h, rx: 40, fill: '#e8eef4', stroke: '#9aa7b8', 'stroke-width': 8 }, g); mk('circle', { cx: x, cy: y + 40, r: 70, fill: '#e8eef4', stroke: '#9aa7b8', 'stroke-width': 8 }, g);
+    const bulb = mk('circle', { cx: x, cy: y + 40, r: 52, fill: '#E5484D' }, g), col = mk('rect', { x: x - 22, y: y - h / 2, width: 44, height: h / 2 + 20, rx: 22, fill: '#E5484D' }, g); return { g, set: (k, c) => { col.setAttribute('y', y - h * k); col.setAttribute('height', h * k + 20); col.setAttribute('fill', c); bulb.setAttribute('fill', c); } }; };
+  const bar = (s, x, y, w, h, col, label, sub) => { const g = mk('g', {}, s), r = mk('rect', { x, y, width: w, height: h, rx: 14, fill: col }, g); const t = mk('text', { x: x - 30, y: y + h / 2 + 18, 'text-anchor': 'end', 'font-family': 'Bebas Neue', 'font-size': 64, fill: '#fff' }, g); t.textContent = label;
+    if (sub) { const u = mk('text', { x: x + w + 24, y: y + h / 2 + 18, 'font-family': 'Bebas Neue', 'font-size': 64, fill: col }, g); u.textContent = sub; } return { g, r }; };
+  const virusDot = (s, x, y, r) => mk('circle', { cx: x, cy: y, r, fill: '#c94a4a' }, s);
+
+
+  CM.card($('cards'), tl, 2, 'EL TRUCO', 'CRIPTOBIOSIS', 0, 4);
+  const zd = svgOf('dry', 'linear-gradient(#9cc4e6, #e8efe0)'); const moss = TD.moss(zd, 960, 1120, 6, 26); const bw = mk('g', {}, zd), tw = mk('g', {}, zd);
+  const bb = TD.bear(bw); bb.g.setAttribute('transform', 'translate(900 760) scale(1.3)'); const tun = TD.tun(tw); tun.setAttribute('transform', 'translate(940 760) scale(1.3)');
+  gm.onFrame($('dry'), (l, i) => bb.setWalk(i.time, .4));
+  const dryOv = mk('rect', { width: 1920, height: 1080, fill: '#d8b47a', opacity: 0 }, zd); zd.insertBefore(dryOv, moss); tl.to(dryOv, { opacity: .85, duration: 2 }, 4.6).to(moss, { opacity: .45, duration: 2 }, 4.6);
+  tl.to(bw, { opacity: 0, scale: .85, transformOrigin: '900px 600px', duration: .8 }, W('bolita') - .3).from(tw, { opacity: 0, scale: 1.2, transformOrigin: '940px 600px', duration: .8 }, W('bolita') - .3);
+  CM.head(H, tl, 'CUANDO TODO <em>SE SECA</em>', 'recoge las patas y encoge la cabeza', 4.4, 13.9); CM.head(H, tl, 'EL <em>TONEL</em>', '«tun», en alemán', 14.1, 18.1);
+  const zp = svgOf('pct', '#10151c'); const tank = mk('rect', { x: 260, y: 300, width: 220, height: 600, rx: 24, fill: 'none', stroke: '#9fb3c8', 'stroke-width': 8 }, zp); const wat = mk('rect', { x: 268, y: 308, width: 204, height: 584, rx: 18, fill: '#3f86b4' }, zp);
+  tl.to(wat, { attr: { y: 870, height: 22 }, duration: 2.5, ease: 'power2.in' }, 18.8);
+  const met = mk('path', { d: '', stroke: '#5bd08a', 'stroke-width': 8, fill: 'none' }, zp); gm.onFrame($('pct'), (l, i) => { const k = gm.clamp((i.time - 22.6) / 1.5); let d = 'M700 600'; for (let x = 0; x <= 1000; x += 20) d += ` L${700 + x} ${600 - Math.sin(x / 40 + i.time * 6) * 120 * (1 - k)}`; met.setAttribute('d', d); });
+  big('pct', '–95 % <em>DE AGUA</em>', 150, W('noventa') - .3, 'font-size:110px;left:auto;right:80px;width:1100px'); mid('pct', 'metabolismo: <b>casi cero</b>', 800, W('metabolismo') - .2, 'left:auto;right:80px;width:1100px');
+  CM.head(H, tl, 'VIDA EN <em>PAUSA</em>', '', 25.8, 28.2);
+  const zc = $('crypto'); zc.style.background = 'radial-gradient(1200px 800px at 50% 45%, #2f6a3a, #0a1a10 75%)'; big('crypto', '<em>CRIPTOBIOSIS</em>', 380, 28.5, 'font-size:180px'); mid('crypto', '«vida escondida»', 620, W('vida') - .2);
+  const zl = svgOf('glass', '#0e1622'); mk('circle', { cx: 960, cy: 560, r: 400, fill: '#1d2e44', stroke: '#9fb3c8', 'stroke-width': 8 }, zl);
+  const mol = Array.from({ length: 60 }, (_, i) => mk('circle', { r: 10 + (i % 3) * 4, fill: i % 4 ? '#e8b92a' : '#5bd08a' }, zl)); const hexes = mk('g', { opacity: 0 }, zl);
+  for (let r = 0; r < 9; r++) for (let c = 0; c < 9; c++) { const x = 640 + c * 80 + (r % 2) * 40, y = 240 + r * 80; if ((x - 960) ** 2 + (y - 560) ** 2 < 380 ** 2) mk('path', { d: `M${x} ${y - 40} l35 20 l0 40 l-35 20 l-35 -20 l0 -40z`, fill: 'rgb(160 220 255 / .18)', stroke: '#bfe6ff', 'stroke-width': 3 }, hexes); }
+  const tG = W('vidrio') - .6; gm.onFrame($('glass'), (l, i) => { const t = i.time, k = gm.clamp((t - tG) / 1.2); mol.forEach((m, j) => { const a = j * 2.4 + t * (1 - k) * (1 + j % 3), rr = 60 + (j * 37) % 300; m.setAttribute('cx', 960 + Math.cos(a) * rr); m.setAttribute('cy', 560 + Math.sin(a * 1.3) * rr * .9); }); hexes.setAttribute('opacity', k); });
+  CM.head(H, tl, '<em>AZÚCARES</em> Y PROTEÍNAS', 'que al secarse forman una especie de cristal', 32.3, 43.4); CM.head(H, tl, 'COMO <em>VIDRIO</em>', 'todo queda inmovilizado y protegido', 43.6, 48.0);
+  const zk = svgOf('wake', 'linear-gradient(#7d8fa8, #c9d8e8)'); TD.moss(zk, 960, 1120, 6, 26); const drops = Array.from({ length: 50 }, (_, i) => mk('line', { stroke: '#cfe6ff', 'stroke-width': 4, opacity: .8 }, zk));
+  const kt = mk('g', {}, zk), kb = mk('g', {}, zk); const ktun = TD.tun(kt); ktun.setAttribute('transform', 'translate(940 760) scale(1.3)'); const kbear = TD.bear(kb); kbear.g.setAttribute('transform', 'translate(900 760) scale(1.3)');
+  tl.to(kt, { opacity: 0, duration: .8 }, W('hincha') - .3).from(kb, { opacity: 0, scale: .85, transformOrigin: '900px 600px', duration: .8 }, W('hincha') - .3);
+  gm.onFrame($('wake'), (l, i) => { const t = i.time; drops.forEach((d, j) => { const x = (j * 97) % 1920, y = ((t * 900 + j * 211) % 1200) - 100; d.setAttribute('x1', x); d.setAttribute('y1', y); d.setAttribute('x2', x - 10); d.setAttribute('y2', y + 40); }); kbear.setWalk(t, t > 52 ? 1 : .2);
+    if (t > 52) kbear.g.setAttribute('transform', `translate(${900 + (t - 52) * 70} 760) scale(1.3)`); });
+  CM.head(H, tl, 'VUELVE EL <em>AGUA</em>', 'en minutos u horas, camina otra vez', 48.9, 56.4); big('wake', '<em>AÑOS</em> ESPERANDO', 160, W('años') - .3, 'font-size:110px');
+  const zo = svgOf('others', 'linear-gradient(#efe7d2, #d9cfb4)'); [['SEMILLAS', 'semillas,', '#8a6a3a'], ['BACTERIAS', 'bacterias', '#2f6fcf'], ['ROTÍFEROS', 'rotíferos,', '#2f8f5a']].forEach(([t, w, c], i) => {
+    const g = mk('g', {}, zo), x = 160 + i * 560; mk('rect', { x, y: 380, width: 480, height: 420, rx: 30, fill: c }, g); const tt = mk('text', { x: x + 240, y: 620, 'text-anchor': 'middle', 'font-family': 'Bebas Neue', 'font-size': 90, fill: '#fff' }, g); tt.textContent = t; tl.from(g, { opacity: 0, y: 40, duration: .35 }, W(w) - .3); });
+  CM.head(H, tl, 'NO SON LOS <em>ÚNICOS</em>', 'pero pocos lo llevan tan lejos', 59.9, 71.0);
+  fadeIn(['pct', 'crypto', 'glass', 'wake', 'others']);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

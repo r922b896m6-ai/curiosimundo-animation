@@ -1,0 +1,11 @@
+# Escenas con tiempos y subtítulos (generado)
+
+| Escena | Tiempo | Narración | Subtítulos |
+|---|---|---|---|
+| 1 | 0.3–5.0 s | Mide menos de un milímetro… y ha aguantado unos doscientos setenta y dos grados bajo cero. | `0.3s` Mide menos de<br>`1.0s` un milímetro…<br>`2.0s` y ha aguantado<br>`2.7s` unos doscientos<br>`3.4s` setenta y dos<br>`4.0s` grados bajo cero. |
+| 2 | 5.4–11.2 s | Es el tardígrado, el oso de agua: ocho patas con garras… y probablemente vive en el musgo de tu calle. | `5.4s` Es el tardígrado,<br>`6.6s` el oso de<br>`7.1s` agua:<br>`7.6s` ocho patas con<br>`8.4s` garras…<br>`9.0s` y probablemente<br>`9.8s` vive en el<br>`10.3s` musgo de tu<br>`10.8s` calle. |
+| 3 | 11.7–16.9 s | Cuando se seca, se encoge como un barril, pierde casi toda su agua y su cuerpo casi se detiene. | `11.7s` Cuando se seca,<br>`12.6s` se encoge como<br>`13.3s` un barril,<br>`14.1s` pierde casi toda<br>`15.0s` su agua y<br>`15.5s` su cuerpo casi<br>`16.3s` se detiene. |
+| 4 | 17.3–22.6 s | Así resiste el frío extremo, el vacío y unas mil veces la radiación que mataría a una persona. | `17.3s` Así resiste el<br>`18.1s` frío extremo,<br>`19.1s` el vacío y<br>`19.8s` unas mil veces<br>`20.6s` la radiación que<br>`21.3s` mataría a una<br>`22.1s` persona. |
+| 5 | 23.1–31.0 s | En dos mil siete viajó al espacio sin traje. Diez días después, la mayoría de los que iban protegidos del sol revivió con un poco de agua. | `23.1s` En dos mil<br>`23.6s` siete viajó al<br>`24.4s` espacio sin traje.<br>`26.2s` Diez días después,<br>`27.4s` la mayoría de<br>`28.0s` los que iban<br>`28.6s` protegidos del sol<br>`29.5s` revivió con un<br>`30.3s` poco de agua. |
+| 6 | 31.4–38.1 s | Y en dos mil diecinueve, miles de tardígrados se estrellaron en la Luna. Probablemente siguen allí, secos. | `31.4s` Y en dos<br>`31.9s` mil diecinueve,<br>`32.9s` miles de<br>`33.3s` tardígrados se<br>`34.1s` estrellaron en la<br>`34.8s` Luna.<br>`36.0s` Probablemente<br>`36.7s` siguen allí,<br>`37.6s` secos. |
+| 7 | 38.6–45.2 s | La historia completa está en nuestro canal de YouTube. ¿Conoces un animal más duro? Te leo en comentarios. | `38.6s` La historia<br>`39.1s` completa está en<br>`39.9s` nuestro canal de<br>`40.5s` YouTube.<br>`41.7s` ¿Conoces un animal<br>`42.6s` más duro?<br>`44.0s` Te leo en<br>`44.4s` comentarios. |

@@ -1,0 +1,44 @@
+<!doctype html>
+<!-- Tardígrados · Capítulo 0 · Introducción. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="17.5">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/td.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="0"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="s0" data-start="0" data-duration="10.2"></section>
+<section class="scene" id="t" data-start="9.8" data-duration="7.8"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 0;
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id), mk = CM.mk;
+
+  const svgOf = (id, bg) => { const s = CM.svgIn($(id)); if (bg) $(id).style.background = bg; return s; };
+  const fadeIn = ids => ids.forEach(id => tl.from($(id), { opacity: 0, duration: .3 }, +$(id).dataset.start));
+  const big = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'big', html, top, extra); tl.from(t, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const mid = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'mid', html, top, extra); tl.from(t, { y: 20, opacity: 0, duration: .35 }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  /* walking bear in a wrapper (safe for tweens) */
+  const bearAt = (s, x, y, sc = 1, dir = 1, walk = 0, opts = {}) => { const w = mk('g', {}, s), b = TD.bear(w, opts); b.g.setAttribute('transform', `translate(${x} ${y}) scale(${sc * dir} ${sc})`); return { w, b, x, y, sc, dir, walk }; };
+  const walkers = (sec, list, t0) => gm.onFrame($(sec), (l, info) => list.forEach(o => { const t = info.time; o.b.setWalk(t, o.walk ? 1 : .25); if (o.walk) o.b.g.setAttribute('transform', `translate(${o.x + o.dir * (t - t0) * o.walk} ${o.y}) scale(${o.sc * o.dir} ${o.sc})`); }));
+  const thermo = (s, x, y, h = 600) => { const g = mk('g', {}, s); mk('rect', { x: x - 40, y: y - h, width: 80, height: h, rx: 40, fill: '#e8eef4', stroke: '#9aa7b8', 'stroke-width': 8 }, g); mk('circle', { cx: x, cy: y + 40, r: 70, fill: '#e8eef4', stroke: '#9aa7b8', 'stroke-width': 8 }, g);
+    const bulb = mk('circle', { cx: x, cy: y + 40, r: 52, fill: '#E5484D' }, g), col = mk('rect', { x: x - 22, y: y - h / 2, width: 44, height: h / 2 + 20, rx: 22, fill: '#E5484D' }, g); return { g, set: (k, c) => { col.setAttribute('y', y - h * k); col.setAttribute('height', h * k + 20); col.setAttribute('fill', c); bulb.setAttribute('fill', c); } }; };
+  const bar = (s, x, y, w, h, col, label, sub) => { const g = mk('g', {}, s), r = mk('rect', { x, y, width: w, height: h, rx: 14, fill: col }, g); const t = mk('text', { x: x - 30, y: y + h / 2 + 18, 'text-anchor': 'end', 'font-family': 'Bebas Neue', 'font-size': 64, fill: '#fff' }, g); t.textContent = label;
+    if (sub) { const u = mk('text', { x: x + w + 24, y: y + h / 2 + 18, 'font-family': 'Bebas Neue', 'font-size': 64, fill: col }, g); u.textContent = sub; } return { g, r }; };
+  const virusDot = (s, x, y, r) => mk('circle', { cx: x, cy: y, r, fill: '#c94a4a' }, s);
+
+
+  const z = svgOf('s0', '#0b0f14'), inner = TD.scope(z, 960, 560, 470); const b = bearAt(inner, 560, 760, 1.15, 1, 60); walkers('s0', [b], 0);
+  tl.fromTo(z, { scale: 1.15 }, { scale: 1, duration: 10, ease: 'none', transformOrigin: '50% 50%' }, 0);
+  const tags = [['VACÍO', 'vacío', 200, 220], ['−272 °C', 'frío', 1480, 260], ['RADIACIÓN', 'radiación', 1460, 780]].map(([t, w, x, y]) => { const d = CM.text($('s0'), 'big', t, y, `font-size:90px;left:${x - 300}px;right:auto;width:600px`); tl.from(d, { scale: 1.6, opacity: 0, duration: .3, ease: 'expo.out' }, W(w) - .2); return d; });
+  const mm = CM.text($('s0'), 'big', '&lt; <em>1 MM</em>', 860, 'font-size:120px;left:60px;right:auto;width:600px'); tl.from(mm, { scale: 1.6, opacity: 0, duration: .3, ease: 'expo.out' }, W('milímetro') - .3);
+  const t = $('t'); t.style.background = 'radial-gradient(1200px 800px at 50% 45%, #2f6a3a, #0a1a10 75%)';
+  t.innerHTML = '<div class="mid" style="top:250px;color:#FFD23F">CURIOSIMUNDO PRESENTA</div><div class="big" style="top:330px;font-size:200px">EL <em>TARDÍGRADO</em></div><div class="mid" style="top:600px">el animal más resistente del mundo</div>';
+  const [p, h, s] = t.children; tl.from(t, { opacity: 0, duration: .4 }, 9.8).from(p, { y: 20, opacity: 0, duration: .4 }, 10.0).from(h, { scale: 1.3, opacity: 0, filter: 'blur(16px)', duration: .8, ease: 'expo.out' }, 10.2)
+    .to(h, { scale: 1.05, duration: 6, ease: 'sine.inOut' }, 11.0).from(s, { y: 30, opacity: 0, duration: .4 }, W('animal') - .3);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

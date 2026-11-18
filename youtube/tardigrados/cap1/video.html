@@ -1,0 +1,75 @@
+<!doctype html>
+<!-- Tardígrados · Capítulo 1 · ¿Qué es un tardígrado? Goeze 1773, Spallanzani, anatomía, parentesco, 1.300 especies, dónde viven, cómo verlos. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="85.1">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/td.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="goeze" data-start="3.6" data-duration="13.6"></section>
+<section class="scene" id="name" data-start="17.0" data-duration="11.8"></section>
+<section class="scene" id="anat" data-start="28.6" data-duration="17.9"></section>
+<section class="scene" id="fam" data-start="46.3" data-duration="9.3"></section>
+<section class="scene" id="world" data-start="55.4" data-duration="11.9"></section>
+<section class="scene" id="water" data-start="67.1" data-duration="7.9"></section>
+<section class="scene" id="home" data-start="74.8" data-duration="10.4"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4;
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id), mk = CM.mk;
+
+  const svgOf = (id, bg) => { const s = CM.svgIn($(id)); if (bg) $(id).style.background = bg; return s; };
+  const fadeIn = ids => ids.forEach(id => tl.from($(id), { opacity: 0, duration: .3 }, +$(id).dataset.start));
+  const big = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'big', html, top, extra); tl.from(t, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const mid = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'mid', html, top, extra); tl.from(t, { y: 20, opacity: 0, duration: .35 }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  /* walking bear in a wrapper (safe for tweens) */
+  const bearAt = (s, x, y, sc = 1, dir = 1, walk = 0, opts = {}) => { const w = mk('g', {}, s), b = TD.bear(w, opts); b.g.setAttribute('transform', `translate(${x} ${y}) scale(${sc * dir} ${sc})`); return { w, b, x, y, sc, dir, walk }; };
+  const walkers = (sec, list, t0) => gm.onFrame($(sec), (l, info) => list.forEach(o => { const t = info.time; o.b.setWalk(t, o.walk ? 1 : .25); if (o.walk) o.b.g.setAttribute('transform', `translate(${o.x + o.dir * (t - t0) * o.walk} ${o.y}) scale(${o.sc * o.dir} ${o.sc})`); }));
+  const thermo = (s, x, y, h = 600) => { const g = mk('g', {}, s); mk('rect', { x: x - 40, y: y - h, width: 80, height: h, rx: 40, fill: '#e8eef4', stroke: '#9aa7b8', 'stroke-width': 8 }, g); mk('circle', { cx: x, cy: y + 40, r: 70, fill: '#e8eef4', stroke: '#9aa7b8', 'stroke-width': 8 }, g);
+    const bulb = mk('circle', { cx: x, cy: y + 40, r: 52, fill: '#E5484D' }, g), col = mk('rect', { x: x - 22, y: y - h / 2, width: 44, height: h / 2 + 20, rx: 22, fill: '#E5484D' }, g); return { g, set: (k, c) => { col.setAttribute('y', y - h * k); col.setAttribute('height', h * k + 20); col.setAttribute('fill', c); bulb.setAttribute('fill', c); } }; };
+  const bar = (s, x, y, w, h, col, label, sub) => { const g = mk('g', {}, s), r = mk('rect', { x, y, width: w, height: h, rx: 14, fill: col }, g); const t = mk('text', { x: x - 30, y: y + h / 2 + 18, 'text-anchor': 'end', 'font-family': 'Bebas Neue', 'font-size': 64, fill: '#fff' }, g); t.textContent = label;
+    if (sub) { const u = mk('text', { x: x + w + 24, y: y + h / 2 + 18, 'font-family': 'Bebas Neue', 'font-size': 64, fill: col }, g); u.textContent = sub; } return { g, r }; };
+  const virusDot = (s, x, y, r) => mk('circle', { cx: x, cy: y, r, fill: '#c94a4a' }, s);
+
+
+  CM.card($('cards'), tl, 1, '1773', 'EL OSO DE AGUA', 0, 4);
+  const zg = svgOf('goeze', 'linear-gradient(#3a2a1e, #1a120c)'); mk('rect', { y: 760, width: 1920, height: 320, fill: '#5a3e26' }, zg);
+  const mic = mk('g', { transform: 'translate(1260 760)' }, zg); mk('rect', { x: -110, y: -20, width: 220, height: 20, fill: '#b8862a' }, mic); mk('rect', { x: -14, y: -320, width: 28, height: 300, fill: '#c9962a' }, mic); mk('rect', { x: -40, y: -380, width: 80, height: 70, rx: 10, fill: '#d8a83a' }, mic); mk('rect', { x: -60, y: -120, width: 120, height: 14, fill: '#8a6a2a' }, mic);
+  const cand = mk('g', {}, zg); mk('rect', { x: 1560, y: 640, width: 30, height: 120, fill: '#efe7d2' }, cand); const fl = mk('ellipse', { cx: 1575, cy: 625, rx: 12, ry: 26, fill: '#ffc86a' }, cand); mk('circle', { cx: 1575, cy: 625, r: 120, fill: 'rgb(255 190 90 / .12)' }, cand);
+  CM.civil(zg, 1000, 940, 2.6, '#2a2a34'); gm.onFrame($('goeze'), (l, i) => fl.setAttribute('ry', 26 * (1 + Math.sin(i.time * 9) * .1)));
+  const bub = mk('g', {}, zg); mk('circle', { cx: 520, cy: 470, r: 300, fill: '#d8e6c8', stroke: '#1a2028', 'stroke-width': 18 }, bub); const gb = bearAt(bub, 400, 600, .8, 1, 40); walkers('goeze', [gb], 12);
+  tl.from(bub, { scale: 0, opacity: 0, duration: .5, ease: 'back.out(1.6)', transformOrigin: '520px 470px' }, W('increíble') - .4);
+  CM.head(H, tl, '<em>1773</em>', 'Johann August Ephraim Goeze, naturalista alemán', 4.4, 17.0);
+  big('goeze', '«PEQUEÑO <em>OSO DE AGUA</em>»', 120, W('pequeño') - .4, 'font-size:100px');
+  const zn = svgOf('name', '#0b0f14'), inn = TD.scope(zn, 960, 560, 460); const nb = bearAt(inn, 520, 760, 1.1, 1, 25); walkers('name', [nb], 17.0);
+  CM.head(H, tl, '<em>TARDÍGRADO</em>', '«el que camina despacio» · Lazzaro Spallanzani, 1776', 20.0, 28.5);
+  const za = svgOf('anat', 'linear-gradient(#e8efe0, #c9d8b8)'); const ab = bearAt(za, 900, 820, 1.7, 1, 0); walkers('anat', [ab], 0);
+  const lab = (txt, x1, y1, x2, y2, at) => { const g = mk('g', {}, za); mk('line', { x1, y1, x2, y2, stroke: '#1a2a1a', 'stroke-width': 5 }, g); mk('circle', { cx: x1, cy: y1, r: 10, fill: '#1a2a1a' }, g); const t = mk('text', { x: x2, y: y2 - 14, 'text-anchor': 'middle', 'font-family': 'Bebas Neue', 'font-size': 64, fill: '#1a2a1a' }, g); t.textContent = txt; tl.from(g, { opacity: 0, duration: .3 }, at); };
+  lab('8 PATAS', 650, 740, 420, 520, W('ocho') - .2); lab('GARRAS', 1105, 930, 1500, 800, W('garras') - .2); lab('BOCA EN TUBO', 1310, 615, 1560, 420, W('boca') - .2);
+  const sc = mk('g', {}, za); mk('rect', { x: 120, y: 960, width: 300, height: 14, fill: '#1a2a1a' }, sc); const st = mk('text', { x: 270, y: 940, 'text-anchor': 'middle', 'font-family': 'Bebas Neue', 'font-size': 56, fill: '#1a2a1a' }, sc); st.textContent = '&lt; 1 MM'; st.textContent = '< 1 MM'; tl.from(sc, { opacity: 0, duration: .3 }, W('milímetro') - .3);
+  CM.head(H, tl, '<em>ANATOMÍA</em>', 'menos de 1 mm · se alimenta de musgos y algas', 29.1, 46.2);
+  const zf = svgOf('fam', 'linear-gradient(#efe7d2, #d9cfb4)'); const node = (txt, x, y, col) => { const g = mk('g', {}, zf); mk('rect', { x: x - 230, y: y - 60, width: 460, height: 120, rx: 24, fill: col }, g); const t = mk('text', { x, y: y + 22, 'text-anchor': 'middle', 'font-family': 'Bebas Neue', 'font-size': 60, fill: '#fff' }, g); t.textContent = txt; return g; };
+  mk('path', { d: 'M960 380 L960 520 M420 520 L1500 520 M420 520 L420 600 M960 520 L960 600 M1500 520 L1500 600', stroke: '#5a4a3a', 'stroke-width': 8, fill: 'none' }, zf);
+  const n0 = node('PANARTRÓPODOS', 960, 320, '#5a4a3a'), n1 = node('TARDÍGRADOS', 420, 660, '#2f8f5a'), n2 = node('ARTRÓPODOS', 960, 660, '#2f6fcf'), n3 = node('GUSANOS ATERCIOPELADOS', 1500, 660, '#8a5a36');
+  n3.querySelector('rect').setAttribute('width', 560); n3.querySelector('rect').setAttribute('x', 1220);
+  tl.from([n0, n1], { opacity: 0, y: 20, duration: .3, stagger: .2 }, 46.8).from(n2, { opacity: 0, y: 20, duration: .3 }, W('artrópodos') - .2).from(n3, { opacity: 0, y: 20, duration: .3 }, W('gusanos') - .2);
+  CM.head(H, tl, 'SU <em>FAMILIA</em>', 'parientes de insectos, arañas y gusanos aterciopelados', 46.8, 55.3);
+  const zw = svgOf('world', '#0e1a12'); const tiles = [['MONTAÑAS', '#7d8fa8', 'montañas'], ['FONDO DEL MAR', '#1d4f7a', 'fondo'], ['ANTÁRTIDA', '#cfe0ef', 'antártida…'], ['TU TEJADO', '#5e8f3e', 'tejado']];
+  tiles.forEach(([t, c, w], i) => { const g = mk('g', {}, zw), x = 60 + i * 460; mk('rect', { x, y: 420, width: 420, height: 420, rx: 24, fill: c }, g); TD.moss(g, x + 210, 840, .8, 10);
+    const bb = bearAt(g, x + 210, 760, .45, 1, 0); const tt = mk('text', { x: x + 210, y: 500, 'text-anchor': 'middle', 'font-family': 'Bebas Neue', 'font-size': 56, fill: i === 2 ? '#1a2a3a' : '#fff' }, g); tt.textContent = t; tl.from(g, { opacity: 0, y: 40, duration: .35 }, W(w) - .3); });
+  big('world', 'UNAS <em>1.300</em> ESPECIES', 150, W('trescientas') - .4, 'font-size:120px');
+  const zr = svgOf('water', 'linear-gradient(#9cc4e6, #e8efe0)'); TD.moss(zr, 960, 1100, 6, 26); const film = mk('rect', { x: 0, y: 640, width: 1920, height: 60, fill: 'rgb(120 190 255 / .35)' }, zr);
+  const wb = bearAt(zr, 300, 720, .8, 1, 120); walkers('water', [wb], 67.1); CM.head(H, tl, 'UNA CAPA DE <em>AGUA</em>', 'la necesitan para estar activos', 67.6, 74.7);
+  tl.to(film, { opacity: 0, duration: 1.5 }, W('desaparece') - .5);
+  const zh = svgOf('home', '#10151c'); const jar = mk('g', {}, zh); mk('rect', { x: 260, y: 520, width: 260, height: 340, rx: 30, fill: 'rgb(150 200 255 / .3)', stroke: '#cfe0ef', 'stroke-width': 8 }, jar); TD.moss(jar, 390, 840, 1.2, 12);
+  const ins = TD.scope(zh, 1300, 560, 360); const hb = bearAt(ins, 1120, 740, .9, 1, 40); walkers('home', [hb], 74.8);
+  const steps = mid('home', 'MUSGO + AGUA + <b>MICROSCOPIO</b>', 140, W('microscopio', 2) - .3);
+  CM.head(H, tl, 'BÚSCALOS EN <em>CASA</em>', 'en el musgo remojado', 75.2, 85.0);
+  fadeIn(['name', 'anat', 'fam', 'world', 'water', 'home']);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

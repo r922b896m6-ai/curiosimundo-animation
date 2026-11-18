@@ -91,7 +91,7 @@ Casi todas las vistas vienen de "Para ti", así que el problema es la retención
 - [ ] Dato con número en pantalla en el fotograma 0 y gancho hablado antes de los 2 s.
 - [ ] Cambio visual cada 2–4 s; termina con una pregunta directa.
 - [ ] Música libre de derechos o de la biblioteca comercial de TikTok.
-- [ ] Etiqueta **"Contenido generado por IA"** activada en TikTok si la voz o las imágenes son sintéticas, y mención en la descripción.
+- [ ] Etiqueta **"Contenido generado por IA"** activada en la plataforma si la voz o las imágenes son sintéticas. **No** se menciona la IA en la descripción (decisión del dueño del canal).
 
 ## Qué se automatiza y qué no
 

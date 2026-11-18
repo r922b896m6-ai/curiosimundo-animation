@@ -9,7 +9,7 @@
 - `gen_capitulos.py`: genera los `video.html` de los 8 capítulos. `gen_mapa.mjs`: genera `lib/mexico1519.json`.
 - Librería compartida (`../segunda-guerra-mundial/lib`): `cm.js` (figuras, batallas, mapas), `cq.js` (ciudad de Tenochtitlan, costa, Malintzin, tarjetas de memoria), `mexico1519.json`.
 - `extras/portada.png` (1280×720) y `extras/portada.html`.
-- `subtitulos.srt` (subtítulos completos para YouTube) `descripcion_youtube.txt` (máximo 100 caracteres) y `comentario_fijado.txt` (capítulos y fuentes).
+- `subtitulos.srt` (subtítulos completos para YouTube) `descripcion_youtube.txt` (descripción completa con capítulos y fuentes).
 - `render_all.sh`: renderiza los 8 capítulos y los une (sin pantalla final).
 
 ## Título

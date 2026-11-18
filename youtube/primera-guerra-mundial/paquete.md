@@ -35,10 +35,7 @@ Alternativas:
 ```
 
 ## Descripción
-**Máximo 100 caracteres** (`descripcion_youtube.txt`):
-> De Sarajevo al armisticio: la Gran Guerra en 10 minutos ⚔️ #historia #ww1 #curiosimundo
-
-Capítulos y fuentes: en `comentario_fijado.txt`, para pegar como comentario fijado.
+En `descripcion_youtube.txt` (completa, con capítulos y fuentes; sin mencionar la IA).
 
 ## Miniatura recomendada
 - **Imagen:** a la izquierda, un soldado francés de 1914 (abrigo azul y pantalones rojos); a la derecha, uno alemán con casco de pincho.

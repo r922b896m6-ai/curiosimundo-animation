@@ -16,8 +16,7 @@ Eslogan: "Un mundo de cosas por descubrir". Narración en español, 9:16.
     Reutiliza `youtube/primera-guerra-mundial/lib/` (uniformes por país, batallas que terminan dentro de la trinchera enemiga
     cuerpo a cuerpo y sin sangre, mapas, tanques, aviones, barcos, subtítulos) y su flujo: `render_all.sh`, `paquete.md`,
     portada de 1280×720, pantalla final de 20 s (salvo que el dueño diga lo contrario) y resumen de 1 minuto para TikTok.
-  - **Descripción de YouTube** (decisión del dueño del canal): **máximo 100 caracteres, hashtags incluidos**
-    (`descripcion_youtube.txt`). Los capítulos y las fuentes van aparte en `comentario_fijado.txt`.
+  - **Descripción de YouTube:** completa, sin límite de caracteres, con capítulos (minutos), fuentes y hashtags.
   - **Descripciones (TikTok y YouTube):** no digas que el vídeo o la narración se generaron con IA (decisión del dueño del canal).
     Si hace falta, se usa la etiqueta de contenido IA de la propia plataforma, no el texto.
   - **Desenlace de las batallas** (decisión del dueño del canal): en las **batallas de trincheras**, los atacantes entran en la trinchera

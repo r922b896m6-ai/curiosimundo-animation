@@ -35,20 +35,10 @@ Alternativas:
 ```
 
 ## Descripción
-> ¿Cómo empezó la Primera Guerra Mundial y por qué fue tan terrible? En 10 minutos repasamos la Gran Guerra de 1914 a 1918: las alianzas, el asesinato de Sarajevo, el plan Schlieffen, el Marne, la vida en las trincheras, el gas, Galípoli, Verdún, el Somme y los primeros tanques, Jutlandia, la revolución rusa, la entrada de Estados Unidos, Caporetto, la Ofensiva de Primavera, Amiens, el armisticio del 11 de noviembre y el Tratado de Versalles.
->
-> Cada batalla aparece con los uniformes de los países que lucharon en ella: los pantalones rojos franceses de 1914, el casco de pincho alemán, el casco Brodie británico, los ANZAC, los otomanos, los austrohúngaros, los italianos y los estadounidenses.
->
-> ¿Qué batalla te sorprendió más? Te leo en los comentarios.
->
-> (capítulos)
->
-> Fuentes: Britannica, History Hit, HistoryNet, Smithsonian, Australian War Memorial y Wikipedia (contrastadas). Las cifras de bajas son aproximadas y varían según la fuente.
-> Animación y música originales. Narración generada con IA.
->
-> #historia #primeraguerramundial #curiosimundo
+**Máximo 100 caracteres** (`descripcion_youtube.txt`):
+> De Sarajevo al armisticio: la Gran Guerra en 10 minutos ⚔️ #historia #ww1 #curiosimundo
 
-**Etiquetas:** primera guerra mundial, gran guerra, 1914, 1918, historia, historia animada, batalla de verdún, batalla del somme, trincheras, galípoli, armisticio, tratado de versalles, curiosimundo
+Capítulos y fuentes: en `comentario_fijado.txt`, para pegar como comentario fijado.
 
 ## Miniatura recomendada
 - **Imagen:** a la izquierda, un soldado francés de 1914 (abrigo azul y pantalones rojos); a la derecha, uno alemán con casco de pincho.

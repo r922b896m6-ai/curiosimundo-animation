@@ -16,7 +16,7 @@
 - `lib/`: `cm.js` (uniformes, batallas con capturas/retiradas/banderas, tanques, cazas, portaaviones, lanchas de desembarco, mapas, subtítulos), `europa1939.json`, `pacifico.json`.
 - `extras/`: `portada.png` (1280×720), `es.png` (pantalla final como imagen), `pantalla-final.mp4` (20 s), y sus `.html`.
 - `subtitulos.srt`: subtítulos completos para YouTube (CC).
-- `descripcion_youtube.txt`: descripción lista para pegar.
+- `descripcion_youtube.txt`: descripción de máximo 100 caracteres; `comentario_fijado.txt`: capítulos y fuentes.
 - `render_all.sh`: renderiza los 8 capítulos y los une.
 
 ## Título

@@ -33,6 +33,37 @@ Eslogan: "Un mundo de cosas por descubrir". Narración en español, 9:16.
 - **Serie:** "¿Y si…?" solo para escenarios hipotéticos. No fuerces el "¿Y si…?" en una curiosidad, porque cambiaría la duración que le toca.
 - **Hashtags:** `#curiosidades #curiosidadesdelmundo #curiosidadesaleatorias #curiosidadesentiktok #curiosimundo` y uno del tema. Sin #fyp ni #viral.
 
+## Gancho (obligatorio en TODOS los vídeos, cortos y largos; decisión del dueño del canal, 19 de noviembre de 2026)
+Objetivo: que nadie se vaya en los primeros segundos y que siempre haya un motivo para seguir viendo. Escribe el gancho
+**antes** que el resto del guion y prueba 3 versiones; quédate con la más fuerte.
+
+**Primeros 3 segundos (cortos y largos):**
+- Imagen en movimiento + dato con número o frase imposible desde el fotograma 0. Nada de "Hola", "En este vídeo…", logos ni títulos lentos.
+- Usa una fórmula probada (elige la que mejor encaje):
+  - **Dato que choca:** "Este animal sobrevive 30 años sin comer ni beber."
+  - **Contradicción:** "Lo más fuerte del ejército azteca no eran sus armas."
+  - **Tú en la escena:** "Despiertas en Tenochtitlan, en 1421, con un fusil."
+  - **Final por delante:** "En 72 segundos, alguien escribió 'Wow!'… y nunca se repitió."
+  - **Cuenta atrás o reto:** "Tienes 8 minutos antes de que el Sol se apague… y no lo sabes."
+- Abre una pregunta que solo se responde al final (bucle abierto) y dila en voz alta: "…y lo que encontraron después lo cambia todo."
+- Narración rápida y aguda, efecto de impacto en el primer golpe visual.
+
+**Mantenerlos (cortos):**
+- Un **re-gancho** hacia la mitad ("Pero aquí viene lo raro…", "Y eso no es lo peor…").
+- Revela la respuesta del bucle abierto lo más tarde posible, justo antes de la pregunta final.
+- Final que enlaza con el principio (bucle) cuando se pueda, para que se vuelva a ver.
+
+**Mantenerlos (largos de YouTube):**
+- **Arranque en frío** de 15–30 s: el momento más fuerte del vídeo en avance, la pregunta central y la promesa ("Al final
+  sabrás por qué…"). El título o la tarjeta del capítulo 1 va después, nunca antes.
+- Promesa concreta en los primeros 30 s que el vídeo cumple (sin titulares engañosos).
+- **Cada capítulo termina con un gancho al siguiente** ("Pero nadie esperaba lo que pasó en agosto…").
+- Re-gancho cada 60–90 s: un giro, una pregunta, un dato que sorprende o un "esto todavía no es lo más raro".
+- Guarda la mejor revelación para el último tercio y anúnciala desde el principio.
+- La portada y el título refuerzan la misma pregunta que el arranque en frío.
+
+**Prohibido:** prometer algo que el vídeo no muestra, inventar datos para el gancho o alargar con relleno para retener.
+
 ## Estilo
 - **Paleta:** azul #0B2A5B → #1565C0, blanco y amarillo #FFD23F; rojo #E5484D solo para alertas.
 - **Tipografía:** Bebas Neue en titulares, Inter 850 en subtítulos.

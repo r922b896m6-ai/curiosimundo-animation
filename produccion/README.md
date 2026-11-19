@@ -89,6 +89,8 @@ Casi todas las vistas vienen de "Para ti", así que el problema es la retención
 - [ ] Los subtítulos están sincronizados y no tapan nada importante.
 - [ ] Duración: "¿Y si…?" entre 25 y 35 s (máximo 40); el resto, hasta 60 s.
 - [ ] Dato con número en pantalla en el fotograma 0 y gancho hablado antes de los 2 s.
+- [ ] Gancho con fórmula probada (dato que choca, contradicción, tú en la escena, final por delante o reto) y bucle abierto que se resuelve al final.
+- [ ] Re-gancho a mitad del corto; en los largos, arranque en frío de 15–30 s, re-gancho cada 60–90 s y cada capítulo cierra con un gancho al siguiente.
 - [ ] Cambio visual cada 2–4 s; termina con una pregunta directa.
 - [ ] Música libre de derechos o de la biblioteca comercial de TikTok.
 - [ ] Etiqueta **"Contenido generado por IA"** activada en la plataforma si la voz o las imágenes son sintéticas. **No** se menciona la IA en la descripción (decisión del dueño del canal).

@@ -1,0 +1,9 @@
+# CURIOSIMUNDO · 10 · La señal "Wow!": 72 segundos sin explicación (misterio, hasta 60 s)
+# rate|pitch|pausa|texto
++12%|+3Hz|0.2|Setenta y dos segundos. Eso duró la señal más famosa que hemos recibido del espacio… y nunca volvió.
++10%|+1Hz|0.2|Fue el quince de agosto de mil novecientos setenta y siete, en el radiotelescopio Big Ear, en Ohio, Estados Unidos.
++10%|+0Hz|0.2|Días después, el astrónomo Jerry Ehman revisaba los datos impresos y vio esto: seis, E, Q, U, J, cinco. Lo rodeó con un círculo y escribió: «Wow!».
++10%|+0Hz|0.2|Era una señal unas treinta veces más fuerte que el ruido del cielo, en una frecuencia muy especial: la del hidrógeno, la que muchos científicos creían que usaría otra civilización para llamarnos.
++10%|+1Hz|0.2|La buscaron durante décadas, con telescopios mucho más potentes. Nada.
++8%|+0Hz|0.25|Se habló de cometas, de satélites y de nubes de gas cósmico. Ninguna explicación convence del todo.
++10%|+4Hz|0|La historia completa está en nuestro canal de YouTube. ¿Tú qué crees que fue? Te leo en comentarios.

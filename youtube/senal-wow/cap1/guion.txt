@@ -1,0 +1,7 @@
+# Capítulo 1 · La gran oreja
+-3%|-1Hz|0.35|En los años setenta, la Universidad Estatal de Ohio tenía un radiotelescopio muy especial: Big Ear, la gran oreja.
+-3%|+0Hz|0.3|No era una antena redonda, sino dos enormes reflectores de metal y un suelo plano de aluminio, más grande que tres campos de fútbol.
+-3%|+0Hz|0.3|Big Ear no se movía: dejaba que la propia rotación de la Tierra arrastrara el cielo por delante de él, franja a franja.
+-3%|+0Hz|0.3|Desde mil novecientos setenta y tres se dedicaba a algo muy ambicioso: buscar señales de radio de otras civilizaciones. Es lo que se conoce como SETI.
+-3%|+0Hz|0.3|Una computadora analizaba lo que captaba y lo imprimía en largas tiras de papel, columna tras columna, llenas de números y letras.
+-3%|+0Hz|0.35|Casi siempre, solo había ruido: unos y doses, el murmullo normal del universo.

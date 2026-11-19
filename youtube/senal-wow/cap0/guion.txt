@@ -1,0 +1,3 @@
+# Capítulo 0 · Introducción
++0%|+1Hz|0.3|Setenta y dos segundos. En mil novecientos setenta y siete, un radiotelescopio recibió una señal del espacio tan extraña que un astrónomo escribió al lado: «Wow!».
+-2%|+0Hz|0.4|Casi cincuenta años después, nadie sabe qué fue. Esta es la historia de la señal Wow.

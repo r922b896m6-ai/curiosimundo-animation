@@ -1,0 +1,7 @@
+# Capítulo 4 · El silencio
+-3%|+0Hz|0.3|Pero había un detalle raro. Big Ear tenía dos antenas receptoras, una detrás de la otra, que miraban el mismo punto del cielo con unos minutos de diferencia.
+-3%|+0Hz|0.3|La señal apareció en una… y no en la otra. Como si se hubiera apagado en esos pocos minutos.
+-3%|+0Hz|0.3|El equipo de Ohio volvió a apuntar a esa zona durante más de un mes. Nada.
+-3%|+0Hz|0.3|Años después, el investigador Robert Gray la buscó con una antena casera, y más tarde con grandes radiotelescopios, como el VLA de Nuevo México. Nada.
+-3%|+0Hz|0.3|En dos mil veinte, se propuso como posible origen una estrella parecida al Sol en esa zona del cielo. En dos mil veintidós, el proyecto Breakthrough Listen la observó con atención. Tampoco encontró nada.
+-3%|+0Hz|0.35|La señal Wow nunca se ha repetido.

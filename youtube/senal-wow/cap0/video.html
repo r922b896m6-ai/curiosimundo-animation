@@ -1,0 +1,41 @@
+<!doctype html>
+<!-- La señal Wow! · Capítulo 0 · Introducción. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="19.0">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/wow.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="0"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.5"></audio>
+<section class="scene" id="s0" data-start="0" data-duration="11.0"></section>
+<section class="scene" id="t" data-start="10.6" data-duration="8.5"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 0;
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id), mk = CM.mk;
+
+  const svgOf = (id, bg) => { const s = CM.svgIn($(id)); if (bg) $(id).style.background = bg; return s; };
+  const fadeIn = ids => ids.forEach(id => tl.from($(id), { opacity: 0, duration: .3 }, +$(id).dataset.start));
+  const big = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'big', html, top, extra); tl.from(t, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const mid = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'mid', html, top, extra); tl.from(t, { y: 20, opacity: 0, duration: .35 }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const NIGHT = 'linear-gradient(#050a1a, #1d2a4a)';
+  const dish = (s, x, y, sc = 1) => { const g = mk('g', { transform: `translate(${x} ${y}) scale(${sc})` }, s); mk('rect', { x: -10, y: -120, width: 20, height: 120, fill: '#8a96a4' }, g); mk('path', { d: 'M-120 -200 Q0 -60 120 -200 Q0 -150 -120 -200Z', fill: '#d8dde6', stroke: '#8a96a4', 'stroke-width': 4 }, g); mk('line', { x1: 0, y1: -150, x2: 0, y2: -250, stroke: '#8a96a4', 'stroke-width': 5 }, g); return g; };
+  const waves = (s, x, y, n = 4, col = '#FFD23F') => Array.from({ length: n }, (_, i) => mk('circle', { cx: x, cy: y, r: 10, fill: 'none', stroke: col, 'stroke-width': 5 }, s));
+  const pulse = (sec, ws, t0, period = 1.6, maxR = 300) => gm.onFrame($(sec), (l, info) => ws.forEach((c, i) => { const k = (((info.time - t0) / period) + i / ws.length) % 1; c.setAttribute('r', 10 + k * maxR); c.setAttribute('opacity', info.time < t0 ? 0 : 1 - k); }));
+  const stamp = (id, txt, at, top = 420, col = '#E5484D') => { const t = CM.text($(id), 'big', `<span style="border:12px solid ${col};border-radius:20px;padding:0 40px;color:${col}">${txt}</span>`, top, 'font-size:150px;transform:rotate(-8deg)'); tl.from(t, { scale: 2, opacity: 0, duration: .3, ease: 'back.out(2)' }, at); return t; };
+
+
+  $('s0').style.background = '#1a1612'; const p = WOW.printout($('s0'), { left: 560, top: 40, w: 800, h: 1000 }); p.ring.style.opacity = 0; p.wow.style.opacity = 0;
+  tl.fromTo(p.d, { scale: 1.6 }, { scale: 1, duration: 10.6, ease: 'none', transformOrigin: '42% 50%' }, 0).to(p.ring, { opacity: 1, duration: .3 }, W('escribió') - .4).to(p.wow, { opacity: 1, duration: .3 }, W('wow!') - .2);
+  const n = CM.text($('s0'), 'big', '<em>72</em> SEGUNDOS', 420, 'font-size:180px;text-shadow:0 10px 60px #000'); tl.fromTo(n, { scale: 1.2 }, { scale: 1, duration: .6, ease: 'expo.out' }, 0).to(n, { opacity: 0, duration: .3 }, 2.4);
+  const y = CM.text($('s0'), 'big', '<em>1977</em>', 420, 'font-size:200px;text-shadow:0 10px 60px #000'); tl.from(y, { opacity: 0, scale: 1.3, duration: .4 }, 2.6).to(y, { opacity: 0, duration: .3 }, 4.6);
+  const t = $('t'); t.style.background = 'radial-gradient(1200px 800px at 50% 45%, #1d2a5a, #050a1a 75%)';
+  t.innerHTML = '<div class="mid" style="top:250px;color:#FFD23F">CURIOSIMUNDO PRESENTA</div><div class="big" style="top:330px;font-size:200px">LA SEÑAL <em>«WOW!»</em></div><div class="mid" style="top:600px">1977 · 72 segundos sin explicación</div>';
+  const [a, h, s] = t.children; tl.from(t, { opacity: 0, duration: .4 }, 10.6).from(a, { y: 20, opacity: 0, duration: .4 }, 10.8).from(h, { scale: 1.3, opacity: 0, filter: 'blur(16px)', duration: .8, ease: 'expo.out' }, 11.0)
+    .to(h, { scale: 1.05, duration: 7, ease: 'sine.inOut' }, 11.8).from(s, { y: 30, opacity: 0, duration: .4 }, W('casi') - .2);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

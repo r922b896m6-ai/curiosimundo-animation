@@ -1,0 +1,9 @@
+# Escenas con tiempos y subtítulos (generado)
+
+| Escena | Tiempo | Narración | Subtítulos |
+|---|---|---|---|
+| 1 | 0.4–8.2 s | En mil novecientos noventa y ocho, Big Ear fue desmontado para ampliar un campo de golf. La gran oreja se calló para siempre. | `0.4s` En mil novecientos<br>`1.4s` noventa y ocho,<br>`2.5s` Big Ear fue<br>`3.0s` desmontado para<br>`3.9s` ampliar un campo<br>`4.8s` de golf.<br>`6.2s` La gran oreja<br>`7.0s` se calló para<br>`7.7s` siempre. |
+| 2 | 8.8–15.6 s | Pero la tira de papel con el «Wow!» de Jerry Ehman se convirtió en uno de los documentos más famosos de la astronomía. | `8.8s` Pero la tira<br>`9.4s` de papel con<br>`10.1s` el<br>`10.6s` «Wow!»<br>`11.2s` de Jerry Ehman<br>`11.9s` se convirtió en<br>`12.7s` uno de los<br>`13.2s` documentos más<br>`14.1s` famosos de la<br>`14.8s` astronomía. |
+| 3 | 16.1–22.1 s | Hoy, telescopios mucho más potentes siguen escuchando el cielo, buscando otra señal como aquella. | `16.1s` Hoy,<br>`16.7s` telescopios mucho<br>`17.8s` más potentes<br>`18.5s` siguen escuchando<br>`19.4s` el cielo,<br>`20.2s` buscando otra<br>`21.0s` señal como<br>`21.7s` aquella. |
+| 4 | 22.7–30.7 s | Quizá fue un fenómeno natural que aún no entendemos. O quizá, durante setenta y dos segundos, alguien nos estaba llamando. | `22.7s` Quizá fue un<br>`23.3s` fenómeno natural<br>`24.3s` que aún no<br>`24.8s` entendemos.<br>`26.4s` O quizá,<br>`27.3s` durante setenta y<br>`28.2s` dos segundos,<br>`29.1s` alguien nos estaba<br>`30.1s` llamando. |
+| 5 | 31.3–37.5 s | ¿Tú qué crees que fue? Cuéntamelo en los comentarios, y suscríbete a Curiosimundo para más misterios. | `31.3s` ¿Tú qué crees<br>`31.9s` que fue?<br>`33.2s` Cuéntamelo en los<br>`33.9s` comentarios,<br>`34.9s` y suscríbete a<br>`35.6s` Curiosimundo para<br>`36.6s` más misterios. |

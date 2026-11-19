@@ -1,0 +1,7 @@
+# Capítulo 3 · Por qué es tan especial
+-3%|+0Hz|0.3|Lo que más llamó la atención fue su frecuencia: unos mil cuatrocientos veinte megahercios.
+-3%|+0Hz|0.3|Es la frecuencia natural del hidrógeno, el elemento más abundante del universo.
+-3%|+0Hz|0.3|En mil novecientos cincuenta y nueve, dos físicos propusieron que una civilización que quisiera llamar la atención elegiría justo esa frecuencia, porque cualquier astrónomo del universo la conocería.
+-3%|+0Hz|0.3|Además, en la Tierra esa banda está protegida: no se permite emitir en ella, para no estorbar a los radiotelescopios.
+-3%|+0Hz|0.3|Y la señal era muy estrecha, como una sola nota musical en lugar de un ruido. La naturaleza suele producir ruidos anchos; las emisoras, notas estrechas.
+-3%|+0Hz|0.35|Por eso, la señal Wow se convirtió en el mejor candidato a mensaje extraterrestre de la historia.

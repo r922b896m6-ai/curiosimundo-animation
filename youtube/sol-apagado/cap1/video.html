@@ -1,0 +1,69 @@
+<!doctype html>
+<!-- ¿Y si el Sol se apagara? · Capítulo 1 · Los ocho minutos: 150 millones de km, luz a 300.000 km/s, el Sol de hace 8 minutos, la luz como un tren, gravedad a la velocidad de la luz (2017), la Tierra sigue girando. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="59.11">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/space.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.55"></audio>
+<section class="scene" id="dist" data-start="3.6" data-duration="13.33"></section>
+<section class="scene" id="see" data-start="16.83" data-duration="6.66"></section>
+<section class="scene" id="train" data-start="23.39" data-duration="10.44"></section>
+<section class="scene" id="grav" data-start="33.73" data-duration="11.43"></section>
+<section class="scene" id="orb" data-start="45.06" data-duration="8.82"></section>
+<section class="scene" id="zero" data-start="53.78" data-duration="5.33"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4, D = 59.11, S = {dist: 3.6, see: 16.83, train: 23.39, grav: 33.73, orb: 45.06, zero: 53.78};
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id), mk = CM.mk;
+  const svgOf = (id, bg) => CM.svgIn($(id), bg);
+  Object.keys(S).slice(1).forEach(id => tl.from($(id), { opacity: 0, duration: .35 }, S[id]));
+  const nxt = id => { const k = Object.keys(S), i = k.indexOf(id); return i + 1 < k.length ? S[k[i + 1]] : D; };
+  const hd = (title, sub, at, end) => CM.head(H, tl, title, sub, at, end);
+  const big = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'big', html, top, extra); tl.from(t, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const mid = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'mid', html, top, extra); tl.from(t, { y: 20, opacity: 0, duration: .35 }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const stamp = (id, txt, at, top = 420, col = '#E5484D') => { const t = CM.text($(id), 'big', `<span style="border:12px solid ${col};border-radius:20px;padding:0 40px;color:${col}">${txt}</span>`, top, 'font-size:150px;transform:rotate(-8deg)'); tl.from(t, { scale: 2, opacity: 0, duration: .3, ease: 'back.out(2)' }, at); return t; };
+  const push = (id, from = 1.15, to = 1, ox = '50%', oy = '50%') => { const s = $(id).querySelector('svg'); tl.fromTo(s, { scale: from }, { scale: to, duration: nxt(id) - S[id], ease: 'none', transformOrigin: `${ox} ${oy}` }, S[id]); };
+  const ender = (id, q, at, sub = 'CUÉNTAMELO EN LOS COMENTARIOS') => { const end = document.createElement('div'); end.style.cssText = 'position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:radial-gradient(1200px 800px at 50% 45%, #1d2a5a, #050a1a 75%)';
+    end.innerHTML = `<div style="font:400 120px/1 'Bebas Neue';text-align:center">${q}</div><div style="font:800 40px Inter;letter-spacing:.06em">${sub}</div><div style="margin-top:30px;padding:22px 60px;border-radius:16px;background:#d0312d;font:800 44px Inter;letter-spacing:.08em">SUSCRÍBETE</div><div style="margin-top:20px;font:400 90px Bebas Neue;letter-spacing:.14em">CURIOSI<span style="color:#FFD23F">MUNDO</span></div>`;
+    $(id).append(end); const c = end.children;
+    tl.from(end, { opacity: 0, duration: .5 }, at).from(c[0], { scale: 1.2, opacity: 0, duration: .5, ease: 'expo.out' }, at + .1).from(c[1], { y: 20, opacity: 0, duration: .3 }, W('cuéntamelo') - .2)
+      .from(c[2], { scale: 0, duration: .4, ease: 'back.out(2.5)' }, W('suscríbete') - .2).to(c[2], { scale: 1.08, duration: .4, yoyo: true, repeat: 3, ease: 'sine.inOut' }, W('suscríbete') + .3)
+      .from(c[3], { y: 30, opacity: 0, letterSpacing: '.4em', duration: .7, ease: 'expo.out' }, W('curiosimundo') - .2); };
+    const shake = (el, at, amp = 14) => tl.to(el, { x: amp, duration: .06 }, at).to(el, { x: -amp, duration: .08 }, at + .06).to(el, { x: amp * .5, duration: .08 }, at + .14).to(el, { x: 0, duration: .08 }, at + .22);
+
+  const sunEarth = (s, sx = 330, ex = 1600, y = 560) => { SP.stars(s, 200); const sun = SP.sun(s, sx, y, 170); const e = SP.earth(s, ex, y, 70); return { sun, e }; };
+
+  CM.card($('cards'), tl, 1, '8:20', 'LOS OCHO MINUTOS', 0, 4);
+
+  const zd = svgOf('dist', SP.NIGHT); const a = sunEarth(zd); gm.onFrame($('dist'), (l, i) => { a.sun.spin(i.time); a.e.rot(i.time); });
+  const ln = mk('path', { d: 'M520 760 L1520 760', stroke: '#FFD23F', 'stroke-width': 6, 'stroke-dasharray': '20 14' }, zd); tl.from(ln, { draw: 0, duration: 1 }, OFF + .3);
+  const d1 = SP.label(zd, '150 MILLONES DE KM', 1020, 850, 90, '#FFD23F'); tl.from(d1, { opacity: 0, y: 20, duration: .4 }, W('cincuenta') - .2);
+  const ph = mk('circle', { cx: 520, cy: 560, r: 22, fill: '#fff6c0' }, zd); const tr = mk('path', { d: 'M520 560 L520 560', stroke: '#ffe680', 'stroke-width': 10, 'stroke-linecap': 'round', opacity: .6 }, zd);
+  const t0 = W('luz') - .2, t1 = W('aquí') + .3; gm.onFrame($('dist'), (l, i) => { const k = gm.clamp((i.time - t0) / (t1 - t0)), x = 520 + k * 1000; ph.setAttribute('cx', x); tr.setAttribute('d', `M${Math.max(520, x - 240)} 560 L${x} 560`); ph.setAttribute('opacity', i.time < t0 ? 0 : 1); });
+  hd('LA LUZ: <em>300.000 KM/S</em>', 'y aun así tarda en llegar', W('luz') - .2, W('tarda') - .3); hd('<em>8 MIN 20 S</em>', 'del Sol a la Tierra', W('tarda') - .2, S.see);
+  const zs = svgOf('see'); const L = SP.landscape(zs, { sunX: 1300, sunY: 260 }); gm.onFrame($('see'), (l, i) => L.sun.spin(i.time));
+  const tag = SP.label(zs, 'HACE 8 MINUTOS', 1300, 420, 80, '#FFD23F'); tl.from(tag, { opacity: 0, y: 20, duration: .4 }, W('hace') - .3); hd('NO ES EL SOL <em>DE AHORA</em>', 'es su luz de hace 8 minutos', S.see + .3, S.train); push('see', 1.15, 1, '68%', '25%');
+  const zt = svgOf('train', SP.NIGHT); const b = sunEarth(zt); gm.onFrame($('train'), (l, i) => { b.sun.spin(i.time); b.e.rot(i.time); });
+  tl.to(b.sun.g, { opacity: 0, duration: .2 }, W('apagara') - .1); const off1 = SP.label(zt, 'APAGADO', 330, 820, 80, '#E5484D'); tl.from(off1, { opacity: 0, duration: .2 }, W('apagara'));
+  const pk = mk('rect', { x: 500, y: 530, width: 260, height: 60, rx: 30, fill: '#ffe680', opacity: .85 }, zt); const tb = W('última') - .2;
+  gm.onFrame($('train'), (l, i) => pk.setAttribute('x', 500 + gm.clamp((i.time - tb) / (S.grav - tb)) * 760));
+  hd('LA ÚLTIMA <em>LUZ</em>', 'sigue viajando hacia nosotros', W('última') - .3, W('tren') - .3); hd('COMO UN <em>TREN</em>', 'que ya salió de la estación', W('tren') - .2, S.grav);
+  const zg = svgOf('grav', SP.NIGHT); SP.stars(zg, 200); const ns = [0, 1].map(k => mk('circle', { r: 34, fill: '#cfe6ff' }, zg)); const rings = Array.from({ length: 6 }, () => mk('circle', { cx: 960, cy: 540, r: 10, fill: 'none', stroke: '#b06aff', 'stroke-width': 5 }, zg));
+  gm.onFrame($('grav'), (l, i) => { const t = i.time - S.grav, rr = Math.max(30, 200 - t * 14), w = 2 + t * .5; ns.forEach((c, k) => { c.setAttribute('cx', 960 + Math.cos(t * w + k * Math.PI) * rr); c.setAttribute('cy', 540 + Math.sin(t * w + k * Math.PI) * rr * .5); });
+    rings.forEach((c, k) => { const q = ((t * .4 + k / rings.length) % 1); c.setAttribute('r', 40 + q * 900); c.setAttribute('opacity', (1 - q) * .8); }); });
+  hd('LA GRAVEDAD <em>TAMBIÉN</em>', 'viaja a la velocidad de la luz', S.grav + .3, W('dos') - .3); hd('<em>2017</em>', 'ondas gravitacionales · choque de dos estrellas de neutrones', W('dos') - .2, S.orb);
+  const zo = svgOf('orb', SP.NIGHT); SP.stars(zo, 200); mk('circle', { cx: 960, cy: 560, r: 380, fill: 'none', stroke: '#5bc0ff', 'stroke-width': 3, 'stroke-dasharray': '10 12', opacity: .6 }, zo);
+  const ghost = mk('circle', { cx: 960, cy: 560, r: 120, fill: 'none', stroke: '#ffcf4a', 'stroke-width': 4, 'stroke-dasharray': '14 10' }, zo); SP.label(zo, '¿?', 960, 590, 90, '#ffcf4a');
+  const eo = SP.earth(zo, 0, 0, 50); const ck = SP.clock(zo, 1640, 170, 120);
+  gm.onFrame($('orb'), (l, i) => { const t = i.time - S.orb; eo.w.setAttribute('transform', `translate(${960 + Math.cos(t * .5) * 380} ${560 + Math.sin(t * .5) * 380}) scale(.5)`); eo.rot(i.time); ck.set(500 * (1 - gm.clamp(t / (S.zero - S.orb + 1.5)))); });
+  hd('UN SOL QUE <em>YA NO EXISTE</em>', 'y nadie lo nota', S.orb + .4, S.zero);
+  const zz = svgOf('zero', '#03050d'); const c2 = SP.clock(zz, 960, 600, 300); gm.onFrame($('zero'), (l, i) => c2.set(Math.max(0, 1.6 - (i.time - S.zero))));
+  tl.to(c2.t, { attr: { fill: '#E5484D' }, duration: .2 }, W('cero') - .2); shake(zz, W('cero'), 24); big('zero', 'TODO <em>CAMBIA</em>', 170, W('cambia') - .3, 'font-size:140px');
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

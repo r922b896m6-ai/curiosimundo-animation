@@ -1,0 +1,10 @@
+# Capítulo 1 · Una reina griega en Egipto
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|Empecemos por un dato que sorprende: la Gran Pirámide se terminó hacia el año dos mil quinientos sesenta antes de Cristo. Cleopatra nació unos dos mil quinientos años después.
+-3%|+0Hz|0.3|Y la llegada del ser humano a la Luna, en mil novecientos sesenta y nueve, fue unos dos mil años después de Cleopatra.
+-3%|+0Hz|0.3|Además, Cleopatra no era egipcia de origen: era de una familia griega de Macedonia, los Ptolomeos.
+-3%|+0Hz|0.3|Su antepasado, Ptolomeo, fue uno de los generales de Alejandro Magno. Cuando Alejandro murió, se quedó con Egipto, y su familia lo gobernó durante casi trescientos años.
+-3%|+0Hz|0.3|Su capital era Alejandría, una de las ciudades más ricas del mundo, con su enorme biblioteca y su faro, una de las siete maravillas del mundo antiguo.
+-3%|+0Hz|0.3|Cleopatra séptima nació en el año sesenta y nueve antes de Cristo. Hablaba varios idiomas, y fue la primera de su familia en aprender el egipcio, la lengua de su pueblo.
+-3%|+0Hz|0.3|Plutarco escribió que su belleza no era lo que más impresionaba: lo que dejaba a todos sin palabras era su conversación y el encanto de su voz.
+-3%|+1Hz|0.3|Era lista, culta y ambiciosa. Y muy pronto iba a necesitarlo todo.

@@ -1,0 +1,8 @@
+# Capítulo 4 · El día más largo
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|Venus gira sobre sí mismo muy despacio: tarda unos doscientos cuarenta y tres días de la Tierra en dar una vuelta completa.
+-3%|+0Hz|0.3|Y tarda unos doscientos veinticinco días en dar la vuelta al Sol. Es decir: su giro dura más que su año.
+-3%|+0Hz|0.3|Además, gira al revés que casi todos los planetas. Si pudieras estar allí, verías salir el Sol por el oeste y ponerse por el este.
+-3%|+0Hz|0.3|Ojo con un detalle: de un amanecer al siguiente pasan unos ciento diecisiete días de la Tierra. Ese es su día solar.
+-3%|+0Hz|0.3|Y mientras el planeta gira tan lento, su atmósfera hace lo contrario: las nubes altas dan la vuelta completa a Venus en unos cuatro días, con vientos de unos trescientos sesenta kilómetros por hora.
+-3%|+1Hz|0.3|Un planeta lento, ardiente y al revés. Pero ¿siempre fue así?

@@ -1,0 +1,75 @@
+<!doctype html>
+<!-- Venus: el infierno de al lado · Capítulo 2 · El infierno: Mariner 2 (1962), 465 °C, plomo, más caliente que Mercurio, CO2 y efecto invernadero, presión ×90, nubes de ácido sulfúrico, lluvia que se evapora. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="64.66">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/space.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.55"></audio>
+<section class="scene" id="mar" data-start="3.6" data-duration="9.64"></section>
+<section class="scene" id="heat" data-start="13.14" data-duration="7.85"></section>
+<section class="scene" id="mer" data-start="20.89" data-duration="7.31"></section>
+<section class="scene" id="gh" data-start="28.1" data-duration="10.3"></section>
+<section class="scene" id="pr" data-start="38.3" data-duration="9.2"></section>
+<section class="scene" id="acid" data-start="47.4" data-duration="9.63"></section>
+<section class="scene" id="hk" data-start="56.93" data-duration="7.73"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4, D = 64.66, S = {mar: 3.6, heat: 13.14, mer: 20.89, gh: 28.1, pr: 38.3, acid: 47.4, hk: 56.93};
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id), mk = CM.mk;
+  const svgOf = (id, bg) => CM.svgIn($(id), bg);
+  Object.keys(S).slice(1).forEach(id => tl.from($(id), { opacity: 0, duration: .35 }, S[id]));
+  const nxt = id => { const k = Object.keys(S), i = k.indexOf(id); return i + 1 < k.length ? S[k[i + 1]] : D; };
+  const hd = (title, sub, at, end) => CM.head(H, tl, title, sub, at, end);
+  const big = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'big', html, top, extra); tl.from(t, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const mid = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'mid', html, top, extra); tl.from(t, { y: 20, opacity: 0, duration: .35 }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const stamp = (id, txt, at, top = 420, col = '#E5484D') => { const t = CM.text($(id), 'big', `<span style="border:12px solid ${col};border-radius:20px;padding:0 40px;color:${col}">${txt}</span>`, top, 'font-size:150px;transform:rotate(-8deg)'); tl.from(t, { scale: 2, opacity: 0, duration: .3, ease: 'back.out(2)' }, at); return t; };
+  const push = (id, from = 1.15, to = 1, ox = '50%', oy = '50%') => { const s = $(id).querySelector('svg'); tl.fromTo(s, { scale: from }, { scale: to, duration: nxt(id) - S[id], ease: 'none', transformOrigin: `${ox} ${oy}` }, S[id]); };
+  const ender = (id, q, at, sub = 'CUÉNTAMELO EN LOS COMENTARIOS') => { const end = document.createElement('div'); end.style.cssText = 'position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:radial-gradient(1200px 800px at 50% 45%, #1d2a5a, #050a1a 75%)';
+    end.innerHTML = `<div style="font:400 120px/1 'Bebas Neue';text-align:center">${q}</div><div style="font:800 40px Inter;letter-spacing:.06em">${sub}</div><div style="margin-top:30px;padding:22px 60px;border-radius:16px;background:#d0312d;font:800 44px Inter;letter-spacing:.08em">SUSCRÍBETE</div><div style="margin-top:20px;font:400 90px Bebas Neue;letter-spacing:.14em">CURIOSI<span style="color:#FFD23F">MUNDO</span></div>`;
+    $(id).append(end); const c = end.children;
+    tl.from(end, { opacity: 0, duration: .5 }, at).from(c[0], { scale: 1.2, opacity: 0, duration: .5, ease: 'expo.out' }, at + .1).from(c[1], { y: 20, opacity: 0, duration: .3 }, W('cuéntamelo') - .2)
+      .from(c[2], { scale: 0, duration: .4, ease: 'back.out(2.5)' }, W('suscríbete') - .2).to(c[2], { scale: 1.08, duration: .4, yoyo: true, repeat: 3, ease: 'sine.inOut' }, W('suscríbete') + .3)
+      .from(c[3], { y: 30, opacity: 0, letterSpacing: '.4em', duration: .7, ease: 'expo.out' }, W('curiosimundo') - .2); };
+    const shake = (el, at, amp = 14) => tl.to(el, { x: amp, duration: .06 }, at).to(el, { x: -amp, duration: .08 }, at + .06).to(el, { x: amp * .5, duration: .08 }, at + .14).to(el, { x: 0, duration: .08 }, at + .22);
+
+  const VSKY = 'radial-gradient(1600px 1000px at 50% 40%, #1a1430, #05030d 75%)';
+  const vp = (id, x, y, r) => { const s = $(id).querySelector('svg'); const v = SP.venus(s, x, y, r); gm.onFrame($(id), (l, i) => v.flow(i.time)); return v; };
+  const dusk = s => { const lg = mk('linearGradient', { id: 'dk' + Math.random().toString(36).slice(2), x1: 0, y1: 0, x2: 0, y2: 1 }, s); [['0', '#0b1030'], ['.55', '#3a2a5a'], ['.8', '#e07a4a'], ['1', '#f2b46a']].forEach(([o, c]) => mk('stop', { offset: o, 'stop-color': c }, lg));
+    mk('rect', { width: 1920, height: 1080, fill: `url(#${lg.id})` }, s); SP.stars(s, 80, 1920, 500, 'dk'); mk('path', { d: 'M0 860 Q480 820 960 850 T1920 840 L1920 1080 L0 1080Z', fill: '#140c18' }, s);
+    const v0 = mk('g', { transform: 'translate(1380 520)' }, s), v = mk('g', {}, v0); mk('circle', { r: 46, fill: '#fff6d8', opacity: .25 }, v); mk('circle', { r: 14, fill: '#fffbe8' }, v); return v; };
+  const rain = (s, x0, x1, y0, y1, n = 60, seed = 'r') => { const D = Array.from({ length: n }, (_, i) => ({ el: mk('line', { stroke: '#d8e24a', 'stroke-width': 4, 'stroke-linecap': 'round' }, s), x: x0 + gm.random(seed + i) * (x1 - x0), p: gm.random(seed + 'p' + i) }));
+    return t => D.forEach(d => { const k = (t * .7 + d.p) % 1, y = y0 + k * (y1 - y0); d.el.setAttribute('x1', d.x); d.el.setAttribute('x2', d.x - 6); d.el.setAttribute('y1', y); d.el.setAttribute('y2', y + 30); d.el.setAttribute('opacity', 1 - k); }); };
+
+  CM.card($('cards'), tl, 2, '465 °C', 'EL INFIERNO', 0, 4);
+
+  const zm = svgOf('mar', VSKY); SP.stars(zm, 200); vp('mar', 700, 560, 300); const pr = SP.probe(zm); gm.onFrame($('mar'), (l, i) => pr.setAttribute('transform', `translate(${1700 - (i.time - S.mar) * 70} ${260 + (i.time - S.mar) * 10}) scale(.9)`));
+  hd('<em>MARINER 2</em> · 1962', 'la primera visita con éxito a otro planeta', S.mar + .3, W('calor') - .4); hd('UN CALOR <em>TREMENDO</em>', 'lo que midió en Venus', W('calor') - .3, S.heat);
+  const zh = svgOf('heat'); SP.venusGround(zh); const th = SP.thermo(zh, 1500, 860, 620); const tA = S.heat + .3, tB = W('cinco') + .3;
+  gm.onFrame($('heat'), (l, i) => { const k = gm.clamp((i.time - tA) / (tB - tA)); th.set(k); th.lab.textContent = Math.round(k * 465) + ' °C'; });
+  const lead = mk('g', { transform: 'translate(560 780)' }, zh); const bar = mk('rect', { x: -160, y: -100, width: 320, height: 100, rx: 8, fill: '#8f96a3' }, lead); const pool = mk('ellipse', { cx: 0, cy: 6, rx: 40, ry: 10, fill: '#a8b0bc' }, lead);
+  tl.to(bar, { attr: { height: 18, y: -18 }, duration: 2 }, W('plomo') - .3).to(pool, { attr: { rx: 260, ry: 26 }, duration: 2 }, W('plomo') - .3); SP.label(zh, 'PLOMO: SE FUNDE A 327 °C', 560, 600, 60);
+  hd('<em>465 °C</em>', 'en la superficie', S.heat + .3, S.mer);
+  const zr = svgOf('mer', VSKY); SP.stars(zr, 160); const sn = SP.sun(zr, 160, 540, 200); gm.onFrame($('mer'), (l, i) => sn.spin(i.time));
+  SP.planet(zr, 760, 540, 40, '#9a948a'); SP.label(zr, 'MERCURIO', 760, 680, 56); SP.label(zr, 'HASTA ~430 °C DE DÍA', 760, 740, 40, '#9fb3c8'); const v2 = SP.venus(zr, 1440, 540, 110); gm.onFrame($('mer'), (l, i) => v2.flow(i.time));
+  SP.label(zr, 'VENUS', 1440, 720, 56, '#FFD23F'); SP.label(zr, '465 °C DÍA Y NOCHE', 1440, 780, 40, '#FFD23F'); mk('path', { d: 'M800 820 L1400 820', stroke: '#9fb3c8', 'stroke-width': 4, 'stroke-dasharray': '12 10' }, zr); SP.label(zr, 'CASI EL DOBLE DE LEJOS', 1100, 870, 44, '#9fb3c8');
+  hd('MÁS CALIENTE QUE <em>MERCURIO</em>', '¿cómo es posible?', S.mer + .3, S.gh);
+  const zg = svgOf('gh'); SP.venusGround(zg); const atm = mk('rect', { width: 1920, height: 520, fill: '#e8b04a', opacity: .45 }, zg); SP.label(zg, 'CO2', 1700, 160, 120, '#fff');
+  const rays = Array.from({ length: 6 }, (_, i) => mk('path', { d: `M${300 + i * 220} -20 L${380 + i * 220} 640`, stroke: '#fff6c0', 'stroke-width': 10, 'stroke-dasharray': '30 20' }, zg));
+  const heat = Array.from({ length: 6 }, (_, i) => mk('path', { d: `M${400 + i * 220} 640 L${460 + i * 220} 520 L${520 + i * 220} 640`, stroke: '#E5484D', 'stroke-width': 10, fill: 'none' }, zg));
+  gm.onFrame($('gh'), (l, i) => { rays.forEach(r => r.setAttribute('stroke-dashoffset', -i.time * 120)); heat.forEach((h, k) => h.setAttribute('transform', `translate(0 ${Math.sin(i.time * 3 + k) * 20})`)); });
+  hd('ATMÓSFERA DE <em>CO2</em>', 'atrapa el calor como una manta', S.gh + .3, W('invernadero') - .3); hd('EFECTO <em>INVERNADERO</em>', 'llevado al extremo', W('invernadero') - .2, S.pr);
+  const zp = svgOf('pr', 'linear-gradient(#0c4a8a, #020a1a)'); const sub = mk('g', {}, zp); mk('ellipse', { rx: 160, ry: 46, fill: '#f2c43a' }, sub); mk('rect', { x: -30, y: -86, width: 70, height: 50, rx: 10, fill: '#f2c43a' }, sub); mk('circle', { cx: 60, r: 14, fill: '#5bc0ff' }, sub);
+  const dep = SP.label(zp, '0 M', 1600, 540, 120, '#fff'); gm.onFrame($('pr'), (l, i) => { const k = gm.clamp((i.time - S.pr - .3) / (W('kilómetro') - S.pr)); sub.setAttribute('transform', `translate(760 ${200 + k * 560})`); dep.textContent = Math.round(k * 900) + ' M'; });
+  big('pr', '<em>×90</em> LA PRESIÓN', 120, W('noventa') - .3, 'font-size:140px'); hd('COMO A CASI <em>1 KM</em>', 'bajo el mar', W('kilómetro') - .3, S.acid);
+  const za = svgOf('acid'); SP.venusGround(za); const cl = mk('g', {}, za); for (let i = 0; i < 16; i++) mk('ellipse', { cx: i * 130, cy: 90 + (i % 3) * 30, rx: 160, ry: 70, fill: i % 2 ? '#e8d24a' : '#d8c03a', opacity: .9 }, cl);
+  const rf = rain(za, 0, 1920, 140, 520, 80, 'a'); gm.onFrame($('acid'), (l, i) => rf(i.time)); hd('NUBES DE <em>ÁCIDO SULFÚRICO</em>', 'no son de agua', S.acid + .3, W('evapora') - .3); hd('LLUEVE… PERO', 'se evapora antes de tocar el suelo', W('evapora') - .3, S.hk);
+  const zk = svgOf('hk', 'linear-gradient(#d98a2a, #f2c46a)'); const vk = SP.venera(zk, 0, 0, 1); const chute = mk('path', { d: 'M-200 -560 Q0 -760 200 -560 L20 -320 M-200 -560 L-20 -320', fill: 'none', stroke: '#fff', 'stroke-width': 6 }, vk.g); mk('path', { d: 'M-200 -560 Q0 -760 200 -560Z', fill: '#E5484D' }, vk.g);
+  gm.onFrame($('hk'), (l, i) => vk.w.setAttribute('transform', `translate(960 ${300 + (i.time - S.hk) * 90}) scale(.8)`)); big('hk', 'DECIDIERON <em>ATERRIZAR</em>', 120, W('aterrizar') - .4, 'font-size:120px');
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

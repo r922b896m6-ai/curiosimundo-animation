@@ -1,0 +1,11 @@
+# Capítulo 3 · El saco y Julio César
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|Era el año cuarenta y ocho antes de Cristo. César había llegado a Alejandría persiguiendo a su gran rival, Pompeyo, y se instaló en el palacio.
+-3%|+0Hz|0.3|Cleopatra necesitaba hablar con él, pero el palacio estaba lleno de hombres de su hermano. Si la veían, no llegaría viva.
+-3%|+0Hz|0.3|Según el historiador Plutarco, se metió en un saco de ropa de cama, y un amigo suyo, Apolodoro, la llevó al hombro hasta las habitaciones de César.
+-3%|+0Hz|0.3|La famosa alfombra es más bien una leyenda. Pero el truco funcionó: César quedó impresionado, y se puso de su lado.
+-3%|+0Hz|0.3|El hermano y sus consejeros se rebelaron, y César quedó encerrado en Alejandría durante meses. Hasta que llegaron refuerzos.
+-3%|+0Hz|0.3|En la batalla del Nilo, el ejército del joven Ptolomeo se retiró derrotado. El rey intentó huir por el río y murió ahogado.
+-3%|+0Hz|0.3|Cleopatra volvió a ser reina de Egipto. Y poco después tuvo un hijo con César: Ptolomeo César, al que todos llamaban Cesarión.
+-3%|+0Hz|0.3|Durante aquellos combates hubo un incendio en el puerto, y según algunos autores antiguos se quemaron muchos libros. Pero la biblioteca de Alejandría siguió funcionando mucho tiempo después.
+-3%|+1Hz|0.3|Ahora tenía al hombre más poderoso del mundo de su lado. Pero en Roma, muchos lo odiaban.

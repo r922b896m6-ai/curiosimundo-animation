@@ -1,0 +1,9 @@
+# CURIOSIMUNDO · 13 · Cleopatra está más cerca de ti que de las pirámides (historia, hasta 60 s)
+# rate|pitch|pausa|texto
++12%|+3Hz|0.15|Dos mil quinientos años. Eso separa a Cleopatra de la Gran Pirámide.
++10%|+1Hz|0.15|La pirámide se terminó hacia el dos mil quinientos sesenta antes de Cristo. Cleopatra nació en el sesenta y nueve antes de Cristo.
++10%|+2Hz|0.15|Y aquí viene lo bueno: la llegada a la Luna, en mil novecientos sesenta y nueve, fue solo unos dos mil años después de ella.
++10%|+1Hz|0.15|O sea: Cleopatra vivió más cerca del cohete que de la pirámide.
++10%|+0Hz|0.15|Para ella, las pirámides ya eran monumentos antiquísimos: siglos antes, el historiador griego Heródoto ya había viajado para verlas.
++10%|+0Hz|0.15|Y ni siquiera era egipcia de origen: su familia era griega, y fue la primera en aprender el egipcio.
++10%|+4Hz|0|Su historia completa, en nuestro canal de YouTube. ¿Qué otro dato de historia te rompe la cabeza? Te leo en comentarios.

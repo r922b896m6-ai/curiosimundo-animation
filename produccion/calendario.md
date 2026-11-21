@@ -18,13 +18,15 @@
 |---|---|---|---|---|---|---|
 | 1 | lun 16 | Experimento mental | ¿Y si la Tierra dejara de girar? 🌍 | 25–35 s | **+1.600 KM/H** · "Si la Tierra dejara de girar ahora mismo…" | ✅ **Publicado** |
 | 2 | mar 17 | Animales | El animal que piensa con los brazos 🐙 | ≤ 1 min | **3 CORAZONES** · "Tres corazones. Sangre azul." | ✅ **Publicado** |
-| 3 | mié 18 | Universo | El planeta donde un día dura más que un año (Venus) | ≤ 1 min | **243 > 225** · "En Venus, un día dura más que un año." | Pendiente |
-| 4 | jue 19 | Historia | Cleopatra está más cerca de ti que de las pirámides | ≤ 1 min | **2.500 AÑOS** · "Cleopatra vivió más cerca de la llegada a la Luna que de las pirámides." | Pendiente |
+| 3 | mié 18 | Universo | El planeta donde un día dura más que un año (Venus) | ≤ 1 min | **243 > 225** · "En Venus, un día dura más que un año." | ✅ **Vídeo terminado** (`12-venus/out/`) + largo en `youtube/venus/` |
+| 4 | jue 19 | Historia | Cleopatra está más cerca de ti que de las pirámides | ≤ 1 min | **2.500 AÑOS** · "Cleopatra vivió más cerca de la llegada a la Luna que de las pirámides." | ✅ **Vídeo terminado** (`13-cleopatra/out/`) + largo en `youtube/cleopatra/` |
 | 5 | vie 20 | Ciencia | ¿Y si doblaras un papel 42 veces? | 25–35 s | **42 DOBLECES = LA LUNA** · "Dobla un papel 42 veces… y llegas a la Luna." | ✅ **Publicado** |
 | 6 | sáb 21 | Misterios | La señal "Wow!": 72 segundos sin explicación | ≤ 1 min | **72 SEGUNDOS** · "En 1977 llegó una señal del espacio… y nunca volvió." | ✅ **Vídeo terminado** (`10-senal-wow/out/`) + largo en `youtube/senal-wow/` |
 | 7 | dom 22 | Experimento mental | ¿Y si cayeras por un agujero que atraviesa la Tierra? | 25–35 s | **38 MINUTOS** · "Saltas por un túnel que cruza la Tierra… y llegas en 38 minutos." | Pendiente |
 
 El vídeo de los tardígrados (reserva) ya está hecho: `09-tardigrado/out/` (corto) y `youtube/tardigrados/` (largo).
+
+**Extra terminado:** ¿Y si el Sol se apagara? → `11-sol-apagado/out/` (corto, serie «¿Y si…?») + largo en `youtube/sol-apagado/`.
 
 ---
 

@@ -1,0 +1,9 @@
+# Capítulo 2 · El apagón
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|Minuto ocho, segundo veinte. El cielo se apaga en un instante, en toda la mitad de la Tierra donde era de día.
+-3%|+0Hz|0.3|De repente se ven las estrellas en pleno mediodía. Siguen ahí, porque su luz viene de mucho más lejos.
+-3%|+0Hz|0.3|La Luna, en cambio, desaparece. No tiene luz propia: solo refleja la del Sol. Un rato después, también se apagarían Venus, Marte y Júpiter, uno detrás de otro.
+-3%|+0Hz|0.3|Y entonces pasa algo todavía más extraño: la Tierra deja de dar vueltas alrededor del Sol.
+-3%|+0Hz|0.3|Sin nada que la sujete, sale disparada en línea recta, a unos treinta kilómetros por segundo: más de cien mil kilómetros por hora, hacia el espacio profundo.
+-3%|+0Hz|0.3|La Luna no se perdería: seguiría girando a nuestro alrededor, porque la que la sujeta es la gravedad de la Tierra.
+-3%|+1Hz|0.3|Ninguno de esos cambios nos haría daño en el primer momento. Lo peligroso viene después: el frío.

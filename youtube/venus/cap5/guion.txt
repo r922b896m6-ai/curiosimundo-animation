@@ -1,0 +1,8 @@
+# Capítulo 5 · ¿Un pasado con océanos?
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|Algunos modelos de la NASA sugieren que Venus pudo tener, hace miles de millones de años, un clima templado y quizá océanos poco profundos.
+-3%|+0Hz|0.3|La idea es que, al calentarse el Sol, el agua se evaporó, el vapor atrapó más calor, y el planeta entró en un efecto invernadero desbocado del que nunca salió.
+-3%|+0Hz|0.3|Otros estudios recientes lo dudan, y creen que Venus siempre fue un mundo seco. Todavía no se sabe quién tiene razón.
+-3%|+0Hz|0.3|Para averiguarlo, la NASA y la Agencia Espacial Europea tienen previstas nuevas misiones para los años treinta.
+-3%|+0Hz|0.3|Mientras tanto, Venus sigue ahí, brillando al atardecer: tan bonito desde lejos… y tan infernal de cerca.
+-1%|+2Hz|0|¿Tú a dónde viajarías: a Venus o a Marte? Cuéntamelo en los comentarios, y suscríbete a Curiosimundo.

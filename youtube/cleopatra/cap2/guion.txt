@@ -1,0 +1,7 @@
+# Capítulo 2 · Reina a los dieciocho
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|En el año cincuenta y uno antes de Cristo murió su padre. Cleopatra, con unos dieciocho años, tuvo que reinar junto a su hermano, Ptolomeo trece, que era todavía un niño.
+-3%|+0Hz|0.3|Así lo exigía la costumbre de la familia. Pero los consejeros del niño querían el poder para ellos.
+-3%|+0Hz|0.3|Poco a poco apartaron a Cleopatra, hasta que tuvo que huir de Alejandría.
+-3%|+0Hz|0.3|Ella no se rindió: reunió un ejército en la frontera, y los dos hermanos quedaron frente a frente, a punto de entrar en guerra.
+-3%|+1Hz|0.3|Y justo entonces llegó a Egipto el hombre más poderoso de Roma: Julio César.

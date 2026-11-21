@@ -1,0 +1,26 @@
+<!doctype html>
+<!-- Pantalla final de YouTube (20 s). Zonas libres: vídeo recomendado (izquierda, 16:9) y suscripción (derecha, círculo). -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="20">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/space.js"></script></head>
+<body>
+<audio src="musica.mp3" data-volume="0.6" data-fade-in="0.5" data-fade-out="3"></audio>
+<section class="scene" id="e" data-start="0" data-duration="20"></section>
+<script>
+const e = document.getElementById('e'), tl = gm.timeline('#e'), mk = CM.mk;
+const s = CM.svgIn(e, 'radial-gradient(1400px 900px at 50% 40%, #3a1a08, #050308 75%)');
+SP.stars(s, 260); const vv = SP.venus(s, 960, 1300, 520); gm.onFrame('#e', t => vv.flow(t));
+const vbox = mk('rect', { x: 230, y: 380, width: 704, height: 396, rx: 22, fill: 'rgb(6 12 28 / .55)', stroke: '#FFD23F', 'stroke-width': 5, 'stroke-dasharray': '18 12' }, s);
+const sub = mk('circle', { cx: 1440, cy: 578, r: 170, fill: 'rgb(6 12 28 / .55)', stroke: '#FFD23F', 'stroke-width': 5, 'stroke-dasharray': '18 12' }, s);
+const t1 = CM.text(e, 'big', '¿QUÉ <em>PLANETA</em> QUIERES QUE EXPLOREMOS?', 90, 'font-size:104px');
+const t2 = CM.text(e, 'mid', 'cuéntamelo en los <b>comentarios</b>', 230);
+const l1 = CM.text(e, 'mid', 'mira este <b>vídeo</b>', 800, 'left:230px;right:auto;width:704px;font-size:38px');
+const l2 = CM.text(e, 'mid', '<b>suscríbete</b>', 800, 'left:1240px;right:auto;width:400px;font-size:38px');
+const br = CM.text(e, 'big', 'CURIOSI<em>MUNDO</em>', 880, 'font-size:70px;letter-spacing:.14em;top:auto;bottom:40px');
+const sl = CM.text(e, 'mid', 'un mundo de cosas por descubrir', 0, 'top:auto;bottom:16px;font-size:22px;color:#cfe3ff');
+tl.from(t1, { scale: 1.2, opacity: 0, duration: .6, ease: 'expo.out' }, .2).from(t2, { y: 20, opacity: 0, duration: .4 }, .6)
+  .from([vbox, sub], { opacity: 0, duration: .5, stagger: .2 }, .8).from([l1, l2], { y: 20, opacity: 0, duration: .4, stagger: .2 }, 1.1)
+  .from(br, { y: 30, opacity: 0, letterSpacing: '.4em', duration: .8, ease: 'expo.out' }, 1.4).from(sl, { opacity: 0, duration: .5 }, 2)
+  .to(sub, { scale: 1.04, duration: .8, ease: 'sine.inOut', yoyo: true, repeat: 19, transformOrigin: '1440px 578px' }, 2);
+</script>
+</body>
+</html>

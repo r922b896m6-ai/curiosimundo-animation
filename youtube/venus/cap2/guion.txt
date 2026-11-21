@@ -1,0 +1,9 @@
+# Capítulo 2 · El infierno
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|La sonda estadounidense Mariner dos fue la primera nave que visitó con éxito otro planeta. Y lo que midió en Venus fue un calor tremendo.
+-3%|+0Hz|0.3|Hoy sabemos que la superficie está a unos cuatrocientos sesenta y cinco grados. Suficiente para derretir el plomo.
+-3%|+0Hz|0.3|Venus es más caliente que Mercurio, aunque está casi al doble de distancia del Sol. ¿Cómo es posible?
+-3%|+0Hz|0.3|Por su atmósfera: es casi toda de dióxido de carbono, y atrapa el calor como una manta gigante. Es el efecto invernadero, llevado al extremo.
+-3%|+0Hz|0.3|Además, esa atmósfera es tan densa que la presión en el suelo es unas noventa veces la de la Tierra: como estar a casi un kilómetro bajo el mar.
+-3%|+0Hz|0.3|Y sus nubes no son de agua: son de ácido sulfúrico. A veces llueve ácido… pero se evapora antes de tocar el suelo, por el calor.
+-3%|+1Hz|0.3|Un lugar así parece imposible de visitar. Y aun así, alguien decidió aterrizar.

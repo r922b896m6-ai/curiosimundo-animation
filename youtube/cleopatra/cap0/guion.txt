@@ -1,0 +1,7 @@
+# Cleopatra · Arranque en frío
+# rate|pitch|pausa|texto
++4%|+3Hz|0.25|Cleopatra vivió más cerca de nuestra época que de la construcción de las pirámides.
++4%|+3Hz|0.25|Fue la última reina del Egipto de los faraones. Se coló escondida en un saco para conocer a Julio César, se ganó a los dos hombres más poderosos de Roma… y desafió al imperio más grande del mundo.
++2%|+2Hz|0.3|Pero en una sola batalla en el mar, todo se derrumbó.
++2%|+2Hz|0.4|¿Qué pasó en Accio? ¿Y por qué nadie ha encontrado todavía su tumba? Al final lo sabrás.
+-3%|+0Hz|0|Cleopatra: la última reina de Egipto.

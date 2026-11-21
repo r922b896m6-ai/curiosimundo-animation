@@ -1,0 +1,10 @@
+# Capítulo 7 · El final
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|Un año después, en el treinta antes de Cristo, Octavio llegó a Alejandría. Las tropas de Antonio lo abandonaron, y Antonio murió poco después.
+-3%|+0Hz|0.3|Cleopatra, con treinta y nueve años, supo que Octavio quería llevarla encadenada a Roma, como trofeo. Y murió en agosto de ese mismo año.
+-3%|+0Hz|0.3|La tradición dice que fue con la mordedura de una cobra, pero los historiadores no están seguros de cómo ocurrió.
+-3%|+0Hz|0.3|Egipto se convirtió en una provincia de Roma. Terminaban casi tres siglos de los Ptolomeos, y miles de años de faraones.
+-3%|+0Hz|0.3|Su hija, Cleopatra Selene, sobrevivió y llegó a ser reina de Mauritania, en el norte de África.
+-3%|+0Hz|0.3|Octavio se convirtió en el primer emperador de Roma, con el nombre de Augusto. Por él, el mes de agosto se llama así.
+-3%|+0Hz|0.3|Y su tumba nunca se ha encontrado. Las fuentes dicen que Octavio la dejó enterrar junto a Antonio, pero nadie sabe dónde. Hoy algunos arqueólogos la buscan cerca de Alejandría, en un templo llamado Taposiris Magna, sin pruebas todavía.
+-1%|+2Hz|0|¿Crees que algún día encontrarán la tumba de Cleopatra? Cuéntamelo en los comentarios, y suscríbete a Curiosimundo.

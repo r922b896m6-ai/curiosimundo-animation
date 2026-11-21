@@ -1,0 +1,9 @@
+# Capítulo 3 · El frío
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|Sin el Sol, la Tierra empezaría a perder su calor hacia el espacio, día y noche, sin parar.
+-3%|+0Hz|0.3|Las estimaciones varían, pero en una semana la temperatura media de la superficie ya estaría por debajo de cero.
+-3%|+0Hz|0.3|Y en un año, podría bajar a más de setenta grados bajo cero: como en lo más crudo del invierno en el centro de la Antártida.
+-3%|+0Hz|0.3|La fotosíntesis se detendría en ese mismo instante. Sin luz, las plantas no pueden fabricar su alimento, y la mayoría moriría en pocas semanas.
+-3%|+0Hz|0.3|Algunos árboles grandes aguantarían más tiempo, porque guardan reservas de azúcar y el frío los conserva. Pero sin plantas, los animales que comen plantas tampoco durarían.
+-3%|+0Hz|0.3|Los lagos y la superficie del mar se irían congelando, de arriba hacia abajo.
+-3%|+1Hz|0.3|Pero justo debajo de ese hielo hay un lugar donde el frío tardaría muchísimo en llegar.

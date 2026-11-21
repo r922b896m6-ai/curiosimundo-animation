@@ -1,0 +1,9 @@
+# Capítulo 1 · Los ocho minutos
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|El Sol está a unos ciento cincuenta millones de kilómetros de nosotros.
+-3%|+0Hz|0.3|Su luz, que viaja a unos trescientos mil kilómetros por segundo, tarda unos ocho minutos y veinte segundos en llegar hasta aquí.
+-3%|+0Hz|0.3|Eso significa que el Sol que ves en el cielo no es el Sol de ahora: es el Sol de hace ocho minutos.
+-3%|+0Hz|0.3|Si se apagara de golpe, la última luz que salió de él seguiría viajando hacia nosotros, como un tren que ya salió de la estación.
+-3%|+0Hz|0.3|Y no solo la luz. La gravedad también viaja a la velocidad de la luz. En dos mil diecisiete, los detectores de ondas gravitacionales lo confirmaron al ver el choque de dos estrellas de neutrones.
+-3%|+0Hz|0.3|Así que durante ocho minutos y veinte segundos, la Tierra seguiría girando alrededor de un Sol que ya no existe… sin que nadie lo notara.
+-3%|+1Hz|0.3|Pero cuando ese reloj llegue a cero, todo cambia de golpe.

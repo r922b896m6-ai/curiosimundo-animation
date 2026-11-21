@@ -1,0 +1,7 @@
+# ¿Y si el Sol se apagara? · Arranque en frío
+# rate|pitch|pausa|texto
++4%|+3Hz|0.25|Ahora mismo, mientras ves esto, el Sol podría haberse apagado hace cinco minutos… y no tendrías forma de saberlo.
++4%|+3Hz|0.25|Seguirías viendo el cielo azul. Sentirías su calor en la cara. Y de pronto: oscuridad total.
++2%|+2Hz|0.3|¿Qué le pasaría a la Tierra en la primera hora? ¿Y en la primera semana? ¿Y en un año?
++2%|+2Hz|0.4|Al final del vídeo te digo quién sobreviviría… y no es quien te imaginas.
+-3%|+0Hz|0|¿Y si el Sol se apagara?

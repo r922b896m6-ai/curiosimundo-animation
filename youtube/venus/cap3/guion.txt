@@ -1,0 +1,8 @@
+# Capítulo 3 · Las naves Venera
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|La Unión Soviética envió las sondas Venera. Las primeras fueron aplastadas por la presión antes de llegar al suelo.
+-3%|+0Hz|0.3|Pero no se rindieron. En mil novecientos setenta, la Venera siete se convirtió en la primera nave que envió datos desde la superficie de otro planeta.
+-3%|+0Hz|0.3|En mil novecientos setenta y cinco, la Venera nueve tomó la primera fotografía del suelo de Venus: rocas planas bajo un cielo oscuro.
+-3%|+0Hz|0.3|Y en mil novecientos ochenta y dos, la Venera trece envió fotos en color: un paisaje anaranjado, de rocas y polvo.
+-3%|+0Hz|0.3|Estaba diseñada para resistir unos treinta y dos minutos. Aguantó ciento veintisiete, hasta que el calor terminó con ella. Sigue siendo el récord.
+-3%|+1Hz|0.3|Pero lo más raro de Venus no está en su suelo. Está en su reloj.

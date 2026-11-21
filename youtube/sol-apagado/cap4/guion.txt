@@ -1,0 +1,10 @@
+# Capítulo 4 · Quién sobreviviría
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|El hielo que se forma sobre el océano funciona como una manta: aísla el agua de abajo y la protege del frío del espacio.
+-3%|+0Hz|0.3|Por eso, el fondo del mar seguiría líquido durante muchísimo tiempo. Según algunas estimaciones, cientos de miles de años.
+-3%|+0Hz|0.3|Y allí abajo, en la oscuridad, ya existe vida que no necesita el Sol.
+-3%|+0Hz|0.3|Junto a las fuentes hidrotermales, unas chimeneas en el fondo del océano por donde sale agua caliente del interior de la Tierra, viven microbios que se alimentan de sustancias químicas.
+-3%|+0Hz|0.3|Gusanos gigantes, cangrejos y almejas dependen de esos microbios. Para ellos, que el Sol se apague casi no cambiaría nada.
+-3%|+0Hz|0.3|Esa es la respuesta: los supervivientes serían seres diminutos del fondo del mar, que llevan millones de años viviendo sin ver nunca la luz.
+-3%|+0Hz|0.3|¿Y nosotros? Las personas podríamos aguantar un tiempo con energía nuclear o con el calor del interior de la Tierra, como el que ya usa Islandia para calentar sus casas. Pero sería una vida muy difícil.
+-3%|+1Hz|0.3|Ahora, la buena noticia: nada de esto puede pasar. Y te explico por qué.

@@ -1,0 +1,72 @@
+<!doctype html>
+<!-- Cleopatra: la última reina de Egipto · Capítulo 7 · El final: Octavio en Alejandría (30 a. C.), las tropas abandonan a Antonio, Cleopatra no será trofeo, muere en agosto, la cobra (tradición), Egipto provincia romana, Selene reina de Mauritania, Augusto y agosto, la tumba perdida (Taposiris Magna), pregunta final. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="80.15">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/space.js"></script><script src="lib/egypt.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.55"></audio>
+<section class="scene" id="arr" data-start="3.6" data-duration="10.93"></section>
+<section class="scene" id="cle" data-start="14.43" data-duration="7.43"></section>
+<section class="scene" id="end1" data-start="21.76" data-duration="2.89"></section>
+<section class="scene" id="cob" data-start="24.55" data-duration="6.71"></section>
+<section class="scene" id="prov" data-start="31.16" data-duration="9.1"></section>
+<section class="scene" id="sel" data-start="40.16" data-duration="6.85"></section>
+<section class="scene" id="aug" data-start="46.91" data-duration="8.6"></section>
+<section class="scene" id="tomb" data-start="55.41" data-duration="15.87"></section>
+<section class="scene" id="end" data-start="71.18" data-duration="8.97"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4, D = 80.15, S = {arr: 3.6, cle: 14.43, end1: 21.76, cob: 24.55, prov: 31.16, sel: 40.16, aug: 46.91, tomb: 55.41, end: 71.18};
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id), mk = CM.mk;
+  const svgOf = (id, bg) => CM.svgIn($(id), bg);
+  Object.keys(S).slice(1).forEach(id => tl.from($(id), { opacity: 0, duration: .35 }, S[id]));
+  const nxt = id => { const k = Object.keys(S), i = k.indexOf(id); return i + 1 < k.length ? S[k[i + 1]] : D; };
+  const hd = (title, sub, at, end) => CM.head(H, tl, title, sub, at, end);
+  const big = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'big', html, top, extra); tl.from(t, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const mid = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'mid', html, top, extra); tl.from(t, { y: 20, opacity: 0, duration: .35 }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const stamp = (id, txt, at, top = 420, col = '#E5484D') => { const t = CM.text($(id), 'big', `<span style="border:12px solid ${col};border-radius:20px;padding:0 40px;color:${col}">${txt}</span>`, top, 'font-size:150px;transform:rotate(-8deg)'); tl.from(t, { scale: 2, opacity: 0, duration: .3, ease: 'back.out(2)' }, at); return t; };
+  const push = (id, from = 1.15, to = 1, ox = '50%', oy = '50%') => { const s = $(id).querySelector('svg'); tl.fromTo(s, { scale: from }, { scale: to, duration: nxt(id) - S[id], ease: 'none', transformOrigin: `${ox} ${oy}` }, S[id]); };
+  const ender = (id, q, at, sub = 'CUÉNTAMELO EN LOS COMENTARIOS') => { const end = document.createElement('div'); end.style.cssText = 'position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:radial-gradient(1200px 800px at 50% 45%, #1d2a5a, #050a1a 75%)';
+    end.innerHTML = `<div style="font:400 120px/1 'Bebas Neue';text-align:center">${q}</div><div style="font:800 40px Inter;letter-spacing:.06em">${sub}</div><div style="margin-top:30px;padding:22px 60px;border-radius:16px;background:#d0312d;font:800 44px Inter;letter-spacing:.08em">SUSCRÍBETE</div><div style="margin-top:20px;font:400 90px Bebas Neue;letter-spacing:.14em">CURIOSI<span style="color:#FFD23F">MUNDO</span></div>`;
+    $(id).append(end); const c = end.children;
+    tl.from(end, { opacity: 0, duration: .5 }, at).from(c[0], { scale: 1.2, opacity: 0, duration: .5, ease: 'expo.out' }, at + .1).from(c[1], { y: 20, opacity: 0, duration: .3 }, W('cuéntamelo') - .2)
+      .from(c[2], { scale: 0, duration: .4, ease: 'back.out(2.5)' }, W('suscríbete') - .2).to(c[2], { scale: 1.08, duration: .4, yoyo: true, repeat: 3, ease: 'sine.inOut' }, W('suscríbete') + .3)
+      .from(c[3], { y: 30, opacity: 0, letterSpacing: '.4em', duration: .7, ease: 'expo.out' }, W('curiosimundo') - .2); };
+    const shake = (el, at, amp = 14) => tl.to(el, { x: amp, duration: .06 }, at).to(el, { x: -amp, duration: .08 }, at + .06).to(el, { x: amp * .5, duration: .08 }, at + .14).to(el, { x: 0, duration: .08 }, at + .22);
+
+  const fig = (s, kind, x, y, sc = 2.4, dir = 1, o = {}) => { const f = EG.person(s, kind, o); EG.place(f, x, y, sc, dir); return f; };
+  const walk = (sec, f, x0, x1, t0, t1, y, sc = 2.4, dir = 1, run = 1) => gm.onFrame($(sec), (l, i) => { const k = gm.clamp((i.time - t0) / (t1 - t0)); EG.pose(f, { x: x0 + (x1 - x0) * k, y, s: sc, dir, run: k > 0 && k < 1 ? run : 0, ph: i.time * 8 }); });
+  const row = (s, kind, n, x0, dx, y, sc = 1.6, dir = 1) => Array.from({ length: n }, (_, i) => fig(s, kind, x0 + i * dx, y + (i % 2) * 24, sc, dir));
+  const march = (sec, F, t0, t1, sp, y0, sc, dir, run = 1) => gm.onFrame($(sec), (l, i) => F.forEach((f, k) => { const d = gm.clamp(i.time - t0, 0, t1 - t0); EG.pose(f, { x: f.x0 + d * sp, y: y0 + (k % 2) * 24, s: sc, dir, run: i.time > t0 && i.time < t1 ? run : 0, ph: i.time * 8 + k }); }));
+  const army = (s, kind, n, x0, dx, y0, sc, dir) => Array.from({ length: n }, (_, i) => { const f = EG.person(s, kind); f.x0 = x0 + i * dx; EG.pose(f, { x: f.x0, y: y0 + (i % 2) * 24, s: sc, dir }); return f; });
+  const gold = el => el.setAttribute('style', 'filter: sepia(1) saturate(5) hue-rotate(-12deg) brightness(1.05)');
+  const PAL = id => { const s = svgOf(id); EG.palace(s); return s; };
+  const NIGHTSEA = 'linear-gradient(#0a1430, #1d2a5a)';
+
+  CM.card($('cards'), tl, 7, '30 a. C.', 'EL FINAL', 0, 4);
+
+  const za = svgOf('arr'); EG.sky(za, '#7ab8e8', '#f4e2b8'); EG.city(za, 860, 9); mk('rect', { y: 860, width: 1920, height: 220, fill: '#c9b48a' }, za); const L = army(za, 'leg', 8, -1400, 170, 940, 2, 1); march('arr', L, S.arr + .2, S.cle, 160, 940, 2, 1, .9);
+  const T = army(za, 'egs', 4, 1300, 130, 940, 2, -1); const tA = W('abandonaron') - .3; gm.onFrame($('arr'), (l, i) => T.forEach((f, k) => { const d = Math.max(0, i.time - tA) * 200; EG.pose(f, { x: f.x0 + d, y: 940 + (k % 2) * 24, s: 2, dir: 1, run: i.time > tA ? 1 : 0, ph: i.time * 8 + k }); }));
+  hd('<em>30 a. C.</em>', 'Octavio llega a Alejandría', S.arr + .3, tA); hd('ANTONIO, <em>SOLO</em>', 'sus tropas lo abandonan', tA, S.cle);
+  const zc = PAL('cle'); fig(zc, 'cleo', 760, 900, 3.2); const oc = fig(zc, 'octav', 1500, 900, 3, -1); oc.o.setAttribute('opacity', .35); hd('<em>39 AÑOS</em>', 'Octavio quería llevarla a Roma como trofeo', S.cle + .3, S.end1); stamp('cle', 'NO SERÁ UN TROFEO', W('trofeo') - .2, 160, '#FFD23F');
+  const ze = svgOf('end1', '#0a0604'); const lamp = mk('g', { transform: 'translate(1260 640)' }, ze); mk('path', { d: 'M-80 0 Q0 60 80 0 L60 -20 L-60 -20Z', fill: '#b08a4a' }, lamp); const flame = mk('path', { d: 'M60 -20 Q70 -70 90 -100 Q100 -50 80 -20Z', fill: '#ffb030' }, lamp); mk('circle', { cx: 78, cy: -60, r: 120, fill: '#ffb030', opacity: .12 }, lamp);
+  const crown = mk('g', { transform: 'translate(700 640)' }, ze); mk('path', { d: 'M-120 0 L-120 -80 L-60 -40 L0 -110 L60 -40 L120 -80 L120 0Z', fill: '#d8b23a', stroke: '#8a6a2a', 'stroke-width': 5 }, crown); mk('rect', { x: -260, y: 0, width: 1220, height: 30, fill: '#5a3e22' }, ze);
+  tl.to(lamp, { opacity: .25, duration: 2.5 }, W('agosto') - .2); hd('AGOSTO DEL <em>30 a. C.</em>', 'muere Cleopatra', S.end1 + .3, S.cob);
+  const zo = svgOf('cob', '#0a0604'); const cb = mk('path', { d: 'M960 900 Q900 800 960 700 Q1020 600 960 500 Q900 420 960 360 Q1060 300 1040 400 Q1000 440 960 420', stroke: '#d8b23a', 'stroke-width': 30, fill: 'none', 'stroke-linecap': 'round' }, zo); tl.from(cb, { draw: 0, duration: 1.2 }, S.cob + .3);
+  hd('LA <em>TRADICIÓN</em>', 'dice que fue con una cobra', S.cob + .3, W('historiadores') - .3); stamp('cob', 'NO SE SABE', W('historiadores') - .2, 760, '#FFD23F');
+  const zp = svgOf('prov'); EG.desert(zp); EG.pyramids(zp, 960, 820, .8); const eag = mk('g', { transform: 'translate(1600 880)' }, zp); mk('rect', { x: -8, y: -420, width: 16, height: 420, fill: '#6b4a2a' }, eag); mk('path', { d: 'M-100 -430 Q-50 -490 0 -440 Q50 -490 100 -430 Q50 -450 0 -400 Q-50 -450 -100 -430Z', fill: '#d8b23a' }, eag); mk('rect', { x: -60, y: -380, width: 120, height: 80, fill: '#b3262d' }, eag); EG.label(eag, 'SPQR', 0, -325, 44, '#d8b23a');
+  hd('EGIPTO, <em>PROVINCIA DE ROMA</em>', 'fin de los Ptolomeos y de los faraones', S.prov + .3, S.sel);
+  const zl = svgOf('sel', 'radial-gradient(1200px 800px at 50% 45%, #1d2a5a, #050a1a 75%)'); SP.stars(zl, 160); SP.moon(zl, 1500, 300, 90); fig(zl, 'cleo', 900, 1000, 3); hd('<em>CLEOPATRA SELENE</em>', 'reina de Mauritania, en el norte de África', S.sel + .3, S.aug);
+  const zu = svgOf('aug', 'radial-gradient(1200px 800px at 50% 45%, #3a2a10, #0a0604 75%)'); fig(zu, 'octav', 640, 1000, 3.4); const ag = mk('g', { transform: 'translate(1340 520)' }, zu); mk('rect', { x: -260, y: -220, width: 520, height: 440, rx: 24, fill: '#efe6d2' }, ag); mk('rect', { x: -260, y: -220, width: 520, height: 110, rx: 24, fill: '#b3262d' }, ag); EG.label(ag, 'AGOSTO', 0, -140, 90); EG.label(ag, 'AUGUSTO', 0, 60, 120, '#1a1a2a');
+  tl.from(ag, { opacity: 0, scale: .8, duration: .4 }, W('agosto', 2) - .4); hd('<em>AUGUSTO</em>', 'el primer emperador de Roma', W('augusto') - .3, S.tomb);
+  const zt = svgOf('tomb'); EG.desert(zt, { sun: true }); const ruin = EG.columns(zt, { n: 5, top: 380, bottom: 860, cap: 'doric', col: '#d8c8a0' }); ruin.setAttribute('opacity', .9); const dig = fig(zt, 'cit', 1500, 940, 2.2, -1);
+  big('tomb', '¿DÓNDE ESTÁ SU <em>TUMBA</em>?', 110, S.tomb + .3, 'font-size:120px', W('taposiris') - .4); hd('<em>TAPOSIRIS MAGNA</em>', 'un templo cerca de Alejandría · sin pruebas todavía', W('taposiris') - .3, S.end);
+  ender('end', '¿ENCONTRARÁN ALGÚN DÍA LA <span style="color:#FFD23F">TUMBA DE CLEOPATRA</span>?', S.end + .1);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

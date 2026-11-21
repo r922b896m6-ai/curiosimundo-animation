@@ -1,0 +1,8 @@
+# Capítulo 5 · Lo que de verdad le pasará al Sol
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|El Sol es una estrella de unos cuatro mil seiscientos millones de años, y no puede apagarse de golpe, como una bombilla.
+-3%|+0Hz|0.3|Le queda combustible para unos cinco mil millones de años más.
+-3%|+0Hz|0.3|Cuando se le acabe el hidrógeno del centro, se hinchará y se convertirá en una gigante roja, tan grande que quizá llegue hasta la órbita de la Tierra.
+-3%|+0Hz|0.3|Después soltará sus capas exteriores y quedará una enana blanca: una estrella pequeña y muy densa, que se irá enfriando poco a poco durante muchísimo tiempo.
+-3%|+0Hz|0.3|Así que el Sol no se apagará de un día para otro. Pero ahora ya sabes que, si lo hiciera, tendríamos exactamente ocho minutos y veinte segundos sin saberlo.
+-1%|+2Hz|0|¿Qué harías tú en esos ocho minutos? Cuéntamelo en los comentarios, y suscríbete para más vídeos de la serie ¿Y si…? de Curiosimundo.

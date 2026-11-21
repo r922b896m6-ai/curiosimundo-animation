@@ -1,0 +1,6 @@
+# Venus · Arranque en frío
+# rate|pitch|pausa|texto
++4%|+3Hz|0.25|Hay un planeta casi del mismo tamaño que la Tierra, justo al lado… donde el plomo se derrite, llueve ácido y un día dura más que un año.
++4%|+3Hz|0.25|La nave que más aguantó allí sobrevivió solo dos horas.
++2%|+2Hz|0.4|Esta es la historia del gemelo malvado de la Tierra. Y al final te cuento por qué algunos científicos creen que, hace mucho, pudo tener océanos.
+-3%|+0Hz|0|Venus: el infierno de al lado.

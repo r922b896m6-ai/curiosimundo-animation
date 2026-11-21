@@ -1,0 +1,8 @@
+# Capítulo 1 · El gemelo
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|Venus es el planeta más parecido a la Tierra en tamaño: mide casi lo mismo y tiene una masa parecida.
+-3%|+0Hz|0.3|Es también el planeta que más se acerca a nosotros, y después de la Luna, lo más brillante del cielo nocturno.
+-3%|+0Hz|0.3|Por eso se le llama lucero del alba o lucero de la tarde: se ve al amanecer o al anochecer, y durante siglos se pensó que eran dos estrellas distintas.
+-3%|+0Hz|0.3|Pero Venus guarda un secreto: está cubierto por completo de nubes. Con un telescopio no se ve su superficie, solo un manto amarillento.
+-3%|+0Hz|0.3|A principios del siglo veinte, algunos científicos imaginaban debajo un mundo húmedo y cálido, quizá con pantanos y selvas.
+-3%|+1Hz|0.3|Hasta que, en mil novecientos sesenta y dos, una nave pasó por su lado… y descubrió algo muy distinto.

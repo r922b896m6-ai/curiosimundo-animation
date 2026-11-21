@@ -1,0 +1,9 @@
+# CURIOSIMUNDO · 12 · Venus: un día más largo que un año (universo, hasta 60 s)
+# rate|pitch|pausa|texto
++12%|+3Hz|0.15|Doscientos cuarenta y tres días. Eso tarda Venus en girar sobre sí mismo… y su año dura solo doscientos veinticinco.
++10%|+1Hz|0.15|Sí: en Venus, una vuelta sobre sí mismo dura más que una vuelta al Sol.
++10%|+2Hz|0.15|Y eso es lo menos raro. Gira al revés: allí el Sol sale por el oeste.
++10%|+0Hz|0.15|Su suelo está a unos cuatrocientos sesenta y cinco grados, más caliente que Mercurio, y sus nubes son de ácido sulfúrico.
++10%|+0Hz|0.15|La nave que más aguantó allí, la soviética Venera trece, sobrevivió ciento veintisiete minutos.
++10%|+1Hz|0.15|Ojo: de un amanecer al siguiente pasan unos ciento diecisiete días.
++10%|+4Hz|0|La historia completa, en nuestro canal de YouTube. ¿Te gustaría vivir un día que dura ciento diecisiete días? Te leo en comentarios.

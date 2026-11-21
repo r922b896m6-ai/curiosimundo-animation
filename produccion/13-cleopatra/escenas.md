@@ -1,0 +1,11 @@
+# Escenas con tiempos y subtítulos (generado)
+
+| Escena | Tiempo | Narración | Subtítulos |
+|---|---|---|---|
+| 1 | 0.3–4.6 s | Dos mil quinientos años. Eso separa a Cleopatra de la Gran Pirámide. | `0.3s` Dos mil quinientos<br>`1.3s` años.<br>`2.5s` Eso separa a<br>`3.2s` Cleopatra de la<br>`3.8s` Gran Pirámide. |
+| 2 | 5.0–12.0 s | La pirámide se terminó hacia el dos mil quinientos sesenta antes de Cristo. Cleopatra nació en el sesenta y nueve antes de Cristo. | `5.0s` La pirámide se<br>`5.8s` terminó hacia el<br>`6.5s` dos mil quinientos<br>`7.3s` sesenta antes de<br>`8.2s` Cristo.<br>`9.4s` Cleopatra nació en<br>`10.3s` el sesenta y<br>`10.9s` nueve antes de<br>`11.6s` Cristo. |
+| 3 | 12.4–19.0 s | Y aquí viene lo bueno: la llegada a la Luna, en mil novecientos sesenta y nueve, fue solo unos dos mil años después de ella. | `12.4s` Y aquí viene<br>`13.1s` lo bueno:<br>`13.8s` la llegada a<br>`14.3s` la Luna,<br>`15.0s` en mil novecientos<br>`15.8s` sesenta y nueve,<br>`16.8s` fue solo unos<br>`17.6s` dos mil años<br>`18.2s` después de ella. |
+| 4 | 19.4–22.9 s | O sea: Cleopatra vivió más cerca del cohete que de la pirámide. | `19.4s` O sea:<br>`20.2s` Cleopatra vivió<br>`20.9s` más cerca del<br>`21.6s` cohete que de<br>`22.2s` la pirámide. |
+| 5 | 23.3–30.9 s | Para ella, las pirámides ya eran monumentos antiquísimos: siglos antes, el historiador griego Heródoto ya había viajado para verlas. | `23.3s` Para ella,<br>`24.1s` las pirámides ya<br>`25.0s` eran monumentos<br>`25.8s` antiquísimos:<br>`26.7s` siglos antes,<br>`27.8s` el historiador<br>`28.5s` griego Heródoto ya<br>`29.5s` había viajado para<br>`30.4s` verlas. |
+| 6 | 31.2–36.6 s | Y ni siquiera era egipcia de origen: su familia era griega, y fue la primera en aprender el egipcio. | `31.2s` Y ni siquiera<br>`32.0s` era egipcia de<br>`32.6s` origen:<br>`33.2s` su familia era<br>`34.0s` griega,<br>`34.7s` y fue la<br>`35.1s` primera en<br>`35.5s` aprender el<br>`36.1s` egipcio. |
+| 7 | 36.9–44.4 s | Su historia completa, en nuestro canal de YouTube. ¿Qué otro dato de historia te rompe la cabeza? Te leo en comentarios. | `36.9s` Su historia<br>`37.5s` completa,<br>`38.3s` en nuestro canal<br>`39.0s` de YouTube.<br>`40.2s` ¿Qué otro dato<br>`40.8s` de historia te<br>`41.5s` rompe la cabeza?<br>`43.2s` Te leo en<br>`43.6s` comentarios. |

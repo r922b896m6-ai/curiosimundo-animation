@@ -1,0 +1,63 @@
+<!doctype html>
+<!-- ¿Y si el Sol se apagara? · Capítulo 3 · El frío: en una semana bajo 0 °C, en un año más de −70 °C, sin fotosíntesis, árboles con reservas, mares que se congelan desde arriba. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="59.5">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/space.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.55"></audio>
+<section class="scene" id="th" data-start="3.6" data-duration="22.23"></section>
+<section class="scene" id="pl" data-start="25.73" data-duration="10.91"></section>
+<section class="scene" id="tr" data-start="36.54" data-duration="11.52"></section>
+<section class="scene" id="lake" data-start="47.96" data-duration="5.23"></section>
+<section class="scene" id="hook" data-start="53.09" data-duration="6.41"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4, D = 59.5, S = {th: 3.6, pl: 25.73, tr: 36.54, lake: 47.96, hook: 53.09};
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id), mk = CM.mk;
+  const svgOf = (id, bg) => CM.svgIn($(id), bg);
+  Object.keys(S).slice(1).forEach(id => tl.from($(id), { opacity: 0, duration: .35 }, S[id]));
+  const nxt = id => { const k = Object.keys(S), i = k.indexOf(id); return i + 1 < k.length ? S[k[i + 1]] : D; };
+  const hd = (title, sub, at, end) => CM.head(H, tl, title, sub, at, end);
+  const big = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'big', html, top, extra); tl.from(t, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const mid = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'mid', html, top, extra); tl.from(t, { y: 20, opacity: 0, duration: .35 }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const stamp = (id, txt, at, top = 420, col = '#E5484D') => { const t = CM.text($(id), 'big', `<span style="border:12px solid ${col};border-radius:20px;padding:0 40px;color:${col}">${txt}</span>`, top, 'font-size:150px;transform:rotate(-8deg)'); tl.from(t, { scale: 2, opacity: 0, duration: .3, ease: 'back.out(2)' }, at); return t; };
+  const push = (id, from = 1.15, to = 1, ox = '50%', oy = '50%') => { const s = $(id).querySelector('svg'); tl.fromTo(s, { scale: from }, { scale: to, duration: nxt(id) - S[id], ease: 'none', transformOrigin: `${ox} ${oy}` }, S[id]); };
+  const ender = (id, q, at, sub = 'CUÉNTAMELO EN LOS COMENTARIOS') => { const end = document.createElement('div'); end.style.cssText = 'position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:radial-gradient(1200px 800px at 50% 45%, #1d2a5a, #050a1a 75%)';
+    end.innerHTML = `<div style="font:400 120px/1 'Bebas Neue';text-align:center">${q}</div><div style="font:800 40px Inter;letter-spacing:.06em">${sub}</div><div style="margin-top:30px;padding:22px 60px;border-radius:16px;background:#d0312d;font:800 44px Inter;letter-spacing:.08em">SUSCRÍBETE</div><div style="margin-top:20px;font:400 90px Bebas Neue;letter-spacing:.14em">CURIOSI<span style="color:#FFD23F">MUNDO</span></div>`;
+    $(id).append(end); const c = end.children;
+    tl.from(end, { opacity: 0, duration: .5 }, at).from(c[0], { scale: 1.2, opacity: 0, duration: .5, ease: 'expo.out' }, at + .1).from(c[1], { y: 20, opacity: 0, duration: .3 }, W('cuéntamelo') - .2)
+      .from(c[2], { scale: 0, duration: .4, ease: 'back.out(2.5)' }, W('suscríbete') - .2).to(c[2], { scale: 1.08, duration: .4, yoyo: true, repeat: 3, ease: 'sine.inOut' }, W('suscríbete') + .3)
+      .from(c[3], { y: 30, opacity: 0, letterSpacing: '.4em', duration: .7, ease: 'expo.out' }, W('curiosimundo') - .2); };
+    const shake = (el, at, amp = 14) => tl.to(el, { x: amp, duration: .06 }, at).to(el, { x: -amp, duration: .08 }, at + .06).to(el, { x: amp * .5, duration: .08 }, at + .14).to(el, { x: 0, duration: .08 }, at + .22);
+
+  const sunEarth = (s, sx = 330, ex = 1600, y = 560) => { SP.stars(s, 200); const sun = SP.sun(s, sx, y, 170); const e = SP.earth(s, ex, y, 70); return { sun, e }; };
+
+  CM.card($('cards'), tl, 3, '−70 °C', 'EL FRÍO', 0, 4);
+
+  const zt = svgOf('th', SP.NIGHT); SP.stars(zt, 200); const e = SP.earth(zt, 620, 560, 300); gm.onFrame($('th'), (l, i) => e.rot(i.time * .5));
+  const fr = mk('circle', { cx: 620, cy: 560, r: 302, fill: '#e6f6ff', opacity: 0 }, zt); const th = SP.thermo(zt, 1400, 900, 640);
+  const k1 = W('semana'), k2 = W('año'); gm.onFrame($('th'), (l, i) => { const t = i.time; const temp = t < k1 ? 15 - gm.clamp((t - OFF) / (k1 - OFF)) * 15 : t < k2 ? -gm.clamp((t - k1) / (k2 - k1)) * 8 : -8 - gm.clamp((t - k2) / 2.5) * 64;
+    th.set(gm.clamp((temp + 80) / 100), temp > 0 ? '#E5484D' : '#5bc0ff'); th.lab.textContent = `${Math.round(temp)} °C`; fr.setAttribute('opacity', gm.clamp((15 - temp) / 90) * .6); });
+  hd('<em>1 SEMANA</em>', 'temperatura media bajo cero', k1 - .3, k2 - .3); hd('<em>1 AÑO</em>', 'más de −70 °C · como el invierno de la Antártida', k2 - .2, S.pl); const ea = SP.label(zt, 'ESTIMACIONES APROXIMADAS', 1400, 1010, 44, '#FFD23F'); tl.from(ea, { opacity: 0, duration: .3 }, W('estimaciones') - .3);
+  const zp = svgOf('pl', 'linear-gradient(#0a1020, #1a2236)'); mk('rect', { y: 760, width: 1920, height: 320, fill: '#2a2a20' }, zp); const P = [];
+  for (let i = 0; i < 26; i++) { const x = 60 + i * 72, h = 160 + gm.random('ph' + i) * 140, g0 = mk('g', { transform: `translate(${x} 780)` }, zp), g = mk('g', { style: 'transform-origin:0px 0px' }, g0); const st = mk('path', { d: `M0 0 Q${(gm.random('pq' + i) - .5) * 40} ${-h / 2} 0 ${-h}`, stroke: '#3f9a4a', 'stroke-width': 8, fill: 'none' }, g);
+    const lf = mk('ellipse', { cx: 18, cy: -h * .6, rx: 26, ry: 10, fill: '#3f9a4a', transform: `rotate(-30 18 ${-h * .6})` }, g); const fl = mk('circle', { cy: -h, r: 18, fill: i % 3 ? '#FFD23F' : '#e5484d' }, g); P.push({ g, st, lf, fl, h }); }
+  const tw = W('mayoría') - .5; P.forEach((p, i) => { tl.to([p.st, p.lf], { attr: { stroke: '#7a5a2a', fill: '#7a5a2a' }, duration: 1.5 }, tw + i * .04).to(p.g, { rotate: 18 + gm.random('pr' + i) * 30, duration: 1.5 }, tw + i * .04).to(p.fl, { opacity: 0, duration: 1 }, tw + i * .04); });
+  hd('SIN <em>FOTOSÍNTESIS</em>', 'las plantas no pueden fabricar su alimento', S.pl + .3, tw - .3); hd('EN POCAS <em>SEMANAS</em>', 'la mayoría moriría', tw - .2, S.tr);
+  const zr = svgOf('tr', 'linear-gradient(#0a1020, #26304a)'); mk('rect', { y: 800, width: 1920, height: 280, fill: '#6f8299' }, zr); const tree = mk('g', { transform: 'translate(760 880) scale(2)' }, zr);
+  mk('rect', { x: -14, y: -140, width: 28, height: 140, fill: '#5a3e22' }, tree); [[0, -190, 80], [-60, -150, 56], [60, -156, 58]].forEach(([x, y, r]) => { mk('circle', { cx: x, cy: y, r, fill: '#2c5a2a' }, tree); mk('ellipse', { cx: x, cy: y - r * .7, rx: r * .8, ry: r * .3, fill: '#f4f8fb' }, tree); });
+  const cell0 = mk('g', { transform: 'translate(1420 520)' }, zr), cell = mk('g', {}, cell0); mk('circle', { r: 150, fill: 'rgb(255 210 63 / .15)', stroke: '#FFD23F', 'stroke-width': 5 }, cell); SP.label(cell, 'AZÚCAR', 0, 20, 80, '#FFD23F'); tl.from(cell, { scale: 0, duration: .4, ease: 'back.out(2)' }, W('reservas') - .3);
+  hd('LOS ÁRBOLES <em>AGUANTAN</em>', 'guardan reservas y el frío los conserva', S.tr + .3, W('animales') - .3); hd('SIN PLANTAS…', 'los animales que comen plantas tampoco durarían', W('animales') - .2, S.lake);
+  const zl = svgOf('lake', 'linear-gradient(#0a1020, #1a2236)'); mk('rect', { y: 300, width: 1920, height: 780, fill: '#0c3f8a' }, zl); const ice = mk('rect', { y: 300, width: 1920, height: 0, fill: '#d9f0ff' }, zl);
+  tl.to(ice, { attr: { height: 220 }, duration: (S.hook - S.lake), ease: 'power1.out' }, S.lake); const ar = mk('path', { d: 'M1700 340 L1700 520 M1660 480 L1700 530 L1740 480', stroke: '#fff', 'stroke-width': 10, fill: 'none' }, zl);
+  hd('SE CONGELAN', 'de arriba hacia abajo', S.lake + .3, S.hook);
+  const zh = svgOf('hook', '#04142e'); const oc = SP.ocean(zh); gm.onFrame($('hook'), (l, i) => oc.anim(i.time)); oc.vent.setAttribute('opacity', 0); oc.crab.setAttribute('opacity', 0); oc.microbes.forEach(m => m.setAttribute('opacity', 0));
+  big('hook', '<em>?</em>', 400, W('lugar') - .3, 'font-size:300px'); mid('hook', 'debajo del <b>hielo</b>', 760, W('hielo') - .3);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

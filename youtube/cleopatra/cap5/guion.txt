@@ -1,0 +1,10 @@
+# Capítulo 5 · Marco Antonio
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|Tras la muerte de César, Roma quedó en manos de tres hombres. Uno de ellos era Marco Antonio, que se encargó de Oriente. Otro era Octavio, el joven sobrino nieto y heredero de César.
+-3%|+0Hz|0.3|En el año cuarenta y uno antes de Cristo, Antonio llamó a Cleopatra a la ciudad de Tarso. Ella llegó de una forma que nadie olvidaría.
+-3%|+0Hz|0.3|Según Plutarco, apareció en un barco con la popa dorada, velas de color púrpura y remos de plata, vestida como la diosa Venus.
+-3%|+0Hz|0.3|Antonio quedó deslumbrado. Pasó el invierno con ella en Alejandría, y tuvieron dos gemelos: Alejandro Helios y Cleopatra Selene, el Sol y la Luna.
+-3%|+0Hz|0.3|Años después, Antonio repartió en una gran ceremonia tierras de Oriente entre Cleopatra y sus hijos.
+-3%|+0Hz|0.3|En Roma, Octavio aprovechó la ocasión: dijo que Antonio estaba hechizado por una reina extranjera, y que quería regalarle las tierras de Roma.
+-3%|+0Hz|0.3|El escritor Plinio cuenta que Cleopatra apostó con Antonio a que podía dar el banquete más caro de la historia: disolvió una perla gigante en vinagre y se la bebió. Seguramente es una exageración, pero muestra la fama que tenía.
+-3%|+1Hz|0.3|En el año treinta y dos antes de Cristo, Roma declaró la guerra a Cleopatra. Y todo se decidiría en el mar.

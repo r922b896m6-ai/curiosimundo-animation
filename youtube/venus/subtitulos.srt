@@ -1,0 +1,595 @@
+1
+00:00:00,348 --> 00:00:02,663
+Hay un planeta casi del mismo tamaño que
+
+2
+00:00:02,475 --> 00:00:03,180
+la Tierra,
+
+3
+00:00:03,269 --> 00:00:04,178
+justo al lado…
+
+4
+00:00:04,254 --> 00:00:05,668
+donde el plomo se derrite,
+
+5
+00:00:05,745 --> 00:00:07,868
+llueve ácido y un día dura más que
+
+6
+00:00:07,680 --> 00:00:08,361
+un año.
+
+7
+00:00:08,659 --> 00:00:10,878
+La nave que más aguantó allí sobrevivió
+
+8
+00:00:10,690 --> 00:00:11,875
+solo dos horas.
+
+9
+00:00:12,174 --> 00:00:14,482
+Esta es la historia del gemelo malvado de
+
+10
+00:00:14,295 --> 00:00:15,022
+la Tierra.
+
+11
+00:00:15,666 --> 00:00:17,582
+Y al final te cuento por qué algunos
+
+12
+00:00:17,394 --> 00:00:18,771
+científicos creen que,
+
+13
+00:00:18,742 --> 00:00:19,579
+hace mucho,
+
+14
+00:00:19,637 --> 00:00:21,074
+pudo tener océanos.
+
+15
+00:00:21,526 --> 00:00:22,254
+Venus:
+
+16
+00:00:22,325 --> 00:00:23,839
+el infierno de al lado.
+
+17
+00:00:29,592 --> 00:00:31,802
+Venus es el planeta más parecido a la
+
+18
+00:00:31,615 --> 00:00:32,704
+Tierra en tamaño:
+
+19
+00:00:32,839 --> 00:00:35,178
+mide casi lo mismo y tiene una masa
+
+20
+00:00:34,991 --> 00:00:35,835
+parecida.
+
+21
+00:00:36,187 --> 00:00:38,462
+Es también el planeta que más se acerca
+
+22
+00:00:38,275 --> 00:00:39,132
+a nosotros,
+
+23
+00:00:39,202 --> 00:00:40,446
+y después de la Luna,
+
+24
+00:00:40,581 --> 00:00:42,856
+lo más brillante del cielo nocturno.
+
+25
+00:00:43,208 --> 00:00:45,237
+Por eso se le llama lucero del alba
+
+26
+00:00:45,050 --> 00:00:46,371
+o lucero de la tarde:
+
+27
+00:00:46,481 --> 00:00:48,446
+se ve al amanecer o al anochecer,
+
+28
+00:00:48,568 --> 00:00:50,933
+y durante siglos se pensó que eran dos
+
+29
+00:00:50,746 --> 00:00:52,209
+estrellas distintas.
+
+30
+00:00:52,561 --> 00:00:54,294
+Pero Venus guarda un secreto:
+
+31
+00:00:54,391 --> 00:00:56,794
+está cubierto por completo de nubes.
+
+32
+00:00:57,485 --> 00:01:00,004
+Con un telescopio no se ve su superficie,
+
+33
+00:01:00,114 --> 00:01:01,770
+solo un manto amarillento.
+
+34
+00:01:02,121 --> 00:01:04,010
+A principios del siglo veinte,
+
+35
+00:01:04,093 --> 00:01:06,638
+algunos científicos imaginaban debajo un
+
+36
+00:01:06,451 --> 00:01:07,979
+mundo húmedo y cálido,
+
+37
+00:01:08,062 --> 00:01:10,066
+quizá con pantanos y selvas.
+
+38
+00:01:10,418 --> 00:01:11,185
+Hasta que,
+
+39
+00:01:11,243 --> 00:01:13,144
+en mil novecientos sesenta y dos,
+
+40
+00:01:13,279 --> 00:01:14,909
+una nave pasó por su lado…
+
+41
+00:01:14,980 --> 00:01:17,035
+y descubrió algo muy distinto.
+
+42
+00:01:22,792 --> 00:01:25,337
+La sonda estadounidense Mariner dos fue la
+
+43
+00:01:25,150 --> 00:01:27,618
+primera nave que visitó con éxito otro
+
+44
+00:01:27,431 --> 00:01:28,172
+planeta.
+
+45
+00:01:28,863 --> 00:01:30,635
+Y lo que midió en Venus fue un
+
+46
+00:01:30,448 --> 00:01:31,576
+calor tremendo.
+
+47
+00:01:31,927 --> 00:01:34,344
+Hoy sabemos que la superficie está a unos
+
+48
+00:01:34,156 --> 00:01:36,444
+cuatrocientos sesenta y cinco grados.
+
+49
+00:01:37,135 --> 00:01:39,332
+Suficiente para derretir el plomo.
+
+50
+00:01:39,684 --> 00:01:41,868
+Venus es más caliente que Mercurio,
+
+51
+00:01:41,926 --> 00:01:44,304
+aunque está casi al doble de distancia del
+
+52
+00:01:44,117 --> 00:01:44,652
+Sol.
+
+53
+00:01:45,343 --> 00:01:46,535
+¿Cómo es posible?
+
+54
+00:01:46,886 --> 00:01:47,988
+Por su atmósfera:
+
+55
+00:01:48,098 --> 00:01:50,411
+es casi toda de dióxido de carbono,
+
+56
+00:01:50,520 --> 00:01:53,220
+y atrapa el calor como una manta gigante.
+
+57
+00:01:53,911 --> 00:01:55,438
+Es el efecto invernadero,
+
+58
+00:01:55,496 --> 00:01:56,740
+llevado al extremo.
+
+59
+00:01:57,092 --> 00:01:57,871
+Además,
+
+60
+00:01:58,006 --> 00:02:00,436
+esa atmósfera es tan densa que la presión
+
+61
+00:02:00,249 --> 00:02:02,369
+en el suelo es unas noventa veces la
+
+62
+00:02:02,182 --> 00:02:03,026
+de la Tierra:
+
+63
+00:02:03,110 --> 00:02:05,333
+como estar a casi un kilómetro bajo el
+
+64
+00:02:05,146 --> 00:02:05,706
+mar.
+
+65
+00:02:06,058 --> 00:02:07,843
+Y sus nubes no son de agua:
+
+66
+00:02:07,939 --> 00:02:09,570
+son de ácido sulfúrico.
+
+67
+00:02:10,261 --> 00:02:11,736
+A veces llueve ácido…
+
+68
+00:02:11,833 --> 00:02:14,262
+pero se evapora antes de tocar el suelo,
+
+69
+00:02:14,255 --> 00:02:15,216
+por el calor.
+
+70
+00:02:15,567 --> 00:02:18,177
+Un lugar así parece imposible de visitar.
+
+71
+00:02:18,868 --> 00:02:19,828
+Y aun así,
+
+72
+00:02:19,912 --> 00:02:21,697
+alguien decidió aterrizar.
+
+73
+00:02:27,452 --> 00:02:30,087
+La Unión Soviética envió las sondas Venera.
+
+74
+00:02:30,778 --> 00:02:32,949
+Las primeras fueron aplastadas por la
+
+75
+00:02:32,762 --> 00:02:34,676
+presión antes de llegar al suelo.
+
+76
+00:02:35,028 --> 00:02:36,413
+Pero no se rindieron.
+
+77
+00:02:37,104 --> 00:02:38,812
+En mil novecientos setenta,
+
+78
+00:02:38,960 --> 00:02:41,260
+la Venera siete se convirtió en la primera
+
+79
+00:02:41,073 --> 00:02:43,670
+nave que envió datos desde la superficie de
+
+80
+00:02:43,483 --> 00:02:44,521
+otro planeta.
+
+81
+00:02:44,872 --> 00:02:46,915
+En mil novecientos setenta y cinco,
+
+82
+00:02:47,063 --> 00:02:49,544
+la Venera nueve tomó la primera fotografía
+
+83
+00:02:49,357 --> 00:02:50,575
+del suelo de Venus:
+
+84
+00:02:50,658 --> 00:02:52,959
+rocas planas bajo un cielo oscuro.
+
+85
+00:02:53,310 --> 00:02:55,340
+Y en mil novecientos ochenta y dos,
+
+86
+00:02:55,411 --> 00:02:57,660
+la Venera trece envió fotos en color:
+
+87
+00:02:57,769 --> 00:02:59,271
+un paisaje anaranjado,
+
+88
+00:02:59,315 --> 00:03:00,611
+de rocas y polvo.
+
+89
+00:03:00,962 --> 00:03:03,572
+Estaba diseñada para resistir unos treinta
+
+90
+00:03:03,385 --> 00:03:04,539
+y dos minutos.
+
+91
+00:03:05,229 --> 00:03:07,066
+Aguantó ciento veintisiete,
+
+92
+00:03:07,072 --> 00:03:09,218
+hasta que el calor terminó con ella.
+
+93
+00:03:09,920 --> 00:03:11,422
+Sigue siendo el récord.
+
+94
+00:03:11,773 --> 00:03:13,739
+Pero lo más raro de Venus no está
+
+95
+00:03:13,552 --> 00:03:14,396
+en su suelo.
+
+96
+00:03:15,087 --> 00:03:16,382
+Está en su reloj.
+
+97
+00:03:22,132 --> 00:03:24,767
+Venus gira sobre sí mismo muy despacio:
+
+98
+00:03:24,876 --> 00:03:27,216
+tarda unos doscientos cuarenta y tres días
+
+99
+00:03:27,028 --> 00:03:29,226
+de la Tierra en dar una vuelta completa.
+
+100
+00:03:29,577 --> 00:03:32,265
+Y tarda unos doscientos veinticinco días en
+
+101
+00:03:32,077 --> 00:03:33,386
+dar la vuelta al Sol.
+
+102
+00:03:34,076 --> 00:03:34,856
+Es decir:
+
+103
+00:03:34,940 --> 00:03:36,867
+su giro dura más que su año.
+
+104
+00:03:37,218 --> 00:03:37,998
+Además,
+
+105
+00:03:38,094 --> 00:03:40,949
+gira al revés que casi todos los planetas.
+
+106
+00:03:41,640 --> 00:03:43,180
+Si pudieras estar allí,
+
+107
+00:03:43,315 --> 00:03:45,409
+verías salir el Sol por el oeste y
+
+108
+00:03:45,222 --> 00:03:46,621
+ponerse por el este.
+
+109
+00:03:46,972 --> 00:03:48,293
+Ojo con un detalle:
+
+110
+00:03:48,403 --> 00:03:50,652
+de un amanecer al siguiente pasan unos
+
+111
+00:03:50,465 --> 00:03:52,688
+ciento diecisiete días de la Tierra.
+
+112
+00:03:53,378 --> 00:03:54,944
+Ese es su día solar.
+
+113
+00:03:55,296 --> 00:03:57,622
+Y mientras el planeta gira tan lento,
+
+114
+00:03:57,719 --> 00:03:59,671
+su atmósfera hace lo contrario:
+
+115
+00:03:59,793 --> 00:04:02,107
+las nubes altas dan la vuelta completa a
+
+116
+00:04:01,920 --> 00:04:03,653
+Venus en unos cuatro días,
+
+117
+00:04:03,685 --> 00:04:05,986
+con vientos de unos trescientos sesenta
+
+118
+00:04:05,799 --> 00:04:07,158
+kilómetros por hora.
+
+119
+00:04:07,510 --> 00:04:08,754
+Un planeta lento,
+
+120
+00:04:08,760 --> 00:04:10,313
+ardiente y al revés.
+
+121
+00:04:11,004 --> 00:04:12,338
+Pero ¿siempre fue así?
+
+122
+00:04:18,092 --> 00:04:20,392
+Algunos modelos de la NASA sugieren que
+
+123
+00:04:20,205 --> 00:04:21,397
+Venus pudo tener,
+
+124
+00:04:21,455 --> 00:04:23,343
+hace miles de millones de años,
+
+125
+00:04:23,504 --> 00:04:26,036
+un clima templado y quizá océanos poco
+
+126
+00:04:25,849 --> 00:04:26,771
+profundos.
+
+127
+00:04:27,122 --> 00:04:28,302
+La idea es que,
+
+128
+00:04:28,282 --> 00:04:29,732
+al calentarse el Sol,
+
+129
+00:04:29,880 --> 00:04:31,124
+el agua se evaporó,
+
+130
+00:04:31,220 --> 00:04:32,902
+el vapor atrapó más calor,
+
+131
+00:04:33,025 --> 00:04:35,415
+y el planeta entró en un efecto invernadero
+
+132
+00:04:35,228 --> 00:04:37,232
+desbocado del que nunca salió.
+
+133
+00:04:37,584 --> 00:04:39,717
+Otros estudios recientes lo dudan,
+
+134
+00:04:39,826 --> 00:04:41,985
+y creen que Venus siempre fue un mundo
+
+135
+00:04:41,798 --> 00:04:42,423
+seco.
+
+136
+00:04:43,114 --> 00:04:45,427
+Todavía no se sabe quién tiene razón.
+
+137
+00:04:45,779 --> 00:04:46,868
+Para averiguarlo,
+
+138
+00:04:47,003 --> 00:04:49,394
+la NASA y la Agencia Espacial Europea
+
+139
+00:04:49,206 --> 00:04:51,803
+tienen previstas nuevas misiones para los
+
+140
+00:04:51,616 --> 00:04:52,628
+años treinta.
+
+141
+00:04:52,980 --> 00:04:54,069
+Mientras tanto,
+
+142
+00:04:54,204 --> 00:04:55,280
+Venus sigue ahí,
+
+143
+00:04:55,428 --> 00:04:56,814
+brillando al atardecer:
+
+144
+00:04:56,923 --> 00:04:58,450
+tan bonito desde lejos…
+
+145
+00:04:58,469 --> 00:05:00,126
+y tan infernal de cerca.
+
+146
+00:05:00,476 --> 00:05:01,850
+¿Tú a dónde viajarías:
+
+147
+00:05:01,852 --> 00:05:03,113
+a Venus o a Marte?
+
+148
+00:05:03,785 --> 00:05:05,487
+Cuéntamelo en los comentarios,
+
+149
+00:05:05,514 --> 00:05:07,381
+y suscríbete a Curiosimundo.

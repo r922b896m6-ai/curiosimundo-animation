@@ -1,0 +1,75 @@
+<!doctype html>
+<!-- Cleopatra: la última reina de Egipto · Capítulo 5 · Marco Antonio: el reparto de Roma, Tarso (41 a. C.), el barco dorado, los gemelos Sol y Luna, las Donaciones, la propaganda de Octavio, la perla (leyenda), 32 a. C. guerra. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="85.23">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/space.js"></script><script src="lib/egypt.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.55"></audio>
+<section class="scene" id="tri" data-start="3.6" data-duration="14.48"></section>
+<section class="scene" id="tar" data-start="17.98" data-duration="8.66"></section>
+<section class="scene" id="barge" data-start="26.54" data-duration="8.7"></section>
+<section class="scene" id="alx" data-start="35.14" data-duration="10.84"></section>
+<section class="scene" id="don" data-start="45.88" data-duration="6.82"></section>
+<section class="scene" id="prop" data-start="52.6" data-duration="9.18"></section>
+<section class="scene" id="pearl" data-start="61.68" data-duration="15.1"></section>
+<section class="scene" id="war" data-start="76.68" data-duration="8.55"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4, D = 85.23, S = {tri: 3.6, tar: 17.98, barge: 26.54, alx: 35.14, don: 45.88, prop: 52.6, pearl: 61.68, war: 76.68};
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id), mk = CM.mk;
+  const svgOf = (id, bg) => CM.svgIn($(id), bg);
+  Object.keys(S).slice(1).forEach(id => tl.from($(id), { opacity: 0, duration: .35 }, S[id]));
+  const nxt = id => { const k = Object.keys(S), i = k.indexOf(id); return i + 1 < k.length ? S[k[i + 1]] : D; };
+  const hd = (title, sub, at, end) => CM.head(H, tl, title, sub, at, end);
+  const big = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'big', html, top, extra); tl.from(t, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const mid = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'mid', html, top, extra); tl.from(t, { y: 20, opacity: 0, duration: .35 }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const stamp = (id, txt, at, top = 420, col = '#E5484D') => { const t = CM.text($(id), 'big', `<span style="border:12px solid ${col};border-radius:20px;padding:0 40px;color:${col}">${txt}</span>`, top, 'font-size:150px;transform:rotate(-8deg)'); tl.from(t, { scale: 2, opacity: 0, duration: .3, ease: 'back.out(2)' }, at); return t; };
+  const push = (id, from = 1.15, to = 1, ox = '50%', oy = '50%') => { const s = $(id).querySelector('svg'); tl.fromTo(s, { scale: from }, { scale: to, duration: nxt(id) - S[id], ease: 'none', transformOrigin: `${ox} ${oy}` }, S[id]); };
+  const ender = (id, q, at, sub = 'CUÉNTAMELO EN LOS COMENTARIOS') => { const end = document.createElement('div'); end.style.cssText = 'position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:radial-gradient(1200px 800px at 50% 45%, #1d2a5a, #050a1a 75%)';
+    end.innerHTML = `<div style="font:400 120px/1 'Bebas Neue';text-align:center">${q}</div><div style="font:800 40px Inter;letter-spacing:.06em">${sub}</div><div style="margin-top:30px;padding:22px 60px;border-radius:16px;background:#d0312d;font:800 44px Inter;letter-spacing:.08em">SUSCRÍBETE</div><div style="margin-top:20px;font:400 90px Bebas Neue;letter-spacing:.14em">CURIOSI<span style="color:#FFD23F">MUNDO</span></div>`;
+    $(id).append(end); const c = end.children;
+    tl.from(end, { opacity: 0, duration: .5 }, at).from(c[0], { scale: 1.2, opacity: 0, duration: .5, ease: 'expo.out' }, at + .1).from(c[1], { y: 20, opacity: 0, duration: .3 }, W('cuéntamelo') - .2)
+      .from(c[2], { scale: 0, duration: .4, ease: 'back.out(2.5)' }, W('suscríbete') - .2).to(c[2], { scale: 1.08, duration: .4, yoyo: true, repeat: 3, ease: 'sine.inOut' }, W('suscríbete') + .3)
+      .from(c[3], { y: 30, opacity: 0, letterSpacing: '.4em', duration: .7, ease: 'expo.out' }, W('curiosimundo') - .2); };
+    const shake = (el, at, amp = 14) => tl.to(el, { x: amp, duration: .06 }, at).to(el, { x: -amp, duration: .08 }, at + .06).to(el, { x: amp * .5, duration: .08 }, at + .14).to(el, { x: 0, duration: .08 }, at + .22);
+
+  const fig = (s, kind, x, y, sc = 2.4, dir = 1, o = {}) => { const f = EG.person(s, kind, o); EG.place(f, x, y, sc, dir); return f; };
+  const walk = (sec, f, x0, x1, t0, t1, y, sc = 2.4, dir = 1, run = 1) => gm.onFrame($(sec), (l, i) => { const k = gm.clamp((i.time - t0) / (t1 - t0)); EG.pose(f, { x: x0 + (x1 - x0) * k, y, s: sc, dir, run: k > 0 && k < 1 ? run : 0, ph: i.time * 8 }); });
+  const row = (s, kind, n, x0, dx, y, sc = 1.6, dir = 1) => Array.from({ length: n }, (_, i) => fig(s, kind, x0 + i * dx, y + (i % 2) * 24, sc, dir));
+  const march = (sec, F, t0, t1, sp, y0, sc, dir, run = 1) => gm.onFrame($(sec), (l, i) => F.forEach((f, k) => { const d = gm.clamp(i.time - t0, 0, t1 - t0); EG.pose(f, { x: f.x0 + d * sp, y: y0 + (k % 2) * 24, s: sc, dir, run: i.time > t0 && i.time < t1 ? run : 0, ph: i.time * 8 + k }); }));
+  const army = (s, kind, n, x0, dx, y0, sc, dir) => Array.from({ length: n }, (_, i) => { const f = EG.person(s, kind); f.x0 = x0 + i * dx; EG.pose(f, { x: f.x0, y: y0 + (i % 2) * 24, s: sc, dir }); return f; });
+  const gold = el => el.setAttribute('style', 'filter: sepia(1) saturate(5) hue-rotate(-12deg) brightness(1.05)');
+  const PAL = id => { const s = svgOf(id); EG.palace(s); return s; };
+  const NIGHTSEA = 'linear-gradient(#0a1430, #1d2a5a)';
+
+  CM.card($('cards'), tl, 5, '41 a. C.', 'MARCO ANTONIO', 0, 4);
+
+  const zt = svgOf('tri'); EG.sky(zt, '#5a3a2a', '#8a6a4a'); EG.temple(zt, 960, 1000, 1.2).setAttribute('opacity', .5); const A = fig(zt, 'antony', 560, 960, 2.8), O = fig(zt, 'octav', 960, 960, 2.6), Lp = fig(zt, 'sen', 1360, 960, 2.6, -1);
+  EG.label(zt, 'ANTONIO · ORIENTE', 560, 360, 50, '#FFD23F'); EG.label(zt, 'OCTAVIO · HEREDERO', 960, 300, 50, '#FFD23F'); EG.label(zt, 'LÉPIDO', 1360, 360, 50, '#FFD23F');
+  hd('<em>TRES</em> HOMBRES', 'se reparten Roma', S.tri + .3, S.tar);
+  const zr = svgOf('tar'); EG.sky(zr, '#7ab8e8', '#f4e2b8'); const s2 = EG.sea(zr, 700, '#2a7ab0'); EG.city(zr, 700, 9); fig(zr, 'antony', 1500, 900, 2.6, -1); mk('rect', { x: 1200, y: 880, width: 720, height: 200, fill: '#c9b48a' }, zr);
+  gm.onFrame($('tar'), (l, i) => s2.anim(i.time)); hd('<em>TARSO</em> · 41 a. C.', 'Antonio llama a Cleopatra', S.tar + .3, S.barge);
+  const zb = svgOf('barge'); EG.sky(zb, '#f0a860', '#f8dca0'); const s3 = EG.sea(zb, 680, '#2a6fa0'); const bg = EG.galley(zb, { size: 1.8, sail: '#7a1a8a', hull: '#d8b23a', rows: 2 }); bg.oars.forEach(o => o.setAttribute('stroke', '#e8eef4'));
+  const cv = fig(bg.g, 'cleo', 220, -70, 1.1); gm.onFrame($('barge'), (l, i) => { s3.anim(i.time); bg.w.setAttribute('transform', `translate(${-300 + (i.time - S.barge) * 120} 860)`); bg.anim(i.time * .6); });
+  [['POPA <tspan fill="#FFD23F">DORADA</tspan>', 'dorada'], ['VELAS <tspan fill="#c86ad8">PÚRPURA</tspan>', 'púrpura'], ['REMOS DE <tspan fill="#e8eef4">PLATA</tspan>', 'plata']].forEach(([t, w], k) => { const lb = EG.label(zb, t, 1500, 200 + k * 110, 84); tl.from(lb, { opacity: 0, x: 40, duration: .3 }, W(w) - .3); });
+  hd('SEGÚN <em>PLUTARCO</em>', 'vestida como la diosa Venus', S.barge + .3, S.alx);
+  const za = PAL('alx'); fig(za, 'antony', 700, 900, 3); fig(za, 'cleo', 1100, 900, 3, -1); const sun = SP.sun(za, 600, 300, 70), moon = SP.moon(za, 1320, 300, 60); tl.from([sun.w, moon], { opacity: 0, duration: .5 }, W('gemelos') - .3);
+  const n1 = EG.label(za, 'ALEJANDRO HELIOS', 600, 450, 54, '#FFD23F'), n2 = EG.label(za, 'CLEOPATRA SELENE', 1320, 450, 54, '#cfe6ff'); tl.from(n1, { opacity: 0, duration: .3 }, W('helios') - .3).from(n2, { opacity: 0, duration: .3 }, W('selene') - .3);
+  hd('<em>DESLUMBRADO</em>', 'un invierno en Alejandría', S.alx + .3, W('gemelos') - .4); hd('DOS <em>GEMELOS</em>', 'el Sol y la Luna', W('gemelos') - .3, S.don);
+  const zd = PAL('don'); fig(zd, 'antony', 640, 900, 2.8); fig(zd, 'cleo', 960, 900, 2.8); fig(zd, 'ptol', 1240, 900, 1.6, -1); fig(zd, 'ptol', 1400, 900, 1.3, -1); hd('UNA GRAN <em>CEREMONIA</em>', 'tierras de Oriente para Cleopatra y sus hijos', S.don + .3, S.prop);
+  const zp = svgOf('prop'); EG.sky(zp, '#8ac0e8', '#f4e2b8'); EG.temple(zp, 960, 880, .9).setAttribute('opacity', .6); mk('rect', { y: 880, width: 1920, height: 200, fill: '#a89a80' }, zp); fig(zp, 'octav', 520, 900, 3); row(zp, 'cit', 6, 900, 170, 1010, 1.8, -1);
+  const bub = mk('g', {}, zp); mk('rect', { x: 620, y: 200, width: 620, height: 170, rx: 40, fill: '#fff', stroke: '#2a2a3a', 'stroke-width': 5 }, bub); mk('path', { d: 'M660 360 L600 440 L720 370Z', fill: '#fff', stroke: '#2a2a3a', 'stroke-width': 5 }, bub); EG.label(bub, '¡ESTÁ <tspan fill="#b3262d">HECHIZADO</tspan>!', 930, 315, 90, '#1a1a2a');
+  tl.from(bub, { scale: 0, opacity: 0, duration: .35, ease: 'back.out(2)', transformOrigin: '660px 370px' }, W('hechizado') - .3); hd('LA <em>PROPAGANDA</em> DE OCTAVIO', 'una reina extranjera contra Roma', S.prop + .3, S.pearl);
+  const zl = svgOf('pearl', 'radial-gradient(1200px 800px at 50% 45%, #3a2a10, #0a0604 75%)'); const cup = mk('g', { transform: 'translate(960 760)' }, zl); mk('path', { d: 'M-160 -260 L160 -260 Q150 -60 0 -40 Q-150 -60 -160 -260Z', fill: '#d8b23a', stroke: '#8a6a2a', 'stroke-width': 6 }, cup); mk('rect', { x: -14, y: -40, width: 28, height: 120, fill: '#d8b23a' }, cup); mk('ellipse', { cy: 90, rx: 110, ry: 22, fill: '#d8b23a' }, cup);
+  const pr = mk('circle', { cx: 960, cy: 200, r: 44, fill: '#f6f2ff', stroke: '#c8c0e0', 'stroke-width': 4 }, zl); tl.to(pr, { attr: { cy: 560, r: 30 }, duration: .8, ease: 'power2.in' }, W('perla') - .2).to(pr, { opacity: 0, attr: { r: 2 }, duration: 1.2 }, W('vinagre') - .2);
+  stamp('pearl', 'EXAGERACIÓN', W('exageración') - .3, 140, '#FFD23F'); hd('SEGÚN <em>PLINIO</em>', 'el banquete más caro: una perla en vinagre', S.pearl + .3, W('exageración') - .4);
+  const zw = svgOf('war'); EG.sky(zw, '#8a3a2a', '#e8a060'); mk('rect', { y: 900, width: 1920, height: 180, fill: '#6a4a2a' }, zw); const L = army(zw, 'leg', 11, -400, 190, 920, 2.1, 1); march('war', L, S.war + .2, D, 80, 920, 2.1, 1, .8);
+  big('war', '<em>32 a. C.</em> · GUERRA', 110, W('guerra') - .4, 'font-size:150px'); mid('war', 'todo se decidiría <b>en el mar</b>', 280, W('mar') - .4, 'font-size:54px');
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Capítulo 6 · La batalla de Accio
+# rate|pitch|pausa|texto
+-3%|+0Hz|0.3|Antonio y Cleopatra reunieron una gran flota en la costa de Grecia, junto al cabo de Accio. Tenían barcos enormes, con varias filas de remos.
+-3%|+0Hz|0.3|Pero Octavio contaba con un almirante brillante: Marco Agripa. Sus barcos eran más pequeños y más rápidos, y bloquearon la salida del golfo.
+-3%|+0Hz|0.3|Durante meses, la flota de Antonio quedó atrapada. Faltaba comida, había enfermedades, y muchos de sus aliados se pasaron al otro bando.
+-3%|+0Hz|0.3|El dos de septiembre del año treinta y uno antes de Cristo, Antonio intentó romper el bloqueo, y empezó la batalla.
+-3%|+0Hz|0.3|Los barcos de Agripa rodeaban a los gigantes de Antonio, que eran difíciles de mover.
+-3%|+0Hz|0.3|De repente, los sesenta barcos de Cleopatra izaron las velas, atravesaron la línea enemiga y se alejaron rumbo a Egipto.
+-3%|+0Hz|0.3|Antonio la siguió con unos pocos barcos. El resto de su flota, sin su jefe, se rindió.
+-3%|+1Hz|0.3|Accio fue el principio del fin. Octavio ya solo tenía que ir a por ellos.

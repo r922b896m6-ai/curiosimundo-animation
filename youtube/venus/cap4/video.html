@@ -1,0 +1,68 @@
+<!doctype html>
+<!-- Venus: el infierno de al lado · Capítulo 4 · El día más largo: gira en 243 días, año de 225, gira al revés (el Sol sale por el oeste), día solar de 117 días, nubes que dan la vuelta en 4 días a 360 km/h. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="55.96">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/space.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.55"></audio>
+<section class="scene" id="rot" data-start="3.6" data-duration="4.75"></section>
+<section class="scene" id="orb" data-start="8.25" data-duration="10.94"></section>
+<section class="scene" id="rev" data-start="19.09" data-duration="9.85"></section>
+<section class="scene" id="sol" data-start="28.84" data-duration="8.58"></section>
+<section class="scene" id="wind" data-start="37.32" data-duration="12.16"></section>
+<section class="scene" id="hk" data-start="49.38" data-duration="6.58"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4, D = 55.96, S = {rot: 3.6, orb: 8.25, rev: 19.09, sol: 28.84, wind: 37.32, hk: 49.38};
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id), mk = CM.mk;
+  const svgOf = (id, bg) => CM.svgIn($(id), bg);
+  Object.keys(S).slice(1).forEach(id => tl.from($(id), { opacity: 0, duration: .35 }, S[id]));
+  const nxt = id => { const k = Object.keys(S), i = k.indexOf(id); return i + 1 < k.length ? S[k[i + 1]] : D; };
+  const hd = (title, sub, at, end) => CM.head(H, tl, title, sub, at, end);
+  const big = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'big', html, top, extra); tl.from(t, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const mid = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'mid', html, top, extra); tl.from(t, { y: 20, opacity: 0, duration: .35 }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const stamp = (id, txt, at, top = 420, col = '#E5484D') => { const t = CM.text($(id), 'big', `<span style="border:12px solid ${col};border-radius:20px;padding:0 40px;color:${col}">${txt}</span>`, top, 'font-size:150px;transform:rotate(-8deg)'); tl.from(t, { scale: 2, opacity: 0, duration: .3, ease: 'back.out(2)' }, at); return t; };
+  const push = (id, from = 1.15, to = 1, ox = '50%', oy = '50%') => { const s = $(id).querySelector('svg'); tl.fromTo(s, { scale: from }, { scale: to, duration: nxt(id) - S[id], ease: 'none', transformOrigin: `${ox} ${oy}` }, S[id]); };
+  const ender = (id, q, at, sub = 'CUÉNTAMELO EN LOS COMENTARIOS') => { const end = document.createElement('div'); end.style.cssText = 'position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:radial-gradient(1200px 800px at 50% 45%, #1d2a5a, #050a1a 75%)';
+    end.innerHTML = `<div style="font:400 120px/1 'Bebas Neue';text-align:center">${q}</div><div style="font:800 40px Inter;letter-spacing:.06em">${sub}</div><div style="margin-top:30px;padding:22px 60px;border-radius:16px;background:#d0312d;font:800 44px Inter;letter-spacing:.08em">SUSCRÍBETE</div><div style="margin-top:20px;font:400 90px Bebas Neue;letter-spacing:.14em">CURIOSI<span style="color:#FFD23F">MUNDO</span></div>`;
+    $(id).append(end); const c = end.children;
+    tl.from(end, { opacity: 0, duration: .5 }, at).from(c[0], { scale: 1.2, opacity: 0, duration: .5, ease: 'expo.out' }, at + .1).from(c[1], { y: 20, opacity: 0, duration: .3 }, W('cuéntamelo') - .2)
+      .from(c[2], { scale: 0, duration: .4, ease: 'back.out(2.5)' }, W('suscríbete') - .2).to(c[2], { scale: 1.08, duration: .4, yoyo: true, repeat: 3, ease: 'sine.inOut' }, W('suscríbete') + .3)
+      .from(c[3], { y: 30, opacity: 0, letterSpacing: '.4em', duration: .7, ease: 'expo.out' }, W('curiosimundo') - .2); };
+    const shake = (el, at, amp = 14) => tl.to(el, { x: amp, duration: .06 }, at).to(el, { x: -amp, duration: .08 }, at + .06).to(el, { x: amp * .5, duration: .08 }, at + .14).to(el, { x: 0, duration: .08 }, at + .22);
+
+  const VSKY = 'radial-gradient(1600px 1000px at 50% 40%, #1a1430, #05030d 75%)';
+  const vp = (id, x, y, r) => { const s = $(id).querySelector('svg'); const v = SP.venus(s, x, y, r); gm.onFrame($(id), (l, i) => v.flow(i.time)); return v; };
+  const dusk = s => { const lg = mk('linearGradient', { id: 'dk' + Math.random().toString(36).slice(2), x1: 0, y1: 0, x2: 0, y2: 1 }, s); [['0', '#0b1030'], ['.55', '#3a2a5a'], ['.8', '#e07a4a'], ['1', '#f2b46a']].forEach(([o, c]) => mk('stop', { offset: o, 'stop-color': c }, lg));
+    mk('rect', { width: 1920, height: 1080, fill: `url(#${lg.id})` }, s); SP.stars(s, 80, 1920, 500, 'dk'); mk('path', { d: 'M0 860 Q480 820 960 850 T1920 840 L1920 1080 L0 1080Z', fill: '#140c18' }, s);
+    const v0 = mk('g', { transform: 'translate(1380 520)' }, s), v = mk('g', {}, v0); mk('circle', { r: 46, fill: '#fff6d8', opacity: .25 }, v); mk('circle', { r: 14, fill: '#fffbe8' }, v); return v; };
+  const rain = (s, x0, x1, y0, y1, n = 60, seed = 'r') => { const D = Array.from({ length: n }, (_, i) => ({ el: mk('line', { stroke: '#d8e24a', 'stroke-width': 4, 'stroke-linecap': 'round' }, s), x: x0 + gm.random(seed + i) * (x1 - x0), p: gm.random(seed + 'p' + i) }));
+    return t => D.forEach(d => { const k = (t * .7 + d.p) % 1, y = y0 + k * (y1 - y0); d.el.setAttribute('x1', d.x); d.el.setAttribute('x2', d.x - 6); d.el.setAttribute('y1', y); d.el.setAttribute('y2', y + 30); d.el.setAttribute('opacity', 1 - k); }); };
+
+  CM.card($('cards'), tl, 4, '243 &gt; 225', 'EL DÍA MÁS LARGO', 0, 4);
+
+  const zr = svgOf('rot', VSKY); SP.stars(zr, 200); const vr = vp('rot', 960, 560, 300); const mark = mk('circle', { r: 18, fill: '#E5484D', stroke: '#fff', 'stroke-width': 4 }, zr);
+  gm.onFrame($('rot'), (l, i) => { const a = (i.time - S.rot) * .25; mark.setAttribute('cx', 960 + Math.sin(a) * 300); mark.setAttribute('cy', 520); mark.setAttribute('opacity', Math.cos(a) > 0 ? 1 : 0); });
+  const c1 = SP.label(zr, '243 DÍAS', 960, 980, 140, '#FFD23F'); tl.from(c1, { opacity: 0, scale: 1.4, duration: .4, transformOrigin: '960px 940px' }, W('cuarenta') - .4); hd('UNA VUELTA SOBRE SÍ MISMO', 'muy, muy despacio', S.rot + .3, S.orb);
+  const zo = svgOf('orb', VSKY); SP.stars(zo, 200); const so = SP.sun(zo, 960, 540, 110); mk('circle', { cx: 960, cy: 540, r: 360, fill: 'none', stroke: '#e8c27a', 'stroke-width': 3, 'stroke-dasharray': '10 12' }, zo); const vo = SP.venus(zo, 0, 0, 50);
+  gm.onFrame($('orb'), (l, i) => { so.spin(i.time); const a = (i.time - S.orb) * .8; vo.w.setAttribute('transform', `translate(${960 + Math.cos(a) * 360} ${540 + Math.sin(a) * 360})`); vo.flow(i.time); });
+  hd('UNA VUELTA AL SOL', '225 días', S.orb + .3, W('decir') - .3); big('orb', '<em>243</em> &gt; 225', 80, W('decir') - .3, 'font-size:180px'); mid('orb', 'su giro dura <b>más que su año</b>', 640, W('giro') - .3);
+  const zv = svgOf('rev', 'linear-gradient(#d98a2a, #f2c46a)'); SP.venusGround(zv); const sr = SP.sun(zv, 0, 0, 90); const tR = W('oeste') - 1;
+  gm.onFrame($('rev'), (l, i) => { const k = gm.clamp((i.time - tR) / 4); sr.w.setAttribute('transform', `translate(${260 + k * 300} ${700 - k * 400})`); sr.spin(i.time); });
+  SP.label(zv, 'OESTE', 220, 760, 90, '#fff'); SP.label(zv, 'ESTE', 1700, 760, 90, '#fff'); hd('GIRA <em>AL REVÉS</em>', 'el Sol sale por el oeste y se pone por el este', S.rev + .3, S.sol);
+  const zs = svgOf('sol', VSKY); SP.stars(zs, 160); const dial = mk('g', { transform: 'translate(800 520)' }, zs); mk('circle', { r: 280, fill: '#1d2a4a' }, dial); mk('path', { d: 'M0 -280 A280 280 0 0 1 0 280Z', fill: '#f2c46a' }, dial);
+  const hand = mk('line', { x1: 0, y1: 0, x2: 0, y2: -250, stroke: '#E5484D', 'stroke-width': 12, 'stroke-linecap': 'round' }, dial); gm.onFrame($('sol'), (l, i) => hand.setAttribute('transform', `rotate(${(i.time - S.sol) * 40})`));
+  const d117 = SP.label(zs, '<tspan fill="#FFD23F">117</tspan> DÍAS', 1560, 600, 150); tl.from(d117, { opacity: 0, x: 40, duration: .4 }, W('ciento') - .3); hd('DE AMANECER A <em>AMANECER</em>', 'su día solar', S.sol + .3, S.wind);
+  const zw = svgOf('wind', VSKY); SP.stars(zw, 200); const vw = SP.venus(zw, 960, 560, 320); gm.onFrame($('wind'), (l, i) => vw.flow(i.time * 6));
+  const arrows = Array.from({ length: 5 }, (_, k) => mk('path', { d: `M-120 0 L120 0 M90 -26 L124 0 L90 26`, stroke: '#fff', 'stroke-width': 10, fill: 'none', opacity: .8 }, zw));
+  gm.onFrame($('wind'), (l, i) => arrows.forEach((a, k) => { const q = ((i.time * .6 + k / 5) % 1); a.setAttribute('transform', `translate(${560 + q * 800} ${360 + k * 90})`); a.setAttribute('opacity', Math.sin(q * Math.PI)); }));
+  hd('LAS NUBES <em>VUELAN</em>', 'dan la vuelta a Venus en unos 4 días', S.wind + .3, W('vientos') - .3); hd('<em>360 KM/H</em>', 'vientos en las nubes altas', W('vientos') - .2, S.hk);
+  const zk = svgOf('hk', VSKY); SP.stars(zk, 200); vp('hk', 960, 620, 300); big('hk', 'LENTO · <em>ARDIENTE</em> · AL REVÉS', 120, S.hk + .3, 'font-size:110px', W('siempre') - .3); big('hk', '¿SIEMPRE FUE <em>ASÍ</em>?', 120, W('siempre') - .2, 'font-size:140px');
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

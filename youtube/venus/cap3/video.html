@@ -1,0 +1,68 @@
+<!doctype html>
+<!-- Venus: el infierno de al lado · Capítulo 3 · Las naves Venera: las primeras aplastadas, Venera 7 (1970), Venera 9 (1975) primera foto, Venera 13 (1982) fotos en color, 32 → 127 minutos, récord. -->
+<html data-width="1920" data-height="1080" data-fps="30" data-duration="54.68">
+<head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/space.js"></script></head>
+<body>
+<audio src="voz.mp3" data-start="4"></audio>
+<audio src="musica.mp3" data-volume="0.5" data-duck="0.4" data-fade-out="1"></audio>
+<audio src="sfx.mp3" data-volume="0.55"></audio>
+<section class="scene" id="cr" data-start="3.6" data-duration="10.35"></section>
+<section class="scene" id="v7" data-start="13.85" data-duration="7.86"></section>
+<section class="scene" id="v9" data-start="21.61" data-duration="8.65"></section>
+<section class="scene" id="v13" data-start="30.16" data-duration="7.45"></section>
+<section class="scene" id="tm" data-start="37.51" data-duration="10.91"></section>
+<section class="scene" id="hk" data-start="48.32" data-duration="6.36"></section>
+<div class="vig"></div><div id="heads"></div><div id="cards"></div><div id="caps"></div>
+<script>
+const OFF = 4, D = 54.68, S = {cr: 3.6, v7: 13.85, v9: 21.61, v13: 30.16, tm: 37.51, hk: 48.32};
+gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
+  const W = CM.W(words, OFF), G = { global: true }, tl = gm.timeline(null, G), H = document.getElementById('heads'), $ = id => document.getElementById(id), mk = CM.mk;
+  const svgOf = (id, bg) => CM.svgIn($(id), bg);
+  Object.keys(S).slice(1).forEach(id => tl.from($(id), { opacity: 0, duration: .35 }, S[id]));
+  const nxt = id => { const k = Object.keys(S), i = k.indexOf(id); return i + 1 < k.length ? S[k[i + 1]] : D; };
+  const hd = (title, sub, at, end) => CM.head(H, tl, title, sub, at, end);
+  const big = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'big', html, top, extra); tl.from(t, { scale: 1.3, opacity: 0, duration: .4, ease: 'expo.out' }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const mid = (id, html, top, at, extra = '', end) => { const t = CM.text($(id), 'mid', html, top, extra); tl.from(t, { y: 20, opacity: 0, duration: .35 }, at); if (end) tl.to(t, { opacity: 0, duration: .25 }, end); return t; };
+  const stamp = (id, txt, at, top = 420, col = '#E5484D') => { const t = CM.text($(id), 'big', `<span style="border:12px solid ${col};border-radius:20px;padding:0 40px;color:${col}">${txt}</span>`, top, 'font-size:150px;transform:rotate(-8deg)'); tl.from(t, { scale: 2, opacity: 0, duration: .3, ease: 'back.out(2)' }, at); return t; };
+  const push = (id, from = 1.15, to = 1, ox = '50%', oy = '50%') => { const s = $(id).querySelector('svg'); tl.fromTo(s, { scale: from }, { scale: to, duration: nxt(id) - S[id], ease: 'none', transformOrigin: `${ox} ${oy}` }, S[id]); };
+  const ender = (id, q, at, sub = 'CUÉNTAMELO EN LOS COMENTARIOS') => { const end = document.createElement('div'); end.style.cssText = 'position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:radial-gradient(1200px 800px at 50% 45%, #1d2a5a, #050a1a 75%)';
+    end.innerHTML = `<div style="font:400 120px/1 'Bebas Neue';text-align:center">${q}</div><div style="font:800 40px Inter;letter-spacing:.06em">${sub}</div><div style="margin-top:30px;padding:22px 60px;border-radius:16px;background:#d0312d;font:800 44px Inter;letter-spacing:.08em">SUSCRÍBETE</div><div style="margin-top:20px;font:400 90px Bebas Neue;letter-spacing:.14em">CURIOSI<span style="color:#FFD23F">MUNDO</span></div>`;
+    $(id).append(end); const c = end.children;
+    tl.from(end, { opacity: 0, duration: .5 }, at).from(c[0], { scale: 1.2, opacity: 0, duration: .5, ease: 'expo.out' }, at + .1).from(c[1], { y: 20, opacity: 0, duration: .3 }, W('cuéntamelo') - .2)
+      .from(c[2], { scale: 0, duration: .4, ease: 'back.out(2.5)' }, W('suscríbete') - .2).to(c[2], { scale: 1.08, duration: .4, yoyo: true, repeat: 3, ease: 'sine.inOut' }, W('suscríbete') + .3)
+      .from(c[3], { y: 30, opacity: 0, letterSpacing: '.4em', duration: .7, ease: 'expo.out' }, W('curiosimundo') - .2); };
+    const shake = (el, at, amp = 14) => tl.to(el, { x: amp, duration: .06 }, at).to(el, { x: -amp, duration: .08 }, at + .06).to(el, { x: amp * .5, duration: .08 }, at + .14).to(el, { x: 0, duration: .08 }, at + .22);
+
+  const VSKY = 'radial-gradient(1600px 1000px at 50% 40%, #1a1430, #05030d 75%)';
+  const vp = (id, x, y, r) => { const s = $(id).querySelector('svg'); const v = SP.venus(s, x, y, r); gm.onFrame($(id), (l, i) => v.flow(i.time)); return v; };
+  const dusk = s => { const lg = mk('linearGradient', { id: 'dk' + Math.random().toString(36).slice(2), x1: 0, y1: 0, x2: 0, y2: 1 }, s); [['0', '#0b1030'], ['.55', '#3a2a5a'], ['.8', '#e07a4a'], ['1', '#f2b46a']].forEach(([o, c]) => mk('stop', { offset: o, 'stop-color': c }, lg));
+    mk('rect', { width: 1920, height: 1080, fill: `url(#${lg.id})` }, s); SP.stars(s, 80, 1920, 500, 'dk'); mk('path', { d: 'M0 860 Q480 820 960 850 T1920 840 L1920 1080 L0 1080Z', fill: '#140c18' }, s);
+    const v0 = mk('g', { transform: 'translate(1380 520)' }, s), v = mk('g', {}, v0); mk('circle', { r: 46, fill: '#fff6d8', opacity: .25 }, v); mk('circle', { r: 14, fill: '#fffbe8' }, v); return v; };
+  const rain = (s, x0, x1, y0, y1, n = 60, seed = 'r') => { const D = Array.from({ length: n }, (_, i) => ({ el: mk('line', { stroke: '#d8e24a', 'stroke-width': 4, 'stroke-linecap': 'round' }, s), x: x0 + gm.random(seed + i) * (x1 - x0), p: gm.random(seed + 'p' + i) }));
+    return t => D.forEach(d => { const k = (t * .7 + d.p) % 1, y = y0 + k * (y1 - y0); d.el.setAttribute('x1', d.x); d.el.setAttribute('x2', d.x - 6); d.el.setAttribute('y1', y); d.el.setAttribute('y2', y + 30); d.el.setAttribute('opacity', 1 - k); }); };
+
+  CM.card($('cards'), tl, 3, '127 MIN', 'LAS NAVES VENERA', 0, 4);
+
+  const zc = svgOf('cr', 'linear-gradient(#d98a2a, #8a4f22)'); const cr = SP.venera(zc, 960, 700, 1.2); const tC = W('aplastadas') - .2;
+  tl.from(cr.g, { y: -700, duration: 1.5, ease: 'none' }, S.cr + .2).to(cr.g, { scaleY: .35, scaleX: 1.25, duration: .25, transformOrigin: '0px 0px' }, tC); shake(zc, tC, 18);
+  hd('UNIÓN SOVIÉTICA: <em>VENERA</em>', 'las primeras, aplastadas por la presión', S.cr + .3, W('rindieron') - .3); hd('NO SE <em>RINDIERON</em>', '', W('rindieron') - .2, S.v7);
+  const z7 = svgOf('v7'); SP.venusGround(z7); const l7 = SP.venera(z7, 760, 820, 1); const ws = Array.from({ length: 4 }, () => mk('circle', { cx: 760, cy: 500, r: 10, fill: 'none', stroke: '#FFD23F', 'stroke-width': 6 }, z7));
+  gm.onFrame($('v7'), (l, i) => ws.forEach((c, k) => { const q = ((i.time * .5 + k / 4) % 1); c.setAttribute('r', 20 + q * 500); c.setAttribute('opacity', 1 - q); })); hd('<em>1970</em> · VENERA 7', 'primeros datos desde la superficie de otro planeta', S.v7 + .3, S.v9);
+  const z9 = svgOf('v9', '#111'); const ph = mk('g', {}, z9); mk('rect', { x: 160, y: 220, width: 1600, height: 560, fill: '#eee' }, ph); const gs = mk('g', { style: 'filter:grayscale(1) contrast(1.2)' }, ph);
+  const inner = mk('svg', { x: 180, y: 240, width: 1560, height: 520, viewBox: '0 300 1920 640', preserveAspectRatio: 'xMidYMid slice' }, gs); SP.venusGround(inner, { sky: ['#3a3a3a', '#6a6a6a'] }); hd('<em>1975</em> · VENERA 9', 'la primera foto del suelo de Venus', S.v9 + .3, S.v13);
+  tl.from(ph, { scale: .6, opacity: 0, duration: .6, ease: 'expo.out', transformOrigin: '960px 500px' }, S.v9 + .2);
+  const z13 = svgOf('v13', '#111'); const p13 = mk('g', {}, z13); mk('rect', { x: 160, y: 220, width: 1600, height: 560, fill: '#eee' }, p13); const in13 = mk('svg', { x: 180, y: 240, width: 1560, height: 520, viewBox: '0 300 1920 640', preserveAspectRatio: 'xMidYMid slice' }, p13); SP.venusGround(in13);
+  SP.venera(in13, 300, 1000, .9); tl.from(p13, { scale: .6, opacity: 0, duration: .6, ease: 'expo.out', transformOrigin: '960px 500px' }, S.v13 + .2); hd('<em>1982</em> · VENERA 13', 'fotos en color: rocas y polvo anaranjado', S.v13 + .3, S.tm);
+  const zt = svgOf('tm'); SP.venusGround(zt); SP.venera(zt, 600, 860, 1.1); mk('rect', { x: 1000, y: 380, width: 760, height: 50, rx: 25, fill: 'rgb(6 12 28 / .7)' }, zt); const bar = mk('rect', { x: 1000, y: 380, width: 0, height: 50, rx: 25, fill: '#FFD23F' }, zt);
+  const m32 = 1000 + 760 * 32 / 127; mk('line', { x1: m32, x2: m32, y1: 350, y2: 460, stroke: '#fff', 'stroke-width': 6 }, zt); SP.label(zt, 'DISEÑO: 32 MIN', m32, 330, 54);
+  const ck = SP.label(zt, '0 MIN', 1380, 600, 160, '#FFD23F'); const t0 = W('resistir') - .2, t1 = W('veintisiete') + .4;
+  gm.onFrame($('tm'), (l, i) => { const k = gm.clamp((i.time - t0) / (t1 - t0)); bar.setAttribute('width', 760 * k); ck.textContent = Math.round(k * 127) + ' MIN'; });
+  stamp('tm', 'RÉCORD', W('récord') - .3, 720, '#FFD23F');
+  const zk = svgOf('hk', VSKY); SP.stars(zk, 200); vp('hk', 960, 560, 300); const cl = SP.clock(zk, 960, 600, 180); cl.t.textContent = '?:??';
+  tl.from(cl.g, { scale: 0, opacity: 0, duration: .4, ease: 'back.out(2)', transformOrigin: '960px 520px' }, W('reloj') - .4);
+
+  return CM.captions(words, OFF);
+}));
+</script>
+</body>
+</html>

@@ -1,8 +1,8 @@
-# CURIOSIMUNDO · 14 · Disculpa por 4 días sin vídeo (aviso del canal, ~25 s)
+# CURIOSIMUNDO · 14 · Disculpa por 4 días sin vídeo (aviso del canal, ~30 s)
 # rate|pitch|pausa|texto
 +12%|+3Hz|0.15|Cuatro días. Ese es el tiempo que llevamos sin subir un vídeo… y te debemos una disculpa.
-+8%|+0Hz|0.2|Perdón por la espera. Pero no estábamos parados.
-+10%|+2Hz|0.1|Estuvimos preparando algo grande: qué pasaría si el Sol se apagara…
++8%|+0Hz|0.15|Perdón por la espera. La verdad… me quedé jugando GTA seis. Sí, lo confieso.
++10%|+1Hz|0.1|Pero entre partida y partida, no estuve parado. Preparé algo grande: qué pasaría si el Sol se apagara…
 +10%|+2Hz|0.1|el planeta donde un día dura más que un año…
 +10%|+2Hz|0.2|y la historia completa de Cleopatra.
 +10%|+3Hz|0.15|Los vídeos vuelven, y vienen con todo. Gracias por seguir aquí.

@@ -1,6 +1,6 @@
 <!doctype html>
-<!-- CURIOSIMUNDO · 14 · Disculpa por 4 días sin vídeo (TikTok, 9:16, 27.98 s). Dato con número en el fotograma 0. -->
-<html data-width="1080" data-height="1920" data-fps="30" data-duration="27.98" data-safe-zone="reels">
+<!-- CURIOSIMUNDO · 14 · Disculpa por 4 días sin vídeo (TikTok, 9:16, 33.77 s). Dato con número en el fotograma 0. -->
+<html data-width="1080" data-height="1920" data-fps="30" data-duration="33.77" data-safe-zone="reels">
 <head><link rel="stylesheet" href="lib/cm.css"><script src="lib/cm.js"></script><script src="lib/space.js"></script><script src="lib/egypt.js"></script>
 <style>
   body { background: radial-gradient(1200px 1400px at 50% 40%, #1565C0, #0B2A5B 75%); }
@@ -20,22 +20,23 @@
 <audio src="musica.mp3" data-volume="0.5" data-duck="0.45" data-fade-out="1"></audio>
 <audio src="sfx.mp3" data-volume="0.6"></audio>
 <section class="scene" id="s0" data-start="0" data-duration="5.9"></section>
-<section class="scene" id="s1" data-start="5.8" data-duration="3.7"></section>
-<section class="scene" id="s2" data-start="9.4" data-duration="4.17"></section>
-<section class="scene" id="s3" data-start="13.47" data-duration="2.77"></section>
-<section class="scene" id="s4" data-start="16.14" data-duration="2.67"></section>
-<section class="scene" id="s5" data-start="18.71" data-duration="4.05"></section>
-<section class="scene" id="promo" data-start="22.66" data-duration="5.32"></section>
+<section class="scene" id="s1" data-start="5.8" data-duration="2.1"></section>
+<section class="scene" id="sg" data-start="7.8" data-duration="8.12"></section>
+<section class="scene" id="s2" data-start="15.82" data-duration="3.53"></section>
+<section class="scene" id="s3" data-start="19.25" data-duration="2.78"></section>
+<section class="scene" id="s4" data-start="21.93" data-duration="2.67"></section>
+<section class="scene" id="s5" data-start="24.5" data-duration="4.05"></section>
+<section class="scene" id="promo" data-start="28.45" data-duration="5.32"></section>
 <div id="frame"></div><div id="titles"></div><div id="vcaps"></div>
 <script>
-const D = 27.98, S = {s0: 0, s1: 5.8, s2: 9.4, s3: 13.47, s4: 16.14, s5: 18.71, promo: 22.66};
+const D = 33.77, S = {s0: 0, s1: 5.8, sg: 7.8, s2: 15.82, s3: 19.25, s4: 21.93, s5: 24.5, promo: 28.45};
 gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
   const W = CM.W(words, 0), G = { global: true }, tl = gm.timeline(null, G), $ = id => document.getElementById(id), mk = CM.mk;
   const sv = (id, bg) => { const s = mk('svg', { viewBox: '0 0 1080 1920', width: 1080, height: 1920, style: 'position:absolute;inset:0' }, $(id)); CM.defs(s); if (bg) $(id).style.background = bg; return s; };
   const band = (z, y = 560) => mk('svg', { x: 0, y, width: 1080, height: 608, viewBox: '0 0 1920 1080', preserveAspectRatio: 'xMidYMid slice' }, z);
   const scene = (id, bg) => { const z = sv(id, bg || 'radial-gradient(1200px 1400px at 50% 40%, #1565C0, #0B2A5B 75%)'); return band(z); };
   const shake = (el, at, a = 14) => tl.to(el, { x: a, duration: .06 }, at).to(el, { x: -a, duration: .08 }, at + .06).to(el, { x: 0, duration: .1 }, at + .14);
-  const T = [[0, '<em>4</em> DÍAS'], [3.62, 'SIN <em>VÍDEOS</em>'], [5.0, 'TE DEBEMOS UNA<br><em>DISCULPA</em>'], [5.95, '<em>PERDÓN</em>'], [8.59, 'NO ESTÁBAMOS<br><em>PARADOS</em>'], [10.85, 'ALGO <em>GRANDE</em>'], [12.28, '¿Y SI EL SOL<br>SE <em>APAGARA</em>?'], [13.62, '<em>VENUS</em>'], [16.29, '<em>CLEOPATRA</em>'], [18.86, '¡<em>VOLVEMOS</em>!'], [21.21, '<em>GRACIAS</em>'], [22.66, '']];
+  const T = [[0, '<em>4</em> DÍAS'], [3.62, 'SIN <em>VÍDEOS</em>'], [5.0, 'TE DEBEMOS UNA<br><em>DISCULPA</em>'], [5.95, '<em>PERDÓN</em>'], [8.91, 'ME QUEDÉ JUGANDO<br><em>GTA VI</em>'], [11.81, 'LO <em>CONFIESO</em>'], [13.13, 'ENTRE PARTIDA<br>Y <em>PARTIDA</em>…'], [14.77, 'NO ESTUVE<br><em>PARADO</em>'], [16.62, 'ALGO <em>GRANDE</em>'], [18.06, '¿Y SI EL SOL<br>SE <em>APAGARA</em>?'], [19.41, '<em>VENUS</em>'], [22.08, '<em>CLEOPATRA</em>'], [24.65, '¡<em>VOLVEMOS</em>!'], [27.0, '<em>GRACIAS</em>'], [28.45, '']];
   T.forEach(([at, html], i) => { const h = Object.assign(document.createElement('div'), { className: 'ttl', innerHTML: '<div>' + html + '</div>' }); $('titles').append(h); if (!html) return;
     const end = T[i + 1] ? T[i + 1][0] : 99;
     if (at === 0) { h.style.opacity = 1; tl.fromTo(h, { scale: 1.15 }, { scale: 1, duration: .5, ease: 'expo.out' }, 0); }
@@ -50,6 +51,14 @@ gm.wait(fetch('voz.json').then(r => r.json()).then(words => {
     const xx = mk('path', { d: `M${x - 130} 330 L${x + 130} 640 M${x + 130} 330 L${x - 130} 640`, stroke: '#E5484D', 'stroke-width': 30, 'stroke-linecap': 'round' }, g); tl.from(xx, { draw: 0, duration: .25 }, .15 + k * .35); return g; });
   const b1 = scene('s1', NIGHT); SP.stars(b1, 160); const lg = SP.label(b1, 'CURIOSI<tspan fill="#FFD23F">MUNDO</tspan>', 960, 520, 200); const hr = mk('path', { d: 'M960 860 C900 800 820 760 820 700 C820 650 880 630 960 690 C1040 630 1100 650 1100 700 C1100 760 1020 800 960 860Z', fill: '#E5484D' }, b1);
   tl.fromTo(hr, { scale: .8, transformOrigin: '960px 750px' }, { scale: 1.1, duration: .4, yoyo: true, repeat: 7, ease: 'sine.inOut', transformOrigin: '960px 750px' }, S.s1);
+  const bg = scene('sg', 'linear-gradient(#1a0a2a, #05030d)'); const lgd = mk('linearGradient', { id: 'gtaSky', x1: 0, y1: 0, x2: 0, y2: 1 }, bg); [['0', '#2a0f4a'], ['.6', '#e0407a'], ['1', '#ffb070']].forEach(([o, c]) => mk('stop', { offset: o, 'stop-color': c }, lgd));
+  mk('rect', { x: 360, y: 60, width: 1200, height: 680, rx: 30, fill: '#111', stroke: '#333', 'stroke-width': 10 }, bg); mk('rect', { x: 390, y: 90, width: 1140, height: 620, fill: 'url(#gtaSky)' }, bg);
+  mk('circle', { cx: 960, cy: 500, r: 120, fill: '#ffd070', opacity: .9 }, bg); for (let k = 0; k < 9; k++) { const h = 120 + (k * 53) % 200; mk('rect', { x: 400 + k * 125, y: 710 - h, width: 100, height: h, fill: '#1a0a2a' }, bg); }
+  EG.palm(bg, 520, 710, .9).querySelectorAll('*').forEach(e => { e.setAttribute('stroke', e.getAttribute('stroke') ? '#1a0a2a' : null); e.setAttribute('fill', e.getAttribute('fill') === 'none' ? 'none' : '#1a0a2a'); }); 
+  const gtx = SP.label(bg, 'GTA VI', 960, 300, 200, '#fff'); gtx.setAttribute('stroke', '#e0407a');
+  const pad = mk('g', { transform: 'translate(960 900)' }, bg), padi = mk('g', {}, pad); mk('path', { d: 'M-300 -60 Q-300 -120 -200 -120 L200 -120 Q300 -120 300 -60 L340 80 Q350 150 280 150 Q230 150 200 90 L-200 90 Q-230 150 -280 150 Q-350 150 -340 80Z', fill: '#2a2a34', stroke: '#111', 'stroke-width': 6 }, padi);
+  [['#5bc0ff', 180, -60], ['#E5484D', 230, -20], ['#5bd08a', 180, 20], ['#FFD23F', 130, -20]].forEach(([c, x, y]) => mk('circle', { cx: x, cy: y, r: 22, fill: c }, padi)); mk('path', { d: 'M-200 -40 h40 v-40 h30 v40 h40 v30 h-40 v40 h-30 v-40 h-40Z', fill: '#111' }, padi);
+  tl.to(padi, { y: -12, duration: .12, yoyo: true, repeat: 15, ease: 'sine.inOut' }, S.sg + .3);
   const b2 = scene('s2', NIGHT); SP.stars(b2, 200); const sn = SP.sun(b2, 960, 540, 300); gm.onFrame($('s2'), (l, i) => sn.spin(i.time)); const sh = mk('circle', { cx: 960, cy: 540, r: 0, fill: '#03050d' }, b2); tl.to(sh, { attr: { r: 320 }, duration: 1.4 }, W('apagara') - .3);
   const b3 = scene('s3', 'radial-gradient(1200px 1400px at 50% 40%, #1a1430, #05030d 75%)'); SP.stars(b3, 200); const v = SP.venus(b3, 960, 540, 380); gm.onFrame($('s3'), (l, i) => v.flow(i.time));
   const b4 = scene('s4'); EG.desert(b4); EG.pyramids(b4, 1200, 820, .8); EG.place(EG.person(b4, 'cleo'), 560, 1000, 3.4);
